@@ -1,0 +1,36 @@
+#+AUTHOR: Jim Fowler
+#+DATE: <2013-07-16 Tue>
+#+TITLE: Catalog information for Coursera
+
+* An estimated work load in weekly hours a student can expect to spend on the course (as a range of hours)
+
+  I think 6-8 hours/week would be pretty reasonable.
+
+* Target audience
+
+  "Beginning undergraduate" is the target audience; this is a last
+  half of the second calculus course.
+
+* A short 1-2 sentence description or statement about the course
+  
+  Sequences and Series is an introduction to sequences, infinite
+  series, convergence tests, and Taylor series.  The course emphasizes
+  not just getting answers, but asking the question "why is this
+  true?"
+
+* A longer 1-2 paragraph description of the course
+
+  Sequences and Series will challenge us to think very carefully about
+  "infinity."  What does it mean to add up an unending list of
+  numbers?  How can an infinite task result in a finite answer?  These
+  questions lead us to some very deep concepts---but also to some
+  powerful computational tools which are used not only in math but in
+  many quantitative disciplines.
+
+  This course is a first and friendly introduction to sequences,
+  infinite series, convergence tests, and Taylor series.  It is
+  suitable for someone who has seen just a bit of calculus before.
+  And since one learns mathematics by doing mathematics, this course
+  encourages you to participate by providing plenty of computational
+  problems, conceptual projects, and opportunities to explain your
+  thought process to your peers.
