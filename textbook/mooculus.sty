@@ -1,0 +1,888 @@
+\NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
+[1994/12/01]% LaTeX date must be December 1994 or later
+\ProvidesPackage{mooculus}[2012/01/30 v0.75]
+\ProcessOptions\relax
+
+
+%\RequirePackage{float}
+\RequirePackage{tabu} % allows for table with thick lines
+\RequirePackage{marvosym}
+\RequirePackage[framemethod=TikZ]{mdframed}
+\RequirePackage{environ}
+%\RequirePackage{xkeyval}
+\RequirePackage{tikz}
+%\RequirePackage{amssymb}
+%\RequirePackage{amsmath}
+\RequirePackage{mathtools} %% trying to get cases to work in caption
+\RequirePackage[hyperref]{ntheorem}
+\RequirePackage{thmtools}
+\RequirePackage{microtype}
+\RequirePackage{enumerate}
+\RequirePackage{multicol}
+%%%%%%%%%%%%%%%
+% Used in theorem list
+\usepackage{regexpatch}
+\makeatletter
+%\xpatchcmd*{\thm@@thmline}{2.3em}{5em}{}{} % not really needed
+\xpatchcmd*{\thm@@thmline@name}{2.3em}{5em}{}{} 
+\xpatchcmd*{\thm@@thmline@noname}{2.3em}{5em}{}{}
+\makeatother
+%%%%%%%%%%%%%%%
+
+\RequirePackage{pgfplots}%\pgfplotsset{compat=1.7}
+%\usepgfplotslibrary{groupplots}
+
+%\usepgfplotslibrary{external} % should put graphics in separate files. 
+%\tikzexternalize{textbook} % named after main file
+
+\RequirePackage{morefloats}
+
+\usetikzlibrary{shadows}
+\usetikzlibrary{shapes}
+\usetikzlibrary{decorations}
+\tikzset{>=stealth} %% makes all arrows the same
+
+
+
+
+%% Font
+
+%% New Centuary Schoolbook
+%\RequirePackage{fouriernc}
+
+%% Bookman
+
+\let\iint\undefined 
+\let\iiint\undefined 
+\RequirePackage{kmath,kerkis} % The order of the packages matters; kmath changes the default text font
+
+
+%% Palatino Clone
+%\usepackage[notextcomp]{kpfonts} 
+
+\RequirePackage[T1]{fontenc}
+
+
+
+
+
+%% Colors
+
+
+
+%% Parchment Style
+\colorlet{background}{Apricot!7} % Color of the page
+\colorlet{textColor}{Sepia!60!black} % Color of the text
+\colorlet{penColor}{green!50!black} % Color of a curve in a plot
+\colorlet{penColor2}{blue!50!black} % Color of a curve in a plot
+\colorlet{fill1}{green!50!black!20} % Color of fill in a plot
+\colorlet{fill2}{blue!10} % Color of fill in a plot
+\colorlet{gridColor}{gray!30} % Color of grid in a plot
+\colorlet{definitionBackground}{Sepia!10!background} % Color of the background of a definition
+\colorlet{theoremBackground}{BrickRed!10!background} % Color of the background of a theorem
+\colorlet{mainTheoremBorder}{Sepia} % Color of the border of a main theorem
+\colorlet{warningBackground}{BrickRed!10!background} % Color of the background of a theorem
+\colorlet{cowLight}{background} % the light colors of the cow --
+                                % usually the same as the background
+\colorlet{cowDark}{textColor} % the dark colors of the cow -- usually
+
+%% Modern Style
+\colorlet{background}{Black!7} % Color of the page
+\colorlet{textColor}{Black!90} % Color of the text
+
+%% For print out:
+\ifthenelse{\equal{\detokenize{textbook-print}}{\jobname}}{
+  \colorlet{background}{white} % Color of the page
+  \colorlet{textColor}{black} % Color of the text
+}{}
+
+\colorlet{penColor}{blue!50!black} % Color of a curve in a plot
+\colorlet{penColor2}{red!50!black} % Color of a curve in a plot
+\colorlet{penColor3}{red!50!blue} % Color of a curve in a plot
+\colorlet{penColor4}{green!50!black} % Color of a curve in a plot
+\colorlet{penColor5}{orange!80!black} % Color of a curve in a plot
+\colorlet{fill1}{blue!50!black!20} % Color of fill in a plot
+\colorlet{fill2}{blue!10} % Color of fill in a plot
+\colorlet{fillp}{fill1} % Color of positive area
+\colorlet{filln}{red!50!black!20} % Color of negative area
+\newcommand{\surfaceColor}{violet}
+\newcommand{\surfaceColorTwo}{redyellow}
+\newcommand{\sliceColor}{greenyellow}
+\colorlet{gridColor}{gray!50} % Color of grid in a plot
+\colorlet{definitionBackground}{black!8!background} % Color of the background of
+                                          % a definition
+\colorlet{theoremBackground}{blue!50!black!8!background} % Color of the background of a theorem
+\colorlet{mainTheoremBorder}{blue!50!black} % Color of the border of a main theorem
+\colorlet{mainOtherBorder}{black} % Color of the border of a main theorem
+\colorlet{cowLight}{background} % the light colors of the cow --
+                                % usually the same as the background
+\colorlet{cowDark}{textColor} % the dark colors of the cow -- usually
+                              % the same as the text
+\colorlet{hyperColor}{green!30!penColor} % Color of a link
+
+\hypersetup{ 
+    colorlinks = true, 
+    linkcolor = hyperColor,
+    anchorcolor = hyperColor,
+    citecolor = hyperColor,
+    filecolor = hyperColor,
+    pagecolor = hyperColor,
+    urlcolor = hyperColor
+} 
+
+%% Table colors
+\newenvironment{tchart}{\rowcolors{2}{}{background!90!textColor}\array}{\endarray}
+
+
+
+
+
+
+
+
+%% Adds marginpar like links
+\RequirePackage{dingbat,pifont}
+\newcommand{\film}{\begin{tikzpicture}[scale=.09,color=hyperColor]
+%\draw[help lines] (0,0) grid (5,4);
+\draw [thick] (0,0) -- (0,4);
+\draw [thick] (5,0) -- (5,4);
+
+\draw [thick] (0,0) -- (5,0);
+\draw [thick] (0,4) -- (5,4);
+\draw [thick] (0,2) -- (5,2);
+
+\draw [thick] (1,0) -- (1,4);
+\draw [thick] (4,0) -- (4,4);
+
+\draw [thick] (0,1) -- (1,1);
+\draw [thick] (0,3) -- (1,3);
+\draw [thick] (4,1) -- (5,1);
+\draw [thick] (4,3) -- (5,3);
+\end{tikzpicture}}
+
+
+\newcommand{\linkArrow}{\raisebox{-3pt}{\scalebox{1.6}{\ding{224}}}}
+
+\newcommand{\video}[2][0in]{%% positioning needs fixed
+  \marginnote[#1]{\href{#2}{\linkArrow\film}}
+  }
+
+\newcommand{\onlineEx}[2][0in]{%% positioning needs fixed
+  \marginnote[#1]{\href{#2}{\linkArrow\raisebox{1.5pt}{\pmb{\smallpencil}}}}
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\pagecolor{background}
+\color{textColor} 
+
+
+
+%% User defined commands
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\theta}{\vartheta} %% only for kmath
+\renewcommand{\l}{\ell}
+\renewcommand{\d}{\, d}
+\newcommand{\ddx}{\frac{d}{dx}}
+\newcommand{\dydx}{\frac{dy}{dx}}
+
+%\newcommand{\dd}[1]{\frac{d}{d #1}}
+\def\dd{\@ifnextchar[{\@with}{\@without}}
+\def\@with[#1]#2{\frac{d #1}{d #2}}
+\def\@without#1{\frac{d}{d #1}}
+
+\newcommand{\R}{\mathbb{R}}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arcsech}{arcsech}
+\DeclareMathOperator{\arccosh}{arccosh}
+
+%\DeclareMathOperator*\plim{lim}
+%\renewcommand{\lim}{\displaystyle\plim} if we really want all limits display style
+\everymath{\displaystyle}
+
+
+
+
+
+\geometry{landscape, 
+  left=1in,
+  top=1in,
+  textheight=6.5in,
+  textwidth=5in,
+  marginparsep=0.5in,
+  marginparwidth=2.5in}
+
+ 
+%% \NewEnviron{mainTheorem}[1][Theorem]{%
+%%   \begin{center}
+%%     \begin{tikzpicture}
+%%       \node[rectangle,rounded corners,inner sep=5pt,minimum width=\textwidth,
+%%         text=textColor, text opacity=1,draw=mainTheoremBorder, ultra thick, draw opacity=1,
+%%         fill=theoremBackground, fill opacity=.1] 
+%%       (box){%
+%%         \begin{minipage}{.95\textwidth}
+%%           \textbf{#1}\qquad\color{textColor}\BODY
+%%       \end{minipage}};
+%%     \end{tikzpicture}
+%%   \end{center}
+%% }
+
+
+
+%% \theorembodyfont{\slshape}
+%% \newmdtheoremenv[leftmargin=40,rightmargin=40,backgroundcolor=theoremBackground!10,fontcolor=textColor,%
+%% innerlinewidth=1,innerlinecolor=mainTheoremBorder!20!background,
+%% middlelinewidth=2,middlelinecolor=mainTheoremBorder,
+%% outerlinewidth=1,outerlinecolor=mainTheoremBorder!10!background,
+%% roundcorner=10pt,%
+%% innertopmargin=\topskip,splittopskip=\topskip,skipbelow=\baselineskip,skipabove=\baselineskip,
+%% ntheorem]{mainTheorem}%
+%% {Theorem}[section]
+
+\declaretheoremstyle[ headfont=\normalfont\bfseries, 
+  notefont=\mdseries, notebraces={(}{)}, bodyfont=\normalfont\slshape,
+  postheadspace=0.5em,
+  preheadhook={\begin{mdframed}[nobreak=true,leftmargin=40,rightmargin=40,backgroundcolor=theoremBackground,fontcolor=textColor,%
+        innerlinewidth=1,innerlinecolor=mainTheoremBorder!20!background,
+        middlelinewidth=2,middlelinecolor=mainTheoremBorder,
+        outerlinewidth=1,outerlinecolor=mainTheoremBorder!10!background,
+        roundcorner=10pt,%
+        innertopmargin=6pt,splittopskip=\topskip,skipbelow=\baselineskip,skipabove=\baselineskip]},
+  postfoothook=\end{mdframed} ]{mainThmStyle}
+\declaretheorem[style=mainThmStyle,name=Theorem,numberwithin=section,]{mainTheorem}
+
+
+
+
+\declaretheoremstyle[ headfont=\normalfont\bfseries,
+  notefont=\mdseries, notebraces={(}{)}, bodyfont=\normalfont\slshape,
+  postheadspace=0.5em,
+  preheadhook={\begin{mdframed}[hidealllines=true,roundcorner=10pt,leftmargin=40,%
+rightmargin=40,backgroundcolor=theoremBackground,fontcolor=textColor,%%
+innertopmargin=6pt,%
+splittopskip=\topskip,skipbelow=\baselineskip,%
+skipabove=\baselineskip]},
+  postfoothook=\end{mdframed} ]{thmStyle}%
+\declaretheorem[style=thmStyle,name=Theorem,numberlike=mainTheorem]{theorem}
+
+
+\declaretheoremstyle[ headfont=\normalfont\bfseries,
+  notefont=\mdseries, notebraces={(}{)}, bodyfont=\normalfont\upshape,
+  postheadspace=0.5em,
+  preheadhook={\begin{mdframed}[outerlinewidth=2,topline=false, bottomline=false, leftline=true, rightline=false, leftmargin=40,%
+rightmargin=40,
+outerlinecolor=textColor,fontcolor=textColor,backgroundcolor=background,%%
+skipbelow=\baselineskip,skipabove=\baselineskip,innertopmargin=0pt, innerbottommargin=0pt]},
+postfoothook=\end{mdframed}]{egStyle}
+\declaretheorem[style=egStyle,name=Example,numberlike=theorem]{example}
+
+
+\theoremstyle{nonumberplain} %% All styles beyond this point are unnumbered.
+\theoremheaderfont{\normalfont\itshape\bfseries}
+\theorembodyfont{}%\itshape}
+\theoremseparator{}
+\newmdtheoremenv[outerlinewidth=2,topline=false, bottomline=false, leftline=true, rightline=false, 
+leftmargin=40,innertopmargin=0pt,innerbottommargin=0pt,skipbelow=\baselineskip,
+outerlinecolor=textColor,fontcolor=textColor,backgroundcolor=background]{solution}%
+{Solution}
+
+
+\theoremheaderfont{\normalfont\itshape\bfseries}
+\theorembodyfont{\itshape}
+\theoremseparator{}
+\newmdtheoremenv[outerlinewidth=2,topline=false, bottomline=true, leftline=false, rightline=true, 
+leftmargin=40,outerlinecolor=textColor,fontcolor=textColor,backgroundcolor=background,
+skipbelow=\baselineskip]{proof}%
+{Proof}
+
+\declaretheoremstyle[ headfont=\normalfont\bfseries,
+  notefont=\mdseries, notebraces={(}{)}, bodyfont=\normalfont,
+  postheadspace=0.5em,
+  preheadhook={\begin{mdframed}[hidealllines=true,roundcorner=10pt,leftmargin=40,%
+rightmargin=40,backgroundcolor=definitionBackground,fontcolor=textColor,%%
+innertopmargin=6pt,%
+splittopskip=\topskip,skipbelow=\baselineskip,%
+skipabove=\baselineskip]},
+  postfoothook=\end{mdframed} ]{thmStyle}%
+\declaretheorem[style=thmStyle,name=Template,numberlike=mainTheorem]{template}
+
+
+\theoremheaderfont{\normalfont\bfseries}
+\theorembodyfont{\upshape}
+\newmdtheoremenv[hidealllines=true,roundcorner=10pt,leftmargin=40,%
+rightmargin=40,backgroundcolor=definitionBackground,fontcolor=textColor,%%
+innertopmargin=6pt,%\topskip,%
+splittopskip=\topskip,skipbelow=\baselineskip,skipabove=\baselineskip,
+font=\upshape
+]{definition}%
+{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Hard coded environments 
+%% Should be rewritten
+
+\theoremheaderfont{\normalfont\bfseries} \theorembodyfont{\upshape}
+\newmdtheoremenv[leftmargin=40,%
+  rightmargin=40,backgroundcolor=definitionBackground,fontcolor=textColor,%%
+  innertopmargin=6pt,innerlinewidth=1,innerlinecolor=mainOtherBorder!20!background,
+  middlelinewidth=2,middlelinecolor=mainOtherBorder,
+  outerlinewidth=1,outerlinecolor=mainOtherBorder!10!background,
+  roundcorner=10pt,
+  splittopskip=\topskip,skipbelow=\baselineskip,skipabove=\baselineskip,
+  font=\upshape ]{definitionOfTheDerivative}% 
+{Definition of the Derivative}
+
+\theoremheaderfont{\normalfont\bfseries} \theorembodyfont{\upshape}
+\newmdtheoremenv[leftmargin=40,%
+  rightmargin=40,backgroundcolor=definitionBackground,fontcolor=textColor,%%
+  innertopmargin=6pt,innerlinewidth=1,innerlinecolor=mainOtherBorder!20!background,
+  middlelinewidth=2,middlelinecolor=mainOtherBorder,
+  outerlinewidth=1,outerlinecolor=mainOtherBorder!10!background,
+  roundcorner=10pt,
+  splittopskip=\topskip,skipbelow=\baselineskip,skipabove=\baselineskip,
+  font=\upshape ]{newtonsMethod}% 
+{Newton's Method}
+
+
+\theoremheaderfont{\normalfont\bfseries} \theorembodyfont{\upshape}
+\newmdtheoremenv[leftmargin=40,%
+  rightmargin=40,backgroundcolor=definitionBackground,fontcolor=textColor,%%
+  innertopmargin=6pt,innerlinewidth=1,innerlinecolor=mainOtherBorder!20!background,
+  middlelinewidth=2,middlelinecolor=mainOtherBorder,
+  outerlinewidth=1,outerlinecolor=mainOtherBorder!10!background,
+  roundcorner=10pt,
+  splittopskip=\topskip,skipbelow=\baselineskip,skipabove=\baselineskip,
+  font=\upshape ]{eulersMethod}% 
+{Euler's Method}
+
+\theoremheaderfont{\normalfont\bfseries} \theorembodyfont{\upshape}
+\newmdtheoremenv[leftmargin=40,%
+  rightmargin=40,backgroundcolor=definitionBackground,fontcolor=textColor,%%
+  innertopmargin=6pt,innerlinewidth=1,innerlinecolor=mainOtherBorder!20!background,
+  middlelinewidth=2,middlelinecolor=mainOtherBorder,
+  outerlinewidth=1,outerlinecolor=mainOtherBorder!10!background,
+  roundcorner=10pt,
+  splittopskip=\topskip,skipbelow=\baselineskip,skipabove=\baselineskip,
+  font=\upshape ]{guessingAntiderivatives}% 
+{How to Guess Antiderivatives}
+
+\theoremheaderfont{\normalfont\bfseries} \theorembodyfont{\upshape}
+\newmdtheoremenv[leftmargin=40,%
+  rightmargin=40,backgroundcolor=definitionBackground,fontcolor=textColor,%%
+  innertopmargin=6pt,innerlinewidth=1,innerlinecolor=mainOtherBorder!20!background,
+  middlelinewidth=2,middlelinecolor=mainOtherBorder,
+  outerlinewidth=1,outerlinecolor=mainOtherBorder!10!background,
+  roundcorner=10pt,
+  splittopskip=\topskip,skipbelow=\baselineskip,skipabove=\baselineskip,
+  font=\upshape ]{procedureForPlotting}% 
+{Procedure for Sketching the Plots of Functions}
+
+\theoremheaderfont{\normalfont\bfseries} \theorembodyfont{\upshape}
+\newmdtheoremenv[leftmargin=40,%
+  rightmargin=40,backgroundcolor=definitionBackground,fontcolor=textColor,%%
+  innertopmargin=6pt,innerlinewidth=1,innerlinecolor=mainOtherBorder!20!background,
+  middlelinewidth=2,middlelinecolor=mainOtherBorder,
+  outerlinewidth=1,outerlinecolor=mainOtherBorder!10!background,
+  roundcorner=10pt,
+  splittopskip=\topskip,skipbelow=\baselineskip,skipabove=\baselineskip,
+  font=\upshape ]{procedureForConstructingASlopeField}% 
+{Procedure for Constructing a Slope Field}
+
+
+\theoremheaderfont{\normalfont\bfseries} \theorembodyfont{\upshape}
+\newmdtheoremenv[leftmargin=40,%
+  rightmargin=40,backgroundcolor=definitionBackground,fontcolor=textColor,%%
+  innertopmargin=6pt,innerlinewidth=1,innerlinecolor=mainOtherBorder!20!background,
+  middlelinewidth=2,middlelinecolor=mainOtherBorder,
+  outerlinewidth=1,outerlinecolor=mainOtherBorder!10!background,
+  roundcorner=10pt,
+  splittopskip=\topskip,skipbelow=\baselineskip,skipabove=\baselineskip,
+  font=\upshape ]{guidelinesForRelatedRates}% 
+{Guidelines for Related Rates Problems}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\theoremheaderfont{\normalfont\bfseries} \theorembodyfont{\upshape}
+\newmdtheoremenv[leftmargin=40,%
+  rightmargin=40,backgroundcolor=definitionBackground,fontcolor=textColor,%%
+  innertopmargin=6pt,innerlinewidth=1,innerlinecolor=mainOtherBorder!20!background,
+  middlelinewidth=2,middlelinecolor=mainOtherBorder,
+  outerlinewidth=1,outerlinecolor=mainOtherBorder!10!background,
+  roundcorner=10pt,
+  splittopskip=\topskip,skipbelow=\baselineskip,skipabove=\baselineskip,
+  font=\upshape ]{guidelinesForOptimization}% 
+{Guidelines for Optimization}
+
+
+
+
+\theoremheaderfont{\normalfont\bfseries} \theorembodyfont{\upshape}
+\newmdtheoremenv[leftmargin=40,%
+  rightmargin=40,backgroundcolor=definitionBackground,fontcolor=textColor,%%
+  innertopmargin=6pt,innerlinewidth=1,innerlinecolor=mainTheoremBorder!20!background,
+  middlelinewidth=2,middlelinecolor=mainTheoremBorder,
+  outerlinewidth=1,outerlinecolor=mainTheoremBorder!10!background,
+  roundcorner=10pt,
+  splittopskip=\topskip,skipbelow=\baselineskip,skipabove=\baselineskip,
+  font=\upshape ]{mainDefinition}% 
+{Definition}
+
+%% \declaretheoremstyle[ headfont=\normalfont\bfseries, 
+%%   notefont=\mdseries, notebraces={(}{)}, bodyfont=\normalfont,
+%%   postheadspace=0.5em,
+%%   preheadhook={\begin{mdframed}[nobreak=true,leftmargin=40,rightmargin=40,backgroundcolor=definitionBackground,fontcolor=textColor,%
+%%         innerlinewidth=1,innerlinecolor=mainTheoremBorder!20!background,
+%%         middlelinewidth=2,middlelinecolor=mainTheoremBorder,
+%%         outerlinewidth=1,outerlinecolor=mainTheoremBorder!10!background,
+%%         roundcorner=10pt,%
+%%         innertopmargin=6pt,splittopskip=\topskip,skipbelow=\baselineskip,skipabove=\baselineskip]},
+%%   postfoothook=\end{mdframed} ]{mainDfnStyle}
+%% \declaretheorem[style=mainDfnStyle,name=Definition]{mainDefinition}
+
+
+
+\newmdtheoremenv[hidealllines=true,leftmargin=40,roundcorner=10pt%
+rightmargin=40,backgroundcolor=red!5!background,%
+innertopmargin=6pt,%
+splittopskip=\topskip,skipbelow=\baselineskip,%
+skipabove=\baselineskip]{warning}%
+{Warning}
+
+
+
+
+
+%% \NewEnviron{theorem}[1][Theorem]{%
+%%   \begin{center}
+%%     \begin{tikzpicture}
+%%       \node[rectangle,rounded corners,inner sep=5pt,minimum width=\textwidth,
+%%         text=textColor, text opacity=1,
+%%         %draw=gray, ultra thick, draw opacity=1,
+%%         fill=theoremBackground, fill opacity=.1] 
+%%       (box){%
+%%         \begin{minipage}{.95\textwidth}
+%%           \textbf{#1}\qquad\color{textColor}\BODY
+%%       \end{minipage}};
+%%     \end{tikzpicture}
+%%   \end{center}
+%% }
+
+%% \NewEnviron{definition}{%
+%%   \begin{center}
+%%     \begin{tikzpicture}
+%%       \node[rectangle, rounded corners,inner sep=5pt,minimum width=\textwidth,
+%%         text=textColor, text opacity=1,
+%%         fill=definitionBackground, fill opacity=.1] 
+%%       (box){%
+%%         \begin{minipage}{.95\textwidth}
+%%           \textbf{Definition}\qquad\color{textColor}\BODY
+%%       \end{minipage}};
+%%     \end{tikzpicture}
+%%   \end{center}
+%% }
+
+%% \NewEnviron{solution}{%
+%%   \begin{center}
+%%     \begin{tikzpicture}
+%%       \node[rectangle, rounded corners,inner sep=5pt,minimum width=\textwidth,
+%%         text=textColor, text opacity=1,
+%%         fill=definitionBackground, fill opacity=.1] 
+%%       (box){%
+%%         \begin{minipage}{.95\textwidth}
+%%           \textit{\textbf{Solution}}\qquad\color{textColor}\BODY
+%%       \end{minipage}};
+%%     \end{tikzpicture}
+%%   \end{center}
+%% }
+
+
+%% \NewEnviron{warning}{%
+%%   \begin{center}
+%%     \begin{tikzpicture}
+%%       \node[rectangle, rounded corners, inner sep=5pt,minimum width=\textwidth,
+%%         text=textColor, text opacity=1,
+%%         fill=red, fill opacity=.1] 
+%%       (box){%
+%%         \begin{minipage}{.95\textwidth}
+%%           \textbf{WARNING}\qquad\BODY
+%%       \end{minipage}};
+%%     \end{tikzpicture}
+%%   \end{center}
+%% }
+
+
+%% \NewEnviron{ques}{%
+%%   \begin{center}
+%%     \begin{tikzpicture}
+%%       \node[rectangle, rounded corners, inner sep=5pt,minimum width=\textwidth,
+%%         text=textColor, text opacity=1,
+%%         fill=green!50!blue, fill opacity=.15] 
+%%       (box){%
+%%         \begin{minipage}{.95\textwidth}
+%%           \textbf{Question}\qquad\BODY
+%%       \end{minipage}};
+%%     \end{tikzpicture}
+%%   \end{center}
+%% }
+
+%% \RequirePackage{framed}
+%% \newenvironment{example}{\begin{leftbar}\noindent\textbf{Example}\qquad}{\end{leftbar}}
+%% \newenvironment{solution}{\noindent\textit{\textbf{Solution}}\qquad} %% SHOULD BE REPLACED WITH MDFRAMED!
+
+
+
+
+
+
+\renewcommand{\theenumi}{$(\mathrm{\alph{enumi}})$}  %% use letters for lists
+\renewcommand{\labelenumi}{\theenumi}
+
+
+\newcounter{exercise}
+\NewEnviron{exercises}{%
+  \newpage
+  \dumpanswer[\noexpand\subsection*{Answers for \arabic{chapter}.\arabic{section}}]
+  \subsection*{Exercises for Section \arabic{chapter}.\arabic{section}}
+  \vspace{-15pt}
+  \rule{\textwidth}{2pt}
+  \setcounter{exercise}{0}
+  \small
+  \BODY
+  \normalsize
+  \newpage
+}%
+{}
+\newenvironment{exercise}{
+  \begin{enumerate}[(1)]
+    \setcounter{enumi}{\value{exercise}}
+  \item \addtocounter{exercise}{1}\hypertarget{e:\arabic{chapter}.\arabic{section}.\arabic{exercise}}{} 
+}
+           {\ignorespaces\hyperlink{a:\arabic{chapter}.\arabic{section}.\arabic{exercise}}{\linkArrow} %% for adding a link to exercises
+           \end{enumerate}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\newwrite\answer@stream
+\immediate\openout\answer@stream=\jobname.ans
+
+\def\dumpanswer[#1]{\immediate\write\answer@stream{#1}}
+
+\newtoks{\answercontent}
+         \NewEnviron{answer}{%
+           \answercontent=\expandafter{\BODY\qquad}
+           \dumpanswer[\noexpand\hypertarget{a:\arabic{chapter}.\arabic{section}.\arabic{exercise}}{\noexpand\hyperlink{e:\arabic{chapter}.\arabic{section}.\arabic{exercise}}{\noexpand\bfseries\arabic{exercise}.}}\space\noexpand\mdseries \the\answercontent]
+         }
+
+         \def\finalizeanswers{\immediate\closeout\answer@stream}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\hyperlink{foo_1}{This becomes a link}.
+%\hypertarget{foo_1}{This is the target}.
+
+
+
+
+
+
+
+
+
+
+
+\newcommand{\drawfoot}{% %% changed black -> cowDark, white -> cowLight
+  \begin{scope}[xshift=0.06in,color=cowDark]
+    \draw[fill=cowDark!70!cowLight] (0,0) arc (0:180:0.12in) -- (0,0) -- cycle;
+    \draw (-0.1in,0) arc (0:30:0.12in);
+  \end{scope}
+}
+
+\newcommand{\drawhorn}{%
+      \draw[color=brown!80!black,fill=brown] (0,0)
+      arc (30:60:0.45in)
+      arc (30:0:0.4in);
+}
+
+\newcommand{\draweye}{% %% changed black -> cowDark, white -> cowLight
+      \draw[fill=cowLight] (0,0) circle (0.09in);
+      \draw[fill=cowDark] (0.02in,-0.02in) circle (0.02in);
+}
+
+\newcommand{\headpath}{%
+(0,0in)
+arc (90:175:0.35in) % top ear
+arc (250:300:0.25in) % bottom ear
+arc (170:270:0.30in) % chin
+arc (-90:10:0.30in) % chin
+arc (-120:-70:0.25in) % bottom ear
+arc (5:90:0.35in) % top ear
+-- cycle
+}
+
+\newcommand{\drawbody}{
+    \begin{scope}
+      \clip (0,0) circle (0.5in);
+      \draw[color=cowDark,fill=cowLight] (0,0) circle (0.5in);  % so the body isn't transparent    
+      \begin{scope}[color=cowDark!85!cowLight] %% cow spots on body
+        \fill[xshift=0.2in,yshift=0.1in] plot [smooth cycle, tension=2] coordinates { (0,0) (0.6,0.6) (-0.6,0.6) };
+        \fill[xshift=0.4in,yshift=-0.4in] plot [smooth cycle, tension=2] coordinates { (0,0) (0.6,0.6) (-0.6,0.6) };
+        \fill[xshift=-0.4in,yshift=-0.6in] plot [smooth cycle, tension=2] coordinates { (0,0) (0.6,0.6) (-0.6,0.6) };
+        \fill[xshift=-0.2in,yshift=0.1in] plot [smooth cycle, tension=2] coordinates { (0,0) (-0.2,-0.6) (0.6,-0.6) };
+        \fill[xshift=-0.2in,yshift=0.5in] plot [smooth cycle, tension=2] coordinates { (0.35,0.35) (-0.9,-0.8) (0.2,-0.2) };
+      \end{scope}
+      \draw[color=cowDark, line width=4pt] (0,0) circle (0.5in); % puts the boarder back in.
+      \end{scope}
+}
+
+
+
+
+
+\newcommand{\cow}[1]{
+  \begin{scope}[transform canvas={scale=#1},line width=2pt]  %% make function that can be moved and scaled. 
+ 
+    \drawbody
+
+    \begin{scope}[yshift=-0.53in]
+      \begin{scope}[xshift=0.3in]
+        \drawfoot
+      \end{scope}
+
+      % draw left foot
+      \begin{scope}[xshift=-0.3in,xscale=-1]
+        \drawfoot
+      \end{scope}
+    \end{scope}
+
+    % draw head
+    \begin{scope}[yshift=0.6in,xshift=-.15in]
+    \draw[color=cowDark,fill=cowLight] \headpath; %% changed white -> cowLight
+
+    \clip \headpath;
+    \fill[color=cowDark!85!cowLight,xshift=0.65in,yshift=0.2in] plot [smooth cycle, tension=2] coordinates { (0,0) (-1,-1) (-0.5,0.5) }; %% changed black -> cowDark, white -> cowLight
+
+    % draw nose
+    \begin{scope}[xshift=.15in,xscale=1.5,yshift=-0.6in,color=pink!50!black]
+      \draw[fill=pink] (0in,0) circle (0.09in);
+      \draw (0.1,0.1) -- (0.1,0);
+      \draw (-0.1,0.1) -- (-0.1,0);
+    \end{scope}
+
+    \draw[color=cowDark, line width=2pt] \headpath;
+    \end{scope}
+
+    % draw horn
+    \begin{scope}[yshift=0.55in]
+      \begin{scope}[xshift=-.15in]
+        \drawhorn
+      \end{scope}
+      \begin{scope}[xshift=.15in,xscale=-1]
+        \drawhorn
+      \end{scope}
+    \end{scope}
+
+    % draw eyes
+    \begin{scope}[yshift=0.4in]
+      \begin{scope}[xshift=-.11in,color=cowDark]
+        \draweye
+      \end{scope}
+      \begin{scope}[xshift=.11in,xscale=-1,color=cowDark]
+        \draweye
+      \end{scope}
+    \end{scope}
+\end{scope}}
+
+
+
+
+
+
+\renewcommand{\maketitlepage}[0]{%
+  %\cleardoublepage%
+  {%
+  \sffamily%
+  \begin{fullwidth}%
+    %\vfill
+
+    \vspace*{1.75in}
+
+    \begin{tikzpicture}
+      \begin{scope}[xshift=.47in,yshift=0in]
+        \cow{.6}
+        \end{scope}
+    % draw title MOOCulus
+    \node[anchor=south west] at (.6in,-.6) {\scalebox{2.2}{\sffamily\Huge\textbf{MOOC}ULUS}};
+    
+    % draw subtitle
+    \node[anchor=north west] at (.629in,-0.172in) {\sffamily\scalebox{1.6}{\footnotesize massive open online calculus}};
+    \node at (0in,0) {}; % needed for alignment
+
+  \end{tikzpicture}
+%%%% end cow
+%    \vspace{-1cm}
+
+  %\fontsize{90}{100}\selectfont\par\noindent\textcolor{textColor}{\bfseries\allcaps{\thanklesstitle}}%
+   
+  \vspace{0.5in}
+    \includegraphics[width=9in]{../branding/wordmark.pdf}
+  \vfill%
+  \fontsize{18}{20}\selectfont\par\noindent\textcolor{textColor}{\allcaps{\thanklessauthor}}%
+  %\vspace{11.5pc}%
+  \fontsize{14}{16}\selectfont\par\noindent\allcaps{\thanklesspublisher}%
+  \end{fullwidth}%
+  }
+  \thispagestyle{empty}%
+  %\clearpage%
+}
+
+
+
+
+\RequirePackage{titlesec}
+\titleformat{\chapter}%
+  [block]% shape
+  {\relax\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\begin{fullwidth}}{}}% format applied to label+text
+  {\huge\scshape\sffamily\bfseries\textcolor{textColor}\thechapter}% label
+  {1em}% horizontal separation between label and title body
+  {\huge\scshape\sffamily\bfseries\textcolor{textColor}}% before the title body
+  [\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\end{fullwidth}}{}]% after the title body
+
+\titleformat{\section}%
+  [hang]% shape
+  {\normalfont\Large\sffamily\bfseries}% format applied to label+text
+  {\thesection}% label
+  {1em}% horizontal separation between label and title body
+  {}% before the title body
+  []% after the title body
+
+\titleformat{\subsection}%
+  [hang]% shape
+  {\normalfont\large\sffamily\bfseries}% format applied to label+text
+  {\thesubsection}% label
+  {1em}% horizontal separation between label and title body
+  {}% before the title body
+  []% after the title body
+
+\titleformat{\paragraph}%
+  [runin]% shape
+  {\normalfont\sffamily}% format applied to label+text
+  {\theparagraph}% label
+  {1em}% horizontal separation between label and title body
+  {}% before the title body
+  []% after the title body
+
+
+
+\ifthenelse{\boolean{@tufte@toc}}{%
+  \titlecontents{part}% FIXME
+    [0em] % distance from left margin
+    {\vspace{1.5\baselineskip}\begin{fullwidth}\LARGE\sffamily} % above (global formatting of entry)
+    {\contentslabel{2em}} % before w/label (label = ``II'')
+    {} % before w/o label
+    {\sffamily\qquad\thecontentspage} % filler + page (leaders and page num)
+    [\end{fullwidth}] % after
+  \titlecontents{chapter}%
+    [0em] % distance from left margin
+    {\vspace{1.5\baselineskip}\begin{fullwidth}\LARGE\sffamily} % above (global formatting of entry)
+    {\hspace*{0em}\contentslabel{2em}} % before w/label (label = ``2'')
+    {\hspace*{0em}} % before w/o label
+    {\sffamily\hfill\qquad\thecontentspage} % filler + page (leaders and page num)
+    [\end{fullwidth}] % after
+  \titlecontents{section}% FIXME
+    [0em] % distance from left margin
+    {\vspace{0\baselineskip}\begin{fullwidth}\Large\sffamily} % above (global formatting of entry)
+    {\hspace*{2em}\contentslabel{2em}} % before w/label (label = ``2.6'')
+    {\hspace*{2em}} % before w/o label
+    {\sffamily\qquad\thecontentspage} % filler + page (leaders and page num)
+    [\end{fullwidth}] % after
+  \titlecontents{subsection}% FIXME
+    [0em] % distance from left margin
+    {\vspace{0\baselineskip}\begin{fullwidth}\large\sffamily} % above (global formatting of entry)
+    {\hspace*{4em}\contentslabel{4em}} % before w/label (label = ``2.6.1'')
+    {\hspace*{4em}} % before w/o label
+    {\sffamily\qquad\thecontentspage} % filler + page (leaders and page num)
+    [\end{fullwidth}] % after
+  \titlecontents{paragraph}% FIXME
+    [0em] % distance from left margin
+    {\vspace{0\baselineskip}\begin{fullwidth}\normalsize\sffamily} % above (global formatting of entry)
+    {\hspace*{6em}\contentslabel{2em}} % before w/label (label = ``2.6.0.0.1'')
+    {\hspace*{6em}} % before w/o label
+    {\sffamily\qquad\thecontentspage} % filler + page (leaders and page num)
+    [\end{fullwidth}] % after
+}{}
+
+
+
+
+
+
+
+\makeatletter
+
+%% Header mods
+%
+% The main matter in Tufte's /Beautiful Evidence/ doesn't restart the page
+% numbering---it continues where it left off in the front matter.
+\renewcommand\mainmatter{%
+  %\cleardoublepage%
+  \@mainmattertrue%
+  \fancyhf{}%
+  \ifthenelse{\boolean{@tufte@twoside}}%
+    {% two-side
+      \renewcommand{\chaptermark}[1]{\markboth{##1}{}}%
+      \fancyhead[LE]{\thepage\quad\smallcaps{\newlinetospace{\plaintitle}}}% book title
+      \fancyhead[RO]{\smallcaps{\newlinetospace{\leftmark}}\quad\thepage}% chapter title
+    }%
+    {% one-side
+      \fancyhead[RE,RO]{\smallcaps{\newlinetospace{\plaintitle}}\quad\thepage}% book title
+    }%
+}
+
+
+
+% Remove \FloatBarrier from marginfigure definition
+% to prevent unwanted spaces.
+\makeatletter% so we can use @ commands
+\renewenvironment{@tufte@margin@float}[2][-1.2ex]{%
+  %\FloatBarrier% removed because it adds unwanted white space
+  \begin{lrbox}{\@tufte@margin@floatbox}%
+  \begin{minipage}{\marginparwidth}%
+    \@tufte@caption@font
+    \def\@captype{#2}%
+    \hbox{}\vspace*{#1}%
+    \@tufte@caption@justification
+    \@tufte@margin@par
+    \noindent
+}{%
+  \end{minipage}%
+  \end{lrbox}%
+  \marginpar{\usebox{\@tufte@margin@floatbox}}%
+}
+\makeatother% restore meaning of @
+
+\newcommand{\defnword}[1]{\textbf{#1}}
+\newcommand{\nth}{\mbox{\scriptsize th}}
+
+\endinput

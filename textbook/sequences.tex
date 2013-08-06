@@ -1,48 +1,247 @@
-\chapter{Sequences}{}{}
 
-\nobreak
-While the idea of a sequence of numbers, $a_1,a_2,a_3,\ldots$ is
-straightforward, it is useful to think of a sequence as a function. We
-have up until now dealt with functions whose domains are the real
-numbers, or a subset of the real numbers, like $f(x)=\sin x$. A
-sequence is a function with domain the natural numbers
-$\N=\{1,2,3,\ldots\}$ or the non-negative integers,
+\section{Notation}
+
+\nobreak A ``sequence'' of numbers is just a list of numbers.  For
+example, here is a list of numbers:
+$$
+1, 1, 2, 3, 5, 8, 13, 21, \ldots
+$$
+Note that numbers in the list can repeat.  And consider those little
+dots at the end!  The dots ``\ldots'' signify that the list keeps
+going---forever.  Presumably the sequence continues by following the
+pattern that the first few ``terms'' suggest.  But what's the pattern?  
+
+To make this talk of ``patterns'' less ambiguous, it is useful to
+think of a sequence as a function. We have up until now dealt with
+functions whose domains are the real numbers, or a subset of the real
+numbers, like $f(x)=\sin x$. A sequence is a function with domain the
+natural numbers $\N=\{1,2,3,\ldots\}$ or the non-negative integers,
 $\ds \Z^{\ge0}=\{0,1,2,3,\ldots\}$. The range of the function is still
 allowed to be the real numbers; in symbols, we say that a sequence is
-a function $f\colon \N\to\R$. Sequences are written in a few different
+a function $f\colon \N\to\R$.
+
+\marginnote{Maybe you are feeling that this formality is unnecessary,
+  or even ridiculous; why can't we just list off a few terms and pick
+  up on the pattern?  As we'll see later, that might be very hard to
+  do!  There might be very different---but equally
+  reasonable---patterns that start the same way.  To resolve this
+  ambiguity, it is perhaps not so ridiculous to introduce the
+  formalism of ``functions.''}
+
+Sequences are written in a few different
 ways, all equivalent; these all mean the same thing:
 $$
   \displaylines{a_1,a_2,a_3,\ldots \\
   \left\{a_n\right\}_{n=1}^\infty \\
   \left\{f(n)\right\}_{n=1}^\infty \\}
-%%  \left\{a_n\mid n\in\N\right\} \\
-%%  \left\{f(n)\mid n\in\N\right\} \\
 $$
+We summarize the preceding discussion in the following definition.
+\begin{definition} \relax\index{sequence} A \defnword{sequence}
+  $(a_n)$ is, formally speaking, a real-valued function with domain
+  the natural numbers $\N$ or the non-negative integers $\Z^{\ge 0}$.
+  Stated more humbly, a sequence assigns a real number to whole
+  numbers.
 
+  The ``outputs'' of a sequence are the \defnword{terms} of the
+  sequence; the ``$n^{\nth}$ term'' is the real number that the
+  sequence associates to the natural number $n$, and is usually
+  written $a_n$. \index{sequence!term}.
+\end{definition} 
 
-As with functions on the real numbers,
-we will most often encounter sequences that can be expressed by a
-formula. We have already seen the sequence $\ds a_i=f(i)=1-1/2^i$, and others
-are easy to come by:
+  \marginnote{Recall that the natural numbers $\N$ are the counting
+    numbers $1, 2, 3, 4, \ldots$.  If we want our sequence to start at
+    zero, we use $\Z^{\ge 0}$ as the domain instead.}
+
+  \marginnote{Some people---perhaps computer scientists?---might
+    include zero in the natural numbers.}
+
+\begin{warning}
+  Our formal definition of sequence involves $\N$ and $\Z^{\ge 0}$.
+  But depending on the context, it may be convenient for a sequence to
+  start somewhere else---perhaps with some negative number.  We
+  shouldn't let the formal definition get in the way of making the
+  best choice for the problem at hand.
+\end{warning}
+
+\section{Defining sequences by giving a rule}
+
+Just as with functions with domain the real numbers, we will most often
+encounter sequences that can be expressed by a formula.  We have
+already seen the sequence $\ds a_i=f(i)=1-1/2^i$, and others are easy
+to come by:
 \begin{align*}
-  f(i)&={i\over i+1} \\
-  f(n)&={1\over2^n} \\
-  f(n)&=\sin(n\pi/6) \\
-  f(i)&={(i-1)(i+2)\over2^i} \\
+  a_i &={i\over i+1} \\
+  a_n &={1\over2^n} \\
+  a_n &=\sin(n\pi/6) \\
+  a_i &={(i-1)(i+2)\over2^i} \\
 \end{align*}
 Frequently these formulas will make sense if thought of either as
-functions with domain $\R$ or $\N$, though occasionally one will make
-sense only for integer values. 
+functions with domain $\R$ or $\N$, though occasionally the given
+formula will make sense only for whole numbers.
 
-Faced with a sequence we are interested in the limit
+\section{Defining sequences using previous terms}
+
+\marginnote{You might be familiar with \textit{recursion} from, say, a
+  computer science course.}
+
+Another way to define a sequence is \textit{recursively}, that is, by
+defining the later outputs in terms of previous outputs.  We start by
+defining the first few terms of the sequence, and then describe how
+later terms are computed in terms of previous terms.
+
+\begin{example}
+Define a sequence recursively by
+$$
+a_1 = 1, \quad a_2 = 3, \quad a_3 = 10,
+$$
+and the rule that $a_n = a_{n-1} - a_{n-3}$.  Compute $a_5$.
+\end{example}
+
+\begin{solution}
+  First we compute $a_4$.  Substituting $4$ for $n$ in the rule $a_n = a_{n-1} - a_{n-3}$, we find
+$$
+a_4 = a_{4-1} - a_{4-3} = a_3 - a_1.
+$$
+But we have values for $a_3$ and $a_1$, namely $10$ and $1$, respectively.  Therefore $a_4 = 10 - 1 = 9$.
+
+Now we are in a position to compute $a_5$.  Substituting $5$ for $n$ in the rule $a_n = a_{n-1} - a_{n-3}$, we find
+$$
+a_5 = a_{5-1} - a_{5-3} = a_4 - a_2.
+$$
+We just computed $a_4 = 9$; we were given $a_2 = 3$.  Therefore $a_5 = 9 - 3 = 6$.
+\end{solution}
+
+\marginnote{You can imagine some very complicated sequences defined recursively.  Make up your own sequence and share it with your friends!}
+
+\section{Examples}
+
+\marginnote{Tons of entertaining sequences are listed in the \href{http://oeis.org/}{The On-Line Encyclopedia of Integer Sequences}.}
+
+Mathematics proceeds, in part, by finding precise statements for
+everyday concepts.  We have already done this for sequences, by
+providing a precise definition (``function from $\N$ to $\R$'') for
+the everyday concept of ``list of real numbers.''  But all the
+formalisms in the world aren't worth the paper they are printed on if
+there aren't some interesting \textit{examples} of those precise
+concepts.  Indeed, mathematics proceeds not only by generalizing and
+formalizing, but by focusing on specific, concrete instances.  Let me
+share some specific examples of sequences.
+
+But before I share these examples, let me ask a fundamental question:
+how can I hand you an example of a sequence? It is not enough just to
+list off the first few terms.  Let's see why.
+
+\begin{example}
+Consider the sequence $(a_n)$
+$$
+a_1 = 41, \quad a_2 = 43, \quad a_3 = 47, \quad a_4 = 53, \ldots
+$$
+What is the next term $a_5$?
+\end{example}
+
+\marginnote{This particular polynomial $n^4 - n + 41$ is rather interesting, since it outputs many prime numbers.  You can read more at \href{http://oeis.org/A005846}{the OEIS}.}
+
+\begin{solution}
+In spite of many so-called ``intelligence tests'' asking questions like this, this question doesn't have an ``answer.''  Or worse, it has too many answers!
+
+This sequence might be ``prime numbers starting at 41.''  In which case the next term is $a_5 =59$.  But maybe this sequence is given by the polynomial $a_n = n^2 - n + 41$.  In that case, $a_5 = 61$.  Who is to say which is the ``better'' answer?
+\end{solution}
+
+Now let's consider some families of sequences.
+
+\subsection{Arithmetic sequences}
+
+\begin{definition}
+  An \defnword{arithmetic progression} (sometimes called an arithmetic
+  sequence)\index{arithmetic progression} is a sequence where each
+  term differs from the previous by the same, fixed quantity.
+\end{definition}
+
+\begin{example}
+  An example of an arithmetic progression is the sequence
+  $$
+  a_1 = 10, \quad a_2 = 14, \quad a_3 = 18, \quad a_4 = 22, \ldots
+  $$
+  which is given by the rule $a_n = 6 + 4 \, n$.  Each term differs
+  from the previous by four.
+\end{example}
+
+In general, an arithmetic progression in which subsequent terms differ
+by $m$ can be written as
+$$
+a_n = m \, (n-1) + a_1.
+$$
+Alternatively, we could describe an arithmetic progression
+recursively, by giving a starting value $a_1$, and using the rule that
+$a_{n} = a_{n-1} + m$.
+
+\subsection{Geometric sequences}
+
+\begin{definition}
+  A \defnword{geometric progression} (sometimes called an geometric
+  sequence)\index{geometric progression} is a sequence where the ratio
+  between subsequent terms if the same, fixed quantity.
+\end{definition}
+
+\begin{example}
+  An example of an geometric progression is the sequence
+  $$
+  a_1 = 10, \quad a_2 = 30, \quad a_3 = 90, \quad a_4 = 270, \ldots
+  $$
+  which is given by the rule $a_n = 10 \cdot 3^n$.  Each term is three
+  times the preceding term.
+\end{example}
+
+In general, a geometric progression in which the ratio between
+subsequent terms is $r$ can be written as
+$$
+a_n = a_1 \cdot r^{n-1}.
+$$
+Alternatively, we could describe a geometric progression
+recursively, by giving a starting value $a_1$, and using the rule that
+$a_{n} = r \cdot a_{n-1}$.
+
+\subsection{Triangular numbers}
+
+%BADBAD
+
+\subsection{Fibonacci numbers}
+
+\marginnote{The Fibonacci numbers are interesting enough that a
+  journal, \href{http://www.fq.math.ca/}{The Fibonacci Quaterly} is
+  published four times yearly entirely on topics related to the
+  Fibonacci numbers.}
+
+The \defnword{Fibonacci numbers} are defined recursively, starting with
+$$
+F_0 = 0 \mbox{ and } F_1 = 1
+$$
+and the rule that $F_{n} = F_{n-1} + F_{n-2}$.  In words, each term is
+the sum of the previous two terms.  So the sequence of Fibonacci numbers starts
+$$
+0, \quad 1, \quad 1, \quad 2, \quad 3, \quad 5, \quad 8, \quad 13, \ldots
+$$
+and so on.
+
+This is hardly the last time we will see the Fibonacci numbers.
+
+\subsection{Collatz sequence}
+
+%BADBAD
+
+\section{Limits}
+
+Given a sequence, it is helpful to be able to say something
+qualitative about the sequence; that is, we may want to address the
+question such as ``what happens after a while?''  In other words,
+faced with a sequence, we are interested in the limit
 $$\lim_{i\to \infty} f(i) = \lim_{i\to\infty} a_i.$$
 We already understand
 $$\lim_{x\to\infty} f(x)$$
-when $x$ is a real valued variable; now we simply want to restrict the
-``input'' values to be integers. No real difference is required in the
-definition of limit, except that we specify, perhaps implicitly, that
-the variable is an integer.  Compare this definition to
-definition~\xrefn{defn:limit at infinity}.
+when $x$ is a variable taking on real values; now we simply want to
+restrict the ``input'' values to be integers. No significant
+difference is required in the definition of limit, except that we
+specify, perhaps implicitly, that the variable is an integer.
 
 \begin{definition} \relax\index{limit of a sequence}
 Suppose that $\ds\left\{a_n\right\}_{n=1}^\infty$ is a sequence.
@@ -149,7 +348,6 @@ functions.
 
 Not surprisingly, the properties of limits of real functions translate
 into properties of sequences quite easily. 
-Theorem~\xrefn{thm:properties of limits} about limits becomes
 
 %\vbox{
 \begin{theorem} \relax\label{thm:properties of sequences}
@@ -167,7 +365,7 @@ $k$ is some constant. Then
 \end{theorem}
 %}
 
-Likewise the Squeeze Theorem (\xrefn{thm:squeeze theorem}) becomes
+Likewise, there is an analogue of the squeeze theorem for functions.
 
 \begin{theorem}\relax\label{thm:squeeze theorem for sequences}
 Suppose that $\ds a_n \le b_n \le c_n$ for all $n>N$, for some $N$.
@@ -187,22 +385,28 @@ only if $\ds a_n$ gets close to zero.
 
 \begin{example}
 Determine whether $\ds\left\{{n\over n+1}\right\}_{n=0}^\infty$ converges or
-diverges. If it converges, compute the limit. Since this makes sense
-for real numbers we consider
+diverges. If it converges, compute the limit.
+\end{example}
+
+\begin{solution}
+Since this makes sense for real numbers we consider
 $$
 \lim_{x\to\infty}{x\over x+1}=\lim_{x\to\infty}1-{1\over x+1}=1-0=1.
 $$
 Thus the sequence converges to 1.
-\end{example}
+\end{solution}
 
 \begin{example}
 Determine whether $\ds\bigg\{{\ln n\over n}\bigg\}_{n=1}^\infty$ converges or
-diverges. If it converges, compute the limit. We compute
+diverges. If it converges, compute the limit.
+\end{example}
+
+\begin{solution}We compute
 $$\lim_{x\to\infty}{\ln x\over x}=\lim_{x\to\infty}{1/x\over 1}=
 0,$$
 using L'H\^opital's Rule. 
 Thus the sequence converges to 0.
-\end{example}
+\end{solution}
 
 \begin{example}
 Determine whether $\ds\{(-1)^n\}_{n=0}^\infty$ converges or
@@ -215,28 +419,37 @@ and clearly diverges.
 
 \begin{example}
 Determine whether $\ds\{(-1/2)^n\}_{n=0}^\infty$ converges or
-diverges. If it converges, compute the limit. We consider the sequence 
+diverges. If it converges, compute the limit.
+\end{example}
+\begin{solution}We consider the sequence 
 $\ds\{|(-1/2)^n|\}_{n=0}^\infty=\{(1/2)^n\}_{n=0}^\infty$.
 Then
 $$
   \lim_{x\to\infty}\left({1\over2}\right)^x=\lim_{x\to\infty}{1\over2^x}=0,
 $$
 so by theorem~\xrefn{thm:absolute value sequence} the sequence converges to 0.
-\end{example}
+\end{solution}
 
 \begin{example}
 Determine whether $\ds\{(\sin n)/\sqrt{n}\}_{n=1}^\infty$ converges or
 diverges. If it converges, compute the limit. 
+\end{example}
+
+\begin{solution}
 Since $|\sin n|\le 1$, $\ds 0\le|\sin n/\sqrt{n}|\le
 1/\sqrt{n}$ and we can use theorem~\xrefn{thm:squeeze theorem for
 sequences} with $\ds a_n=0$ and $\ds c_n=1/\sqrt{n}$. Since
 $\ds\lim_{n\to\infty} a_n=\ds\lim_{n\to\infty} c_n=0$, 
 $\ds\lim_{n\to\infty}\sin n/\sqrt{n}=0$ and the sequence converges to 0.
-\end{example}
+\end{solution}
 
 \begin{example}
 A particularly common and useful sequence is $\ds \{r^n\}_{n=0}^\infty$,
-for various values of $r$. Some are quite easy to understand: If $r=1$
+for various values of $r$.  For which values of $r$ does this sequence converge?
+\end{example}
+
+\begin{solution}
+Some are quite easy to understand: If $r=1$
 the sequence converges to 1 since every term is 1, and likewise if
 $r=0$ the sequence converges to 0. If $r=-1$ this is
 the sequence of example~\xrefn{example:alternating ones} and
@@ -252,7 +465,9 @@ $$
   0& if $-1<r<1$ \\
   1& if $r=1$ \end{cases}
 $$
-\vskip-10pt\end{example}
+\vskip-10pt\end{solution}
+
+\section{Qualitative features of limits}
 
 Sometimes we will not be able to determine the limit of a sequence,
 but we still would like to know whether it converges. In some cases we

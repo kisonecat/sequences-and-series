@@ -5,7 +5,7 @@
 %\usepackage{showkeys} %% Useful for debugging
 
 \setcounter{secnumdepth}{2}
-
+\usepackage{ulem}
 \usepackage{amssymb}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -126,9 +126,9 @@ improvement at \texttt{fowler@math.osu.edu} or
 
 
 
-\chapter*{List of Main Theorems}% uses ntheorem
-\theoremlisttype{opt} 
-\listtheorems{mainTheorem}
+%\chapter*{List of Main Theorems}% uses ntheorem
+%\theoremlisttype{opt} 
+%\listtheorems{mainTheorem}
 
 
 %\listoffigures
@@ -153,41 +153,89 @@ improvement at \texttt{fowler@math.osu.edu} or
 % r.9 introduction
 %\cleardoublepage
 
-\chapter*{How to Read Mathematics}
+\chapter*{How to \sout{read} do mathematics}
 
-Reading mathematics is \textbf{not} the same as reading a
-novel. To read mathematics you need: 
+Reading mathematics is \textbf{not} the same as reading a novel---it's
+more fun, and more interactive!  To read mathematics you need
 \begin{enumerate}
-\item A pen. 
-\item Plenty of blank paper. 
-\item A willingness to write things down.
+\item a pen,
+\item plenty of blank paper, and
+\item the courage to write down everything---even ``obvious'' things.
 \end{enumerate}
-As you read mathematics, you must work along side of the text
-itself. You must \textbf{write} down each expression, \textbf{sketch}
-each graph, and \textbf{think} about what you are doing. You should
-work examples and fill-in the details. This is not an easy task, it is
-in fact \textbf{hard} work. However, mathematics is not a passive
-endeavor. You, the reader, must become a doer of mathematics.
+As you read a math book, you work along with me, the author, trying to
+anticipate my next thoughts, repeating many of the same calculations I
+did to write this book.  You must \textbf{write} down each expression,
+\textbf{sketch} each graph, and constantly \textbf{think} about what
+you are doing.  You should work examples.  You should fill-in the
+details I left out.  This is not an easy task; it is in fact
+\textbf{hard} work, but, work that is, I very much hope, rewarding in
+the end.
 
+Mathematics is not a passive endeavor.  I may call you a ``reader''
+but you are not reading---you are writing this book---no, I mean your
+journey---for yourself.
+
+\vspace{0.5in}
+\hfill---the so-called ``author''
 
 % Start the main matter (normal chapters)
-%\mainmatter
+\mainmatter
 %\tikzexternaldisable
 
-\input introduction
-\input sequences
-\input series
-\input integral-test
-\input alternating-series
-\input comparison-test
-\input absolute-convergence
-\input ratio-test
-\input power-series
-\input term-by-term
-\input taylor-series
-\input remainders
-\input review
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Introduction}
 
+\input introduction
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Sequences}
+\input sequences
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Series}
+\input series
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Convergence tests}
+
+\section{Comparison Tests}
+\input comparison-test
+
+\section{Ratio and root tests}
+\input ratio-test
+
+\section{Integral test}
+\input integral-test
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Alternating series}
+
+\section{Alternating series test}
+\input alternating-series
+
+\section{Absolute convergence}
+\input absolute-convergence
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Power series}
+
+\section{Definitions}
+\input power-series
+\section{Calculus with power series}
+\input term-by-term
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Taylor series}
+
+\section{Finding Taylor series}
+\input taylor-series
+
+\section{Taylor's Theorem}
+\input remainders
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Review}
+\input review
 
 %\bibliography{sample-handout}
 %\bibliographystyle{plainnat}
@@ -199,8 +247,9 @@ endeavor. You, the reader, must become a doer of mathematics.
 \IfFileExists{answers.tex}{\input{answers}}
 \normalsize
 \backmatter
-%\addcontentsline{toc}{chapter}{Index}
-%\printindex
+
+\addcontentsline{toc}{chapter}{Index}
+\printindex
 
 
 \end{document}
