@@ -4,12 +4,13 @@
 \nobreak A ``sequence'' of numbers is just a list of numbers.  For
 example, here is a list of numbers:
 $$
-1, 1, 2, 3, 5, 8, 13, 21, \ldots
+1,\quad 1,\quad 2,\quad 3,\quad 5,\quad 8,\quad 13,\quad 21,\quad \ldots
 $$
 Note that numbers in the list can repeat.  And consider those little
 dots at the end!  The dots ``\ldots'' signify that the list keeps
-going---forever.  Presumably the sequence continues by following the
-pattern that the first few ``terms'' suggest.  But what's the pattern?  
+going, and going, and going---forever.  Presumably the sequence
+continues by following the pattern that the first few ``terms''
+suggest.  But what's that pattern?
 
 To make this talk of ``patterns'' less ambiguous, it is useful to
 think of a sequence as a function. We have up until now dealt with
@@ -22,20 +23,31 @@ a function $f\colon \N\to\R$.
 
 \marginnote{Maybe you are feeling that this formality is unnecessary,
   or even ridiculous; why can't we just list off a few terms and pick
-  up on the pattern?  As we'll see later, that might be very hard to
-  do!  There might be very different---but equally
-  reasonable---patterns that start the same way.  To resolve this
-  ambiguity, it is perhaps not so ridiculous to introduce the
-  formalism of ``functions.''}
+  up on the pattern intuitively?  As we'll see later, that might be
+  very hard---nay, impossible---to do!  There might be very
+  different---but equally reasonable---patterns that start the same
+  way.
 
-Sequences are written in a few different
-ways, all equivalent; these all mean the same thing:
-$$
-  \displaylines{a_1,a_2,a_3,\ldots \\
-  \left\{a_n\right\}_{n=1}^\infty \\
-  \left\{f(n)\right\}_{n=1}^\infty \\}
-$$
-We summarize the preceding discussion in the following definition.
+  To resolve this ambiguity, it is perhaps not so ridiculous to
+  introduce the formalism of ``functions.''  Functions provide a nice
+  language for associating numbers (terms) to other numbers
+  (indices).}
+
+Sequences are written in a few different, but equivalent,
+ways; you might seen a sequence written as
+\begin{align*}
+  & a_1,\quad a_2, \quad a_3, \quad\ldots, \\
+  & \left(a_n\right)_{n \in \N}, \\
+  & \left\{a_n\right\}_{n=1}^\infty, \\
+  & \left\{f(n)\right\}_{n=1}^\infty, \quad \mbox{or} \\
+  & \left(f(n)\right)_{n \in \N},
+\end{align*}
+
+depending on which author you read.  Worse, depending on the
+situation, the same author might choose different notation for a
+sequence.
+
+Let's summarize the preceding discussion in the following definition.
 \begin{definition} \relax\index{sequence} A \defnword{sequence}
   $(a_n)$ is, formally speaking, a real-valued function with domain
   the natural numbers $\N$ or the non-negative integers $\Z^{\ge 0}$.
@@ -45,15 +57,21 @@ We summarize the preceding discussion in the following definition.
   The ``outputs'' of a sequence are the \defnword{terms} of the
   sequence; the ``$n^{\nth}$ term'' is the real number that the
   sequence associates to the natural number $n$, and is usually
-  written $a_n$. \index{sequence!term}.
+  written $a_n$. \index{sequence!term}.  The $n$ in the phrase
+  ``$n^{\nth}$ term'' is called an
+  \defnword{index}\index{sequence!index}; the plural of index is
+  either indices or indexes, depending on who you ask.
 \end{definition} 
 
-  \marginnote{Recall that the natural numbers $\N$ are the counting
-    numbers $1, 2, 3, 4, \ldots$.  If we want our sequence to start at
-    zero, we use $\Z^{\ge 0}$ as the domain instead.}
+\marginnote{Recall that the natural numbers $\N$ are the counting
+  numbers $1, 2, 3, 4, \ldots$.  If we want our sequence to start at
+  zero, we use $\Z^{\ge 0}$ as the domain instead.  The fancy symbols
+  $\Z^{\ge 0}$ refer to the non-negative integers, which include zero
+  (since zero is neither positive nor negative) and also positive
+  integers (since they certainly aren't negative).}
 
-  \marginnote{Some people---perhaps computer scientists?---might
-    include zero in the natural numbers.}
+\marginnote{Some people---perhaps computer scientists?---might include
+  zero in the natural numbers $\N$.  Mathematics is cultural.}
 
 \begin{warning}
   Our formal definition of sequence involves $\N$ and $\Z^{\ge 0}$.
@@ -62,6 +80,13 @@ We summarize the preceding discussion in the following definition.
   shouldn't let the formal definition get in the way of making the
   best choice for the problem at hand.
 \end{warning}
+
+As you can tell, there is a deep tension between precise definition
+and a vague flexibility; how we navigate that tension will be a big
+part of whether we are successful in this course.  We need to invoke
+precision when we're tempted to be too vague, and we need to reach for
+an extra helping of vagueness when the formalism is getting in the way
+of our understanding.
 
 \section{Defining sequences by giving a rule}
 
@@ -111,45 +136,60 @@ $$
 We just computed $a_4 = 9$; we were given $a_2 = 3$.  Therefore $a_5 = 9 - 3 = 6$.
 \end{solution}
 
-\marginnote{You can imagine some very complicated sequences defined recursively.  Make up your own sequence and share it with your friends!}
+\marginnote{You can imagine some very complicated sequences defined recursively.  Make up your own sequence and share it with your friends!  Use the \href{https://twitter.com/search?q=\%23sequence}{hashtag \texttt{\#sequence}}.}
 
 \section{Examples}
 
 \marginnote{Tons of entertaining sequences are listed in the \href{http://oeis.org/}{The On-Line Encyclopedia of Integer Sequences}.}
 
 Mathematics proceeds, in part, by finding precise statements for
-everyday concepts.  We have already done this for sequences, by
-providing a precise definition (``function from $\N$ to $\R$'') for
-the everyday concept of ``list of real numbers.''  But all the
+everyday concepts.  We have already done this for sequences when we
+found a precise definition (``function from $\N$ to $\R$'') for the
+everyday concept of ``a list of real numbers.''  But all the
 formalisms in the world aren't worth the paper they are printed on if
 there aren't some interesting \textit{examples} of those precise
 concepts.  Indeed, mathematics proceeds not only by generalizing and
-formalizing, but by focusing on specific, concrete instances.  Let me
-share some specific examples of sequences.
+formalizing, but also by focusing on specific, concrete instances.
+So let me share some specific examples of sequences.
 
-But before I share these examples, let me ask a fundamental question:
-how can I hand you an example of a sequence? It is not enough just to
-list off the first few terms.  Let's see why.
+But before I can share these examples, let me address a question: how
+can I hand you an example of a sequence? It is not enough just to list
+off the first few terms.  Let's see why.
 
 \begin{example}
 Consider the sequence $(a_n)$
 $$
-a_1 = 41, \quad a_2 = 43, \quad a_3 = 47, \quad a_4 = 53, \ldots
+a_1 = 41, \quad a_2 = 43, \quad a_3 = 47, \quad a_4 = 53, \quad\ldots
 $$
-What is the next term $a_5$?
+What is the next term $a_5$?  Can you identify the sequence?
 \end{example}
 
 \marginnote{This particular polynomial $n^4 - n + 41$ is rather interesting, since it outputs many prime numbers.  You can read more at \href{http://oeis.org/A005846}{the OEIS}.}
 
 \begin{solution}
-In spite of many so-called ``intelligence tests'' asking questions like this, this question doesn't have an ``answer.''  Or worse, it has too many answers!
+  In spite of many so-called ``intelligence tests'' asking questions
+  like this, this question doesn't have an answer.  Or worse, it has
+  too many answers!
 
-This sequence might be ``prime numbers starting at 41.''  In which case the next term is $a_5 =59$.  But maybe this sequence is given by the polynomial $a_n = n^2 - n + 41$.  In that case, $a_5 = 61$.  Who is to say which is the ``better'' answer?
+This sequence might be ``the prime numbers starting at 41.''  In which
+case the next term is $a_5 =59$.  But maybe this sequence is given by
+the polynomial $a_n = n^2 - n + 41$.  In that case, $a_5 = 61$.  Who
+is to say which is the ``better'' answer?
 \end{solution}
 
-Now let's consider some families of sequences.
+\marginnote{Recall that a \defnword{prime number} is an integer
+  greater than one that has no positive divisors besides itself and
+  one.}
+
+Now let's consider two popular ``families'' of sequences.
 
 \subsection{Arithmetic sequences}
+
+The first family\sidenote{Mathematically, the word \defnword{family}
+  does not have an entirely precise definition; a family of things is
+  a \defnword{collection} or a \defnword{set} of things, but family
+  has a connotation of some sort of relatedness.} we consider are the
+``arithmetic'' sequences.  Here is a definition.
 
 \begin{definition}
   An \defnword{arithmetic progression} (sometimes called an arithmetic
@@ -160,7 +200,7 @@ Now let's consider some families of sequences.
 \begin{example}
   An example of an arithmetic progression is the sequence
   $$
-  a_1 = 10, \quad a_2 = 14, \quad a_3 = 18, \quad a_4 = 22, \ldots
+  a_1 = 10, \quad a_2 = 14, \quad a_3 = 18, \quad a_4 = 22, \quad\ldots
   $$
   which is given by the rule $a_n = 6 + 4 \, n$.  Each term differs
   from the previous by four.
@@ -175,7 +215,17 @@ Alternatively, we could describe an arithmetic progression
 recursively, by giving a starting value $a_1$, and using the rule that
 $a_{n} = a_{n-1} + m$.
 
+\marginnote{Why are arithmetic progressions called \textit{arithmetic?}  Note that every term is the \defnword{arithmetic mean}, that is, the \defnword{average}, of its two neighbors.}
+
+An arithmetic progression can decrease; for instance,
+$$
+17,\quad  15,\quad  13,\quad  11,\quad  9, \quad\ldots
+$$
+is an arithmetic progression.
+
 \subsection{Geometric sequences}
+
+The second family we consider are geometric progressions.
 
 \begin{definition}
   A \defnword{geometric progression} (sometimes called an geometric
@@ -186,7 +236,7 @@ $a_{n} = a_{n-1} + m$.
 \begin{example}
   An example of an geometric progression is the sequence
   $$
-  a_1 = 10, \quad a_2 = 30, \quad a_3 = 90, \quad a_4 = 270, \ldots
+  a_1 = 10, \quad a_2 = 30, \quad a_3 = 90, \quad a_4 = 270, \quad\ldots
   $$
   which is given by the rule $a_n = 10 \cdot 3^n$.  Each term is three
   times the preceding term.
@@ -201,8 +251,17 @@ Alternatively, we could describe a geometric progression
 recursively, by giving a starting value $a_1$, and using the rule that
 $a_{n} = r \cdot a_{n-1}$.
 
-\subsection{Triangular numbers}
+\marginnote{Why are geometric progressions called \textit{geometric?}  Note that every term is the \defnword{geometric mean} of its two neighbors.  The geometric mean of two numbers $a$ and $b$ is defined to be $\sqrt{ab}$.
 
+Of course, that raises another question: why is the geometric mean called \textit{geometric?}  One geometric interpretation of the geometric mean of $a$ and $b$ is this: the geometric mean is the side length of a square whose area is equal to that of the rectangle having side lengths $a$ and $b$.}
+
+A geometric progression needn't be increasing.  For instance, in the following geometric progression
+$$
+\frac{7}{5}, \quad \frac{7}{10}, \quad \frac{7}{20}, \quad \frac{7}{40}, \quad \frac{7}{80}, \quad \frac{7}{160}, \quad\ldots
+$$
+the ratio between subsequent terms is one half, and each term is smaller than the previous.
+
+%\subsection{Triangular numbers}
 %BADBAD
 
 \subsection{Fibonacci numbers}
@@ -216,135 +275,318 @@ The \defnword{Fibonacci numbers} are defined recursively, starting with
 $$
 F_0 = 0 \mbox{ and } F_1 = 1
 $$
-and the rule that $F_{n} = F_{n-1} + F_{n-2}$.  In words, each term is
-the sum of the previous two terms.  So the sequence of Fibonacci numbers starts
+and the rule that $F_{n} = F_{n-1} + F_{n-2}$.  We can restate this
+formula in words, instead of symbols; stated in words, each term is
+the sum of the previous two terms.  So the sequence of Fibonacci
+numbers begins 
 $$
-0, \quad 1, \quad 1, \quad 2, \quad 3, \quad 5, \quad 8, \quad 13, \ldots
+0, \quad 1, \quad 1, \quad 2, \quad 3, \quad 5, \quad 8, \quad 13, \quad 21, \quad 35, \quad\ldots
 $$
-and so on.
+and continues.
 
-This is hardly the last time we will see the Fibonacci numbers.
+This is certainly not the last time we will see the Fibonacci numbers.
 
 \subsection{Collatz sequence}
 
-%BADBAD
+Here is fun sequence with which to amuse your friends.  Let's start
+our sequence with $a_1 = 6$.  Subsequent terms are defined using the rule
+$$
+a_n = \begin{cases} a_{n-1} / 2 & \mbox{ if $a_{n-1}$ is even, and } \\
+3 \, a_{n-1} + 1 & \mbox{ if $a_{n-1}$ is odd.}
+\end{cases}
+$$
+Let's compute $a_2$.  Since $a_1$ is even, we follow the instructions
+in the first line, to find that $a_2 = a_1/2 = 3$. To compute $a_3$,
+note that $a_2$ is odd so we follow the instruction in the second
+line, and $a_3 = 3 \, a_2 + 1 = 3 \cdot 3 + 1 = 10$.  Since $a_3$ is
+even, the first line applies, and $a_4 = a_3 / 2 = 10 / 2 = 5$.  But
+$a_4$ is odd, so the second line applies, and we find $a_5 = 3 \cdot 5
++ 1 = 16$.  And $a_5$ is even, so $a_6 = 16 / 2 = 8$.  And $a_6$ is
+even, so $a_7 = 8/4 = 4$.  And $a_7$ is even, so $a_8 = 4 / 2 = 2$,
+and then $a_9 = 2/2 = 1$.  Oh, but $a_9$ is odd, so $a_{10} = 3 \cdot
+1 + 1 = 4$.  And it repeats.  Let's write down the start of this sequence:
+$$
+6,\quad %1 
+3,\quad %2
+10,\quad  %3
+5,\quad  %4
+16,\quad  %5
+8,\quad  %6
+4,\quad  %7
+2,\quad  %8
+1,\quad  %9
+4,\quad %10
+2,\quad %11
+1,\quad %12
+\overbrace{4,\quad %10
+2,\quad %11
+1,}^{\mbox{repeats}}\quad %12
+4,\quad %10
+\ldots
+$$
+What if we had started with a number other than six?  What if we set
+$a_1 = 25$ but then we used the same rule?  In that case, since $a_1$
+is odd, we compute $a_2$ by finding $3 \, a_1 + 1 = 3 \cdot 25 + 1 =
+76$.  Since $76$ is even, the next term is half that, meaning $a_3 =
+38$.  If we keep this up, we find that our sequence begins
+\begin{align*}
+&25,\quad 76,\quad 38,\quad 19,\quad 58,\quad 29,\quad 88,\quad 44,\quad 22,\quad 11,\quad 34,\quad 17,\quad 52,\quad 26, \\
+&13,\quad 40,\quad 20,\quad 10,\quad 5,\quad 16,\quad 8,\quad 4,\quad 2, \quad 1, \quad \ldots
+\end{align*}
+and then it repeats ``4, 2, 1, 4, 2, 1, \ldots'' just like before.
 
-\section{Limits}
+\marginnote{If you think you have an argument that answers the Collatz conjecture, I challenge you to try your hand at the $5x+1$ conjecture, that is, use the rule
+$
+a_n = \displaystyle\begin{cases} a_{n-1} / 2 & \mbox{ if $a_{n-1}$ is even, and } \\
+5 \, a_{n-1} + 1 & \mbox{ if $a_{n-1}$ is odd.}
+\end{cases}
+$}
 
-Given a sequence, it is helpful to be able to say something
-qualitative about the sequence; that is, we may want to address the
-question such as ``what happens after a while?''  In other words,
-faced with a sequence, we are interested in the limit
+Does this always happen?  Is it true that no matter which positive
+integer you start with, if you apply the half-if-even, $3x+1$-if-odd
+rule, you end up getting stuck in the ``4, 2, 1, \ldots'' loop?  That
+this is true is the \defnword{Collatz conjecture}; it has been
+verified for all starting values below $5 \times 2^{60}$.  Nobody has
+found a value which doesn't return to one, but for all anybody knows
+there \textit{might} be a larger starting value which doesn't return
+to one---nobody knows either way.  It is an unsolved
+problem\sidenote{This is not the last unsolved problems we will
+  encounter in this course.  There are many things which humans do not
+  understand.} in mathematics.
+
+\section{Where is a sequence headed?  Take a limit!}
+
+We've seen a lot of sequences, and already there are a few things we
+might notice.  For instance, the arithmetic progression
+$$
+1,\quad 8,\quad 15,\quad 22,\quad 29,\quad 36,\quad 43,\quad 50,\quad 57,\quad 64,\quad 71,\quad 78,\quad 85,\quad 92,\quad \ldots
+$$
+just keeps getting bigger and bigger.  No matter how large a number
+you think of, if I add enough $7$'s to $1$, eventually I will surpass
+the giant number you thought of.  On the other hand, the terms in a geometric progression where each term is half the previous term, namely
+$$
+\frac{1}{2},\quad \frac{1}{4},\quad \frac{1}{8},\quad \frac{1}{16},\quad \frac{1}{32},\quad \frac{1}{64},\quad \frac{1}{128},\quad \frac{1}{256},\quad \frac{1}{512},\quad \frac{1}{1024},\quad \ldots ,
+$$
+are getting closer and closer to zero.  No matter how close you stand
+near but not at zero, eventually this geometric sequence gets even closer than you
+are to zero.
+
+These two sequences have very different stories.  One shoots off to
+infinity; the other zooms in towards zero.  Mathematics is not just
+about numbers; mathematics provides tools for talking about the
+qualitative features of the numbers we deal with.  What about two
+sequences we just considered?  They are qualitatively very different.  The first ``goes to''
+infinity; the second ``goes to'' zero.
+
+\marginnote{If you were with us in Calculus One, you are perhaps
+  already guessing that by ``goes to,'' I actually mean ``has
+  limit.''}
+
+In short, given a sequence, it is helpful to be able to say something
+qualitative about it; we may want to address the question such as
+``what happens after a while?'' Formally, when faced with a sequence,
+we are interested in the limit
 $$\lim_{i\to \infty} f(i) = \lim_{i\to\infty} a_i.$$
-We already understand
+In Calculus One, we studied a similar question about
 $$\lim_{x\to\infty} f(x)$$
-when $x$ is a variable taking on real values; now we simply want to
-restrict the ``input'' values to be integers. No significant
-difference is required in the definition of limit, except that we
-specify, perhaps implicitly, that the variable is an integer.
+when $x$ is a variable taking on real values; now, in Calculus Two, we
+simply want to restrict the ``input'' values to be integers. No
+significant difference is required in the definition of limit, except
+that we specify, perhaps implicitly, that the variable is an integer.
 
 \begin{definition} \relax\index{limit of a sequence}
-Suppose that $\ds\left\{a_n\right\}_{n=1}^\infty$ is a sequence.
-We say that $\ds \lim_{n\to \infty}a_n=L$ if for every $\epsilon>0$
-there is an $N > 0$ so that whenever $n>N$, $|a_n-L|<\epsilon$. If
-$\ds \lim_{n\to\infty}a_n=L$ we say that the sequence {\dfont
-converges\index{convergent sequence}\index{sequence!convergent}\/},
-otherwise it {\dfont diverges\index{divergent
-sequence}\index{sequence!divergent}\/}.  
+Suppose that $\ds\left(a_n\right)_{n \in \N}$ is a sequence.
+To say that $\ds \lim_{n\to \infty}a_n=L$ is to say that \\
+\null\quad for every $\epsilon>0$, \\
+\null\quad\quad there is an $N > 0$, \\
+\null\quad so that whenever $n>N$, \\
+\null\quad\quad we have $|a_n-L|<\epsilon$. \\
+If $\ds \lim_{n\to\infty}a_n=L$ we say that the sequence
+\defnword{converges}\index{convergent
+  sequence}\index{sequence!convergent}.  If there is no value $L$ so
+that $\ds \lim_{n\to\infty}a_n = L$, then we say that the limit
+\defnword{does not exist}, or equivalently that the sequence
+\defnword{diverges}\index{divergent sequence}\index{sequence!divergent}.
 \end{definition} 
 
-If $f(i)$ defines a sequence, and $f(x)$ makes sense, and 
-$\ds \lim_{x\to\infty}f(x)=L$, then it is clear that
-$\ds \lim_{i\to\infty}f(i)=L$ as well, but it is important to note that
-the converse of this statement is not true. For example, since
-$\ds \lim_{x\to\infty}(1/x)=0$, it is clear that also
-$\ds \lim_{i\to\infty}(1/i)=0$, that is, the numbers
-$${1\over1},{1\over2},{1\over3},{1\over4},{1\over5},{1\over6},\ldots$$
-get closer and closer to 0. Consider this, however: Let 
-$f(n)=\sin(n\pi)$. This is the sequence
+\marginnote{The definition of limit is being written as if it were
+  poetry, what with line breaks and all.  Like the best of poems, it deserves to be memorized, performed, internalized.  Humanity struggled for millenia to find the wisdom contained therein.}
+
+One way to compute the limit of a sequence is to compute the limit of
+a function.
+\begin{theorem}
+  Let $f(x)$ be a real-valued function.  If $a_n = f(n)$ defines a
+  sequence and $\ds \lim_{x\to\infty}f(x)=L$ in the sense of Calculus
+  One, then $\ds \lim_{n\to\infty} a_n=L$ as well.
+\end{theorem}
+
+\begin{example}
+Since $\ds \lim_{x\to\infty}(1/x)=0$, it is
+clear that also $\ds \lim_{n\to\infty}(1/n)=0$; in other words, the sequence of numbers
+$${1\over1},\quad {1\over2},\quad {1\over3},\quad {1\over4},\quad {1\over5},\quad {1\over6},\quad \ldots$$
+get closer and closer to 0, or more precisely, as close as you want to get to zero, after a while, all the terms in the sequence are that close.
+\end{example}
+
+But it is important to note that the converse\sidenote{The
+  \defnword{converse} of a statement is what you get when you swap the
+  assumption and the conclusion; the converse of ``if it is raining,
+  then it is cloudy'' is the statement ``if it is cloudy, then it is
+  raining.''  Which of those statements are true?} of this theorem is
+not true.  To show the converse is not true, it is enough to provide a
+single example where it fails.  Here's the counterexample\sidenote{An
+  instance of (a potential) general rule being broken is called a
+  \defnword{counterexample}.  This is a popular term among mathematicians and philosophers.}.
+
+\begin{example}
+  Consider the sequence $a_n = f(n)=\sin(n\pi)$.  This is the sequence
 $$
-  \sin(0\pi), \sin(1\pi),\sin(2\pi),\sin(3\pi),\ldots=0,0,0,0,\ldots
+  \sin(0\pi),\quad \sin(1\pi),\quad\sin(2\pi),\quad\sin(3\pi),\quad\ldots,
 $$
-since $\sin(n\pi)=0$ when $n$ is an integer. Thus
-$\ds \lim_{n\to\infty}f(n)=0$. But $\ds \lim_{x\to\infty}f(x)$, when $x$ is
-real, does not exist: as $x$ gets bigger and bigger, the values
-$\sin(x\pi)$ do not get closer and closer to a single value, but take
-on all values between $-1$ and $1$ over and over. In general, whenever
-you want to know $\ds \lim_{n\to\infty}f(n)$ you should first attempt to
-compute $\ds \lim_{x\to\infty}f(x)$, since if the latter exists it is also
-equal to the first limit. But if for some reason
-$\ds \lim_{x\to\infty}f(x)$ does not exist, it may still be true that 
-$\ds \lim_{n\to\infty}f(n)$ exists, but you'll have to figure out
-another way to compute it.
+which is just the sequence $0, 0, 0, 0, \ldots$ since $\sin(n\pi)=0$
+whenever $n$ is an integer.  Since the sequence is just the constant sequence, we have
+$$
+\lim_{n\to\infty} f(n)= \lim_{n\to\infty} 0 = 0. 
+$$. But $\ds \lim_{x\to\infty}f(x)$, when $x$ is real, does not exist: as $x$ gets
+bigger and bigger, the values $\sin(x\pi)$ do not get closer and
+closer to a single value, but instead oscillate between $-1$ and $1$.
+\end{example} 
+
+Here's some general advice. If you want to know $\ds \lim_{n\to\infty}
+a_n$, you might first think of a function $f(x)$ where $a_n = f(n)$,
+and then attempt to compute $\ds \lim_{x\to\infty}f(x)$.  If the limit
+of the function exists, then it is equal to the limit of the sequence.
+But, if for some reason $\ds \lim_{x\to\infty}f(x)$ does not exist, it
+may nevertheless still be the case that $\ds \lim_{n\to\infty}f(n)$
+exists---you'll just have to figure out another way to compute it.
+
+
+\begin{marginfigure}[0in]
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=0:20,
+            ymax=2.25,
+            ymin=-1.5,
+            xmin=0,
+            xmax=20.25,
+            axis lines =middle, xlabel={$x$ and $n$}, ylabel=$y$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west}
+          ]
+%scale = 10 ; print(join([str((n(x/scale,digits=5),n(cos(pi*(x/scale)) + (4/5)^(x/scale),digits=5))) for x in range(1,20*scale)],' '))
+          \addplot [penColor, smooth] plot coordinates { (0.50000, 0.89443) (0.60000, 0.56567) (0.70000, 0.26760) (0.80000, 0.027494) (0.90000, -0.13300) (1.0000, -0.20000) (1.1000, -0.16871) (1.2000, -0.043935) (1.3000, 0.16041) (1.4000, 0.42267) (1.5000, 0.71554) (1.6000, 1.0088) (1.7000, 1.2721) (1.8000, 1.4782) (1.9000, 1.6055) (2.0000, 1.6400) (2.1000, 1.5769) (2.2000, 1.4211) (2.3000, 1.1863) (2.4000, 0.89437) (2.5000, 0.57243) (2.6000, 0.25078) (2.7000, -0.040337) (2.8000, -0.27365) (2.9000, -0.42750) (3.0000, -0.48800) (3.1000, -0.45035) (3.2000, -0.31936) (3.3000, -0.10893) (3.4000, 0.15926) (3.5000, 0.45795) (3.6000, 0.75686) (3.7000, 1.0258) (3.8000, 1.2373) (3.9000, 1.3699) (4.0000, 1.4096) (4.1000, 1.3516) (4.2000, 1.2007) (4.3000, 0.97085) (4.4000, 0.68364) (4.5000, 0.36636) (4.6000, 0.049256) (4.7000, -0.23742) (4.8000, -0.46638) (4.9000, -0.61598) (5.0000, -0.67232) (5.1000, -0.63061) (5.2000, -0.49564) (5.3000, -0.28131) (5.4000, -0.0093174) (5.5000, 0.29309) (5.6000, 0.59564) (5.7000, 0.86808) (5.8000, 1.0831) (5.9000, 1.2191) (6.0000, 1.2621) (6.1000, 1.2074) (6.2000, 1.0597) (6.3000, 0.83294) (6.4000, 0.54878) (6.5000, 0.23447) (6.6000, -0.079722) (6.7000, -0.36355) (6.8000, -0.58973) (6.9000, -0.73661) (7.0000, -0.79029) (7.1000, -0.74597) (7.2000, -0.60845) (7.3000, -0.39163) (7.4000, -0.11721) (7.5000, 0.18757) (7.6000, 0.49245) (7.7000, 0.76718) (7.8000, 0.98445) (7.9000, 1.1226) (8.0000, 1.1678) (8.1000, 1.1151) (8.2000, 0.96947) (8.3000, 0.74469) (8.4000, 0.46246) (8.5000, 0.15006) (8.6000, -0.16227) (8.7000, -0.44427) (8.8000, -0.66867) (8.9000, -0.81381) (9.0000, -0.86578) (9.1000, -0.81979) (9.2000, -0.68066) (9.3000, -0.46224) (9.4000, -0.18626) (9.5000, 0.12005) (9.6000, 0.42642) (9.7000, 0.70259) (9.8000, 0.92129) (9.9000, 1.0608) (10.000, 1.1074) (10.100, 1.0560) (10.200, 0.91171) (10.300, 0.68821) (10.400, 0.40722) (10.500, 0.096038) (10.600, -0.21510) (10.700, -0.49595) (10.800, -0.71920) (10.900, -0.86321) (11.000, -0.91410) (11.100, -0.86704) (11.200, -0.72687) (11.300, -0.50745) (11.400, -0.23045) (11.500, 0.076831) (11.600, 0.38415) (11.700, 0.66128) (11.800, 0.88087) (11.900, 1.0213) (12.000, 1.0687) (12.100, 1.0182) (12.200, 0.87474) (12.300, 0.65205) (12.400, 0.37187) (12.500, 0.061465) (12.600, -0.24891) (12.700, -0.52903) (12.800, -0.75153) (12.900, -0.89484) (13.000, -0.94502) (13.100, -0.89728) (13.200, -0.75644) (13.300, -0.53635) (13.400, -0.25874) (13.500, 0.049172) (13.600, 0.35710) (13.700, 0.63484) (13.800, 0.85501) (13.900, 0.99603) (14.000, 1.0440) (14.100, 0.99405) (14.200, 0.85108) (14.300, 0.62889) (14.400, 0.34924) (14.500, 0.039337) (14.600, -0.27055) (14.700, -0.55015) (14.800, -0.77223) (14.900, -0.91508) (15.000, -0.96482) (15.100, -0.91663) (15.200, -0.77537) (15.300, -0.55485) (15.400, -0.27684) (15.500, 0.031470) (15.600, 0.33979) (15.700, 0.61788) (15.800, 0.83845) (15.900, 0.97983) (16.000, 1.0281) (16.100, 0.97856) (16.200, 0.83594) (16.300, 0.61412) (16.400, 0.33476) (16.500, 0.025176) (16.600, -0.28440) (16.700, -0.56376) (16.800, -0.78547) (16.900, -0.92802) (17.000, -0.97748) (17.100, -0.92903) (17.200, -0.78748) (17.300, -0.56673) (17.400, -0.28842) (17.500, 0.020141) (17.600, 0.32871) (17.700, 0.60711) (17.800, 0.82785) (17.900, 0.96947) (18.000, 1.0180) (18.100, 0.96867) (18.200, 0.82625) (18.300, 0.60463) (18.400, 0.32549) (18.500, 0.016113) (18.600, -0.29326) (18.700, -0.57244) (18.800, -0.79395) (18.900, -0.93632) (19.000, -0.98559) (19.100, -0.93695) (19.200, -0.79523) (19.300, -0.57430) (19.400, -0.29584) (19.500, 0.012890) (19.600, 0.32162) (19.700, 0.60019) (19.800, 0.82107) (19.900, 0.96285)};
+          \node at (axis cs:2.2000, 1.4211) [anchor=south west] {\color{penColor}$f(x)$};  
+          \node at (axis cs:10, 1.15) [anchor=south] {\color{penColor2}$a_n$};
+% print(join([str((x,n(cos(pi*x) + (4/5)^x,digits=5))) for x in range(1,20)],' ')) 
+          \addplot[color=penColor2,fill=penColor2,only marks,mark=*] coordinates{(1, -0.20000) (2, 1.6400) (3, -0.48800) (4, 1.4096) (5, -0.67232) (6, 1.2621) (7, -0.79029) (8, 1.1678) (9, -0.86578) (10, 1.1074) (11, -0.91410) (12, 1.0687) (13, -0.94502) (14, 1.0440) (15, -0.96482) (16, 1.0281) (17, -0.97748) (18, 1.0180) (19, -0.98559) (20, 1.0115)};
+
+        \end{axis}
+\end{tikzpicture}
+\caption{Plots of $f(x) = \cos (\pi \, x) + (4/5)^x$ and the sequence $a_n = (-1)^n + (4/5)^n$.}
+\label{fig:graphs-of-sequences}
+\end{marginfigure}
+
+\section{Graphs}
 
 It is occasionally useful to think of the graph of a sequence. Since
 the function is defined only for integer values, the graph is just a
-sequence of dots. In figure~\xrefn{fig:graphs of sequences} we see the
-graphs of two sequences and the graphs of the corresponding real
-functions.
+sequence of dots. In Figure~\xrefn{fig:graphs-of-sequences} we see the
+graph of a sequences and the graph of a corresponding real-valued
+function.
 
-%\figure
-%\vbox{\beginpicture
-%\normalgraphs
-%\ninepoint
-%\setcoordinatesystem units <0.5truecm,0.5truecm> point at -14 0
-%\setplotarea x from 0 to 10, y from 0 to 5
-%\axis left ticks numbered from 0 to 5 by 1 /
-%\axis bottom  ticks numbered from 0 to 10 by 5 /
-%\setquadratic
-% \plot 0.200 5.000 0.445 2.247 0.690 1.449 0.935 1.070 1.180 0.847 
-% 1.425 0.702 1.670 0.599 1.915 0.522 2.160 0.463 2.405 0.416 
-% 2.650 0.377 2.895 0.345 3.140 0.318 3.385 0.295 3.630 0.275 
-% 3.875 0.258 4.120 0.243 4.365 0.229 4.610 0.217 4.855 0.206 
-% 5.100 0.196 5.345 0.187 5.590 0.179 5.835 0.171 6.080 0.164 
-% 6.325 0.158 6.570 0.152 6.815 0.147 7.060 0.142 7.305 0.137 
-% 7.550 0.132 7.795 0.128 8.040 0.124 8.285 0.121 8.530 0.117 
-% 8.775 0.114 9.020 0.111 9.265 0.108 9.510 0.105 9.755 0.103 
-% 10.000 0.100 /
-% \put {$f(x)=1/x$} at 5 2.5
-% \setcoordinatesystem units <0.5truecm,0.5truecm> point at 0 0
-% \setplotarea x from 0 to 10, y from 0 to 5
-% \axis left ticks numbered from 0 to 5 by 1 /
-% \axis bottom  ticks numbered from 0 to 10 by 5 /
-% \multiput {\fivepoint$\bullet$} at 1 1 2 0.5 3 0.3333 4 0.25 5 0.2
-% 6 0.1667 7 0.1429 8 0.125 9 0.1111 10 0.1 /
-% \put {$f(n)=1/n$} at 5 2.5
-% \setcoordinatesystem units <0.63truecm,1truecm> point at -11.1 3
-% \setplotarea x from 0 to 8, y from -1 to 1
-% \axis left ticks numbered from -1 to 1 by 1 /
-% \axis bottom shiftedto y=0 /
-% \setquadratic
-% \plot 0.000 0.000 0.080 0.249 0.160 0.482 0.240 0.685 0.320 0.844 
-% 0.400 0.951 0.480 0.998 0.560 0.982 0.640 0.905 0.720 0.771 
-% 0.800 0.588 0.880 0.368 0.960 0.125 1.040 -0.125 1.120 -0.368 
-% 1.200 -0.588 1.280 -0.771 1.360 -0.905 1.440 -0.982 1.520 -0.998 
-% 1.600 -0.951 1.680 -0.844 1.760 -0.685 1.840 -0.482 1.920 -0.249 
-% 2.000 0.000 2.080 0.249 2.160 0.482 2.240 0.685 2.320 0.844 
-% 2.400 0.951 2.480 0.998 2.560 0.982 2.640 0.905 2.720 0.771 
-% 2.800 0.588 2.880 0.368 2.960 0.125 3.040 -0.125 3.120 -0.368 
-% 3.200 -0.588 3.280 -0.771 3.360 -0.905 3.440 -0.982 3.520 -0.998 
-% 3.600 -0.951 3.680 -0.844 3.760 -0.685 3.840 -0.482 3.920 -0.249 
-% 4.000 0.000 4.080 0.249 4.160 0.482 4.240 0.685 4.320 0.844 
-% 4.400 0.951 4.480 0.998 4.560 0.982 4.640 0.905 4.720 0.771 
-% 4.800 0.588 4.880 0.368 4.960 0.125 5.040 -0.125 5.120 -0.368 
-% 5.200 -0.588 5.280 -0.771 5.360 -0.905 5.440 -0.982 5.520 -0.998 
-% 5.600 -0.951 5.680 -0.844 5.760 -0.685 5.840 -0.482 5.920 -0.249 
-% 6.000 0.000 6.080 0.249 6.160 0.482 6.240 0.685 6.320 0.844 
-% 6.400 0.951 6.480 0.998 6.560 0.982 6.640 0.905 6.720 0.771 
-% 6.800 0.588 6.880 0.368 6.960 0.125 7.040 -0.125 7.120 -0.368 
-% 7.200 -0.588 7.280 -0.771 7.360 -0.905 7.440 -0.982 7.520 -0.998 
-% 7.600 -0.951 7.680 -0.844 7.760 -0.685 7.840 -0.482 7.920 -0.249 
-% 8.000 0.000 /
-% \put {$f(x)=\sin(x\pi)$} at 4 1.3
-% \setcoordinatesystem units <0.63truecm,1truecm> point at 0 3
-% \setplotarea x from 0 to 8, y from -1 to 1
-% \axis left ticks numbered from -1 to 1 by 1 /
-% \axis bottom shiftedto y=0 ticks numbered from 1 to 8 by 1 /
-% \multiput {\fivepoint$\bullet$} at 0 0 1 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 /
-% \put {$f(n)=\sin(n\pi)$} at 4 0.5
-% \endpicture}
-% \figrdef{fig:graphs of sequences}
-% \endfigure{Graphs of sequences and their corresponding real functions.}
+There are lots of real-valued functions which ``fill in'' the missing
+values of a sequence.
+
+\begin{example}
+  Here's a particularly tricky example of ``filling in'' the missing values of a sequence.  Consider the sequence
+  $$
+  1,\quad 2,\quad 6,\quad 24,\quad 120,\quad 720,\quad 5040,\quad 40320,\quad 362880,\quad\ldots,
+  $$
+  where the $n^{\nth}$ term is the product of the first $n$ integers.
+  In other words $a_n = n!$, where the exclamation mark denotes the
+  \defnword{factorial} function.  Explicitly describe a function $f$
+  of a real variable $x$, so that $a_n = f(n)$ for natural numbers
+  $n$.
+\end{example}
+
+\begin{marginfigure}[0in]
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=0:4.2,
+            ymax=25,
+            ymin=-0.1,
+            xmin=0,
+            xmax=4.2,
+            axis lines =middle, xlabel={$x$ and $n$}, ylabel=$y$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west}
+          ]
+          \node at (axis cs:2.5, 3) [anchor=south] {\color{penColor}$f(x)$};  
+          \addplot [very thick, penColor, domain=(0:1)] {1};
+          \addplot [very thick, penColor, domain=(1:2)] {1};
+          \addplot [very thick, penColor, domain=(2:3)] {2};
+          \addplot [very thick, penColor, domain=(3:4)] {6};
+          \addplot [very thick, penColor, domain=(4:5)] {24};
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(1, 1) (2, 2) (3, 6) (4, 24)};
+          \addplot[color=penColor,fill=background,only marks,mark=*] coordinates{(2, 1) (3, 2) (4, 6) (5, 24)};
+% print(join([str((x,factorial(x))) for x in range(1,20)],' ')) 
+          \addplot[color=penColor2,fill=penColor2,only marks,mark=*] coordinates{(1, 1) (2, 2) (3, 6) (4, 24)};
+          \node at (axis cs:3, 7) [anchor=south] {\color{penColor2}$a_n$};
+        \end{axis}
+\end{tikzpicture}
+\caption{A plot of $f(x) = \floor{x}!$ and $a_n = n!$.  Recall that, by convention, $0! = 1$.}
+\label{fig:floor-graph}
+\end{marginfigure}
+
+\marginnote{It is hard to define a ``greatest integer'' function,
+  because they are all pretty great.}
+
+\begin{solution}
+  There are lots of solutions.  Here is a solution:
+$$
+f(x) = \floor{x}!.
+$$
+In that definition, $\floor{x}$ denotes the ``greatest integer less
+  than or equal to $x$'' and is called the \defnword{floor function}.  This is shown in Figure~\xrefn{fig:floor-graph}.
+
+  On the other hand, there are much trickier things that you could try
+  to do.  If you define the \defnword{Gamma function}
+  $$
+  \Gamma(z) = \int_0^\infty t^{z-1} e^{-t} \, dt.
+  $$
+  then it is perhaps very surprising to find out that $g(x) =
+  \Gamma(x+1)$ is a function so that $g(n) = n!$ for natural numbers
+  $n$.  A graph is shown in Figure~\xrefn{fig:gamma-function}.
+  Unlike $f$, which fails to be continuous, the function $g$ is continuous.
+\end{solution}
+
+
+\begin{marginfigure}[0in]
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=0:4.2,
+            ymax=25,
+            ymin=-0.1,
+            xmin=0,
+            xmax=4.2,
+            axis lines =middle, xlabel={$x$ and $n$}, ylabel=$y$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west}
+          ]
+%scale = 30 ; print(join([str((n(x/scale,digi>s=5),n(gamma(x/scale + 1),digits=5))) for x in range(0,4.2*scale)],' '))
+\addplot [penColor, smooth] plot coordinates { 
+(0.00000, 1.0000) (0.033333, 0.98183) (0.066667, 0.96566) (0.10000, 0.95135) (0.13333, 0.93874) (0.16667, 0.92772) (0.20000, 0.91817) (0.23333, 0.91000) (0.26667, 0.90312) (0.30000, 0.89747) (0.33333, 0.89298) (0.36667, 0.88959) (0.40000, 0.88726) (0.43333, 0.88595) (0.46667, 0.88561) (0.50000, 0.88623) (0.53333, 0.88776) (0.56667, 0.89020) (0.60000, 0.89352) (0.63333, 0.89770) (0.66667, 0.90275) (0.70000, 0.90864) (0.73333, 0.91538) (0.76667, 0.92296) (0.80000, 0.93138) (0.83333, 0.94066) (0.86667, 0.95078) (0.90000, 0.96177) (0.93333, 0.97362) (0.96667, 0.98636) (1.0000, 1.0000) (1.0333, 1.0146) (1.0667, 1.0300) (1.1000, 1.0465) (1.1333, 1.0639) (1.1667, 1.0823) (1.2000, 1.1018) (1.2333, 1.1223) (1.2667, 1.1440) (1.3000, 1.1667) (1.3333, 1.1906) (1.3667, 1.2158) (1.4000, 1.2422) (1.4333, 1.2699) (1.4667, 1.2989) (1.5000, 1.3293) (1.5333, 1.3612) (1.5667, 1.3946) (1.6000, 1.4296) (1.6333, 1.4662) (1.6667, 1.5046) (1.7000, 1.5447) (1.7333, 1.5867) (1.7667, 1.6306) (1.8000, 1.6765) (1.8333, 1.7245) (1.8667, 1.7748) (1.9000, 1.8274) (1.9333, 1.8823) (1.9667, 1.9398) (2.0000, 2.0000) (2.0333, 2.0629) (2.0667, 2.1287) (2.1000, 2.1976) (2.1333, 2.2697) (2.1667, 2.3451) (2.2000, 2.4240) (2.2333, 2.5065) (2.2667, 2.5930) (2.3000, 2.6834) (2.3333, 2.7782) (2.3667, 2.8773) (2.4000, 2.9812) (2.4333, 3.0900) (2.4667, 3.2040) (2.5000, 3.3233) (2.5333, 3.4485) (2.5667, 3.5796) (2.6000, 3.7170) (2.6333, 3.8611) (2.6667, 4.0122) (2.7000, 4.1707) (2.7333, 4.3369) (2.7667, 4.5112) (2.8000, 4.6942) (2.8333, 4.8862) (2.8667, 5.0877) (2.9000, 5.2993) (2.9333, 5.5215) (2.9667, 5.7549) (3.0000, 6.0000) (3.0333, 6.2575) (3.0667, 6.5282) (3.1000, 6.8126) (3.1333, 7.1116) (3.1667, 7.4260) (3.2000, 7.7567) (3.2333, 8.1044) (3.2667, 8.4704) (3.3000, 8.8554) (3.3333, 9.2606) (3.3667, 9.6871) (3.4000, 10.136) (3.4333, 10.609) (3.4667, 11.107) (3.5000, 11.632) (3.5333, 12.185) (3.5667, 12.767) (3.6000, 13.381) (3.6333, 14.029) (3.6667, 14.711) (3.7000, 15.431) (3.7333, 16.191) (3.7667, 16.992) (3.8000, 17.838) (3.8333, 18.730) (3.8667, 19.673) (3.9000, 20.667) (3.9333, 21.718) (3.9667, 22.828) (4.0000, 24.000) (4.0333, 25.239) (4.0667, 26.548) (4.1000, 27.932) (4.1333, 29.395) (4.1667, 30.942)};
+          \node at (axis cs:2.5, 3.3233) [anchor=south east] {\color{penColor}$f(x)$};  
+% print(join([str((x,factorial(x))) for x in range(1,20)],' ')) 
+          \addplot[color=penColor2,fill=penColor2,only marks,mark=*] coordinates{(1, 1) (2, 2) (3, 6) (4, 24)};
+          \node at (axis cs:3, 7) [anchor=north west] {\color{penColor2}$a_n$};
+        \end{axis}
+\end{tikzpicture}
+\caption{Plots of $f(x) = \int_0^\infty t^{z} e^{-t} \, dt.$ and $a_n = n!$.}
+\label{fig:gamma-function}
+\end{marginfigure}
+
+
+\section{Helpful theorems about limits}
 
 Not surprisingly, the properties of limits of real functions translate
 into properties of sequences quite easily. 
@@ -355,12 +597,12 @@ Suppose that $\ds\lim_{n\to\infty}a_n=L$ and
 $\ds\lim_{n\to\infty}b_n=M$ and
 $k$ is some constant. Then
 \begin{align*}
-&\lim_{n\to\infty} ka_n = k\lim_{n\to\infty}a_n=kL \\
-&\lim_{n\to\infty} (a_n+b_n) = \lim_{n\to\infty}a_n+\lim_{n\to\infty}b_n=L+M \\
-&\lim_{n\to\infty} (a_n-b_n) = \lim_{n\to\infty}a_n-\lim_{n\to\infty}b_n=L-M \\
-&\lim_{n\to\infty} (a_nb_n) = \lim_{n\to\infty}a_n\cdot\lim_{n\to\infty}b_n=LM \\
+&\lim_{n\to\infty} ka_n = k\lim_{n\to\infty}a_n=kL, \\
+&\lim_{n\to\infty} (a_n+b_n) = \lim_{n\to\infty}a_n+\lim_{n\to\infty}b_n=L+M, \\
+&\lim_{n\to\infty} (a_n-b_n) = \lim_{n\to\infty}a_n-\lim_{n\to\infty}b_n=L-M, \\
+&\lim_{n\to\infty} (a_nb_n) = \lim_{n\to\infty}a_n\cdot\lim_{n\to\infty}b_n=LM, \mbox{ and}\\
 &\lim_{n\to\infty} {a_n\over b_n} = {\lim_{n\to\infty}a_n\over
-  \lim_{n\to\infty}b_n}={L\over M},\hbox{ if $M$ is not 0} \\
+  \lim_{n\to\infty}b_n}={L\over M},\hbox{ provided $M \neq 0$.} \\
 \end{align*}
 \end{theorem}
 %}
@@ -368,8 +610,7 @@ $k$ is some constant. Then
 Likewise, there is an analogue of the squeeze theorem for functions.
 
 \begin{theorem}\relax\label{thm:squeeze theorem for sequences}
-Suppose that $\ds a_n \le b_n \le c_n$ for all $n>N$, for some $N$.
-If $\ds\lim_{n\to\infty}a_n=\ds\lim_{n\to\infty}c_n=L$, 
+Suppose there is some $N$ so that for all $n > N$, it is the case that $\ds a_n \le b_n \le c_n$. If $$\ds\lim_{n\to\infty}a_n=\ds\lim_{n\to\infty}c_n=L$$, 
 then $\ds\lim_{n\to\infty}b_n=L$.
 \end{theorem}
 
@@ -379,36 +620,49 @@ And a final useful fact:
 $\ds\lim_{n\to\infty}|a_n|=0$ if and only if
 $\ds\lim_{n\to\infty}a_n=0$.
 \end{theorem}
+\marginnote{Sometimes people write ``iff'' as shorthand for ``if and only if.''}
 
 This says simply that the size of $\ds a_n$ gets close to zero if and
 only if $\ds a_n$ gets close to zero.
 
 \begin{example}
-Determine whether $\ds\left\{{n\over n+1}\right\}_{n=0}^\infty$ converges or
+Determine whether the sequence $a_n = \frac{n}{n+1}$ converges or
 diverges. If it converges, compute the limit.
 \end{example}
 
 \begin{solution}
-Since this makes sense for real numbers we consider
+Consider the real-valued function
 $$
-\lim_{x\to\infty}{x\over x+1}=\lim_{x\to\infty}1-{1\over x+1}=1-0=1.
+f(x) = \frac{x}{x+1}.
 $$
-Thus the sequence converges to 1.
+Since $a_n = f(n)$, it will be enough to find $\ds\lim_{x \to \infty} f(x)$ in order to find $\ds\lim_{n \to \infty} a_n$.
+We compute, as in Calculus One, that
+\begin{align*}
+\lim_{x\to\infty}{x\over x+1}
+&= \lim_{x\to\infty} \frac{(x+1) - 1}{x+1} \\
+&= \lim_{x\to\infty} \left( \frac{x+1}{x+1} - \frac{1}{x+1} \right) \\
+&= \lim_{x\to\infty} \left( 1 - \frac{1}{x+1} \right) \\
+&= \lim_{x\to\infty} 1 - \lim_{x \to \infty} \frac{1}{x+1} \\
+&= 1 - \lim_{x \to \infty} \frac{1}{x+1} = 1 - 0 = 1. \\
+\end{align*}
+We therefore conclude that $\ds\lim_{n \to \infty} a_n = 1$.
 \end{solution}
+\marginnote{And this is reasonable: by choosing $n$ to be a large enough whole number, I can make $\ds\frac{n}{n+1}$ as close to $1$ as I would like.  Just imagine how close $\frac{10000000000}{10000000001}$ is to one.}
 
-\begin{example}
+\begin{example}%BADBAD
 Determine whether $\ds\bigg\{{\ln n\over n}\bigg\}_{n=1}^\infty$ converges or
 diverges. If it converges, compute the limit.
 \end{example}
 
-\begin{solution}We compute
+\begin{solution}%BADBAD
+We compute
 $$\lim_{x\to\infty}{\ln x\over x}=\lim_{x\to\infty}{1/x\over 1}=
 0,$$
 using L'H\^opital's Rule. 
 Thus the sequence converges to 0.
-\end{solution}
+\end{solution}%BADBAD
 
-\begin{example}
+\begin{example}%BADBAD
 Determine whether $\ds\{(-1)^n\}_{n=0}^\infty$ converges or
 diverges. If it converges, compute the limit. This does not make sense
 for all real exponents, but the sequence is easy to understand: it is
@@ -417,7 +671,7 @@ and clearly diverges.
 \end{example}
 \label{example:alternating ones}
 
-\begin{example}
+\begin{example}%BADBAD
 Determine whether $\ds\{(-1/2)^n\}_{n=0}^\infty$ converges or
 diverges. If it converges, compute the limit.
 \end{example}
@@ -430,12 +684,12 @@ $$
 so by theorem~\xrefn{thm:absolute value sequence} the sequence converges to 0.
 \end{solution}
 
-\begin{example}
+\begin{example}%BADBAD
 Determine whether $\ds\{(\sin n)/\sqrt{n}\}_{n=1}^\infty$ converges or
 diverges. If it converges, compute the limit. 
 \end{example}
 
-\begin{solution}
+\begin{solution}%BADBAD
 Since $|\sin n|\le 1$, $\ds 0\le|\sin n/\sqrt{n}|\le
 1/\sqrt{n}$ and we can use theorem~\xrefn{thm:squeeze theorem for
 sequences} with $\ds a_n=0$ and $\ds c_n=1/\sqrt{n}$. Since
@@ -443,12 +697,12 @@ $\ds\lim_{n\to\infty} a_n=\ds\lim_{n\to\infty} c_n=0$,
 $\ds\lim_{n\to\infty}\sin n/\sqrt{n}=0$ and the sequence converges to 0.
 \end{solution}
 
-\begin{example}
+\begin{example}%BADBAD
 A particularly common and useful sequence is $\ds \{r^n\}_{n=0}^\infty$,
 for various values of $r$.  For which values of $r$ does this sequence converge?
 \end{example}
 
-\begin{solution}
+\begin{solution}%BADBAD
 Some are quite easy to understand: If $r=1$
 the sequence converges to 1 since every term is 1, and likewise if
 $r=0$ the sequence converges to 0. If $r=-1$ this is
@@ -469,34 +723,70 @@ $$
 
 \section{Qualitative features of limits}
 
+\marginnote{Your first exposure to mathematics might have been about
+  \defnword{constructions}; you might have been asked to find an
+  answer or to propose a solution to a problem.  But much of
+  mathematics is concerned with showing \defnword{existence}, even if
+  the thing that is being shown to exist cannot be exhibited itself.}
+
 Sometimes we will not be able to determine the limit of a sequence,
-but we still would like to know whether it converges. In some cases we
-can determine this even without being able to compute the limit.
+but we still would like to know whether it converges.  In many cases,
+we can determine whether a limit exists, without needing to---or
+without even being able to---compute that limit.
 
-A sequence is called {\dfont increasing\index{sequence!increasing}\/}
-or sometimes {\dfont strictly increasing\/} if $\ds a_i<a_{i+1}$ for all
-$i$. It is called {\dfont
-non-decreasing\index{sequence!non-decreasing}\/} or sometimes
-(unfortunately) {\dfont increasing\/} if $\ds a_i\le a_{i+1}$ for all
-$i$. Similarly a sequence is {\dfont
-decreasing\index{sequence!decreasing}\/} if $\ds a_i>a_{i+1}$ for all $i$
-and {\dfont non-increasing\index{sequence!non-increasing}\/} if
-$\ds a_i\ge a_{i+1}$ for all $i$. If a sequence has any of these
-properties it is called {\dfont monotonic\index{sequence!monotonic}\/}.
+\subsection{Monotonicity}
 
+And sometimes we don't even care about limits, but we'd simply like
+some terminology with which to describe features we might notice about
+sequences.  Here is some of that terminology.
+
+\marginnote{For instance, how much money I have on day $n$ is a
+  sequence; I probably hope that sequence is an increasing sequence.}
+
+\begin{definition}
+  A sequence is called
+  \defnword{increasing}\index{sequence!increasing} (or sometimes
+  \defnword{strictly increasing}) if $\ds a_n<a_{n+1}$ for all $n$.
+  It is called {\dfont
+    non-decreasing\index{sequence!non-decreasing}\/} if $\ds a_n\le
+  a_{n+1}$ for all $n$.
+
+  Similarly a sequence is {\dfont
+    decreasing\index{sequence!decreasing}\/} (or, by some people,
+  \defnword{strictly decreasing}) if $\ds a_n>a_{n+1}$ for all $n$ and
+  {\dfont non-increasing\index{sequence!non-increasing}\/} if $\ds
+  a_n\ge a_{n+1}$ for all $n$.
+\end{definition}
+To make matters worse, the people who insist on saying ``strictly
+increasing'' may---much to everybody's confusion---insist on calling a
+non-decreasing sequence ``increasing.'' I'm not going to play their
+game; I'll be careful to say ``non-decreasing'' when I mean a sequence
+which is getting larger or staying the same.
+
+To make matters better, lots of facts are true for sequences which are
+either increasing or decreasing; to talk about this situation without
+constantly saying ``either increasing or decreasing,'' we can make up
+a single word to cover both cases.
+\begin{definition}
+  If a sequence is increasing, non-decreasing, decreasing, or
+  non-increasing, it is said to be {\dfont
+    monotonic\index{sequence!monotonic}\/}.
+\end{definition}
+
+Let's see some examples of sequences which are monotonic.
 \begin{example}
-The sequence
+The sequence $\ds a_n = {2^n-1\over2^n}$ which starts
 $$
-  \left\{{2^i-1\over2^i}\right\}_{i=1}^\infty=
-  {1\over2},{3\over4},{7\over8},{15\over16},\ldots,
+  {1\over2},\quad {3\over4},\quad {7\over8},\quad {15\over16},\quad \ldots,
 $$
-is increasing, and
+is increasing.  On the other hand, the sequence $\ds b_n = {n+1\over n}$, which starts
 $$ 
-  \left\{{n+1\over n}\right\}_{i=1}^\infty=
-  {2\over1},{3\over2},{4\over3},{5\over4},\ldots
+  {2\over1},\quad{3\over2},\quad{4\over3},\quad{5\over4},\quad\ldots,
 $$
 is decreasing.
 \end{example}
+
+\subsection{Boundedness}%BADBAD
 
 A sequence is {\dfont bounded above\index{sequence!bounded above}\/}
 if there is some number $N$ such that $\ds a_n\le N$ for every $n$,
