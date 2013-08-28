@@ -2,6 +2,10 @@
 \documentclass[justified]{tufte-book}
 \usepackage{mooculus}
 
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
 %\usepackage{showkeys} %% Useful for debugging
 
 \setcounter{secnumdepth}{2}
@@ -63,7 +67,6 @@
 
 
 
-
 \begin{document}
 \frontmatter
 
@@ -116,7 +119,6 @@ improvement at \texttt{fowler@math.osu.edu} or
 
 \end{fullwidth}
 
-
 \tableofcontents
 
 
@@ -167,13 +169,11 @@ anticipate my next thoughts, repeating many of the same calculations I
 did to write this book.  You must \textbf{write} down each expression,
 \textbf{sketch} each graph, and constantly \textbf{think} about what
 you are doing.  You should work examples.  You should fill-in the
-details I left out.  This is not an easy task; it is in fact
-\textbf{hard} work, but, work that is, I very much hope, rewarding in
-the end.
+details I left out.  This is not an easy task; it is \textbf{hard}
+work, but, work that is, I very much hope, rewarding in the end.
 
 Mathematics is not a passive endeavor.  I may call you a ``reader''
-but you are not reading---you are writing this book---no, I mean your
-journey---for yourself.
+but you are not reading; you are writing this book for yourself.
 
 \vspace{0.5in}
 \hfill---the so-called ``author''
@@ -183,25 +183,52 @@ journey---for yourself.
 %\tikzexternaldisable
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter*{Introduction}
+\chapter*{Introduction, or\ldots what is this all about?}
 
 \input introduction
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Sequences}
+\label{chapter:sequences}
+
+%\begin{outline}
+%\noindent\startcontents[section]% kind
+%\printcontents[section]{}{1}{}% kind, prefix, top, init-code
+%\end{outline}
+
 \input sequences
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Series}
+\label{chapter:series}
+
+%\begin{outline}
+%\noindent\startcontents[section]% kind
+%\printcontents[section]{}{1}{}% kind, prefix, top, init-code
+%\end{outline}
+ 
 \input series
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Convergence tests}
+\label{chapter:convergence-tests}
+
+%\begin{outline}
+%\startcontents[convergence-tests]% kind
+%\printcontents[convergence-tests]{}{1}{}% kind, prefix, top, init-code
+%\end{outline}
+
+It is generally quite difficult---indeed, often impossible---to
+determine the value of a series exactly.  Even if we can't compute the
+value of a series, in many cases it is possible to determine whether
+or not the series converges. We will spend most of our time on this
+problem.
 
 \section{Comparison Tests}
 \input comparison-test
 
-\section{Ratio and root tests}
+\section{Ratio tests}
+\label{section:ratio-test}
 \input ratio-test
 
 \section{Integral test}
@@ -209,33 +236,49 @@ journey---for yourself.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Alternating series}
+\label{chapter:alternating-series}
+
+%\startcontents[sections]% kind
+%\printcontents[sections]{p}{1}{}% kind, prefix, top, init-code
+%\end{contents}
 
 \section{Alternating series test}
-\input alternating-series
+%\input alternating-series
 
 \section{Absolute convergence}
-\input absolute-convergence
+\label{section:absolute-convergence}
+%\input absolute-convergence
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Power series}
+\label{chapter:power-series}
+
+\startcontents[sections]% kind
+\printcontents[sections]{p}{1}{}% kind, prefix, top, init-code
+%\end{contents}
 
 \section{Definitions}
-\input power-series
+%\input power-series
 \section{Calculus with power series}
-\input term-by-term
+%\input term-by-term
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Taylor series}
+\label{chapter:taylor-series}
+
+\startcontents[sections]% kind
+\printcontents[sections]{p}{1}{}% kind, prefix, top, init-code
+%\end{contents}
 
 \section{Finding Taylor series}
-\input taylor-series
+%\input taylor-series
 
 \section{Taylor's Theorem}
-\input remainders
+%\input remainders
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter*{Review}
-\input review
+%\input review
 
 %\bibliography{sample-handout}
 %\bibliographystyle{plainnat}

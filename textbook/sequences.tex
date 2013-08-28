@@ -88,25 +88,46 @@ precision when we're tempted to be too vague, and we need to reach for
 an extra helping of vagueness when the formalism is getting in the way
 of our understanding.
 
-\section{Defining sequences by giving a rule}
+\section{Defining sequences}
 
-Just as with functions with domain the real numbers, we will most often
-encounter sequences that can be expressed by a formula.  We have
-already seen the sequence $\ds a_i=f(i)=1-1/2^i$, and others are easy
-to come by:
+\subsection{Defining sequences by giving a rule}
+
+Just as with functions with domain the real numbers, we will most
+often encounter sequences that can be expressed by a formula.  We have
+already seen the sequence $\ds a_i=f(i)=1-1/2^i$, and other examples
+are easy to cook up:
 \begin{align*}
-  a_i &={i\over i+1} \\
-  a_n &={1\over2^n} \\
-  a_n &=\sin(n\pi/6) \\
-  a_i &={(i-1)(i+2)\over2^i} \\
+  a_i &={i\over i+1}, \\
+  b_n &={1\over2^n}, \\
+  c_n &=\sin(n\pi/6), \mbox{ or} \\
+  d_i &={(i-1)(i+2)\over2^i}. \\
 \end{align*}
 Frequently these formulas will make sense if thought of either as
 functions with domain $\R$ or $\N$, though occasionally the given
-formula will make sense only for whole numbers.
+formula will make sense only for whole numbers.  We'll address the
+idea of a real-valued function ``filling in'' the terms of a sequence
+when we look at graphs in Section~\xrefn{section:graphs}.
 
-\section{Defining sequences using previous terms}
+\begin{warning}
+  A common misconception is to confuse the sequence with the rule for
+  generating the sequence.  The sequence $a_n = (-1)^n$ and the
+  sequence $b_n = \cos (\pi \, n)$ are, despite appearances, different
+  rules which give rise to the \textit{same} sequence.
+\end{warning}
 
-\marginnote{You might be familiar with \textit{recursion} from, say, a
+\begin{definition}
+  Suppose $(a_n)$ and $(b_n)$ are sequences starting at $1$.  These
+  sequences are \defnword{equal}\index{sequence!equality} if for all
+  natural numbers $n$, we have $a_n = b_n$.
+\end{definition}
+
+In other words, sequences are the same if they output the same list of
+real numbers---regardless of whether the given ``rule'' or procedure
+for computing those sequences is the same rule.
+
+\subsection{Defining sequences using previous terms}
+
+\marginnote{You might be familiar with \textit{recursion} from a
   computer science course.}
 
 Another way to define a sequence is \textit{recursively}, that is, by
@@ -138,6 +159,7 @@ We just computed $a_4 = 9$; we were given $a_2 = 3$.  Therefore $a_5 = 9 - 3 = 6
 
 \marginnote{You can imagine some very complicated sequences defined recursively.  Make up your own sequence and share it with your friends!  Use the \href{https://twitter.com/search?q=\%23sequence}{hashtag \texttt{\#sequence}}.}
 
+
 \section{Examples}
 
 \marginnote{Tons of entertaining sequences are listed in the \href{http://oeis.org/}{The On-Line Encyclopedia of Integer Sequences}.}
@@ -164,17 +186,20 @@ $$
 What is the next term $a_5$?  Can you identify the sequence?
 \end{example}
 
-\marginnote{This particular polynomial $n^4 - n + 41$ is rather interesting, since it outputs many prime numbers.  You can read more at \href{http://oeis.org/A005846}{the OEIS}.}
+\marginnote{This particular polynomial $n^4 - n + 41$ is rather
+  interesting, since it outputs many prime numbers.  You can read more
+  about it at \href{http://oeis.org/A005846}{the OEIS}.}
 
 \begin{solution}
-  In spite of many so-called ``intelligence tests'' asking questions
-  like this, this question doesn't have an answer.  Or worse, it has
-  too many answers!
+  In spite of many so-called ``intelligence tests'' that ask questions
+  like this, this question simply doesn't have an answer.  Or worse,
+  it has too many answers!
 
-This sequence might be ``the prime numbers starting at 41.''  In which
-case the next term is $a_5 =59$.  But maybe this sequence is given by
-the polynomial $a_n = n^2 - n + 41$.  In that case, $a_5 = 61$.  Who
-is to say which is the ``better'' answer?
+  This sequence might be ``the prime numbers in order, starting at
+  41.''  If that's the case, then the next term is $a_5 =59$.  But
+  maybe this sequence is the sequence given by the polynomial $a_n =
+  n^2 - n + 41$.  If that's the case, then the next term is $a_5 =
+  61$.  Who is to say which is the ``better'' answer?
 \end{solution}
 
 \marginnote{Recall that a \defnword{prime number} is an integer
@@ -224,6 +249,7 @@ $$
 is an arithmetic progression.
 
 \subsection{Geometric sequences}
+\label{subsection:geometric-sequences}
 
 The second family we consider are geometric progressions.
 
@@ -403,7 +429,7 @@ To say that $\ds \lim_{n\to \infty}a_n=L$ is to say that \\
 \null\quad\quad we have $|a_n-L|<\epsilon$. \\
 If $\ds \lim_{n\to\infty}a_n=L$ we say that the sequence
 \defnword{converges}\index{convergent
-  sequence}\index{sequence!convergent}.  If there is no value $L$ so
+  sequence}\index{sequence!convergent}.  If there is no finite value $L$ so
 that $\ds \lim_{n\to\infty}a_n = L$, then we say that the limit
 \defnword{does not exist}, or equivalently that the sequence
 \defnword{diverges}\index{divergent sequence}\index{sequence!divergent}.
@@ -411,6 +437,13 @@ that $\ds \lim_{n\to\infty}a_n = L$, then we say that the limit
 
 \marginnote{The definition of limit is being written as if it were
   poetry, what with line breaks and all.  Like the best of poems, it deserves to be memorized, performed, internalized.  Humanity struggled for millenia to find the wisdom contained therein.}
+
+\begin{warning}
+  In the case that $\lim_{n \to \infty} a_n = \infty$, we say that
+  $a_n$ diverges, or perhaps more precisely, we say $a_n$ diverges to
+  infinity.  The only time we say that a sequence converges is when
+  the limit exists and is equal to a \textit{finite} value.
+\end{warning}
 
 One way to compute the limit of a sequence is to compute the limit of
 a function.
@@ -427,7 +460,8 @@ $${1\over1},\quad {1\over2},\quad {1\over3},\quad {1\over4},\quad {1\over5},\qua
 get closer and closer to 0, or more precisely, as close as you want to get to zero, after a while, all the terms in the sequence are that close.
 \end{example}
 
-But it is important to note that the converse\sidenote{The
+
+But it is important to note that the converse\sidenote{\label{sidenote:raining-converse}The
   \defnword{converse} of a statement is what you get when you swap the
   assumption and the conclusion; the converse of ``if it is raining,
   then it is cloudy'' is the statement ``if it is cloudy, then it is
@@ -486,6 +520,7 @@ exists---you'll just have to figure out another way to compute it.
 \end{marginfigure}
 
 \section{Graphs}
+\label{section:graphs}
 
 It is occasionally useful to think of the graph of a sequence. Since
 the function is defined only for integer values, the graph is just a
@@ -585,6 +620,24 @@ In that definition, $\floor{x}$ denotes the ``greatest integer less
 \label{fig:gamma-function}
 \end{marginfigure}
 
+\section{New sequences from old}
+
+\begin{definition}
+  Suppose $a_n$ is a sequence.  We get a
+  \defnword{subsequence}\index{sequence!subsequence}\index{subsequence}
+  of the sequence $a_n$ if we throw away terms
+
+%  Given a sequence $a_n$, a subsequence  
+%	Let be a sequence. When we extract from this sequence only certain elements and drop the remaining ones we obtain a new sequences consisting of an infinite subset of the original sequence. That sequence is called a subsequence and denoted by 
+\end{definition}
+
+%BADBAD
+
+\begin{theorem}
+  \label{theorem:subsequence-same-limit}
+  If $(b_n)$ is a subsequence of the convergent sequence $(a_n)$, then
+  $\ds\lim_{n \to \infty} b_n = \ds\lim_{n \to \infty} a_n$.
+\end{theorem}
 
 \section{Helpful theorems about limits}
 
@@ -592,7 +645,7 @@ Not surprisingly, the properties of limits of real functions translate
 into properties of sequences quite easily. 
 
 %\vbox{
-\begin{theorem} \relax\label{thm:properties of sequences}
+\begin{theorem} \relax\label{thm:properties-of-sequences}
 Suppose that $\ds\lim_{n\to\infty}a_n=L$ and 
 $\ds\lim_{n\to\infty}b_n=M$ and
 $k$ is some constant. Then
@@ -606,6 +659,8 @@ $k$ is some constant. Then
 \end{align*}
 \end{theorem}
 %}
+
+\subsection{Squeeze Theorem}
 
 Likewise, there is an analogue of the squeeze theorem for functions.
 
@@ -624,6 +679,11 @@ $\ds\lim_{n\to\infty}a_n=0$.
 
 This says simply that the size of $\ds a_n$ gets close to zero if and
 only if $\ds a_n$ gets close to zero.
+
+\subsection{Examples}
+
+Armed with these helpful theorems, we are now in a position to work a
+number of examples.
 
 \begin{example}
 Determine whether the sequence $a_n = \frac{n}{n+1}$ converges or
@@ -649,90 +709,215 @@ We therefore conclude that $\ds\lim_{n \to \infty} a_n = 1$.
 \end{solution}
 \marginnote{And this is reasonable: by choosing $n$ to be a large enough whole number, I can make $\ds\frac{n}{n+1}$ as close to $1$ as I would like.  Just imagine how close $\frac{10000000000}{10000000001}$ is to one.}
 
-\begin{example}%BADBAD
-Determine whether $\ds\bigg\{{\ln n\over n}\bigg\}_{n=1}^\infty$ converges or
-diverges. If it converges, compute the limit.
+\begin{example}
+\label{example:log-n-over-n}
+Determine whether the sequence $\ds a_n = \frac{\log n}{n}$ converges or
+diverges.  If it converges, compute the limit.
 \end{example}
 
-\begin{solution}%BADBAD
+\begin{solution}
 We compute
-$$\lim_{x\to\infty}{\ln x\over x}=\lim_{x\to\infty}{1/x\over 1}=
-0,$$
-using L'H\^opital's Rule. 
-Thus the sequence converges to 0.
-\end{solution}%BADBAD
-
-\begin{example}%BADBAD
-Determine whether $\ds\{(-1)^n\}_{n=0}^\infty$ converges or
-diverges. If it converges, compute the limit. This does not make sense
-for all real exponents, but the sequence is easy to understand: it is
-$$1,-1,1,-1,1\ldots$$
-and clearly diverges.
-\end{example}
-\label{example:alternating ones}
-
-\begin{example}%BADBAD
-Determine whether $\ds\{(-1/2)^n\}_{n=0}^\infty$ converges or
-diverges. If it converges, compute the limit.
-\end{example}
-\begin{solution}We consider the sequence 
-$\ds\{|(-1/2)^n|\}_{n=0}^\infty=\{(1/2)^n\}_{n=0}^\infty$.
-Then
-$$
-  \lim_{x\to\infty}\left({1\over2}\right)^x=\lim_{x\to\infty}{1\over2^x}=0,
-$$
-so by theorem~\xrefn{thm:absolute value sequence} the sequence converges to 0.
+By l'H\^opital's rule, we compute
+$$\lim_{x\to\infty}{\log x\over x}=\lim_{x\to\infty}{1/x\over 1}=
+0.$$
+Therefore, $$\lim_{n \to \infty}  \frac{\log n}{n} = 0.$$
 \end{solution}
 
-\begin{example}%BADBAD
-Determine whether $\ds\{(\sin n)/\sqrt{n}\}_{n=1}^\infty$ converges or
+\marginnote{I'm not too fond of l'H\^opital's rule, so I would have
+  been happier if I had given a solution that didn't involve it; you
+  could avoid mentioning l'H\^opital's rule in
+  Example~\xrefn{example:log-n-over-n} if you used, say, the squeeze
+  theorem and the fact that $\log n \leq \sqrt{n}$.}
+
+\begin{example}
+\label{example:alternating-ones}
+Determine whether the sequence $a_n = (-1)^n$ converges or
+diverges. If it converges, compute the limit.
+\end{example}
+
+\begin{solution}
+  Your first inclination might be to consider the ``function'' $f(x) =
+  (-1)^x$, but you'll run into trouble when trying to tell me the
+  value of $f(1/2)$.
+
+  How does the sequence $a_n = (-1)^n$ begin?  It starts
+  $$
+-1,\quad
+1,\quad
+-1,\quad
+1,\quad
+-1,\quad
+1,\quad
+-1,\quad
+1,\quad
+-1,\quad
+1,\quad\ldots,
+  $$
+  so the sequence isn't getting close to any number in particular.
+
+  Intuitively, the above argument is probably pretty convincing.  But
+  if you want an airtight argument, you can reason like this:
+  suppose---though we'll soon see that this is a ridiculous
+  assumption---that the sequence $a_n = (-1)^n$ did converge to $L$.
+  Then any subsequence would also converge to $L$, by
+  Theorem~\xrefn{theorem:subsequence-same-limit} which stated that the
+  limit of a subsequence is the same as the limit of the original
+  sequence.  If I throw away every other term of the sequence $(a_n)$,
+  I am left with the constant sequence
+$$
+-1,\quad
+-1,\quad
+-1,\quad
+-1,\quad
+-1,\quad
+-1,\quad
+-1,\quad\ldots,
+$$
+which converges to $-1$, and so $L$ must be $-1$.
+
+On the other hand, if I throw away all the terms with odd indices and
+keep only those terms with even indices, I am left with the constant
+subsequence
+$$
+1,\quad
+1,\quad
+1,\quad
+1,\quad
+1,\quad
+1,\quad
+1,\quad\ldots,
+$$
+so $L$ must be $1$.  Since $L$ can't be both $-1$ and $1$, it couldn't
+have been the case that $\ds\lim_{n \to \infty} a_n = L$ for a real
+number $L$.  In other words, the limit does not exist.
+\end{solution}
+
+\marginnote{I imagine that the ``airtight argument'' in the solution
+  to Example~\xrefn{example:alternating-ones} is difficult to
+  understand.  Please don't worry if you find the argument confusing
+  now---we'll have more opportunities for doing this sort of
+  \href{http://en.wikipedia.org/wiki/Proof_by_contradiction}{proofs by
+    contradiction} in the future.}
+
+\begin{example}
+Determine whether the sequence $a_n = (-1/2)^n$ converges or
+diverges. If it converges, compute the limit.
+\end{example}
+
+\marginnote{In this problem, you must be very careful to recognize the
+  difference between $(-1/2)^n$ and $-(1/2)^n$.  The former flip-flops
+  between being positive and being negative, while the latter is
+  always negative.}
+
+\begin{solution}
+  Let's use the Squeeze Theorem.  Consider the sequences $b_n =
+  -(1/2)^n$ and $c_n = (1/2)^n$.  Then $b_n \leq a_n \leq c_n$.  And
+  $\ds\lim_{n \to \infty} c_n = 0$ because $\lim_{x \to \infty}
+  (1/2)^x = 0$.  Since $b_n = - c_n$, we have $\lim_{n \to \infty} b_n
+  = - \lim_{n \to \infty} c_n = -0 = 0$.  Since $b_n$ and $c_n$
+  converge to zero, the squeeze theorem tells us that $\ds\lim_{n \to
+    \infty} a_n = 0$ as well.
+
+  If you don't want to mention the Squeeze Theorem, you could instead
+  apply Theorem~\xrefn{thm:absolute value sequence}.  In that case, we
+  would again consider the sequence $c_n = |a_n|$ and observe that
+  $\ds\lim_{n \to \infty} c_n = 0$.  But then
+  Theorem~\xrefn{thm:absolute value sequence} steps in, and tells us
+  that $\ds\lim_{n \to \infty} a_n = 0$ as well.  Of course, a
+  convincing argument for why Theorem~\xrefn{thm:absolute value
+    sequence} works at all goes via the squeeze theorem, so this
+  second method is not so different from the first.
+\end{solution}
+
+\begin{example}
+Determine whether $a_n = \ds\frac{\sin n}{\sqrt{n}}$ converges or
 diverges. If it converges, compute the limit. 
 \end{example}
 
-\begin{solution}%BADBAD
-Since $|\sin n|\le 1$, $\ds 0\le|\sin n/\sqrt{n}|\le
-1/\sqrt{n}$ and we can use theorem~\xrefn{thm:squeeze theorem for
-sequences} with $\ds a_n=0$ and $\ds c_n=1/\sqrt{n}$. Since
-$\ds\lim_{n\to\infty} a_n=\ds\lim_{n\to\infty} c_n=0$, 
-$\ds\lim_{n\to\infty}\sin n/\sqrt{n}=0$ and the sequence converges to 0.
+\begin{solution}
+Since $-1 \leq \sin n \leq 1$, we have 
+$$
+\frac{-1}{\sqrt{n}} \leq \frac{\sin n}{\sqrt{n}} \leq \frac{1}{\sqrt{n}},
+$$ 
+and can therefore apply the Squeeze Theorem.  Since $\ds\lim_{x \to \infty} \frac{1}{\sqrt{X}} = 0$, we get
+$$
+\lim_{n \to \infty} \frac{-1}{\sqrt{n}} = \lim_{n \to \infty} \frac{1}{\sqrt{n}} = 0,
+$$
+and so by squeezing, we conclude $\ds\lim_{n \to \infty} a_n = 0$.
 \end{solution}
 
-\begin{example}%BADBAD
-A particularly common and useful sequence is $\ds \{r^n\}_{n=0}^\infty$,
-for various values of $r$.  For which values of $r$ does this sequence converge?
+\marginnote{You might be wondering why I love the Squeeze Theorem so
+  much; one reason is that the Squeeze Theorem gets you into the idea
+  of ``comparing'' one sequence to another, and this ``comparison''
+  idea will be big when we get to convergence tests in
+  Chapter~\xrefn{chapter:convergence-tests}.}
+
+\begin{example}
+A particularly common and useful sequence is the geometric progression $a_n = r^n$
+for a fixed real number $r$.  For which values of $r$ does this sequence converge?
 \end{example}
 
-\begin{solution}%BADBAD
-Some are quite easy to understand: If $r=1$
-the sequence converges to 1 since every term is 1, and likewise if
-$r=0$ the sequence converges to 0. If $r=-1$ this is
-the sequence of example~\xrefn{example:alternating ones} and
-diverges. If $r>1$ or $r<-1$ the terms $\ds r^n$ get large without limit,
-so the sequence diverges. If $0<r<1$ then the sequence converges to
-0. If $-1<r<0$ then $\ds |r^n|=|r|^n$ and $0<|r|<1$, so the sequence
+\begin{solution}
+It very much does depend on $r$.
+
+If $r=1$, then $a_n = (1)^n$ is the constant sequence
+$$
+1,\quad
+1,\quad
+1,\quad
+1,\quad
+1,\quad
+1,\quad
+1,\quad
+1,\quad \ldots,
+$$
+so the sequence converges to one.  A similarly boring fate befalls the
+case $r = 0$, in which case $a_n = (0)^n$ converges to zero.
+
+If $r=-1$, we are reprising the sequence which starred in
+Example~\xrefn{example:alternating-ones}; as we saw, that sequence
+diverges.
+
+If either $r>1$ or $r<-1$, then the terms $a_n = r^n$ can be made as
+large as one likes by choosing $n$ large enough (and even), so the
+sequence diverges.
+
+If $0<r<1$, then the sequence converges to 0. 
+
+If $-1<r<0$ then $\ds |r^n|=|r|^n$ and $0<|r|<1$, so the sequence
 $\ds \{|r|^n\}_{n=0}^\infty$ converges to 0, so also 
 $\ds\{r^n\}_{n=0}^\infty$ converges to 0.
-converges. In summary, $\ds \{r^n\}$ converges precisely when
-$-1<r\le1$ in which case
+converges.
+\end{solution}
+
+That last example of a geometric progression is involved enough that
+it deserves to be summarized as a theorem.
+
+\begin{theorem}
+The sequence $a_n = r^n$ converges when
+$-1<r \le 1$, and diverges otherwise.  In symbols,
 $$
   \lim_{n\to\infty} r^n=\begin{cases}
-  0& if $-1<r<1$ \\
-  1& if $r=1$ \end{cases}
-$$
-\vskip-10pt\end{solution}
+  0& if $-1<r<1$, \\
+  1& if $r=1$, \mbox{ and} \\
+  \mbox{does not exist} & \mbox{if $r \leq -1$ or $r > 1$.}
+\end{cases}
+$$  
+\end{theorem}
 
 \section{Qualitative features of limits}
 
 \marginnote{Your first exposure to mathematics might have been about
-  \defnword{constructions}; you might have been asked to find an
-  answer or to propose a solution to a problem.  But much of
+  \defnword{constructions}; you might have been asked to compute a
+  numeric answer or to propose a solution to a problem.  But much of
   mathematics is concerned with showing \defnword{existence}, even if
   the thing that is being shown to exist cannot be exhibited itself.}
 
 Sometimes we will not be able to determine the limit of a sequence,
-but we still would like to know whether it converges.  In many cases,
-we can determine whether a limit exists, without needing to---or
-without even being able to---compute that limit.
+but we still would like to know whether or not it converges to some
+unspoken number.  In many cases, we can determine whether a limit
+exists, without needing to---or without even being able to---compute
+that limit.
 
 \subsection{Monotonicity}
 
@@ -788,27 +973,51 @@ is decreasing.
 
 \subsection{Boundedness}%BADBAD
 
-A sequence is {\dfont bounded above\index{sequence!bounded above}\/}
-if there is some number $N$ such that $\ds a_n\le N$ for every $n$,
-and {\dfont bounded below\index{sequence!bounded below}\/} if there is
-some number $N$ such that $\ds a_n\ge N$ for every $n$. If a sequence
-is bounded above and bounded below it is {\dfont
-bounded\index{sequence!bounded}\/}. If a sequence $\ds
+Sometimes we can't say exactly which number a sequence approaches, but
+we can at least say that the sequence doesn't get too big or too
+small.
+
+\begin{definition}
+  A sequence $(a_n)$ is \defnword{bounded
+    above}\index{sequence!bounded above} if there is some number
+$M$ so that for all $n$, we have $\ds a_n\le M$.  Likewise, a sequence
+$(a_n)$ is {\dfont bounded below\index{sequence!bounded below}\/} if
+there is some number $M$ so that for every $n$, we have $\ds a_n\ge M$.
+
+If a sequence is both bounded above and bounded below, the sequence is said
+to be {\dfont bounded\index{sequence!bounded}\/}.
+\end{definition}
+
+If a sequence $\ds
 \{a_n\}_{n=0}^\infty$ is increasing or non-decreasing it is bounded
 below (by $\ds a_0$), and if it is decreasing or non-increasing it is
-bounded above (by $\ds a_0$).  Finally, with all this new terminology
-we can state an important theorem.
+bounded above (by $\ds a_0$).
 
-\begin{theorem} If a sequence is bounded and monotonic then it converges.
+Finally, with all this new terminology we can state the most important
+theorem of Chapter~\xrefn{chapter:sequences}.
+
+\begin{theorem} If the sequence $a_n$ is bounded and monotonic, then
+  $\lim_{n \to \infty} a_n$ exists.  \label{thm:bounded-monotonic}
 \end{theorem}
+In short, bounded monotonic sequences converge---though we can't
+necessarily describe the number to which they converge.
 
-We will not prove this; the proof appears in many calculus books. It
-is not hard to believe: suppose that a sequence is increasing and
+We will not prove this theorem in the textbook\sidenote{Proving this
+  theorem is, honestly, the purview of a course in \textit{analysis},
+  the theoretical underpinnings of calculus.  That's not to say it
+  couldn't be done in this course, but I intend this to be a ``first
+  glance'' at sequences---so much be left unsaid.} Nevertheless, it is
+not hard to believe: suppose that a sequence is increasing and
 bounded, so each term is larger than the one before, yet never larger
-than some fixed value $N$. The terms must then get closer and closer
-to some value between $\ds a_0$ and $N$. It need not be $N$, since $N$ may
-be a ``too-generous'' upper bound; the limit will be the
-smallest number that is above all of the terms $\ds a_i$.
+than some fixed value $M$. The terms must then get closer and closer
+to some value between $\ds a_0$ and $M$. It certainly need not be $M$,
+since $M$ may be a ``too generous'' upper bound; the limit will be the
+smallest number that is above\sidenote{This concept of the ``smallest
+  number above all the terms'' is an incredibly important one; it is
+  the idea of a
+  \href{http://en.wikipedia.org/wiki/Least-upper-bound_property}{least
+    upper bound} that underlies the real numbers.} all of the terms
+$\ds a_n$.  Let's try an example!
 
 \begin{example}
 All of the terms $\ds (2^i-1)/2^i$ are less than 2, and the sequence is
@@ -821,8 +1030,13 @@ the sequence.
 
 We don't actually need to know that a sequence is monotonic to apply
 this theorem---it is enough to know that the sequence is
-``eventually'' monotonic, that is, that at some point it becomes
-increasing or decreasing. For example, the sequence $10$, $9$, $8$,
+``eventually'' monotonic\sidenote{After all, the limit of a sequence
+  is the same as that of a subsequence, and the ``tail'' of a sequence
+  is an example of a subsequence.} that is, that at some point it
+becomes increasing or decreasing.
+
+%BADBAD
+For example, the sequence $10$, $9$, $8$,
 $15$, $3$, $21$, $4$, $3/4$, $7/8$, $15/16$, $31/32,\ldots$ is not
 increasing, because among the first few terms it is not. But starting
 with the term $3/4$ it is increasing, so the theorem tells us that the
@@ -832,39 +1046,81 @@ terms at the beginning can't turn a convergent sequence into a
 divergent one.
 
 \begin{example}
-Show that $\ds\{n^{1/n}\}$ converges. 
-\par\nobreak\ssk\noindent
-We first show that 
-this sequence is decreasing, that is, that $\ds n^{1/n}>
-(n+1)^{1/(n+1)}$. Consider the real function $\ds f(x)=x^{1/x}$ when
-$x\ge1$. We can compute the derivative, $\ds f'(x)=x^{1/x}(1-\ln x)/x^2$,
-and note that when $x\ge 3$ this is negative. Since the function has
-negative slope, $\ds n^{1/n}>
-(n+1)^{1/(n+1)}$ when $n\ge 3$. Since all terms of the sequence are
-positive, the sequence is decreasing and bounded when $n\ge3$, and so
-the sequence converges. (As it happens, we can compute the limit in
-this case, but we know it converges even without knowing the limit; see
-exercise~\xrefn{exercise:exponential limit}.)
+\label{example:nth-root-of-n}
+Show that the sequence $a_n = n^{1/n}$ converges.
+\end{example}
+
+\begin{solution}
+  We might first show that this sequence is decreasing, that is, we show
+  that for all $n$,
+  $$
+  n^{1/n} > (n+1)^{1/(n+1)}.
+  $$
+  But this isn't true!  Take a look
+  \begin{align*}
+    a_1 &= 1, \\
+    a_2 &= \sqrt{2} \approx 1.4142, \\
+    a_3 &= \sqrt[3]{3} \approx 1.4422, \\
+    a_4 &= \sqrt[4]{4} \approx 1.4142, \\
+    a_5 &= \sqrt[5]{5} \approx 1.3797, \\
+    a_6 &= \sqrt[6]{6} \approx 1.3480, \\
+    a_7 &= \sqrt[7]{7} \approx 1.3205, \\
+    a_8 &= \sqrt[8]{8} \approx 1.2968, \mbox{ and}\\
+    a_9 &= \sqrt[9]{9} \approx 1.2765. \\
+  \end{align*}
+  But it does seem that this sequence perhaps is decreasing after the
+  first few terms.  Can we justify this?
+
+  Yes!  Consider the real function $\ds f(x)=x^{1/x}$ when $x\ge1$.
+  We compute the derivative---perhaps via ``logarithmic differentiation''---to find
+  $$
+  f'(x)=\frac{x^{1/x} \, (1-\log x)}{x^2}.
+  $$
+  Note that when $x\ge 3$, the derivative $f'(x)$ is negative.  Since the function $f$ is decreasing, we can conclude that the sequence is decreasing---well, at least for $n \geq 3$.
+
+  Since all terms of the sequence are positive, the sequence is
+  decreasing and bounded when $n \ge 3$, and so the sequence converges.
+\end{solution}
+
+\marginnote{As it happens, you could compute the limit in
+  Example~\xrefn{example:nth-root-of-n}, but the solution shows that
+  it converges even without knowing the limit!}
+
+\begin{example}
+Show that the sequence $a_n = \ds\frac{n!}{n^n}$ converges.
 \end{example}
 
 \begin{example}
-Show that $\ds\{n!/n^n\}$ converges.
-\par\nobreak\ssk\noindent
-Again we show that the sequence is decreasing, and since each term is
-positive the sequence converges. We can't take the derivative this
-time, as $x!$ doesn't make sense for $x$ real. But we note that if 
-$\ds a_{n+1}/a_n < 1$ then $\ds a_{n+1}< a_n$, which is what we want to
-know. So we look at $\ds a_{n+1}/a_n$:
-$$ 
-  {a_{n+1}\over a_n} = {(n+1)!\over (n+1)^{n+1}}{n^n\over n!}=
-  {(n+1)!\over n!}{n^n\over (n+1)^{n+1}}=
-  {n+1\over n+1}\left({n\over n+1}\right)^n=
-  \left({n\over n+1}\right)^n < 1.
+  Let's get an idea of what is going on by computing the first few terms.
+% print(join(['a_' + str(k) + '=' + latex(f(x=k)) + ' ' + '\\approx ' + str(n(f(x=k),digits=5)) for k in range(1,9)],',\quad '))
 $$
-(Again it is possible to compute the limit; see
-exercise~\xrefn{exercise:factorial limit}.)
+a_1= 1,\quad a_2= \frac{1}{2},\quad a_3= \frac{2}{9} \approx 0.22222,\quad a_4= \frac{3}{32} \approx 0.093750,\quad a_5= \frac{24}{625} \approx 0.038400,\quad a_6= \frac{5}{324} \approx 0.015432,\quad a_7= \frac{720}{117649} \approx 0.0061199,\quad a_8= \frac{315}{131072} \approx 0.0024033
+$$
+  The sequence appears to be decreasing.  To formally show this, we would need to show $\ds a_{n+1}< a_n$, but we will instead show that
+$$
+\frac{a_{n+1}}{a_n} < 1,
+$$
+which amounts to the same thing.  It is helpful trick here to think of
+the ratio between subsequent terms, since the factorials end up
+canceling nicely.  In particular,
+\begin{align*}
+  {a_{n+1}\over a_n} &= {(n+1)!\over (n+1)^{n+1}}{n^n\over n!} \\
+  &= {(n+1)!\over n!}{n^n\over (n+1)^{n+1}} \\
+  &= {n+1\over n+1}\left({n\over n+1}\right)^n
+  &= \left({n\over n+1}\right)^n < 1.
+\end{align*}
+  Note that the sequence is bounded below, since every term is positive.
+
+  Because the sequence is decreasing and bounded below, it converges.
+  Indeed, Exercise~\xrefn{exercise:factorial-limit} asks you to
+  compute the limit.
 \end{example}
 
+These sorts of arguments involving the ratio of subsequent terms will
+come up again in a big way in Section~\xrefn{section:ratio-test}.
+Stay tuned!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{exercises}
 
 \begin{exercise} \label{exercise:exponential limit}
@@ -874,7 +1130,7 @@ Compute $\ds\lim_{x\to\infty} x^{1/x}$.
 
 \begin{exercise} Use the squeeze theorem to show that 
 $\ds\lim_{n\to\infty} {n!\over n^n}=0$.
-\label{exercise:factorial limit}
+\label{exercise:factorial-limit}
 \end{exercise}
 
 \begin{exercise} Determine whether $\ds\{\sqrt{n+47}-\sqrt{n}\}_{n=0}^\infty$ 

@@ -1,23 +1,55 @@
-\chapter{The Ratio and Root Tests}{}{}
+\nobreak Does the series $\ds\sum_{n=0}^\infty {n^5\over 5^n}$
+converge? It is possible, but a bit unpleasant, to approach this with
+the comparison test.
 
-\nobreak
-Does the series $\ds\sum_{n=0}^\infty {n^5\over 5^n}$ converge? It is
-possible, but a bit unpleasant, to approach this with the integral
-test or the comparison test, but there is an easier way. Consider what
-happens as we move from one term to the next in this series:
-$$\cdots+{n^5\over5^n}+{(n+1)^5\over 5^{n+1}}+\cdots$$
-The denominator goes up by a factor of 5, $\ds 5^{n+1}=5\cdot5^n$, but the
-numerator goes up by much less: $\ds (n+1)^5=n^5+5n^4+10n^3+10n^2+5n+1$,
-which is much less than $\ds 5n^5$ when $n$ is large, because $\ds 5n^4$ is
-much less than $\ds n^5$. So we might guess that in the long run it begins
-to look as if each term is $1/5$ of the previous term. We have seen
-series that behave like this:
-$$\sum_{n=0}^\infty {1\over 5^n} = {5\over4},$$
-a geometric series. So we might try comparing the given series to some
-variation of this geometric series. This is possible, but a bit
-messy. We can in effect do the same thing, but bypass most of the
-unpleasant work.
+\begin{solution}
+  The series $\ds\sum_{n=0}^\infty {n^5\over 5^n}$ converges.
 
+  As long as $n \geq 23$, we have $2^n \geq n^5$.  Therefore, as long as $n \geq 23$, we have
+  $$
+  \frac{n^5}{5^n} \leq \frac{2^n}{5^n} = \left( \frac{2}{5} \right)^n
+  $$
+  But the geometric series $\ds\sum_{n=23}^\infty \left( \frac{2}{5}
+  \right)^n$ converges, since the ratio between subsequent terms is
+  less than one.  So by comparison, the smaller series
+  $$
+  \ds\sum_{n=23}^\infty \frac{n^5}{5^n}
+  $$
+  must also converge.  The first handful of terms when $n < 23$
+  doesn't affect convergence at all, so we are justified to conclude
+  that the original series $\ds\sum_{n=0}^\infty {n^5\over 5^n}$
+  converges.
+\end{solution}
+
+That worked---but it invoked an unmotivated fact: how do I know that
+$2^n \geq n^5$ whenever $n \geq 23$?  Invoking that fact seems a bit
+random---yes, yes, a proof, but perhaps not a proof that conveys
+exactly what is going on.  It is a valid argument but missing some
+motivation.
+
+\subsection{Theory}
+
+Instead, consider what happens as we move from one term to the next term in
+this series, that is, consider two neighboring terms
+$$\cdots+{n^5\over5^n}+{(n+1)^5\over 5^{n+1}}+\cdots.$$
+The denominator goes up by a factor of 5, $\ds 5^{n+1}=5\cdot5^n$, but
+the numerator goes up by much less: $\ds
+(n+1)^5=n^5+5n^4+10n^3+10n^2+5n+1$, which is much less than $\ds 5n^5$
+when $n$ is large, because $\ds 5n^4$ is much less than $\ds n^5$.
+(This sort of thinking is \textit{why} it was worth comparing $n^5$ to
+an exponential $2^n$ for $n$ large.)
+
+So we might guess that in the long run---when $n$ is very large---it
+begins to look as if each term is about $1/5$ of the previous term. We
+have seen series that behave like this, namely the geometric series
+$$\sum_{n=0}^\infty {1\over 5^n} = {5\over4}.$$
+We are beginning to see why it made sense to compare the given series
+to a geoemtric series as in the initially very unmotivated argument
+above.
+
+But we can do better!  Instead of an \textit{ad hoc} argument which
+compared $n^5$ to $2^n$, we can try to make rigorous the idea that
+each term is ``eventually'' about a fifth as big as the previous term.
 The key is to notice that
 $$
   \lim_{n\to\infty} {a_{n+1}\over a_n}=
@@ -25,48 +57,86 @@ $$
   \lim_{n\to\infty} {(n+1)^5\over n^5}{1\over 5}=1\cdot {1\over5}
     ={1\over 5}.
 $$ 
-This is really just what we noticed above, done a bit more officially:
-in the long run, each term is one fifth of the previous term. Now pick
-some number between $1/5$ and $1$, say $1/2$. Because
+This is a more formal version of what we noticed about the ratio of
+subsequent terms: in the long run, each term is one fifth of the
+previous term.  Pick some number just slightly bigger than
+$\ds\frac{1}{5}$; let's call that number $\ds\frac{1}{5} + \epsilon$.
+\marginnote{The symbol $\epsilon$ is the Greek letter
+  \textit{epsilon}, and, conventionally, denotes a small but positive
+ number.}
+
+% BADBAD I suspect the switch from n to N is pretty confusing
+Because
 $$\lim_{n\to\infty} {a_{n+1}\over a_n}={1\over5},$$
-then when $n$ is big enough, say $n\ge N$ for some $N$, 
+then by choosing $n$ big enough, say $n\ge N$ for some $N$, we can
+guarantee that $\ds\frac{a_{n+1}}{a_n}$ is as close as we'd like to
+$\ds\frac{1}{5}$, say within $\epsilon$ of $\ds\frac{1}{5}$.  More
+succinctly, there must be some $N$ so that whenever $n \geq N$, we
+have
 $$
-  {a_{n+1}\over a_n}<{1\over2} \hbox{\quad and\quad} a_{n+1}<{a_n\over2}.
+\frac{a_{n+1}}{a_n} < \frac{1}{5} + \epsilon
 $$
-So $\ds a_{N+1}< a_N/2$, $\ds a_{N+2}<a_{N+1}/2<a_N/4$,
-$\ds a_{N+3}<a_{N+2}/2< a_{N+1}/4<a_N/8$, and so on. The general form is
-$\ds a_{N+k}< a_N/2^k$. So if we look at the series
+Multiplying both sides by $a_n$, we find whenever $n \geq N$ that
 $$
-  \sum_{k=0}^\infty a_{N+k}=
-  a_N+a_{N+1}+a_{N+2}+a_{N+3}+\cdots+a_{N+k}+\cdots,
+a_{n+1} <  \left( \frac{1}{5} + \epsilon \right) a_n.
 $$
-its terms are less than or equal to the terms of the sequence
+We can say the same thing when $n$ is replaced by $N+1$, meaning
 $$
-  a_N+{a_N\over2}+{a_N\over4}+{a_N\over8}+\cdots+{a_N\over2^k}+\cdots=
-  \sum_{k=0}^\infty {a_N\over 2^k} = 2a_N.
+a_{N+2} <  \left( \frac{1}{5} + \epsilon \right) a_{N+1},
 $$
-So by the comparison test, $\ds\sum_{k=0}^\infty a_{N+k}$ converges,
-and this means that $\ds\sum_{n=0}^\infty a_{n}$ converges, since
-we've just added the fixed number $\ds a_0+a_1+\cdots+a_{N-1}$.
+which together with the previous statement when $n$ is $N$ implies
+$$
+a_{N+2} <  \left( \frac{1}{5} + \epsilon \right)^2 a_N.
+$$
+And we can repeat this again!  Since
+$$
+a_{N+3} <  \left( \frac{1}{5} + \epsilon \right) a_{N+2},
+$$
+we also learn that
+$$
+a_{N+3} <  \left( \frac{1}{5} + \epsilon \right)^3 a_N,
+$$
+or in general,
+$$
+a_{N+k} <  \left( \frac{1}{5} + \epsilon \right)^k a_N.
+$$
+This is setting up a comparison.  The geometric series
+$$
+\sum_{k=0}^\infty \left( \frac{1}{5} + \epsilon \right)^k a_N = \left( \sum_{k=0}^\infty \left( \frac{1}{5} + \epsilon \right)^k \right) a_N
+$$
+converges as long as $\epsilon$ had been chosen so small that $\ds\frac{1}{5} + \epsilon < 1$.  But if that series converges, then the series 
+$$
+\sum_{k=0}^\infty a_{N+k} = a_N + a_{N+1} + a_{N+2} + \cdots
+$$
+also converges, because each term of that series is smaller than the corresponding term of the convergent geometric series.  But if \textit{that} series converges, then 
+$$
+\sum_{k=0}^\infty a_{k} = a_0 + a_{1} + a_{2} + \cdots
+$$
+since we've just added the number $\ds a_0+a_1+\cdots+a_{N-1}$ to the convergent series $\sum_{k=0}^\infty a_{N+k}$.
 
 Under what circumstances could we do this? What was crucial was that
 the limit of $\ds a_{n+1}/a_n$, say $L$, was less than 1 so that we could pick a
-value $r$ so that $L<r<1$. The fact that $L<r$ ($1/5<1/2$ in our
-example) means that we can compare the series $\sum a_n$ to $\sum
-r^n$, and the fact that $r<1$ guarantees that $\sum r^n$
-converges. That's really all that is required to make the argument
-work. We also made use of the fact that the terms of the series were
-positive; in general we simply consider the absolute values of the
-terms and we end up testing for absolute convergence.
+value $\epsilon$ so that $L + \epsilon < 1$ and then compare to the convergent series
+$$
+\sum_{k=0}^\infty (L + \epsilon)^k \cdot a_N.
+$$
+That's really all that is required to make the argument work. We also
+made use of the fact that the terms of the series were positive.
+\marginnote{In general, we can consider instead the absolute values of the terms, and end
+up testing for \textbf{absolute convergence.}  We'll discuss this topic in Section~\xrefn{section:absolute-convergence}.}
+Let's summarize the situation when this works.
 
 \begin{theorem} (The Ratio Test)
-Suppose that $\ds\lim_{n\to \infty} |a_{n+1}/a_n|=L$. If $L<1$
-the series $\sum a_n$ converges absolutely, 
-if $L>1$ the series diverges, and if
-$L=1$ this test gives no information.
+Consider the series $\ds\sum_{n=0}^\infty a_n$ where each term $a_n$ is positive.
+Suppose that
+$$
+\lim_{n\to \infty} \frac{a_{n+1}}{a_n}=L.
+$$
+If $L<1$ the series $\sum a_n$ converges.  If $L>1$ the
+series diverges.  If $L=1$ this test is inconclusive.
 \end{theorem}
 
-\begin{proof}
+\begin{proof}%BADBAD
 The example above essentially proves the first part of this, if we
 simply replace $1/5$ by $L$ and $1/2$ by $r$. 
 Suppose that $L>1$, and pick $r$ so that $1<r<L$.
@@ -82,44 +152,30 @@ series with $L=1$, one that converges and one that diverges. It is
 easy to see that $\sum 1/n^2$ and $\sum 1/n$ do the job.
 \end{proof}
 
-\begin{example} The ratio test is particularly useful for series involving
-the factorial function. Consider $\ds\sum_{n=0}^\infty  5^n/n!$. 
+\subsection{Practice}
+
+The ratio test is particularly useful for series involving
+the factorial function. 
+
+\begin{example} 
+Does the series 
 $$
-  \lim_{n\to\infty} {5^{n+1}\over (n+1)!}{n!\over 5^n}=
-  \lim_{n\to\infty} {5^{n+1}\over 5^n}{n!\over (n+1)!}=
-  \lim_{n\to\infty} {5}{1\over (n+1)}=0.
+\ds\sum_{n=0}^\infty  5^n/n!
 $$
-Since $0<1$, the series converges.
+converge or diverge?
 \end{example}
+\marginnote{Remember our convention that $0! = 1$.  We are not dividing by zero here.}
 
-A similar argument, which we will not do, justifies a similar test
-that is occasionally easier to apply. 
-
-\begin{theorem} (The Root Test) 
-\label{thm:root test}
-Suppose that $\ds\lim_{n\to \infty} |a_n|^{1/n}=L$. If $L<1$
-the series $\sum a_n$ converges absolutely, 
-if $L>1$ the series diverges, and if
-$L=1$ this test gives no information.
-\end{theorem}
-
-The proof of the root test is actually easier than that of the ratio
-test, and is a good exercise.
-
-\begin{example} Analyze $\ds\sum_{n=0}^\infty {5^n\over n^n}$.
-\ssk
-The ratio test turns out to be a bit difficult on this series (try
-it). Using the root test:
-$$
-  \lim_{n\to\infty} \left({5^n\over n^n}\right)^{1/n}=
-  \lim_{n\to\infty} {(5^n)^{1/n}\over (n^n)^{1/n}}=
-  \lim_{n\to\infty} {5\over n}=0.
-$$
-Since $0<1$, the series converges.
-\end{example}
-
-The root test is frequently useful when $n$ appears as an exponent in
-the general term of the series.
+\begin{solution}
+Let's name the terms $a_n = 5^n / n!$ so we are considering $\sum_{n=0}^\infty a_n$.  To apply ratio test, we consider
+\begin{align*}
+  \lim_{n\to\infty} \frac{a_{n+1}}{a_n}
+  &= \lim_{n\to\infty} {5^{n+1}\over (n+1)!}{n!\over 5^n} \\
+  &= \lim_{n\to\infty} {5^{n+1}\over 5^n}{n!\over (n+1)!} \\
+  &= \lim_{n\to\infty} {5}{1\over (n+1)}=0.
+\end{align*}
+Since $0<1$, the series converges by the ratio test.
+\end{solution}
 
 \begin{exercises}
 
@@ -157,7 +213,43 @@ Determine whether the series converge.
 \begin{answer} diverges
 \end{answer}\end{exercise}
 
-\begin{exercise} Prove theorem \xrefn{thm:root test}, the root test.\end{exercise}
-
 \end{exercises}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The mostly useless root test}
+
+A similar argument, which we will not do, justifies a similar test
+that is \textit{very occasionally} easier to apply, but usually not as
+good as choosing to use the ratio test.
+
+%BADBAD
+\begin{theorem} (The Root Test) \label{thm:root test}
+Consider the series $\ds\sum_{n=0}^\infty a_n$ where each term $a_n$ is positive.
+Suppose that $\ds\lim_{n\to \infty} \left(a_n\right)^{1/n}=L$. If $L<1$
+the series $\sum a_n$ converges.
+If $L>1$ the series diverges.  If
+$L=1$ this test gives no information.
+\end{theorem}
+
+The proof of the root test is actually easier than that of the ratio
+test, and is a good exercise.
+
+\begin{example} Analyze $\ds\sum_{n=0}^\infty {5^n\over n^n}$.
+\ssk
+The ratio test turns out to be a bit difficult on this series (try
+it). Using the root test:
+$$
+  \lim_{n\to\infty} \left({5^n\over n^n}\right)^{1/n}=
+  \lim_{n\to\infty} {(5^n)^{1/n}\over (n^n)^{1/n}}=
+  \lim_{n\to\infty} {5\over n}=0.
+$$
+Since $0<1$, the series converges.
+\end{example}
+
+The root test is frequently useful when $n$ appears as an exponent in
+the general term of the series.
+
+\begin{exercise}
+\begin{exercise}
+Prove theorem \xrefn{thm:root test}, the root test.\end{exercise}
+\end{exercises}
