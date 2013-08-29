@@ -3,6 +3,14 @@
 \ProvidesPackage{mooculus}[2012/01/30 v0.75]
 \ProcessOptions\relax
 
+\RequirePackage{titletoc}
+
+\setcounter{tocdepth}{3}
+\titlecontents{section}[1.2em]{\addvspace{0.6em}\bfseries}{\contentslabel{1.2em}}{\hspace*{-1.2em}}{}[]% define format for section of toc; entries: section, left, above, before with label, before without label, filler and page, after
+\titlecontents{subsection}[3em]{}{\contentslabel{1.8em}}{\hspace*{-1.8em}}{}[]% define format for subsection of toc; entries: section, left, above, before with label, before without label, filler and page, after
+\titlecontents{subsubsection}[5.6em]{}{\contentslabel{2.6em}}{\hspace*{-2.6em}}{}[]% define format for subsubsection of toc; entries: section, left, above, before with label, before without label, filler and page, after
+\titlecontents{psection}[1.8em]{\addvspace{0.6em}}{\contentslabel{2.4em}}{\hspace*{-2.4em}}{}[]% define format for section of toc; entries: section, left, above, before with label, before without label, filler and page, after
+\titlecontents{psubsection}[4.4em]{}{\contentslabel{3.0em}}{\hspace*{-3.0em}}{}[]% define format for subsection of toc; entries: section, left, above, before with label, before without label, filler and page, after
 
 %\RequirePackage{float}
 \RequirePackage{tabu} % allows for table with thick lines
@@ -55,7 +63,7 @@
 \let\iint\undefined 
 \let\iiint\undefined 
 \RequirePackage{kmath,kerkis} % The order of the packages matters; kmath changes the default text font
-
+\RequirePackage{microtype}
 
 %% Palatino Clone
 %\usepackage[notextcomp]{kpfonts} 
@@ -191,7 +199,7 @@
 
 %% User defined commands
 \renewcommand{\epsilon}{\varepsilon}
-\renewcommand{\theta}{\vartheta} %% only for kmath
+%\renewcommand{\theta}{\vartheta} %% only for kmath
 \renewcommand{\l}{\ell}
 \renewcommand{\d}{\, d}
 \newcommand{\ddx}{\frac{d}{dx}}
@@ -281,6 +289,17 @@ skipabove=\baselineskip]},
   postfoothook=\end{mdframed} ]{thmStyle}%
 \declaretheorem[style=thmStyle,name=Theorem,numberlike=mainTheorem]{theorem}
 
+\declaretheoremstyle[ headfont=\normalfont\bfseries,
+  notefont=\mdseries, notebraces={(}{)}, bodyfont=\normalfont\slshape,
+  postheadspace=0.5em,
+  preheadhook={\begin{mdframed}[hidealllines=true,roundcorner=10pt,leftmargin=40,%
+rightmargin=40,backgroundcolor=theoremBackground,fontcolor=textColor,%%
+innertopmargin=6pt,%
+splittopskip=\topskip,skipbelow=\baselineskip,%
+skipabove=\baselineskip]},
+  postfoothook=\end{mdframed} ]{thmStyle}%
+\declaretheorem[style=thmStyle,name=Corollary,numberlike=mainTheorem]{corollary}
+
 
 \declaretheoremstyle[ headfont=\normalfont\bfseries,
   notefont=\mdseries, notebraces={(}{)}, bodyfont=\normalfont\upshape,
@@ -332,6 +351,16 @@ splittopskip=\topskip,skipbelow=\baselineskip,skipabove=\baselineskip,
 font=\upshape
 ]{definition}%
 {Definition}
+
+\theoremheaderfont{\normalfont\bfseries}
+\theorembodyfont{\upshape}
+\newmdtheoremenv[hidealllines=true,roundcorner=10pt,leftmargin=40,%
+rightmargin=40,backgroundcolor=definitionBackground,fontcolor=textColor,%%
+innertopmargin=6pt,%\topskip,%
+splittopskip=\topskip,skipbelow=\baselineskip,skipabove=\baselineskip,
+font=\upshape
+]{outline}%
+{Outline of Chapter~\protect\thechapter}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
