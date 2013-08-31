@@ -1,0 +1,20 @@
+require 'fileutils'
+
+def original_script
+  filename = Dir.new(Rake.original_dir).entries.select{ |x| x.match( /\.txt$/ ) }.first
+  return File.open( Rake.original_dir + '/' + filename ).read
+end
+
+desc "Copy .MTS files referenced in current script from SD card"
+task :copy do
+  sh "sudo mount /dev/sdb1 /mnt/storage"
+  for line in original_script.split("\n") do
+    if line.match( /^([0-9]+) / )
+      next if File.exist?( Rake.original_dir + '/' + $1 + '.MTS' )
+      filename = '/mnt/storage/PRIVATE/AVCHD/BDMV/STREAM/' + $1 + '.MTS'
+      puts "Copying #{filename} to #{Rake.original_dir}..."
+      FileUtils.cp( filename, Rake.original_dir )
+    end
+  end
+  sh "sudo umount /mnt/storage"
+end
