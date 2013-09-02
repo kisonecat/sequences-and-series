@@ -1,0 +1,41 @@
+\documentclass[11pt]{article}
+
+%\usepackage{xltxtra,fontspec,xunicode}
+%\defaultfontfeatures{Scale=MatchLowercase}
+%\setsansfont[Numbers=Uppercase]{Proxima Nova.ttf}
+
+\everymath=\expandafter{\the\everymath\displaystyle}
+\newcommand{\category}{category}
+\usepackage{nopageno}
+\usepackage{geometry}
+\geometry{paperwidth=5.333333333333333333in,paperheight=3in,margin=0.1in}
+\setlength{\parindent}{0in}
+
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{textcomp}
+
+\usetikzlibrary{calc}
+\usepackage{calc}
+\usetikzlibrary{fadings}
+
+\begin{document}
+
+\begin{tikzpicture}[remember picture,overlay]
+
+\draw [fill=black] (current page.north west) rectangle (current page.south east);
+\node[shift={(0em, <%= float(Math.sqrt(first)-8.0) %>em)},color=white,opacity=<%=float(first**0.15)%>] at (current page.center) {\textsf{created by Jim Fowler}};
+
+\draw [fill=white,opacity=<%= float(second) %>] (current page.north west) rectangle (current page.south east);
+
+\node[shift={(0em, <%= float(Math.sqrt(first)-8.0) %>em)},color=black!68!white,opacity=<%=float(second)%>] at (current page.center){\textsf{\makebox[\widthof{created by}][r]{\copyright\ 2013,} Jim Fowler}};
+
+\node[shift={(0em, <%= float(2.0 * second**0.25 - 1.0) %>em)},opacity=<%= float(second) %>] at (current page.center) {\includegraphics[width=4in]{assets/TheOhioStateUniversity-Horiz-RGBHEX.pdf}};
+
+
+
+\end{tikzpicture}
+
+\end{document}
+
