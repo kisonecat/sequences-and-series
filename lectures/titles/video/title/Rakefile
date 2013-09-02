@@ -1,0 +1,76 @@
+require 'rake'
+require 'rake/clean'
+require 'rubygems'
+require 'erb'
+require 'date'
+require 'time'
+
+def float(x)
+  return '%0.5f' % x
+end
+
+#title = File.open('title.txt').read.gsub( "\n", " " )
+title = 'Testing this thing'
+
+frame_count = 180
+
+################################################################
+# rasterize a PDF into a PNG
+rule( /.*\.png$/ => [proc {|task_name| task_name.sub(/\.png$/, '.pdf')}] ) do |t|
+  sh "mudraw -r 240 -o #{t.name} #{t.source}"
+end    
+
+CLEAN.include('*.png')
+
+################################################################
+# run pdflatex on a tex file to get a pdf
+rule( /.*\.pdf$/ => [proc {|task_name| task_name.sub(/\.pdf$/, '.tex')}] ) do |t|
+  sh "pdflatex #{t.source} > /dev/null"
+  sh "pdflatex #{t.source} > /dev/null"
+end    
+
+CLEAN.include('*.pdf')
+CLEAN.include('*.log')
+CLEAN.include('*.aux')
+
+################################################################
+# produce a single frame as a tex file
+template = ERB.new(File.open("title.tex.erb").read)
+
+rule( /frame[0-9]+\.tex$/ => 'title.tex.erb' ) do |t|
+  i = t.name.gsub( /[^0-9]/, '' ).to_i
+  puts i
+  p = i.to_f / frame_count.to_f
+
+  transition = 15
+  second_transition = 90
+
+  first = 1.0
+  first = i.to_f / transition if (i <= transition)
+  second = 0.0
+  second = (i - transition).to_f / (second_transition - transition).to_f if (i >= transition)
+  third = 0.0
+  third = (i - second_transition).to_f / (frame_count - second_transition).to_f if (i >= second_transition)
+
+  f = File.open( t.name, "w")
+  f.puts template.result(binding)
+  f.close
+end
+
+CLEAN.include('*.tex')
+
+################################################################
+# combine all the frames into a single video
+frames = ((0...frame_count).collect{ |i| "frame#{'%04d' % (i+1)}.png" })
+multitask "title.mp4" => frames do
+  sh "ffmpeg -f image2 -r 29.97 -i frame%04d.png -vcodec libx264 -pix_fmt yuv420p -b 8000k -y title.mp4"
+end
+
+CLOBBER.include('*.mp4')
+
+file "output.mp4" => ["title.mp4"] do
+  sh "ffmpeg -y -i title.mp4 -vcodec libx264 -pix_fmt yuv420p -vprofile high -preset medium -tune film -crf 22 -coder 1 -me_method umh -x264opts rc_lookahead=30 -x264opts b-pyramid=strict -trellis 1 -threads 0  output.mp4"
+end
+
+
+task :default => "title.mp4"
