@@ -1,0 +1,10 @@
+Dear %NAME%,
+<br>
+<br>For me, a MOOC is more than teaching—it is a way for me to <em>learn</em> what works in the classroom. For starters, I want to learn as much as I can about who is taking this course.
+<br>
+<br>I would very much appreciate your taking a short demographic survey, available at <a title="Link: https://www.surveymonkey.com/s/5NPGQRR?c=%GLOBAL_USER_ID:2013-may-demographics%" href="https://www.surveymonkey.com/s/5NPGQRR?c=%GLOBAL_USER_ID:2013-may-demographics%">https://www.surveymonkey.com/s/5NPGQRR?c=%GLOBAL_USER_ID:2013-may-demographics%</a>
+<br>
+<br>You may already have taken this demographic survey from Coursera; if you have already completed the demographic survey, you do not need to take the survey again.
+<br>
+<br>Thanks for your help with this and everything in the course,
+<br>~jim
