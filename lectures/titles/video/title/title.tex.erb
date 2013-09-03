@@ -17,31 +17,15 @@
 \begin{document}
 
 \begin{tikzpicture}[remember picture,overlay]
-%  \draw [fill=white] (current page.north west) rectangle (current page.south east);
+
 \tikzfading[name=fade out,
 inner color=transparent!0,
 outer color=transparent!100]
-%  \shade[shading=axis,bottom color=white,top color=white,middle color=black!13!white,shading angle=0.35] (current page.north west) rectangle (current page.south east);
-
-%  \node [shift={(0.5em,0em)},color=gray!70!blue,opacity=0.5,anchor=north east,rotate=0] at (current page.north east) {\sffamily \scalebox{2.2}{\Huge\textbf{MOOC}ULUS}};%
-
-%  \node [shift={(0.5em,0em)},color=gray!70!blue,opacity=0.35,anchor=south west,rotate=0] at (current page.south west) {\sffamily \scalebox{2.2}{\Huge Calculus One}};%
-
-
-
-%  \node [shift={(0em,1em)}] (copyright) at (current page.center)
-%  {\scalebox{2.5}{\parbox{2in}{\begin{center}\bigtitle\end{center}}}};
 
 <% first = first * first %>
 
 <% second = 1.0/(1.0 + Math.exp(-20.0*second + 10.0)) %>
 <% scale = 3.4 + 46.6*second %>
-
-%  \node [yscale=-0.35,shift={(0em,<%= float( - (1.0/0.35)*((2.0 * (0.5 - p)*(0.5 - p))+0.4)+5.0+11.0*second ) %>em)},opacity=0.85] (reflection) at (current page.center)
- % {\scalebox{<%= float(scale/20.0) %>}{\parbox{2in}{\begin{center}\bigtitle\end{center}}}};
-
-%  \fill [path fading=north,color=white]
- % ($ (reflection) + (-3in,<%= float(0.77*0.35*scale/20.0) %>in) $) rectangle   ($ (reflection) + (3in,<%= float(-0.77*0.35*scale/20.0) %>in) $);
 
 \shade[shading=axis,bottom color=white,top color=white,middle color=black!<%=float(13.0*(1.0-second))%>!white] (current page.north west) rectangle (current page.south east);
 
@@ -63,7 +47,7 @@ outer color=transparent!100]
        \null\hspace{0.85in}{\normalsize and} \vspace{-1.1ex}\\ \null\hspace{0.75in}{\Huge series}}}};
 <% end %>
 
- \node [shift={(0em,<%= float( 2.0 * (0.5 - p)*(0.5 - p) + 0.4 ) %>em)}] (copyright) at (current page.center)
+ \node [shift={(0em,<%= float( 2.0 * (0.6 - q)*(0.6 - q) ) %>em)}] (copyright) at (current page.center)
   {\scalebox{<%= float(scale/20.0) %>}{\parbox{2in}{\begin{center}\bigtitle\end{center}}}};
 
 

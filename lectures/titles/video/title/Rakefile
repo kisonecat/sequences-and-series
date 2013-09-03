@@ -9,8 +9,7 @@ def float(x)
   return '%0.5f' % x
 end
 
-#title = File.open('title.txt').read.gsub( "\n", " " )
-title = 'Testing this thing'
+title = File.open('title.txt').read.gsub( "\n", " " )
 
 frame_count = 180
 
@@ -40,13 +39,17 @@ template = ERB.new(File.open("title.tex.erb").read)
 rule( /frame[0-9]+\.tex$/ => 'title.tex.erb' ) do |t|
   i = t.name.gsub( /[^0-9]/, '' ).to_i
   puts i
-  p = i.to_f / frame_count.to_f
 
   transition = 15
   second_transition = 90
 
+  p = i.to_f / second_transition.to_f
+  p = 1.0 if (p > 1.0)
+
+  q = i.to_f / frame_count.to_f
+
   first = 1.0
-  first = i.to_f / transition if (i <= transition)
+  first = i.to_f / (2*transition) if (i <= (2*transition))
   second = 0.0
   second = (i - transition).to_f / (second_transition - transition).to_f if (i >= transition)
   third = 0.0
