@@ -39,7 +39,6 @@ task :title do
   target = "#{Rake.original_dir}/title.mp4"
   Dir.mktmpdir(nil,"/tmp") {|dir|
     FileUtils.cp( "../lectures/titles/video/title/Rakefile", dir )
-    FileUtils.cp( "../lectures/titles/video/title/animation.params", dir )
     FileUtils.cp( "../lectures/titles/video/title/title.tex.erb", dir )
     Dir.chdir( dir )
     f = File.open( "title.txt", "w" )
@@ -57,7 +56,7 @@ task :xml do
   f.puts '<movie author="Jim Fowler">'
   for line in original_script.split("\n") do
     if line.match( /^title/ )
-      f.puts '<video src="title.mp4" audio="/home/jim/sequences-and-series/lectures/titles/audio/intro.wav" in="0" out="3"/>'
+      f.puts '<video src="title.mp4" audio="/home/jim/sequences-and-series/lectures/titles/audio/intro.wav" in="0" out="6"/>'
     end
 
     if line.match( /^([0-9]+)/ )
@@ -71,7 +70,7 @@ task :xml do
       end
     end
   end
-  f.puts '<video src="/home/jim/sequences-and-series/lectures/titles/video/end-title/title.mp4" audio="/home/jim/sequences-and-series/lectures/titles/audio/outro.wav" in="0" out="10"/>'
+  f.puts '<video src="/home/jim/sequences-and-series/lectures/titles/video/end-title/title.mp4" audio="/home/jim/sequences-and-series/lectures/titles/audio/outro.wav" in="0" out="11"/>'
   f.puts '</movie>'
   f.close
 end
@@ -92,7 +91,6 @@ task :serialize do
       file.puts line.gsub( '/home/jim', '/home/fowler.291' )
     }
     file.close
-    sh "cat #{file.path}"
     sh "melt #{file.path} -consumer avformat:dump.mp4 vcodec=libx264 pix_fmt=yuv420p preset=medium tune=film crf=22 coder=1 me_method=umh x264opts=rc_lookahead=30 x264opts=b-pyramid=strict trellis=1 threads=16 acodec=aac ac=1 ab=128K"
   else
     sh "melt editlist.xml -consumer avformat:dump.mp4 vcodec=libx264 pix_fmt=yuv420p preset=medium tune=film crf=22 coder=1 me_method=umh x264opts=rc_lookahead=30 x264opts=b-pyramid=strict trellis=1 threads=16 acodec=aac ac=1 ab=128K"
@@ -103,11 +101,14 @@ task :serialize do
   sh "mv dump.mp4 #{filename}.mp4"
 end
 
-desc "Use MLT on compute to serialize the editlist to an mp4"
-task :serialize do
-  Dir.chdir( Rake.original_dir )
-  sh "melt editlist.xml -consumer avformat:dump.mp4 vcodec=libx264 pix_fmt=yuv420p preset=medium tune=film crf=22 coder=1 me_method=umh x264opts=rc_lookahead=30 x264opts=b-pyramid=strict trellis=1 threads=16 acodec=aac ac=1 ab=128K"
-  sh "MP4Box -inter 500 dump.mp4"
+desc "Download the copy from the compute server"
+task :download do
   filename = Rake.original_dir.split('/')[-1]
-  sh "mv dump.mp4 #{filename}.mp4"
+  remote = Rake.original_dir.gsub( '/home/jim/', 'math:' ) + '/' + filename + '.mp4'
+  sh "scp #{remote} #{Rake.original_dir}"
+end
+
+desc "Archive to the video archive directory"
+task :archive do
+  sh "mv #{Rake.original_dir} /home/jim/sequences-and-series/archive"
 end
