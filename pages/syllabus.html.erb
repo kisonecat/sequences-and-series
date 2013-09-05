@@ -1,0 +1,33 @@
+<% require 'rubygems' %>
+<% require 'nokogiri' %>
+<% require './course' %>
+
+<%= breadcrumbs('Syllabus') %>
+
+<p>The course begins on <%= COURSE_START.strftime('%A, %B %e, %Y') %>.</p>
+
+<hr/>
+
+<% week_start = COURSE_START %>
+
+<% for i in 1..6 do %>
+  <span style="float: right; color: #888;"><%= week_start.strftime('%e %B %Y').strip %>&ndash;<%= (week_start+7).strftime('%e %B %Y').strip %></span>
+
+  <% doc = Nokogiri::HTML(open("week#{i}.html")) %>
+  <% week_title = doc.search("#week-title").first %>
+  <% week_title = week_title.content unless week_title.nil? %>
+  <% week_summary = doc.search("#week-summary").first %>
+  <% week_summary = week_summary.content unless week_summary.nil? %>
+
+  <h3><a style="color: inherit;" href="/<%= COURSE_NAME %>/wiki/view?page=week<%= i %>">Week <%= i %> <small style="color: #888;"><%= week_title %></small></a></h3>
+  <p><%= week_summary %><a href="/<%= COURSE_NAME %>/wiki/view?page=week<%= i %>" style="padding-left: 20pt;">Read More&hellip;</a></p>
+
+  <div style="clear: both;"/>
+
+  <% week_start = week_start + 7 %>
+  <hr/>
+<% end %>
+
+<h3>Final Examination</h3>
+
+<p>At the end of the course, on <%= week_start.strftime('%e %B %Y').strip %>, there will be a final examination.  You will have one week (until <%= (week_start+7).strftime('%e %B %Y').strip %>) to complete the exam.</p>

@@ -1,0 +1,62 @@
+<% require './course' %>
+
+<%= breadcrumbs('Grading and Logistics') %>
+
+<h3>Course format</h3>
+
+<p>The course is <%= WEEK_COUNT %> weeks long, and begins on
+<%= COURSE_START.strftime('%A, %B %e, %Y') %>.</p>
+
+<p>To help you understand sequences and series, each week consists of</p>
+<ul><li><a href="/<%= COURSERA_COURSE %>/lecture/index">lecture videos</a>,</li>
+<li><a href="/<%= COURSERA_COURSE %>/quiz/index">randomly generated homework problems</a>,</li>
+<li>suggested readings from <a href="/<%= COURSERA_COURSE %>/wiki/view?page=Textbook">the textbook</a>,</li>
+<li><a href="/<%= COURSERA_COURSE %>/forum/index">discussion in the course forums</a>, and</li>
+<li>weekly <a href="/<%= COURSERA_COURSE %>/wiki/view?page=officehours">office hours</a>.</li>
+</ul>
+<p>The course will finish
+with a <a href="/<%= COURSERA_COURSE %>/quiz/index?quiz_type=exam">final exam</a> to let you demonstrate what you have learned in our <%= WEEK_COUNT %> weeks together.</p>
+
+<p>The complete <a href="/<%= COURSERA_COURSE %>/wiki/view?page=syllabus">course calendar</a> is available under the <a href="/<%= COURSERA_COURSE %>/wiki/view?page=syllabus">Syllabus</a> link to the left.</p>
+
+<hr/>
+<h3>Grading policy</h3>
+
+<p>There is commonly a distinction made between</p>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Summative_assessment">summative assessment</a>, or assessment <em>of</em> learning, and</li>
+<li><a href="http://en.wikipedia.org/wiki/Formative_assessment">formative assessment</a>, or assessment <em>for</em> learning.</li>
+</ul>
+
+<h4>Formative assessment&nbsp;<small style="color: #777;">meaning the homework</small></h4>
+
+<p>Each week ends with a homework set; you can attempt these homework
+sets one hundred times if you like, and there are complete hints and
+solutions available on the homework set if you get stuck.  Keep doing
+the homework until you master it.</p>
+
+<p><strong>Each homework set is worth <%= POINTS_PER_HOMEWORK %> points,</strong> and there are <%= WEEK_COUNT %> homework sets, for a total of <%= POINTS_PER_HOMEWORK * WEEK_COUNT %> points to be earned doing homework.  The only
+reason the homework is worth points is to entice you to do the
+homework; I expect that many students will earn nearly perfect scores
+on the homework after trying it multiple times, or by using the
+hints.</p>
+
+<h4>Summative assessment&nbsp;<small style="color: #777;">meaning the final examination</small></h4>
+
+<p>At the end of the course is a final exam.  <strong>The final exam
+is worth <%= EXAM_POINTS %> points</strong> and will be a reprisal of the concepts
+and skills you have mastered on the homework.  Unlike the homework,
+the final exam will not provide hints, and you will only be able to
+attempt the final exam twice.</p>
+
+<h4>Late days</h4>
+
+<p>You will have ten late days to use as you wish.</p>
+
+<hr/>
+
+<h3>Certificates</h3>
+
+<p>To earn a certificate, you must earn <%= CERTIFICATE_PERCENTAGE %>% of the total possible points.  Since there are <%= TOTAL_POINTS %> points possible, you must earn <%= (CERTIFICATE_PERCENTAGE * TOTAL_POINTS / 100.0).floor %> points to earn a certificate.</p>
+
+<p>To earn a certificate <em>with distinction,</em> you must earn <%= CERTIFICATE_WITH_DISTINCTION_PERCENTAGE %>% of the total possible points, meaning you must earn <%= (CERTIFICATE_WITH_DISTINCTION_PERCENTAGE * TOTAL_POINTS / 100.0).floor %> points to earn a certificate with distinction.</p>
