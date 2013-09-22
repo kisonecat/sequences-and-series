@@ -15,11 +15,17 @@ suggest.  But what's that pattern?
 To make this talk of ``patterns'' less ambiguous, it is useful to
 think of a sequence as a function. We have up until now dealt with
 functions whose domains are the real numbers, or a subset of the real
-numbers, like $f(x)=\sin x$. A sequence is a function with domain the
-natural numbers $\N=\{1,2,3,\ldots\}$ or the non-negative integers,
-$\ds \Z^{\ge0}=\{0,1,2,3,\ldots\}$. The range of the function is still
-allowed to be the real numbers; in symbols, we say that a sequence is
-a function $f\colon \N\to\R$.
+numbers, like $f(x)=\sin (1/x)$.
+
+A real-valued function with domain the natural numbers
+$\N=\{1,2,3,\ldots\}$ is a \defnword{sequence}.
+
+Other functions will also be regarded as sequences: the domain might
+include $0$ alongside the positive whole numbers, meaning that the
+domain is the non-negative integers, $\ds
+\Z^{\ge0}=\{0,1,2,3,\ldots\}$.  The range of the function is still
+allowed to be the real numbers; in symbols, the function $f\colon
+\N\to\R$ is a sequence.
 
 \marginnote{Maybe you are feeling that this formality is unnecessary,
   or even ridiculous; why can't we just list off a few terms and pick
@@ -33,26 +39,28 @@ a function $f\colon \N\to\R$.
   language for associating numbers (terms) to other numbers
   (indices).}
 
-Sequences are written in a few different, but equivalent,
+Sequences are written down in a few different, but equivalent,
 ways; you might seen a sequence written as
 \begin{align*}
   & a_1,\quad a_2, \quad a_3, \quad\ldots, \\
+  & a_n \\
   & \left(a_n\right)_{n \in \N}, \\
   & \left\{a_n\right\}_{n=1}^\infty, \\
   & \left\{f(n)\right\}_{n=1}^\infty, \quad \mbox{or} \\
   & \left(f(n)\right)_{n \in \N},
 \end{align*}
-
 depending on which author you read.  Worse, depending on the
-situation, the same author might choose different notation for a
-sequence.
+situation, the same author (and this author) might use various
+notations for a sequence!
 
 Let's summarize the preceding discussion in the following definition.
 \begin{definition} \relax\index{sequence} A \defnword{sequence}
   $(a_n)$ is, formally speaking, a real-valued function with domain
-  the natural numbers $\N$ or the non-negative integers $\Z^{\ge 0}$.
-  Stated more humbly, a sequence assigns a real number to whole
-  numbers.
+  \[
+  \{ n \in \Z : n \geq N \},\quad \mbox{for some integer $N$.}
+  \]
+  Stated more humbly, a sequence assigns a real number to all the whole
+  numbers, starting with an index $N$.  
 
   The ``outputs'' of a sequence are the \defnword{terms} of the
   sequence; the ``$n^{\nth}$ term'' is the real number that the
@@ -60,7 +68,9 @@ Let's summarize the preceding discussion in the following definition.
   written $a_n$. \index{sequence!term}.  The $n$ in the phrase
   ``$n^{\nth}$ term'' is called an
   \defnword{index}\index{sequence!index}; the plural of index is
-  either indices or indexes, depending on who you ask.
+  either indices or indexes, depending on who you ask.  The first
+  index $N$ is called the \defnword{initial
+    index}\index{sequence!index!initial}.
 \end{definition} 
 
 \marginnote{Recall that the natural numbers $\N$ are the counting
@@ -70,15 +80,16 @@ Let's summarize the preceding discussion in the following definition.
   (since zero is neither positive nor negative) and also positive
   integers (since they certainly aren't negative).}
 
-\marginnote{Some people---perhaps computer scientists?---might include
-  zero in the natural numbers $\N$.  Mathematics is cultural.}
+\marginnote{To confuse matters further, some people---especially
+  computer scientists---might include zero in the natural numbers
+  $\N$.  Mathematics is cultural.}
 
 \begin{warning}
-  Our formal definition of sequence involves $\N$ and $\Z^{\ge 0}$.
-  But depending on the context, it may be convenient for a sequence to
+  Usually the ``domain'' of a sequence is $\N$ and $\Z^{\ge 0}$.  But
+  depending on the context, it may be convenient for a sequence to
   start somewhere else---perhaps with some negative number.  We
-  shouldn't let the formal definition get in the way of making the
-  best choice for the problem at hand.
+  shouldn't let the usual situation of $\N$ or $\Z^{\ge 0}$ get in the
+  way of making the best choice for the problem at hand.
 \end{warning}
 
 As you can tell, there is a deep tension between precise definition
@@ -93,9 +104,9 @@ of our understanding.
 \subsection{Defining sequences by giving a rule}
 
 Just as with functions with domain the real numbers, we will most
-often encounter sequences that can be expressed by a formula.  We have
-already seen the sequence $\ds a_i=f(i)=1-1/2^i$, and other examples
-are easy to cook up:
+often encounter sequences that can be expressed by a formula.  In the
+Introduction to this textbook, we saw the sequence $\ds
+a_i=f(i)=1-1/2^i$, and other examples are easy to cook up, like
 \begin{align*}
   a_i &={i\over i+1}, \\
   b_n &={1\over2^n}, \\
@@ -105,8 +116,9 @@ are easy to cook up:
 Frequently these formulas will make sense if thought of either as
 functions with domain $\R$ or $\N$, though occasionally the given
 formula will make sense only for whole numbers.  We'll address the
-idea of a real-valued function ``filling in'' the terms of a sequence
-when we look at graphs in Section~\xrefn{section:graphs}.
+idea of a real-valued function ``filling in'' the gaps between the
+terms of a sequence when we look at graphs in
+Section~\xrefn{section:graphs}.
 
 \begin{warning}
   A common misconception is to confuse the sequence with the rule for
@@ -119,11 +131,19 @@ when we look at graphs in Section~\xrefn{section:graphs}.
   Suppose $(a_n)$ and $(b_n)$ are sequences starting at $1$.  These
   sequences are \defnword{equal}\index{sequence!equality} if for all
   natural numbers $n$, we have $a_n = b_n$.
+
+  More generally, two sequences $(a_n)$ and $(b_n)$ are
+  \defnword{equal} if they have the same initial index $N$, and for
+  every integer $n \geq N$, the $n^{\nth}$ terms have the same value, that is,
+  \[
+  a_n = b_n \quad \mbox{for all $n \geq N$.}
+  \]
 \end{definition}
 
-In other words, sequences are the same if they output the same list of
-real numbers---regardless of whether the given ``rule'' or procedure
-for computing those sequences is the same rule.
+In other words, sequences are the same if they have the same set of
+valid indexes, and produce the same real numbers for each of those
+indexes---regardless of whether the given ``rules'' or procedures for
+computing those sequences resemble each other in any way.
 
 \subsection{Defining sequences using previous terms}
 
@@ -192,8 +212,8 @@ What is the next term $a_5$?  Can you identify the sequence?
 
 \begin{solution}
   In spite of many so-called ``intelligence tests'' that ask questions
-  like this, this question simply doesn't have an answer.  Or worse,
-  it has too many answers!
+  just like this, this question simply doesn't have an answer.  Or
+  worse, it has too many answers!
 
   This sequence might be ``the prime numbers in order, starting at
   41.''  If that's the case, then the next term is $a_5 =59$.  But
@@ -213,7 +233,7 @@ Now let's consider two popular ``families'' of sequences.
 The first family\sidenote{Mathematically, the word \defnword{family}
   does not have an entirely precise definition; a family of things is
   a \defnword{collection} or a \defnword{set} of things, but family
-  has a connotation of some sort of relatedness.} we consider are the
+  also has a connotation of some sort of relatedness.} we consider are the
 ``arithmetic'' sequences.  Here is a definition.
 
 \begin{definition}
@@ -287,8 +307,137 @@ $$
 $$
 the ratio between subsequent terms is one half, and each term is smaller than the previous.
 
-%\subsection{Triangular numbers}
-%BADBAD
+\subsection{Triangular numbers}
+
+The \defnword{triangular numbers} are a sequence of whole numbers
+counting the number of dots in increasingly large ``equilateral
+triangles'' built from dots.  The term $T_n$ is the number of dots in
+a triangle with $n$ dots to a side.
+
+\begin{fullwidth}
+\begin{figure*}[!h]
+\begin{minipage}{0.6in}
+\begin{center}
+\begin{tikzpicture}[y=0.5cm,x=0.3415cm]
+\fill (0,0) circle (3pt);
+\end{tikzpicture} \\
+$T_1 = 1$
+\end{center}
+\end{minipage}
+\begin{minipage}{1.1in}
+\begin{center}
+\begin{tikzpicture}[y=0.5cm,x=0.3415cm]
+\fill (0,0) circle (3pt);
+\fill (1,-1) circle (3pt);
+\fill (-1,-1) circle (3pt);
+\end{tikzpicture} \\
+$T_2 = 3$
+\end{center}
+\end{minipage}
+\begin{minipage}{1.2in}
+\begin{center}
+\begin{tikzpicture}[y=0.5cm,x=0.3415cm]
+\fill (0,0) circle (3pt);
+\fill (1,-1) circle (3pt);
+\fill (-1,-1) circle (3pt);
+\fill (-2,-2) circle (3pt);
+\fill (0,-2) circle (3pt);
+\fill (2,-2) circle (3pt);
+\end{tikzpicture} \\
+$T_3 = 6$
+\end{center}
+\end{minipage}
+\begin{minipage}{1.3in}
+\begin{center}
+\begin{tikzpicture}[y=0.5cm,x=0.3415cm]
+\fill (0,0) circle (3pt);
+\fill (1,-1) circle (3pt);
+\fill (-1,-1) circle (3pt);
+\fill (-2,-2) circle (3pt);
+\fill (0,-2) circle (3pt);
+\fill (2,-2) circle (3pt);
+\fill (-3,-3) circle (3pt);
+\fill (-1,-3) circle (3pt);
+\fill (1,-3) circle (3pt);
+\fill (3,-3) circle (3pt);
+\end{tikzpicture} \\
+$T_4 = 10$
+\end{center}
+\end{minipage}
+\begin{minipage}{1.5in}
+\begin{center}
+\begin{tikzpicture}[y=0.5cm,x=0.3415cm]
+\fill (0,0) circle (3pt);
+\fill (1,-1) circle (3pt);
+\fill (-1,-1) circle (3pt);
+\fill (-2,-2) circle (3pt);
+\fill (0,-2) circle (3pt);
+\fill (2,-2) circle (3pt);
+\fill (-3,-3) circle (3pt);
+\fill (-1,-3) circle (3pt);
+\fill (1,-3) circle (3pt);
+\fill (3,-3) circle (3pt);
+\fill (-4,-4) circle (3pt);
+\fill (-2,-4) circle (3pt);
+\fill (0,-4) circle (3pt);
+\fill (2,-4) circle (3pt);
+\fill (4,-4) circle (3pt);
+\end{tikzpicture} \\
+$T_5 = 15$ \\
+\end{center}
+\end{minipage}
+\begin{minipage}{1.7in}
+\begin{center}
+\begin{tikzpicture}[y=0.5cm,x=0.3415cm]
+\fill (0,0) circle (3pt);
+\fill (1,-1) circle (3pt);
+\fill (-1,-1) circle (3pt);
+\fill (-2,-2) circle (3pt);
+\fill (0,-2) circle (3pt);
+\fill (2,-2) circle (3pt);
+\fill (-3,-3) circle (3pt);
+\fill (-1,-3) circle (3pt);
+\fill (1,-3) circle (3pt);
+\fill (3,-3) circle (3pt);
+\fill (-4,-4) circle (3pt);
+\fill (-2,-4) circle (3pt);
+\fill (0,-4) circle (3pt);
+\fill (2,-4) circle (3pt);
+\fill (4,-4) circle (3pt);
+\fill (-5,-5) circle (3pt);
+\fill (-3,-5) circle (3pt);
+\fill (-1,-5) circle (3pt);
+\fill (1,-5) circle (3pt);
+\fill (3,-5) circle (3pt);
+\fill (5,-5) circle (3pt);
+\end{tikzpicture} \\
+$T_6 = 21$ \\
+\end{center}
+\end{minipage}
+\vspace{12pt}
+
+\caption{The first six triangular numbers}
+\end{figure*}
+\end{fullwidth}
+
+There are a couple of ways of making this discussion more precise.
+Given an equilateral triangle with $n$ dots to a side, how many more
+dots do you need to build the equilateral triangle with $n+1$ dots to
+a side?  All you need to do to transform the smaller triangle to the
+larger triangle is an additional row of $n+1$ dots placed along any
+side.  Therefore,
+\[
+T_{n+1} = T_n + (n+1).
+\]
+Since $T_1 = 1$, this recursive definition suffices to determine the
+whole sequence.
+
+But there are other ways of computing $T_n$.  Indeed, you may recall
+the explicit formula
+$$
+T_n = \frac{n \cdot (n+1)}{2}
+$$
+from Calculus One.
 
 \subsection{Fibonacci numbers}
 
