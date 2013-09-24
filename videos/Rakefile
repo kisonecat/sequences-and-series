@@ -2,6 +2,8 @@ require 'fileutils'
 require 'tmpdir'
 require 'tempfile'
 
+SD_CARD="/dev/sdb1"
+
 def original_script
   filename = Dir.new(Rake.original_dir).entries.select{ |x| x.match( /\.txt$/ ) }.first
   return File.open( Rake.original_dir + '/' + filename ).read
@@ -9,12 +11,14 @@ end
 
 desc "Copy .MTS files referenced in current script from SD card"
 task :copy do
-  sh "sudo mount /dev/sdb1 /mnt/storage"
+  sh "sudo mount #{SD_CARD} /mnt/storage"
   for line in original_script.split("\n") do
-    if line.match( /^([0-9]+) / )
+    next if line.match( /^title: / )
+    if line.match( /^([^ ]+) / )
       next if File.exist?( Rake.original_dir + '/' + $1 + '.MTS' )
       filename = '/mnt/storage/PRIVATE/AVCHD/BDMV/STREAM/' + $1 + '.MTS'
       puts "Copying #{filename} to #{Rake.original_dir}..."
+      next unless File.exist?( filename )
       FileUtils.cp( filename, Rake.original_dir )
     end
   end
@@ -22,12 +26,21 @@ task :copy do
 end
 
 desc "Use ffplay to view the videos listed in the current script"
-task :preview do
+task "preview-ffplay" do
   for line in original_script.split("\n") do
-    if line.match( /^([0-9]+) / )
+    next if line.match( /^title: / )
+    if line.match( /^([^ ]+) / )
+      filename = "#{Rake.original_dir}/#{$1}.MTS"
+      next unless File.exist?( filename )
       sh "ffplay -fs #{Rake.original_dir}/#{$1}.MTS"
     end
   end
+end
+
+desc "Use melt to view the videos listed in the current script"
+task "preview-melt" do
+  Dir.chdir( Rake.original_dir )
+  sh "melt editlist.xml"
 end
 
 desc "Generate the title video"
@@ -57,16 +70,16 @@ task :xml do
   for line in original_script.split("\n") do
     if line.match( /^title/ )
       f.puts '<video src="title.mp4" audio="/home/jim/sequences-and-series/lectures/titles/audio/intro.wav" in="0" out="6"/>'
-    end
-
-    if line.match( /^([0-9]+)/ )
-      filename = "#{$1}.MTS"
-      throw "Missing #{filename}" unless File.exist?( "#{Rake.original_dir}/#{filename}" )
-
-      if line.match( /^[0-9]+ paper/ )
-        f.puts "<video src=\"#{filename}\" flip=\"true\"/>"
-      else
-        f.puts "<video src=\"#{filename}\"/>"
+    else
+      if line.match( /^([^ ]+) / )
+        filename = "#{$1}.MTS"
+        throw "Missing #{filename}" unless File.exist?( "#{Rake.original_dir}/#{filename}" )
+        
+        if line.match( /^[0-9]+ paper/ )
+          f.puts "<video src=\"#{filename}\" flip=\"true\"/>"
+        else
+          f.puts "<video src=\"#{filename}\"/>"
+        end
       end
     end
   end
