@@ -1,6 +1,18 @@
 
 \section{Notation}
 
+\marginnote{Maybe you are feeling that this formality is unnecessary,
+  or even ridiculous; why can't we just list off a few terms and pick
+  up on the pattern intuitively?  As we'll see later, that might be
+  very hard---nay, impossible---to do!  There might be very
+  different---but equally reasonable---patterns that start the same
+  way.
+
+  To resolve this ambiguity, it is perhaps not so ridiculous to
+  introduce the formalism of ``functions.''  Functions provide a nice
+  language for associating numbers (terms) to other numbers
+  (indices).}
+
 \nobreak A ``sequence'' of numbers is just a list of numbers.  For
 example, here is a list of numbers:
 $$
@@ -27,17 +39,6 @@ domain is the non-negative integers, $\ds
 allowed to be the real numbers; in symbols, the function $f\colon
 \N\to\R$ is a sequence.
 
-\marginnote{Maybe you are feeling that this formality is unnecessary,
-  or even ridiculous; why can't we just list off a few terms and pick
-  up on the pattern intuitively?  As we'll see later, that might be
-  very hard---nay, impossible---to do!  There might be very
-  different---but equally reasonable---patterns that start the same
-  way.
-
-  To resolve this ambiguity, it is perhaps not so ridiculous to
-  introduce the formalism of ``functions.''  Functions provide a nice
-  language for associating numbers (terms) to other numbers
-  (indices).}
 
 Sequences are written down in a few different, but equivalent,
 ways; you might seen a sequence written as
@@ -51,7 +52,10 @@ ways; you might seen a sequence written as
 \end{align*}
 depending on which author you read.  Worse, depending on the
 situation, the same author (and this author) might use various
-notations for a sequence!
+notations for a sequence!  In this textbook, I will usually write
+$(a_n)$ if I want to speak of the sequence as a whole (think
+\textit{gestalt}) and I will write $a_n$ if I am speaking of a
+specific term in the sequence.
 
 Let's summarize the preceding discussion in the following definition.
 \begin{definition} \relax\index{sequence} A \defnword{sequence}
@@ -65,7 +69,7 @@ Let's summarize the preceding discussion in the following definition.
   The ``outputs'' of a sequence are the \defnword{terms} of the
   sequence; the ``$n^{\nth}$ term'' is the real number that the
   sequence associates to the natural number $n$, and is usually
-  written $a_n$. \index{sequence!term}.  The $n$ in the phrase
+  written $a_n$. \index{sequence!term} The $n$ in the phrase
   ``$n^{\nth}$ term'' is called an
   \defnword{index}\index{sequence!index}; the plural of index is
   either indices or indexes, depending on who you ask.  The first
@@ -93,11 +97,12 @@ Let's summarize the preceding discussion in the following definition.
 \end{warning}
 
 As you can tell, there is a deep tension between precise definition
-and a vague flexibility; how we navigate that tension will be a big
-part of whether we are successful in this course.  We need to invoke
-precision when we're tempted to be too vague, and we need to reach for
-an extra helping of vagueness when the formalism is getting in the way
-of our understanding.
+and a vague flexibility; as instructors, how we navigate that tension
+will be a big part of whether we are successful in teaching the
+course.  We need to invoke precision when we're tempted to be too
+vague, and we need to reach for an extra helping of vagueness when the
+formalism is getting in the way of our understanding.  It can be a
+tough balance.
 
 \section{Defining sequences}
 
@@ -105,8 +110,8 @@ of our understanding.
 
 Just as with functions with domain the real numbers, we will most
 often encounter sequences that can be expressed by a formula.  In the
-Introduction to this textbook, we saw the sequence $\ds
-a_i=f(i)=1-1/2^i$, and other examples are easy to cook up, like
+Introduction to this textbook, we saw the sequence given by the rule $\ds
+a_i=f(i)=1-1/2^i$.  Other examples are easy to cook up, like
 \begin{align*}
   a_i &={i\over i+1}, \\
   b_n &={1\over2^n}, \\
@@ -122,10 +127,17 @@ Section~\xrefn{section:graphs}.
 
 \begin{warning}
   A common misconception is to confuse the sequence with the rule for
-  generating the sequence.  The sequence $a_n = (-1)^n$ and the
-  sequence $b_n = \cos (\pi \, n)$ are, despite appearances, different
-  rules which give rise to the \textit{same} sequence.
+  generating the sequence.  The sequences $(a_n)$ and $(b_n)$ given by
+  the rules $a_n = (-1)^n$ and $b_n = \cos (\pi \, n)$ are, despite
+  appearances, different rules which give rise to the \textit{same}
+  sequence.  These are just different names for the same object.
 \end{warning}
+
+Let's give a precise definition for ``the same'' when speaking of sequences.
+
+\marginnote{Compare this to equality for functions: two functions are
+  the same if they have same domain and codomain, and they assign the
+  same value to each point in the domain.}
 
 \begin{definition}
   Suppose $(a_n)$ and $(b_n)$ are sequences starting at $1$.  These
@@ -139,7 +151,6 @@ Section~\xrefn{section:graphs}.
   a_n = b_n \quad \mbox{for all $n \geq N$.}
   \]
 \end{definition}
-
 In other words, sequences are the same if they have the same set of
 valid indexes, and produce the same real numbers for each of those
 indexes---regardless of whether the given ``rules'' or procedures for
@@ -243,11 +254,11 @@ The first family\sidenote{Mathematically, the word \defnword{family}
 \end{definition}
 
 \begin{example}
-  An example of an arithmetic progression is the sequence
+  An example of an arithmetic progression is the sequence $(a_n)$ which begins 
   $$
   a_1 = 10, \quad a_2 = 14, \quad a_3 = 18, \quad a_4 = 22, \quad\ldots
   $$
-  which is given by the rule $a_n = 6 + 4 \, n$.  Each term differs
+  and which is given by the rule $a_n = 6 + 4 \, n$.  Each term differs
   from the previous by four.
 \end{example}
 
@@ -280,11 +291,11 @@ The second family we consider are geometric progressions.
 \end{definition}
 
 \begin{example}
-  An example of an geometric progression is the sequence
+  An example of an geometric progression is the sequence $(a_n)$ starting
   $$
   a_1 = 10, \quad a_2 = 30, \quad a_3 = 90, \quad a_4 = 270, \quad\ldots
   $$
-  which is given by the rule $a_n = 10 \cdot 3^n$.  Each term is three
+  and given by the rule $a_n = 10 \cdot 3^n$.  Each term is three
   times the preceding term.
 \end{example}
 
@@ -309,10 +320,10 @@ the ratio between subsequent terms is one half, and each term is smaller than th
 
 \subsection{Triangular numbers}
 
-The \defnword{triangular numbers} are a sequence of whole numbers
-counting the number of dots in increasingly large ``equilateral
-triangles'' built from dots.  The term $T_n$ is the number of dots in
-a triangle with $n$ dots to a side.
+The sequence of \defnword{triangular numbers} $(T_n)$ is a sequence of
+whole numbers counting the number of dots in increasingly large
+``equilateral triangles'' built from dots.  The term $T_n$ is the
+number of dots in a triangle with $n$ dots to a side.
 
 \begin{fullwidth}
 \begin{figure*}[!h]
@@ -463,8 +474,9 @@ This is certainly not the last time we will see the Fibonacci numbers.
 
 \subsection{Collatz sequence}
 
-Here is fun sequence with which to amuse your friends.  Let's start
-our sequence with $a_1 = 6$.  Subsequent terms are defined using the rule
+Here is fun sequence with which to amuse your friends---or distract
+your enemies.  Let's start our sequence with $a_1 = 6$.  Subsequent
+terms are defined using the rule
 $$
 a_n = \begin{cases} a_{n-1} / 2 & \mbox{ if $a_{n-1}$ is even, and } \\
 3 \, a_{n-1} + 1 & \mbox{ if $a_{n-1}$ is odd.}
@@ -523,8 +535,8 @@ rule, you end up getting stuck in the ``4, 2, 1, \ldots'' loop?  That
 this is true is the \defnword{Collatz conjecture}; it has been
 verified for all starting values below $5 \times 2^{60}$.  Nobody has
 found a value which doesn't return to one, but for all anybody knows
-there \textit{might} be a larger starting value which doesn't return
-to one---nobody knows either way.  It is an unsolved
+there \textit{might} well be a very large initial value which doesn't
+return to one; nobody knows either way.  It is an unsolved
 problem\sidenote{This is not the last unsolved problems we will
   encounter in this course.  There are many things which humans do not
   understand.} in mathematics.
@@ -570,7 +582,7 @@ significant difference is required in the definition of limit, except
 that we specify, perhaps implicitly, that the variable is an integer.
 
 \begin{definition} \relax\index{limit of a sequence}
-Suppose that $\ds\left(a_n\right)_{n \in \N}$ is a sequence.
+Suppose that $\left(a_n\right)$ is a sequence.
 To say that $\ds \lim_{n\to \infty}a_n=L$ is to say that \\
 \null\quad for every $\epsilon>0$, \\
 \null\quad\quad there is an $N > 0$, \\
@@ -589,7 +601,7 @@ that $\ds \lim_{n\to\infty}a_n = L$, then we say that the limit
 
 \begin{warning}
   In the case that $\lim_{n \to \infty} a_n = \infty$, we say that
-  $a_n$ diverges, or perhaps more precisely, we say $a_n$ diverges to
+  $(a_n)$ diverges, or perhaps more precisely, we say $(a_n)$ diverges to
   infinity.  The only time we say that a sequence converges is when
   the limit exists and is equal to a \textit{finite} value.
 \end{warning}
@@ -598,7 +610,7 @@ One way to compute the limit of a sequence is to compute the limit of
 a function.
 \begin{theorem}
   Let $f(x)$ be a real-valued function.  If $a_n = f(n)$ defines a
-  sequence and $\ds \lim_{x\to\infty}f(x)=L$ in the sense of Calculus
+  sequence $(a_n)$ and if $\ds \lim_{x\to\infty}f(x)=L$ in the sense of Calculus
   One, then $\ds \lim_{n\to\infty} a_n=L$ as well.
 \end{theorem}
 
@@ -621,7 +633,7 @@ single example where it fails.  Here's the counterexample\sidenote{An
   \defnword{counterexample}.  This is a popular term among mathematicians and philosophers.}.
 
 \begin{example}
-  Consider the sequence $a_n = f(n)=\sin(n\pi)$.  This is the sequence
+  Consider the sequence $(a_n)$ given by the rule $a_n = f(n)=\sin(n\pi)$.  This is the sequence
 $$
   \sin(0\pi),\quad \sin(1\pi),\quad\sin(2\pi),\quad\sin(3\pi),\quad\ldots,
 $$
@@ -721,8 +733,6 @@ values of a sequence.
 \label{fig:floor-graph}
 \end{marginfigure}
 
-\marginnote{It is hard to define a ``greatest integer'' function,
-  because they are all pretty great.}
 
 \begin{solution}
   There are lots of solutions.  Here is a solution:
@@ -743,6 +753,8 @@ In that definition, $\floor{x}$ denotes the ``greatest integer less
   Unlike $f$, which fails to be continuous, the function $g$ is continuous.
 \end{solution}
 
+\marginnote{It is hard to define the ``greatest integer'' function,
+  because they are all pretty great.}
 
 \begin{marginfigure}[0in]
 \begin{tikzpicture}
@@ -771,22 +783,91 @@ In that definition, $\floor{x}$ denotes the ``greatest integer less
 
 \section{New sequences from old}
 
-\begin{definition}
-  Suppose $a_n$ is a sequence.  We get a
-  \defnword{subsequence}\index{sequence!subsequence}\index{subsequence}
-  of the sequence $a_n$ if we throw away terms
+Given a sequence, one way to build a new sequence is to start with the
+old sequence, but then throw away a whole bunch of terms.  For
+instance, if we started with the sequence of perfect squares
+$$
+1,\quad 4,\quad 9,\quad 16,\quad 25,\quad 36,\quad 49,\quad 64,\quad 81,\quad\ldots
+$$
+we could throw away all the odd-indexed terms, and be left with
+$$
+4,\quad 16,\quad 36,\quad 64,\quad 100,\quad 144,\quad 196,\quad 256,\quad 324,\quad 400,\quad 484,\quad\ldots
+$$
+We say that this latter sequence is a
+\defnword{subsequence}\index{sequence!subsequence}\index{subsequence}
+of the original sequence.  Here is a precise definition.
 
-%  Given a sequence $a_n$, a subsequence  
-%	Let be a sequence. When we extract from this sequence only certain elements and drop the remaining ones we obtain a new sequences consisting of an infinite subset of the original sequence. That sequence is called a subsequence and denoted by 
+\begin{definition}
+  Suppose $(a_n)$ is a sequence with initial index $N$, and suppose we have a sequence of whole numbers $(n_i)$ so that
+  $$
+  N \leq n_1 < n_2 < n_3 < n_4 < n_5 < \cdots 
+  $$
+  Then the sequence $(b_i)$ given by $b_i = a_{n_i}$ is said to be a \defnword{subsequence}\index{sequence!subsequence}\index{subsequence}
+  of the sequence $a_n$.
 \end{definition}
 
-%BADBAD
+Limits are telling the story of ``what happens'' to a sequence.  If
+the terms of a sequence can be made as close as desired to a limiting
+value $L$, then the subsequence must share that same fate.
 
 \begin{theorem}
   \label{theorem:subsequence-same-limit}
-  If $(b_n)$ is a subsequence of the convergent sequence $(a_n)$, then
-  $\ds\lim_{n \to \infty} b_n = \ds\lim_{n \to \infty} a_n$.
+  If $(b_i)$ is a subsequence of the convergent sequence $(a_n)$, then
+  $\ds\lim_{i \to \infty} b_i = \ds\lim_{n \to \infty} a_n$.
 \end{theorem}
+
+Of course, just because a subsequence converges does not mean that the
+larger sequence converges, too.  We'll see this again in more detail
+when we get to Example~\xrefn{example:alternating-ones}, but we'll
+discuss it briefly now.
+
+\begin{example}
+Find a convergent subsequence of the sequence $(a_n)$ given by the rule $a_n = (-1)^n$.
+\end{example}
+
+\begin{solution}
+Note that the sequence $(a_n)$ does not converge.  But by considering the sequence of indexes $n_i = 2 \cdot i$, we can build a subsequence
+$$
+b_i = a_{n_i} = a_{2i} = (-1)^{2i} = 1,
+$$
+which is a constant sequence, so it converges to 1.
+\end{solution}
+
+There are other subsequences of $a_n = (-1)^n$ which converge but do
+\textit{not} converge to one.  For instance, the subsequence of odd
+indexed terms is the constant sequence $c_n = -1$, which converges to
+$-1$.  For that matter, the fact that there are convergent
+subsequences with distinct limits perhaps explains why the original
+sequence $(a_n)$ does not converge.  Let's formalize this.
+
+\begin{corollary}
+  \label{corollary:different-subsequences-then-diverge}
+
+  Suppose $(b_i)$ and $(c_i)$ are convergent subsequences of the sequence $(a_n)$, but
+  $$
+  \ds\lim_{i \to \infty} b_i \neq \ds\lim_{n \to \infty} c_i.
+  $$
+  Then the sequence $(a_n)$ does not converge.
+\end{corollary}
+
+\begin{proof}
+  Suppose, on the contrary, the sequence $(a_n)$ did converge.  Then by
+  Theorem~\xrefn{theorem:subsequence-same-limit}, the subsequence
+  $(b_i)$ would converge, too, and
+  $$
+  \ds\lim_{i \to \infty} b_i = \ds\lim_{n \to \infty} a_n.
+  $$
+  Again by Theorem~\xrefn{theorem:subsequence-same-limit}, the subsequence
+  $(c_i)$ would converge, too, and
+  $$
+  \ds\lim_{i \to \infty} c_i = \ds\lim_{n \to \infty} a_n.
+  $$
+  But then $\ds\lim_{i \to \infty} b_i = \ds\lim_{n \to \infty} c_i$,
+  which is exactly what we are supposing doesn't happen!  To avoid
+  this contradiction, it must be that our original assumption that
+  $(a_n)$ converged was incorrect; in short, the sequence $(a_n)$ does
+  not converge.
+\end{proof}
 
 \section{Helpful theorems about limits}
 
@@ -835,7 +916,7 @@ Armed with these helpful theorems, we are now in a position to work a
 number of examples.
 
 \begin{example}
-Determine whether the sequence $a_n = \frac{n}{n+1}$ converges or
+Determine whether the sequence $(a_n)$ given by the rule $a_n = \frac{n}{n+1}$ converges or
 diverges. If it converges, compute the limit.
 \end{example}
 
@@ -860,7 +941,7 @@ We therefore conclude that $\ds\lim_{n \to \infty} a_n = 1$.
 
 \begin{example}
 \label{example:log-n-over-n}
-Determine whether the sequence $\ds a_n = \frac{\log n}{n}$ converges or
+Determine whether the sequence $(a_n)$ given by $\ds a_n = \frac{\log n}{n}$ converges or
 diverges.  If it converges, compute the limit.
 \end{example}
 
@@ -880,7 +961,7 @@ Therefore, $$\lim_{n \to \infty}  \frac{\log n}{n} = 0.$$
 
 \begin{example}
 \label{example:alternating-ones}
-Determine whether the sequence $a_n = (-1)^n$ converges or
+Determine whether the sequence $(a_n)$ given by the rule $a_n = (-1)^n$ converges or
 diverges. If it converges, compute the limit.
 \end{example}
 
@@ -944,7 +1025,7 @@ number $L$.  In other words, the limit does not exist.
 \marginnote{I imagine that the ``airtight argument'' in the solution
   to Example~\xrefn{example:alternating-ones} is difficult to
   understand.  Please don't worry if you find the argument confusing
-  now---we'll have more opportunities for doing this sort of
+  now---we'll have more opportunities for doing these sorts of
   \href{http://en.wikipedia.org/wiki/Proof_by_contradiction}{proofs by
     contradiction} in the future.}
 
@@ -1120,7 +1201,7 @@ $$
 is decreasing.
 \end{example}
 
-\subsection{Boundedness}%BADBAD
+\subsection{Boundedness}
 
 Sometimes we can't say exactly which number a sequence approaches, but
 we can at least say that the sequence doesn't get too big or too
@@ -1155,8 +1236,8 @@ We will not prove this theorem in the textbook\sidenote{Proving this
   theorem is, honestly, the purview of a course in \textit{analysis},
   the theoretical underpinnings of calculus.  That's not to say it
   couldn't be done in this course, but I intend this to be a ``first
-  glance'' at sequences---so much be left unsaid.} Nevertheless, it is
-not hard to believe: suppose that a sequence is increasing and
+  glance'' at sequences---so much will be left unsaid.} Nevertheless,
+it is not hard to believe: suppose that a sequence is increasing and
 bounded, so each term is larger than the one before, yet never larger
 than some fixed value $M$. The terms must then get closer and closer
 to some value between $\ds a_0$ and $M$. It certainly need not be $M$,
@@ -1179,24 +1260,22 @@ the sequence.
 
 We don't actually need to know that a sequence is monotonic to apply
 this theorem---it is enough to know that the sequence is
-``eventually'' monotonic\sidenote{After all, the limit of a sequence
-  is the same as that of a subsequence, and the ``tail'' of a sequence
-  is an example of a subsequence.} that is, that at some point it
-becomes increasing or decreasing.
-
-%BADBAD
-For example, the sequence $10$, $9$, $8$,
-$15$, $3$, $21$, $4$, $3/4$, $7/8$, $15/16$, $31/32,\ldots$ is not
-increasing, because among the first few terms it is not. But starting
-with the term $3/4$ it is increasing, so the theorem tells us that the
-sequence $3/4, 7/8, 15/16, 31/32,\ldots$ converges.  Since convergence
-depends only on what happens as $n$ gets large, adding a few
-terms at the beginning can't turn a convergent sequence into a
-divergent one.
+``eventually'' monotonic\sidenote{After all, the limit only depends on
+  what is happened after some large index, so throwing away the
+  beginning of a sequence won't affect its convergence or its limit.}
+that is, that at some point it becomes increasing or decreasing.  For
+example, the sequence $10$, $9$, $8$, $15$, $3$, $21$, $4$, $3/4$,
+$7/8$, $15/16$, $31/32,\ldots$ is not increasing, because among the
+first few terms it is not. But starting with the term $3/4$ it is
+increasing, so if the pattern continues and the sequence is bounded,
+the theorem tells us that the ``tail'' $3/4, 7/8, 15/16, 31/32,\ldots$
+converges.  Since convergence depends only on what happens as $n$ gets
+large, adding a few terms at the beginning can't turn a convergent
+sequence into a divergent one.
 
 \begin{example}
 \label{example:nth-root-of-n}
-Show that the sequence $a_n = n^{1/n}$ converges.
+Show that the sequence $(a_n)$ given by $a_n = n^{1/n}$ converges.
 \end{example}
 
 \begin{solution}
@@ -1232,7 +1311,7 @@ Show that the sequence $a_n = n^{1/n}$ converges.
 \end{solution}
 
 \marginnote{As it happens, you could compute the limit in
-  Example~\xrefn{example:nth-root-of-n}, but the solution shows that
+  Example~\xrefn{example:nth-root-of-n}, but our given solution shows that
   it converges even without knowing the limit!}
 
 \begin{example}
