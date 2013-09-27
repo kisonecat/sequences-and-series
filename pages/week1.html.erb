@@ -4,10 +4,54 @@
 
 <p id="week-summary">In this first week, we introduce the first topic of study: sequences.</p>
 
+<p>First off, <%= linkto_video('week1-welcome','welcome to the course') %>!  My name is <a href="/sequence-001/wiki/view?page=AboutTheInstructor">Jim Fowler</a>, and I am very glad that you are here.  Please complete the <a href="/sequence-001/quiz/attempt?quiz_id=7"><i class="icon-pencil"></i>&nbsp;initial course survey</a>.  Your feedback will help me customize the course.  I also hope that you'll <a href="/sequence-001/forum/thread?thread_id=1"><i class="icon-comments"></i>&nbsp;introduce yourself in the forum</a>.  I'm looking forward to getting to know you.</p>
+
 <h4>What is a sequence?</h4>
+
+<p>A sequence is <%= linkto_video('sequence-definition','an unending list of numbers') %>.  A precise definition is given in <%= linkto_textbook('section:notation') %>.  Since a sequence goes on forever, it isn't enough to just list a few terms: instead, you should give a rule or a <%= linkto_video('recursive-sequence','recursive formula') %>, which you can read a bit more about in <%= linkto_textbook('section:defining-sequences') %>.  Since a sequence can be written down in different ways, <%= linkto_video('sequence-equality','it can be hard to tell when two sequences are the same') %>.</p>
+
+<h4>What are some examples of sequences?</h4>
+
+<p>There are <%= linkto_video('new-sequences-from-old','a ton of interesting sequences to consider') %>.  Many examples are given in <%= linkto_textbook('section:examples') %>, including <%= linkto_video('arithmetic-progression','arithmetic progressions') %> and  <%= linkto_video('geometric-progression','geometric progressions') %>.</p>
+
+<h4>What is the limit of a sequence?</h4>
+
+<p>If you have got a list of numbers, a natural question is whether that list of numbers is getting close to anything in particular; this is the idea behind <%= linkto_video('sequence-limit','the limit of a sequence') %>, which is the topic of <%= linkto_textbook('section:limits') %>.  We can <%= linkto_video('visual-limit','think about this visually') %> or graphically, as in <%= linkto_textbook('section:graphs') %>.</p>
+
+<p>The precise definition of limit&mdash;in terms of \(\epsilon\) and \(N\)&mdash;can seem very complicated.  It can help to think through some concrete examples where <%= linkto_video('n-for-epsilon','we can determine how large \\(N\\) needs to be for a given \\(\\epsilon\\)') %>.</p>
+
+<h4>Why do we care?</h4>
+
+<p>Much of what we are doing this week is setting up machinery that we'll make use of in the future.  This week is something like the &ldquo;functions&rdquo; week in Calculus One: we're just introducing terminology that we'll make use of later.  But already there are reasons to care: we can, for instance, <%= linkto_video('sequence-motivation','use sequences to approximate \\(\\sqrt{2}\\)') %>.</p>
+
+<p>Although this is a useful application, for me, the most interesting application of mathematics is to the human spirit.  It's just fun to think about!  One example is the <%= linkto_video('logistic-map','logistic map') %> which exhibits remarkable behavior in spite of its apparent simplicity.</p>
+
+<h4>What other properties might a sequence have?</h4>
+
+<p>A sequence may be <%= linkto_video('sequence-bounded','bounded') %>, meaning all its terms are above a &ldquo;lower bound&rdquo; and below an
+&ldquo;upper bound.&rdquo;  Read more about this in <%= linkto_textbook('subsection:boundedness') %>.  A sequence may be <%= linkto_video('sequence-monotone','increasing (or decreasing)') %>, meaning its terms are getting larger (or smaller) as we go out farther in the sequence.  This is discussed in  <%= linkto_textbook('subsection:monotonicity') %>.  Another word, &ldquo;monotone,&rdquo; is used to speak about sequences which are heading in the same direction, so increasing sequences and decreasing sequences are both examples of monotone sequences.</p>
+
+<p>This might not sound too important, but <%= linkto_video('monotone-convergence','monotonicity and boundedness together imply converegence')%>!  This remarkably result is <%= linkto_textbook('thm:bounded-monotonic') %>.  It can be  <%= linkto_video('monotone-convergence-example','helpful' )%> because the theorem guarantees a limit exists, even when it might be hard to actually compute it.</p>
+
+<h4>How big can sequences be?</h4>
+
+<p>Although it is not, strictly speaking, one of the learning objectives of the course, it is interesting to think about how &ldquo;big&rdquo; a sequence can be.  For example, can you think of a <%= linkto_video('sequence-of-integers','sequence which lists every integer') %>?  Can you think of a <%= linkto_video('cantor-diagonalization','sequence which lists every real number') %>?  That a collection of things can be listed off in a sequence is a more restrictive condition than it might initially appear.</p>
 
 <h4>By the end of the week&hellip;</h4>
 
+<p>Each week, I'll have some learning objectives for you, which you can practice by doing the homework.  I hope you will be able to</p>
+<ul>
+<li>compute terms of a sequence presented as a <%= linkto_video('recursive-sequence','recursive formula') %>,</li>
+<li>define and compute <%= linkto_video('sequence-limit','limits of sequences') %> in some cases,</li>
+<li>find a <%= linkto_video('n-for-epsilon','sufficiently large index') %> to guarantee a sequence is within \(\epsilon\) of \(L\),</li>
+<li>define what it means for a sequence to be <%= linkto_video('sequence-bounded','bounded') %> and determine when a sequence is bounded,</li>
+<li>identify an <%= linkto_video('arithmetic-progression','arithmetic progression') %>,</li>
+<li>identify a <%= linkto_video('geometric-progression','geometric progression') %>,</li>
+<li>identify a <%= linkto_video('sequence-monotone','monotonic sequence') %>, and</li>
+<li>apply the <%= linkto_video('monotone-convergence','monotone convergence theorem') %>.</li>
+</ul>
+<p>The homework is an example of &ldquo;formative assessment.&rdquo;  As such, this homework is not so much about you showing me how much you have learned; the final exam will handle that.  Rather, this homework is part of the process of learning.  Use the hints when you get stuck.  Discuss freely on the forums.  Take the quiz again and again.  Feel free to use the provided resources in whatever way helps you to understand the material.  I want you to succeed, and, with practice, I know you will.</p>
 
+<p>I am honored to be able to share some mathematics with you.  If there are specific things you would like to see, please let me know.  The success of this course depends on open communication.</p>
 
 <%= week_pager(1) %>

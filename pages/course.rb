@@ -1,3 +1,5 @@
+require 'rubygems'
+require 'json'
 require 'date'
 
 COURSE_NAME="sequence-001"
@@ -19,6 +21,51 @@ def linkto_week(week)
   return '#' if week <= 0 or week > WEEK_COUNT
 
   return "/#{COURSE_NAME}/wiki/view?page=week#{week}"
+end
+
+$videos = JSON.parse(File.open("../identifiers/videos.json").read)
+def linkto_video(video,title)
+  raise "Missing video" unless $videos.keys.include?(video)
+
+  html = <<EOF
+<a href="/#{COURSE_NAME}/lecture/#{$videos[video]}"><i class="icon-film"></i>&nbsp;#{title}</a>
+EOF
+
+  return html.strip
+end
+
+$textbook = "https://d396qusza40orc.cloudfront.net/sequence%2Ftextbook%2Fsequences-and-series.pdf"
+$labels = {}
+for line in File.open('../textbook/textbook.aux').readlines
+  if line.match( /^\\newlabel\{([^\}]+)\}\{\{([^\}]+)\}\{([^\}]+)\}/ )
+    $labels[$1] = [$2, $3]
+  end
+  if line.match( /^\\newlabel\{([^\}]+)\}\{\{([^\}]+\{[^\}]+\})\}\{([^\}]+)\}/ )
+    $labels[$1] = [$2.gsub( '{', '' ).gsub( '}', '' ), $3]
+  end
+end
+
+def linkto_textbook(label)
+  raise "Missing label #{label}" unless $labels.keys.include?(label)
+
+  kinds = {}
+  kinds['fig'] = 'Figure'
+  kinds['section'] = 'Section'
+  kinds['chapter'] = 'Chapter'
+  kinds['subsection'] = 'Subsection'
+  kinds['thm'] = 'Theorem'
+
+  kind_code = label.split(":")[0]
+  kind = kinds[kind_code]
+  name = $labels[label][0]
+  page = $labels[label][1]
+  link = "#{kind} #{name} on Page #{page} of the Textbook"
+
+  html = <<EOF
+<a href="#{$textbook}#page=#{page}"><i class="icon-book"></i>&nbsp;#{link}</a>
+EOF
+
+  return html.strip
 end
 
 def breadcrumbs(title)
