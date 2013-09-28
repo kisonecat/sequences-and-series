@@ -1,0 +1,41 @@
+\documentclass[border=6pt]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+<%
+def float(x)
+  return '%0.5f' % x
+end
+%>
+
+\begin{tikzpicture}[x=5cm,y=3cm]
+
+\draw[->] (0,0) -- (0,1);
+\draw[->] (0,0) -- (1.01,0);
+
+\node[anchor=north,yshift=-12pt] (n) at (<%= 0.5 %>,0) {$n$};
+\node[anchor=east] (y) at (0,0.5) {$y$};
+
+%\node[anchor=east] (zero) at (0,0) {$0$};
+%\node[anchor=east] (one) at (0,1) {$1$};
+
+<% y = 0.25 %>
+<% for i in 1...1500 %>
+  <% y = ((1.0 + Math.sin(i.to_f * 0.15))*0.2 + i.to_f / (i.to_f + 1))/2.0  %>
+  <% x = Math.atan(i.to_f / 50) / (0.5 * Math::PI) %>
+  \fill[stroke=none] (<%= float(x) %>,<%= float(y) %>) circle (<%= float( (1.0 / i.to_f)**0.25) %>pt);
+  <% if i % 10 == 0 %>
+    \draw (<%= float(x) %>,<%= float( -(0.025*(10.0 / i.to_f)**0.75)) %>) -- (<%= float(x) %>,0);
+    \node[anchor=north] (label<%= i %>) at (<%= float(x) %>,<%= float(0) %>) {\scalebox{<%= float( (10.0 / i.to_f)**0.75) %>}{<%= i %>}};
+  <% end %>
+  <% if i == 78 or i == 30 %>
+    \node[anchor=north] (an) at (<%= float(x) %>,<%= float(y) %>) {\scalebox{0.5}{$a_{<%= i %>}$}};
+  <% end %>
+  <% if i == 50 or i == 12 %>
+    \node[anchor=south] (an) at (<%= float(x) %>,<%= float(y) %>) {\scalebox{0.5}{$a_{<%= i %>}$}};
+  <% end %>
+<% end %>
+\end{tikzpicture}
+
+\end{document}

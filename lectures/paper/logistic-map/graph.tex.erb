@@ -1,0 +1,40 @@
+\documentclass[border=6pt]{standalone}
+\usepackage{tikz}
+\usepackage{amsmath}
+\begin{document}
+
+<%
+def float(x)
+  return '%0.5f' % x
+end
+
+r = 3.7
+r_latex = '\frac{7}{3}'
+r_latex = r.to_s
+
+initial_value = 0.25
+%>
+
+<% terms = 100 %>
+\begin{tikzpicture}[x=<%= float(20.0 / terms) %>cm,y=3cm]
+
+\draw[->] (0,0) -- (0,1);
+\draw[->] (0,0) -- (<%= terms * 1.01 %>,0);
+
+\node[anchor=north] (n) at (<%= terms / 2 %>,0) {$n$};
+\node[anchor=east] (y) at (0,0.5) {$y$};
+
+\node[anchor=east] (zero) at (0,0) {$0$};
+\node[anchor=east] (one) at (0,1) {$1$};
+
+\node[anchor=north,yshift=48pt] (n) at (<%= 3*terms / 4 %>,1) {\parbox{2in}{\begin{align*}a_1 &= <%= initial_value %> \\ a_{n+1} &= <%= r_latex %> \, a_n \, (1 - a_n)\end{align*}}};
+
+<% x = initial_value %>
+<% for i in 1...terms %>
+  \fill[stroke=none] (<%= i %>,<%= float(x) %>) circle (1pt);
+  \node[anchor=north] (an) at (<%= i %>,<%= float(x) %>) {\scriptsize $a_{<%= i %>}$};
+  <% x = r * x * (1.0 - x) %>
+<% end %>
+\end{tikzpicture}
+
+\end{document}

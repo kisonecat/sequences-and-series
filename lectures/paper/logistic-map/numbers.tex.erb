@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{preview}  
+\begin{document}
+
+<%
+def float(x)
+  return '%0.5f' % x
+end
+
+r = 2.5
+r_latex = '\frac{7}{3}'
+r_latex = r.to_s
+
+initial_value = 0.8
+%>
+
+\begin{preview}
+$r = <%= r %>$
+<% terms = 30 %>
+<% x = initial_value %>
+\begin{align*}
+a_{1} &= <%= '%.06f' % x %> \\
+  <% x = r * x * (1.0 - x) %>
+<% for i in 2...terms %>
+a_{<%= i %>} &\approx <%= '%.06f' % x %> \\
+  <% x = r * x * (1.0 - x) %>
+<% end %>
+\end{align*}
+\end{preview}
+
+\end{document}

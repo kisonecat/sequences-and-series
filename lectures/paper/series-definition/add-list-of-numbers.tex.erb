@@ -1,0 +1,29 @@
+\documentclass[border=6pt]{standalone}
+\usepackage{tikz}
+\usepackage{amsmath}
+
+\begin{document}
+
+<% srand(1) %>
+
+%$
+%<% for i in 1..20 do %>
+%a_{<%= i %>} +
+%<% end %>
+%\cdots
+%$
+
+$
+<% for i in 1..20 do %>
+\frac{1}{<%= (rand*i*i + 4).ceil %>} + 
+<% end %>
+\cdots
+$
+
+\end{document}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

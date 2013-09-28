@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage[active,tightpage]{preview}
+\usepackage{amsmath}
+\PreviewEnvironment{preview}  
+
+\begin{document}
+
+<% srand(1) %>
+<% sequence = (1..30).collect{ |i| Rational(1,(rand*i*i + 4).ceil) } %>
+
+\begin{preview}
+\begin{align*}
+<% for i in 2..7 do %>
+s_{<%= i %>} &=
+<%= (1..i).collect{ |j| "a_{#{j}}" }.join( ' + ' ) %> \\
+&= <%= (1..i).collect{ |j| sequence[j] }.join( ' + ' ) %> =
+<%= (1..i).collect{ |j| sequence[j] }.inject(:+) %> \\
+<% end %>
+\end{align*}
+\end{preview}
+
+\end{document}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
