@@ -1,0 +1,15 @@
+<p>We have been told the first two terms of the sequence, namely \(#{sequence}_0 = #{initial_0}\) and \(#{sequence}_1 = #{initial_1}\).</p>
+<p>We also have a rule \(#{formula_latex}\) which lets us compute the third term \(#{sequence}_2\) using these first two terms \(#{sequence}_0\) and \(#{sequence}_1\).</p>
+<p>To compute \(#{sequence}_2\), we set \(#{variable} = 2\) in the recursive rule \(#{formula_latex}\).  This gives us \(#{formula_latex.replace(str(variable),'2')}\).</p>
+<p>Plugging \(#{sequence}_{2-1} = #{sequence}_{1} = #{initial_1}\) and \(#{sequence}_{2-2} = #{sequence}_{0} = #{initial_0}\) into the rule, we learn \(#{sequence}_2 = #{terms[2]}\).</p>
+<p>To compute \(#{sequence}_3\), we set \(#{variable} = 3\) in the recursive rule \(#{formula_latex}\), giving \(#{formula_latex.replace(str(variable),'3')}\).</p>
+<p>To evaluate that, we will have to know \(#{sequence}_{3-1} = #{sequence}_{2}\), but we just found out that \(#{sequence}_{2} = #{terms[2]}\).</p>
+<p>Plugging \(#{sequence}_{3-1} = #{terms[2]}\) and \(#{sequence}_{3-2} = #{sequence}_{1} = #{initial_1}\) into the rule, we find \(#{sequence}_3 = #{terms[3]}\).</p>
+<p condition="goal_index >= 4">To compute \(#{sequence}_4\), we set \(#{variable} = 4\) in the recursive rule \(#{formula_latex}\), giving \(#{formula_latex.replace(str(variable),'4')}\).</p>
+<p condition="goal_index >= 4">To evaluate that, we will have to know \(#{sequence}_{4-1} = #{sequence}_{3}\), but we just found out that \(#{sequence}_{3} = #{terms[3]}\).</p>
+<p condition="goal_index >= 4">Plugging \(#{sequence}_{4-1} = #{terms[3]}\) and \(#{sequence}_{4-2} = #{sequence}_{2} = #{terms[2]}\) into the rule, we learn \(#{sequence}_4 = #{terms[4]}\).</p>
+<p condition="goal_index >= 5">To compute \(#{sequence}_5\), we set \(#{variable} = 5\) in the recursive rule \(#{formula_latex}\), giving \(#{formula_latex.replace(str(variable),'5')}\).</p>
+<p condition="goal_index >= 5">Plugging \(#{sequence}_{5-1} = #{sequence}_{4} = #{terms[4]}\) and \(#{sequence}_{5-2} = #{sequence}_{3} = #{terms[3]}\) into the rule, we learn \(#{sequence}_5 = #{terms[5]}\).</p>
+<p condition="goal_index >= 6">To compute \(#{sequence}_6\), we set \(#{variable} = 6\) in the recursive rule \(#{formula_latex}\), giving \(#{formula_latex.replace(str(variable),'6')}\).</p>
+<p condition="goal_index >= 6">Plugging \(#{sequence}_{6-1} = #{sequence}_{5} = #{terms[5]}\) and \(#{sequence}_{6-2} = #{sequence}_{4} = #{terms[4]}\) into the rule, we learn \(#{sequence}_6 = #{terms[6]}\).</p>
+<p>So we conclude \(#{sequence}_#{goal_index} = #{terms[goal_index]}\).</p>

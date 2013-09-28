@@ -1,0 +1,7 @@
+<p>A monotonic sequence is a sequence which is either increasing, decreasing, non-increasing, or non-decreasing.</p>
+<p>Looking at available choices, mostly these sequences are #{direction_word}.</p>
+<p>For example, \(#{terms[2]} #{direction_symbol} #{terms[3]}\).</p>
+<p>Can #{wrong_ones_latex[2].replace(r',\quad\ldots','').replace(r'\quad',' ')} be the beginning of a monotonic sequence?  No, because mostly these terms are #{direction_word}, but \(#{wrong_ones[2][2]}\) and \(#{wrong_ones[2][3]}\) break the pattern.</p>
+<p>Can #{wrong_ones_latex[3].replace(r',\quad\ldots','').replace(r'\quad',' ')} be the beginning of a monotonic sequence?  No, because mostly these terms are #{direction_word}, but \(#{wrong_ones[3][3]}\) and \(#{wrong_ones[3][4]}\) break the pattern.</p>
+<p>Can #{wrong_ones_latex[4].replace(r',\quad\ldots','').replace(r'\quad',' ')} be the beginning of a monotonic sequence?  No, because mostly these terms are #{direction_word}, but \(#{wrong_ones[4][4]}\) and \(#{wrong_ones[4][5]}\) break the pattern.</p>
+<p>Can #{terms_latex.replace(r',\quad\ldots','').replace(r'\quad',' ')} possibly be the beginning of a monotonic sequence?  Yes, because this portion of the sequence is #{direction_word}, so it is possible that the rest of sequence continues that pattern.</p>

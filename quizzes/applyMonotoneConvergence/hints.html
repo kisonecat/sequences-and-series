@@ -1,0 +1,10 @@
+<p>Since the sequence is #{direction_name}, the sequence is monotone.</p>
+<p condition="direction > 0">Since for all \(#{latex(variable)} \geq 1\), we have \(#{sequence}_{#{variable}} \leq #{bound_above}\), the sequence is bounded above.</p>
+<p condition="direction < 0">Since for all \(#{latex(variable)} \geq 1\), we have \(#{sequence}_{#{variable}} \geq #{bound_below}\), the sequence is bounded below.</p>
+<p>So by the Monotone Convergence Theorem, the sequence converges to some value; let us call it \(L\).</p>
+<p>Now consider the direction in which the sequence is heading.</p>
+<p condition="direction > 0">Since the sequence is #{direction_name}, for all \(#{latex(variable)} \geq 2\), we have  \(#{next_term} \leq #{sequence}_{#{variable}} \leq #{bound_above}\).</p>
+<p condition="direction < 0">Since the sequence is #{direction_name}, for all \(#{latex(variable)} \geq 2\), we have  \(#{bound_below} \leq #{sequence}_{#{variable}} \leq #{next_term}\).</p>
+<p>The limit \(L\) must be in that interval as well.</p>
+<p condition="direction > 0">Therefore the sequence converges to a value \(L\) so that \(#{next_term} \leq L \leq #{bound_above}\).</p>
+<p condition="direction < 0">Therefore the sequence converges to a value \(L\) so that \(#{bound_below} \leq L \leq #{next_term}\).</p>

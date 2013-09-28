@@ -1,0 +1,10 @@
+<p>The numerator is a polynomial of degree #{formula.numerator().degree(var('x'))} and the denominator is a polynomial of degree #{formula.denominator().degree(var('x'))}.</p>
+<p condition="formula.numerator().degree(var('x')) > formula.denominator().degree(var('x'))">The degree of the numerator is larger than the degree of the denominator.</p>
+<p condition="formula.numerator().degree(var('x')) < formula.denominator().degree(var('x'))">The degree of the denominator is larger than the degree of the numerator.</p>
+<p condition="formula.numerator().degree(var('x')) > formula.denominator().degree(var('x'))">Consequently, the limit is not finite.</p>
+<p condition="formula.numerator().degree(var('x')) < formula.denominator().degree(var('x'))">Consequently, the limit is zero.</p>
+<p condition="formula.numerator().degree(var('x')) == formula.denominator().degree(var('x'))">Multiply the numerator and denominator by \(#{latex(1/variable**(formula.denominator().degree(var('x'))))}\).</p>
+<p condition="formula.numerator().degree(var('x')) == formula.denominator().degree(var('x'))">Our goal is to compute
+\(\displaystyle\lim_{#{str(variable)}\to\infty} \displaystyle\frac{#{latex((formula.numerator()(x=variable)/(variable**formula.numerator().degree(var('x')))).expand())}}{#{latex((formula.denominator()(x=variable)/(variable**formula.numerator().degree(var('x')))).expand())}}\).</p>
+<p condition="formula.numerator().degree(var('x')) == formula.denominator().degree(var('x'))">For large values of \(#{str(variable)}\), many of these terms vanish.  Remember \(\displaystyle\lim_{#{str(variable)}\to\infty} #{latex(1/variable**(formula.denominator().degree(var('x'))))} = 0\).</p>
+<p condition="formula.numerator().degree(var('x')) == formula.denominator().degree(var('x'))">Therefore, we may conclude that \(\displaystyle\lim_{#{str(variable)}\to\infty} \displaystyle\frac{#{latex((formula.numerator()(x=variable)/(variable**formula.numerator().degree(var('x')))).expand())}}{#{latex((formula.denominator()(x=variable)/(variable**formula.numerator().degree(var('x')))).expand())}} = #{latex(sequence_limit)}\).</p>

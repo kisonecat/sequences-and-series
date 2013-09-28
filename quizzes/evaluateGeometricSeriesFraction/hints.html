@@ -1,0 +1,5 @@
+<p>A basic formula to evaluate a geometric series is \(\sum_{#{variable}=0}^\infty r^{#{variable}} = \frac{1}{1-r}\).</p>
+<p condition="initial != 0">But this series does not start with \(#{variable}=0\), so we multiply both sides by \(r^{#{initial}}\) to get  \(\sum_{#{variable}=#{initial}}^\infty r^{#{variable}} = \frac{r^{#{initial}}}{1-r}\).</p>
+<p condition="initial != 0">In this case, \(r = #{latex(ratio)}\), so \(\sum_{#{variable}=#{initial}}^\infty \left( #{latex(ratio)} \right)^{#{variable}} = \frac{\left( #{latex(ratio)} \right)^{#{initial}}}{1-\left(#{latex(ratio)}\right)}\).</p>
+<p condition="initial == 0">In this case, \(r = #{latex(ratio)}\), so \(\sum_{#{variable}=0}^\infty \left( #{latex(ratio)} \right)^{#{variable}} = \frac{1}{1-\left(#{latex(ratio)}\right)}\).</p>
+<p>Evaluating this expression, we find \(\sum_{#{variable}=#{initial}}^\infty \left( #{latex(ratio)} \right)^{#{variable}} = #{latex(answer)}\).</p>

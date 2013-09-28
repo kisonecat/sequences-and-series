@@ -1,0 +1,12 @@
+<p>Consider the coefficient on \(#{latex(variable**2)}\) in \(#{sequence}_{#{variable}} = #{latex(term)}\), which is \(#{latex(term.coefficient(variable**2))}\).</p>
+<p condition="term.coefficient(variable**2) > 0">Since the leading term's coefficient is positive, when \(#{latex(variable)}\) is large, so is \(#{sequence}_{#{variable}}\).</p>
+<p condition="term.coefficient(variable**2) > 0">Consequently, the sequence is not bounded above.</p>
+<p condition="term.coefficient(variable**2) > 0">At least for \(#{latex(variable)}\) large, the sequence is increasing.</p>
+<p condition="term.coefficient(variable**2) > 0">Consequently, the sequence is bounded below.</p>
+<p condition="term.coefficient(variable**2) > 0">Altogether then, the sequence is bounded below, but not above.</p>
+
+<p condition="term.coefficient(variable**2) < 0">Since the leading term's coefficient is negative, when \(#{latex(variable)}\) is large, \(#{sequence}_{#{variable}}\) is very negative.</p>
+<p condition="term.coefficient(variable**2) < 0">Consequently, the sequence is not bounded below.</p>
+<p condition="term.coefficient(variable**2) < 0">At least for \(#{latex(variable)}\) large, the sequence is decreasing.</p>
+<p condition="term.coefficient(variable**2) < 0">Consequently, the sequence is bounded above.</p>
+<p condition="term.coefficient(variable**2) < 0">Altogether then, the sequence is bounded above, but not below.</p>

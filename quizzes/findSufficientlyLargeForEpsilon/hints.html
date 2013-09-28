@@ -1,0 +1,10 @@
+<p>There can only be one right answer.</p>
+<p condition="none_of_above == True">So the answer is either \(#{str(variable).capitalize()} = #{bound - 2}\) or &ldquo;none of these.&rdquo;</p>
+<p condition="none_of_above == True">Note that \(#{str(sequence_name)}_{#{bound - 2}} = #{latex(Rational((a * (bound - 2) + b,c * (bound - 2) + d)))}\).</p>
+<p condition="none_of_above == True">Consequently, \(\left| #{str(sequence_name)}_{#{bound - 2}} - \displaystyle #{latex(Rational((a,c)))} \right| = #{latex(abs(Rational((a * (bound - 2) + b,c * (bound - 2) + d)) - Rational((a,c))))} \geq #{latex(epsilon)}\).</p>
+<p condition="none_of_above == True">So the answer must be &ldquo;none of these.&rdquo;</p>
+<p condition="none_of_above == False">So the answer is either \(#{str(variable).capitalize()} = #{bound}\) or &ldquo;none of these.&rdquo;</p>
+<p condition="none_of_above == False">Note that \(#{str(sequence_name)}_{#{bound}} = #{latex(Rational((a * bound + b,c * bound + d)))}\).</p>
+<p condition="none_of_above == False">Consequently, \(\left| #{str(sequence_name)}_{#{bound}} - \displaystyle #{latex(Rational((a,c)))} \right| = #{latex(abs(Rational((a * (bound) + b,c * (bound) + d)) - Rational((a,c))))} < #{latex(epsilon)}\).</p>
+<p condition="none_of_above == False">For \(#{str(variable)} \geq #{str(variable).capitalize()}\), the term \(#{str(sequence_name)}_{#{str(variable)}}\) is even closer to the limiting value \(\displaystyle #{latex(Rational((a,c)))}\).</p>
+<p condition="none_of_above == False">So the answer is \(#{str(variable).capitalize()} = #{bound}\).</p>
