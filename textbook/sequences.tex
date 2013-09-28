@@ -1,5 +1,6 @@
 
 \section{Notation}
+\label{section:notation}
 
 \marginnote{Maybe you are feeling that this formality is unnecessary,
   or even ridiculous; why can't we just list off a few terms and pick
@@ -105,6 +106,7 @@ formalism is getting in the way of our understanding.  It can be a
 tough balance.
 
 \section{Defining sequences}
+\label{section:defining-sequences}
 
 \subsection{Defining sequences by giving a rule}
 
@@ -192,6 +194,7 @@ We just computed $a_4 = 9$; we were given $a_2 = 3$.  Therefore $a_5 = 9 - 3 = 6
 
 
 \section{Examples}
+\label{section:examples}
 
 \marginnote{Tons of entertaining sequences are listed in the \href{http://oeis.org/}{The On-Line Encyclopedia of Integer Sequences}.}
 
@@ -295,7 +298,7 @@ The second family we consider are geometric progressions.
   $$
   a_1 = 10, \quad a_2 = 30, \quad a_3 = 90, \quad a_4 = 270, \quad\ldots
   $$
-  and given by the rule $a_n = 10 \cdot 3^n$.  Each term is three
+  and given by the rule $a_n = 10 \cdot 3^{n-1}$.  Each term is three
   times the preceding term.
 \end{example}
 
@@ -542,6 +545,7 @@ problem\sidenote{This is not the last unsolved problems we will
   understand.} in mathematics.
 
 \section{Where is a sequence headed?  Take a limit!}
+\label{section:limits}
 
 We've seen a lot of sequences, and already there are a few things we
 might notice.  For instance, the arithmetic progression
@@ -782,6 +786,7 @@ In that definition, $\floor{x}$ denotes the ``greatest integer less
 \end{marginfigure}
 
 \section{New sequences from old}
+\label{section:new-sequences-from-old}
 
 Given a sequence, one way to build a new sequence is to start with the
 old sequence, but then throw away a whole bunch of terms.  For
@@ -870,6 +875,7 @@ sequence $(a_n)$ does not converge.  Let's formalize this.
 \end{proof}
 
 \section{Helpful theorems about limits}
+\label{section:theorems-about-limits}
 
 Not surprisingly, the properties of limits of real functions translate
 into properties of sequences quite easily. 
@@ -1135,7 +1141,8 @@ $$
 $$  
 \end{theorem}
 
-\section{Qualitative features of limits}
+\section{Qualitative features of sequences}
+\label{section:qualitative-features-of-sequences}
 
 \marginnote{Your first exposure to mathematics might have been about
   \defnword{constructions}; you might have been asked to compute a
@@ -1150,6 +1157,7 @@ exists, without needing to---or without even being able to---compute
 that limit.
 
 \subsection{Monotonicity}
+\label{subsection:monotonicity}
 
 And sometimes we don't even care about limits, but we'd simply like
 some terminology with which to describe features we might notice about
@@ -1202,6 +1210,7 @@ is decreasing.
 \end{example}
 
 \subsection{Boundedness}
+\label{subsection:boundedness}
 
 Sometimes we can't say exactly which number a sequence approaches, but
 we can at least say that the sequence doesn't get too big or too
