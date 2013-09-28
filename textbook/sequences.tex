@@ -34,7 +34,7 @@ A real-valued function with domain the natural numbers
 $\N=\{1,2,3,\ldots\}$ is a \defnword{sequence}.
 
 Other functions will also be regarded as sequences: the domain might
-include $0$ alongside the positive whole numbers, meaning that the
+include $0$ alongside the positive integers, meaning that the
 domain is the non-negative integers, $\ds
 \Z^{\ge0}=\{0,1,2,3,\ldots\}$.  The range of the function is still
 allowed to be the real numbers; in symbols, the function $f\colon
@@ -64,8 +64,8 @@ Let's summarize the preceding discussion in the following definition.
   \[
   \{ n \in \Z : n \geq N \},\quad \mbox{for some integer $N$.}
   \]
-  Stated more humbly, a sequence assigns a real number to all the whole
-  numbers, starting with an index $N$.  
+  Stated more humbly, a sequence assigns a real number to the
+  integers starting with an index $N$.
 
   The ``outputs'' of a sequence are the \defnword{terms} of the
   sequence; the ``$n^{\nth}$ term'' is the real number that the
@@ -122,7 +122,7 @@ a_i=f(i)=1-1/2^i$.  Other examples are easy to cook up, like
 \end{align*}
 Frequently these formulas will make sense if thought of either as
 functions with domain $\R$ or $\N$, though occasionally the given
-formula will make sense only for whole numbers.  We'll address the
+formula will make sense only for integers.  We'll address the
 idea of a real-valued function ``filling in'' the gaps between the
 terms of a sequence when we look at graphs in
 Section~\xrefn{section:graphs}.
@@ -324,7 +324,7 @@ the ratio between subsequent terms is one half, and each term is smaller than th
 \subsection{Triangular numbers}
 
 The sequence of \defnword{triangular numbers} $(T_n)$ is a sequence of
-whole numbers counting the number of dots in increasingly large
+integers counting the number of dots in increasingly large
 ``equilateral triangles'' built from dots.  The term $T_n$ is the
 number of dots in a triangle with $n$ dots to a side.
 
@@ -803,7 +803,7 @@ We say that this latter sequence is a
 of the original sequence.  Here is a precise definition.
 
 \begin{definition}
-  Suppose $(a_n)$ is a sequence with initial index $N$, and suppose we have a sequence of whole numbers $(n_i)$ so that
+  Suppose $(a_n)$ is a sequence with initial index $N$, and suppose we have a sequence of integers $(n_i)$ so that
   $$
   N \leq n_1 < n_2 < n_3 < n_4 < n_5 < \cdots 
   $$
@@ -943,7 +943,7 @@ We compute, as in Calculus One, that
 \end{align*}
 We therefore conclude that $\ds\lim_{n \to \infty} a_n = 1$.
 \end{solution}
-\marginnote{And this is reasonable: by choosing $n$ to be a large enough whole number, I can make $\ds\frac{n}{n+1}$ as close to $1$ as I would like.  Just imagine how close $\frac{10000000000}{10000000001}$ is to one.}
+\marginnote{And this is reasonable: by choosing $n$ to be a large enough integer, I can make $\ds\frac{n}{n+1}$ as close to $1$ as I would like.  Just imagine how close $\frac{10000000000}{10000000001}$ is to one.}
 
 \begin{example}
 \label{example:log-n-over-n}
