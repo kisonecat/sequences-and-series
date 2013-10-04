@@ -2,6 +2,7 @@ from questions import *
 
 class Question(RandomizedQuestion):
     module = __file__
+    forum = 10083
     title = 'evaluate a geometric series with rational ratio'
     def perturb(self):
         denominator = randint(2,10)

@@ -65,11 +65,26 @@ import findSequenceLimit
 import determineSequenceBounded
 import applyMonotoneConvergence
 
+import defineValueOfSeries
+import evaluateGeometricSeriesFraction
+import evaluateTelescopingSeries
+import analyzeGeometricSeries
+import applyNthTermTest
+import applyComparisonTest
+import analyzeHarmonicSeries
+
 class SecondQuiz(Quiz):
     title = 'Homework 2'
-    preamble = ''
-    question_classes = [ evaluateGeometricSeriesFraction.Question
-                       ]
+    preamble = 'This homework, like all the homeworks in this course, is an example of &ldquo;formative assessment.&rdquo;  As such, this homework is not so much about you showing me how much you have learned; the final exam will handle that.  Rather, this homework is part of the process of learning.  Use the hints when you get stuck.  Discuss freely on the forums.  Take the quiz again and again.  Feel free to use the provided resources in whatever way helps you to understand the material.  I want you to succeed, and, with practice, I know you will.  ~jim'
+    question_classes = [ 
+        defineValueOfSeries.Question,
+        evaluateGeometricSeriesFraction.Question,
+        analyzeGeometricSeries.Question,
+        evaluateTelescopingSeries.Question,
+        applyNthTermTest.Question,
+        analyzeHarmonicSeries.Question,
+        applyComparisonTest.Question,
+    ]
 
 class FirstQuiz(Quiz):
     title = 'Homework 1'
@@ -90,8 +105,7 @@ class FirstQuiz(Quiz):
 #                       ,
                        ]
 
-f = open('quiz1.xml','w')
-f.write(FirstQuiz.coursera_xml())
+f = open('quiz2.xml','w')
+f.write(SecondQuiz.coursera_xml())
 f.close()
-FirstQuiz.forum_list()
-
+SecondQuiz.forum_list()

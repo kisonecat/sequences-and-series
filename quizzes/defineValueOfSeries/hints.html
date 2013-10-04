@@ -1,15 +1,7 @@
-<p>We are trying to make precise the idea that, eventually, all the terms of the sequence \(a_n\) are as close as we want to \(L\).</p>
-<p>To measure closeness to \(L\), we will use a positive real number \(\epsilon\).</p>
-<p>We must achieve any desired degree of closeness, so we will make a statement which is true for any positive real number \(\epsilon\).</p>
-<p>In other words, the definition will begin &ldquo;For every positive real number \(\epsilon > 0\)&hellip;&rdquo;</p>
-<p>We now must make precise the idea of &ldquo;eventually&rdquo; close.</p>
-<p>We use a whole number \(N\) to capture the idea of &ldquo;sufficiently large&rdquo; values of \(n\).</p>
-<p>Specifically, the definition will begin &ldquo;For every positive real number \(\epsilon > 0\), there exists an \(N \in \mathbb{N}\)&hellip;&rdquo;</p>
-<p>The &ldquo;sufficiently large&rdquo; value of \(n\) is any value which is at least as large as \(N\).</p>
-<p>So we will only consider those \(n\) for which \(n \geq N\).</p>
-<p>Thus the definition goes &ldquo;For every positive real number \(\epsilon > 0\), there exists an \(N \in \mathbb{N}\) so that whenever \(n \geq N\)&hellip;&rdquo;</p>
-<p>What happens &ldquo;eventually&rdquo; is that terms of the sequence are close to \(L\).  How close?  Within \(\epsilon\).</p>
-<p>The quantity \(|a_n - L|\) is the distance between \(a_n\) and \(L\).</p>
-<p>To say that \(a_n\) is within \(\epsilon\) of \(L\) is to say that \(|a_n - L| < \epsilon\).</p>
-<p>Therefore the definition is &ldquo;For every positive real number \(\epsilon > 0\) there exists an \(N \in \mathbb{N}\) so that whenever \(n \geq N\), we have \( |a_n - L| < \epsilon \).&rdquo;</p>
-
+<p>We are trying to make precise the idea that, by adding up sufficiently many of the terms of the sequence \(a_k\), we can get as close to \(L\) as desired.</p>
+<p>We consider the sequence of partial sums, \((s_n)\).</p>
+<p>For this course, the term \(s_n\) is the sum of the terms through index \(n\).  Be warned though some people might define it differently: in some texts, the term \(s_n\) may be the sum of the first \(n\) terms.</p>
+<p>So \(s_n = \displaystyle\sum_{k=4}^n a_k\).</p>
+<p>To say that we can get as close as desired to \(L\) by adding up many terms is to say that \(s_n\) is as close as desired to \(L\) whenever \(n\) is large enough.</p>
+<p>This is saying that the sequence \(s_n\) converges to \(L\).</p>
+<p>So to say that \(\displaystyle\sum_{k=4}^\infty a_k = L\) means that the sequence of partial sums \(s_n = \displaystyle\sum_{k=4}^n a_k \) converges to \(L\).</p>

@@ -1,0 +1,9 @@
+<p>As the title says, this is a telescoping series.</p>
+<p>So we should try to rewrite \(#{latex(term)}\) as \(a_{#{variable}} - a_{#{variable}+1}\).</p>
+<p>The denominator \(#{latex(term.denominator())}\) factors as \(#{latex(term.denominator().factor())}\).</p>
+<p>So we can write \(#{latex(term)}\) as \(a_{#{variable}} - a_{#{variable}+1}\) where \(a_{#{variable}} = #{latex(telescope(x=variable))}\).</p>
+<p>Therefore \(\sum_{#{variable}=#{initial}}^\infty #{latex(term)} = \sum_{#{variable}=#{initial}}^\infty \left( a_{#{variable}} - a_{#{variable}+1} \right)\).</p>
+<p>This is a telescoping series, so \(\sum_{#{variable}=#{initial}}^\infty #{latex(term)} = a_{#{initial}} - \lim_{#{variable} \to \infty} a_{#{variable}}\).</p>
+<p>Note that \(\lim_{#{variable} \to \infty} #{latex(telescope(x=variable))} = 0\), so \(\lim_{#{variable} \to \infty} a_{#{variable}} = 0\).</p>
+<p>So \(\sum_{#{variable}=#{initial}}^\infty #{latex(term)} = a_{#{initial}}\).</p>
+<p>Specifically then, \(\sum_{#{variable}=#{initial}}^\infty #{latex(term)} = #{latex(telescope(x=initial))}\).</p>

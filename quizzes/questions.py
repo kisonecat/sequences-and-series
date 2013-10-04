@@ -155,13 +155,17 @@ class BaseQuestion(object):
         question_id = guid()
 
         forum_button = """<button class="btn btn-inverse btn-disabled" disabled><i class="icon-comment"></i>&nbsp;Discuss</a>"""
-        if self.__class__.forum > 0:
+        if hasattr(self.__class__,'forum') and self.__class__.forum > 0:
             forum_button = """<a class="btn btn-inverse" target="_blank" href="https://class.coursera.org/{course}/forum/list?forum_id={forum}"><i class="icon-comment"></i>&nbsp;Discuss</a>""".format(course=COURSE_NAME, forum=self.__class__.forum)
 
         video_button = """<button class="btn btn-inverse btn-disabled" disabled><i class="icon-film"></i>&nbsp;Watch video</a>"""
         if self.__class__.video != "":
             video_button = """<a class="btn btn-inverse" target="_blank" href="https://class.coursera.org/{course}/lecture/{lecture}"><i class="icon-film"></i>&nbsp;Watch video</a>""".format(course=COURSE_NAME, lecture=video_identifiers[self.__class__.video])
-        
+
+        #textbook_button = """<button class="btn btn-inverse btn-disabled" disabled><i class="icon-book"></i>&nbsp;Read Textbook</a>"""
+        #if self.__class__.textbook != "":
+        #    textbook_button = """<a class="btn btn-inverse" target="_blank" href="https://class.coursera.org/{course}/lecture/{lecture}"><i class="icon-film"></i>&nbsp;Watch video</a>""".format(course=COURSE_NAME, lecture=video_identifiers[self.__class__.video])
+
         hint_button = """<button class="btn btn-warning" onclick="$(this).parents('.course-quiz-question-text').children('div.hints').children('div.hint').first().removeClass('hint').hide().css('visibility','visible').css('position','').css('width','').css('height','').css('overflow','').slideDown('slow'); var steps = $(this).parents('.course-quiz-question-text').children('div.hints').children('div.hint').length; if (steps != 1) $(this).children('.hint-count').text( ' (' + steps + ' steps remain)' ); if (steps == 1) $(this).children('.hint-count').text( ' (1 step remains)' ); if (steps == 0) $(this).prop( 'disabled', true ); return false;"><i class=\"icon-question-sign\"></i>&nbsp;Get hint<span class="hint-count"></span></button>""".format(button="""""")
 
         hint_text = """<div class="hints">"""

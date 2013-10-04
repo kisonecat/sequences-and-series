@@ -1,0 +1,9 @@
+<p>The first thing we should do when confronted with an unknown series is check the limit of the terms.</p>
+<p>Recall that if the series converges, then the limit must exist and be equal to zero.</p>
+<p>So if the limit does not exist or is not zero, then the series diverges.</p>
+<p>In this case, we consider \(\displaystyle\lim_{#{variable} \to \infty} #{latex(term)}\).</p>
+<p>Let's multiply by a &ldquo;disguised version of one,&rdquo; meaning \(\displaystyle\lim_{#{variable} \to \infty} #{latex(term)} \cdot \frac{1/#{latex(variable**2)}}{1/#{latex(variable**2)}}\).</p>
+<p>Expanding the numerator and denominator yields \(\displaystyle\lim_{#{variable} \to \infty} \frac{#{latex(term.numerator().expand()/variable**2)}}{#{latex(term.denominator().expand()/variable**2)}}\).</p>
+<p>Dividing through by \(#{latex(variable**2)}\) gives \(\displaystyle\lim_{#{variable} \to \infty} \frac{#{latex((term.numerator().expand()/variable**2).expand())}}{#{latex((term.denominator().expand()/variable**2).expand())}}\).</p>
+<p>Note then that \(\displaystyle\lim_{#{variable} \to \infty} \frac{#{latex((term.numerator().expand()/variable**2).expand())}}{#{latex((term.denominator().expand()/variable**2).expand())}} = #{latex(the_limit)}\).</p>
+<p>But \(#{latex(the_limit)} \neq 0\), and so, this series must diverge.</p>

@@ -1,0 +1,8 @@
+<p>This series resembles the harmonic series \(\displaystyle\sum_{n=1}^\infty \displaystyle\frac{1}{n}\).</p>
+<p>Recall that \(\displaystyle\sum_{n=1}^\infty (c \, a_n) = c \displaystyle\sum_{n=1}^\infty a_n\) when \(\displaystyle\sum_{n=1}^\infty a_n\) converges.</p>
+<p>When \(\displaystyle\sum_{n=1}^\infty a_n\) diverges, so does \(\displaystyle\sum_{n=1}^\infty (c \, a_n)\) provided \(c \neq 0\).</p>
+<p>Let's use \(c = \frac{#{latex(term_denominator.coefficient(variable))}}{#{latex(term_numerator)}}\) in this case.</p>
+<p>Then the series \(\sum_{#{variable}=#{initial}}^\infty \left( #{latex(term)} \right)\) converges exactly when \(\sum_{#{variable}=#{initial}}^\infty \frac{#{latex(term_denominator.coefficient(variable))}}{#{latex(term_numerator)}} \left( #{latex(term)} \right)\) converges.</p>
+<p>Simplifying, \(\sum_{#{variable}=#{initial}}^\infty \left( #{latex(term)} \right)\) converges exactly when \(\sum_{#{variable}=#{initial}}^\infty \left( #{latex(((term_denominator.coefficient(variable))/(term_numerator)) * term)} \right)\) converges.</p>
+<p>But the terms of \(\sum_{#{variable}=#{initial}}^\infty \left( #{latex(((term_denominator.coefficient(variable))/(term_numerator)) * term)} \right)\) are just the tail of the divergent harmonic series!</p>
+<p>So the series \(\sum_{#{variable}=#{initial}}^\infty \left( #{latex(term)} \right)\) diverges.</p>
