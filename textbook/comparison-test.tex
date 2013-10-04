@@ -12,7 +12,7 @@ associated sequence of partial sums is non-decreasing.
 So we can show that a series of positive terms converges, provided we
 can bound the sequence of partial sums.  
 
-\subsection{Statement of comparison test}
+\subsection{Statement of the Comparison Test}
 
 But how can we manage to do that?  One way to ensure that the sequence
 of partial sums is bounded is by \textbf{comparing} the series to
@@ -21,7 +21,7 @@ $$
 \ds\sum_{k=0}^\infty a_k \mbox{ and }
 \ds\sum_{k=0}^\infty b_k.
 $$
-Suppose, for all $k$, that $b_k \geq a_k > 0$.  Then
+Suppose, for all $k$, that $b_k \geq a_k \geq 0$.  Then
 $$
 a_0 + a_1 + \cdots + a_n \leq b_0 + b_1 + \cdots + b_n.
 $$
@@ -29,10 +29,15 @@ Suppose that $\ds\sum_{k=0}^\infty b_k$ converges to $L$.  Then
 $$
 a_0 + a_1 + \cdots + a_n \leq b_0 + b_1 + \cdots + b_n \leq L,
 $$
-so the sequence $s_n = a_0 + a_1 + \cdots + a_n$ is bounded.  But we
-just won the game: if a series with positive terms is, termwise, less
-than a convergent series, it converges.  We have just proved half of
-the following theorem.
+so the sequence of partial sums $s_n = a_0 + a_1 + \cdots + a_n$ is
+bounded.  But we just won the game: each term $a_k$ is nonnegative, so
+the sequence of partial sums $s_n = \sum_{k=0}^n a_k$ is increasing.
+Theorem~\xrefn{thm:bounded-monotonic} guarantees that the sequence
+$(s_n)$ converges.
+
+Let's summarize what just happened: if a series with positive terms
+is, termwise, less than a convergent series, it converges.  We have
+just proved half of the following theorem.
 \begin{theorem}\label{thm:comparison-test}\index{comparison test}
 Suppose that $\ds a_n$ and $\ds b_n$ are non-negative for all $n$ and
 that, for some $N$, whenever $n \geq N$, we have $\ds a_n \leq b_n$.
@@ -41,32 +46,142 @@ If $\ds\sum_{n=0}^\infty b_n$ converges, so does $\ds\sum_{n=0}^\infty a_n$.
 
 If $\ds\sum_{n=0}^\infty a_n$ diverges, so does $\ds\sum_{n=0}^\infty b_n$.
 \end{theorem}
-This is usually called the \defnword{comparison test}; we might summarize it like this:
-\begin{quote}
-  A non-negative series, overestimated by a convergent series, converges. \\
-  A non-negative series, underestimated by a divergent series, diverges.
-\end{quote}
+This is usually called the \defnword{Comparison Test}; we might summarize it like this:
+\begin{itemize}
+\item A non-negative series, overestimated by a convergent series, converges.
+\item A non-negative series, underestimated by a divergent series, diverges.
+\end{itemize}
 
 \begin{warning}
   Being less than a divergent series does not help: the comparison
   test is silent in that case.
 
   Similarly, because larger than a convergent series does not help.
-  The comparison test only says something when a series is less than a
+  The Comparison Test only says something when a series (with non-negative terms!) is less than a
   convergent series, or greater than a divergent series.
 \end{warning}
 
-\subsection{Examples of comparison tests}
-%BADBAD
+\subsection{Applications of the Comparison Test}
 
-\subsection{Cauchy condensation}
-%BADBAD
+Like the $n^{\nth}$ term test (Theorem~\xrefn{thm:nth-term-test}), we
+can use the Comparison Test (Theorem~\xrefn{thm:comparison-test}) to
+show that a series diverges.
+
+\begin{example}
+Does the series $\ds\sum_{n=2}^\infty \ds\frac{\log n}{n}$ converge?
+\end{example}
+
+\begin{example}
+Our first inclination might be to apply the $n^{\nth}$ term test, but in this case,
+$$
+\lim_{n \to \infty} \frac{\log n}{n} = 0,
+$$
+so the $n^{\nth}$ term test is silent in this case.  As far as we know
+at this point, the series may diverge or converge.
+
+Instead, we'll try the Comparison Test.  Set $a_n = \ds\frac{1}{n}$ and $b_n = \ds\frac{\log n}{n}$.  Note that whenever $n \geq 2$, we have
+$$
+0 \leq a_n \leq b_n,
+$$
+but the series $\ds\sum_{n=2}^\infty \frac{1}{n}$ diverges, and so by
+the Comparison Test, the given series (which is even bigger!) must
+likewise diverge.
+\end{example}
+
+Recall that the $n^{\nth}$ term test \textit{cannot} be used to prove that a series converges; if the $n^{\nth}$ term test does not answer ``diverges!'' then the test is silent.  In wonderful contrast, the Comparison Test \textit{can} be used to show that a series converges.
+
+\begin{example}
+Does the series $\ds\sum_{n=1}^\infty \ds\frac{\sin^2 n}{2^n}$ converge?
+\end{example}
+
+\begin{example}
+Yes.  Set
+$$
+a_n = \frac{\sin^2 n}{2^n} \mbox{ and } b_n = \frac{1}{2^n}
+$$
+Note that $0 \leq a_n \leq b_n$.  But the series $\sum_{n=1}^\infty
+b_n$ converges, since it is a geometric series with common ratio
+$1/2$, as in Example~\xrefn{example:sum-of-half-powers}.  Therefore,
+the series $\ds\sum_{n=1}^\infty a_n$ converges by the comparison
+test.
+\end{example}
+
+\subsection{Cauchy Condensation Test}
+
+\marginnote{If you have already seen some convergence tests
+  before---perhaps you have already been through Calculus Two!---you
+  might be wondering why ``condensation'' is making an appearance.  It
+  is perhaps less popular than other tests, but I like it.
+  Pedagogically, it is nice to see that the ``trick'' in the harmonic
+  series can be generalized and applied to lots of other series.  In
+  particular, condensation permits the study of $p$-series without
+  going through the usual route of the Integral Test.}
+
+Remember in Section~\xrefn{section:harmonic-series} when we considered
+the harmonic series?  We showed that it diverged by comparing it with
+the divergent series $\ds\sum_{n=1}^\infty \frac{1}{2}$, but we
+couldn't make that comparison right away---first we had to group
+together the terms in a somewhat complicated seeming way.  
+
+We can generalize that ``grouping together'' trick; this is called the
+Cauchy Condensation Test.
+
+\begin{theorem}\label{thm:cauchy-condensation}\index{Cauchy condensation test}
+Suppose $(a_n)$ is a non-increasing sequence of positive numbers.  The series
+$\ds\sum_{n=1}^\infty a_n$ converges if and only if the series $\ds\sum_{n=0}^\infty \left( 2^n a_{2^n} \right)$ converges.
+\end{theorem}
+
+The series $\ds\sum_{n=0}^\infty \left( 2^n a_{2^n} \right)$ is often
+called the \defnword{condensed}\index{condensed
+  series}\index{series!condensed} series associated to the series
+$\ds\sum_{n=1}^\infty a_n$.
+
+\begin{proof}
+  Let's suppose that $\ds\sum_{n=0}^\infty \left( 2^n a_{2^n} \right)$
+  converges; the goal then is to show that $\ds\sum_{n=1}^\infty a_n$
+  also converges.
+
+  Since the sequence $(a_n)$ is decreasing, we have that
+  \begin{align*}
+  a_2 + a_3 &< a_2 + a_2 \\
+  a_4 + a_5 + a_6 + a_7 &< a_4 + a_4 + a_4 + a_4 \\
+  a_8 + \cdots + a_{15} &< 8 \, a_8 \\
+  &\vdots \\
+  a_{2^n} + \cdots + a_{2^n - 1} &< 2^n \, a_{2^n}.
+  \end{align*}
+  Therefore,
+  $$
+  \sum_{n=1}^{2^k - 1} a_n \leq \sum_{n=0}^{k-1} 2^n \, a_{2^n}.
+  $$
+  As a result, the sequence of partial sums $s_k = \sum_{n=1}^k a_n$ is bounded above by $\sum_{n=0}^\infty 2^n \, a_{2^n}$.  Moreover, the sequence of partial sums $(s_k)$ is increasing.  Therefore, by the Monotone Convergence Theorem, the series $(s_k)$ converges.
+
+  On the other hand, suppose that $\ds\sum_{n=1}^\infty a_n$ converges; let's show that $\ds\sum_{n=0}^\infty \left( 2^n a_{2^n} \right)$
+  also converges.  Once we have done so, we will have shown that  $\ds\sum_{n=1}^\infty a_n$ converges if and only if $\ds\sum_{n=0}^\infty \left( 2^n a_{2^n} \right)$ converges.
+
+  Since the sequence $(a_n)$ is decreasing, we have that
+  \begin{align*}
+  a_1 + a_2 &< a_1 + a_1 \\
+  a_2 + 3\,a_4 &< a_2 + a_2 + a_3 + a_3 \\
+  a_4 + 7 \, a_8 &< a_4 + a_4 + a_5 + a_5 + a_6 + a_6 + a_7 + a_7 \\
+  a_8 + 15 \, a_{16} &< 2(a_8 + \cdots + a_{15}) \\
+  &\vdots \\
+  a_{2^n} + (2^n - 1) \, a_{2^{n+1}} &< 2(a_{2^{n}} + \cdots + a_{2^{n+1} - 1}).
+  \end{align*}
+  So the sequence of partial sums for the series $\ds\sum_{n=0}^k \left( 2^n a_{2^n} \right)$ are bounded above by $2 \cdot \sum_{n=1}^\infty a_n$.  Moreover, that sequence of partial sums is increasing, and therefore, by the Monotone Convergence Theorem, the series $\ds\sum_{n=0}^\infty \left( 2^n a_{2^n} \right)$ converges---which is what we wanted to show.  
+\end{proof}
+
+What we shown is a bit stronger than simply that the original series and the condensed series share the same fate---converging or diverging together.  In fact, we have an estimate on the value of the original series, in terms of the value of the condensed series.  We have shown that
+$$
+\sum_{n=1}^\infty a_n \leq \ds\sum_{n=0}^k \left( 2^n a_{2^n} \right) \leq 2 \cdot \sum_{n=1}^\infty a_n.
+$$
 
 \subsection{Examples of condensation}
 
 \begin{example}
 Does the series $\ds\sum_{n=1}^\infty \ds\frac{1}{n^2}$ converge?
 \end{example}
+
+This is \textit{not} a geometric series: we already know that $\ds\sum_{n=1}^\infty \ds\frac{1}{2^n}$ converges, but this is asking about something very different, namely $\ds\sum_{n=1}^\infty \ds\frac{1}{n^2}$.
 
 \begin{solution}
 To get some intuition for what is going on, let's do some numerical calculations.
@@ -105,7 +220,7 @@ and since the ``condensed'' series converges, so too must the original series co
 
 \begin{solution}
   We can't apply Cauchy condensation here, because the terms of this series
-  are not decreasing.  But we can apply a comparison test.  Moments ago, we
+  are not decreasing.  But we can apply the Comparison Test.  Moments ago, we
   saw that $\ds\sum_{n=1}^\infty \ds\frac{1}{n^2}$ converges, and
 $$ {|\sin n|\over n^2}\le {1\over n^2},$$
 because $|\sin n|\le 1$.  The partial sums are
@@ -120,18 +235,18 @@ Let us consider the series $\ds\sum_{n=1}^\infty \ds\frac{1}{n^p}$.  Such a seri
 Does a $p$-series converge?  Diverge?  It depends on $p$.
 \marginnote{If we think of this as a function of $p$, then we have the \defnword{Riemann zeta function}, that is,
 $$\zeta(p) = \ds\sum_{n=1}^\infty \ds\frac{1}{n^p}.$$
-The Riemann zeta function is quite important: it plays a key role in number theory via the \href{http://en.wikipedia.org/wiki/Riemann_hypothesis}{Riemann hypothesis}\defnword{Riemann hypothesis} and also has applications in physics.  Something that connects the physical world to number theory must be pretty incredible.}
+The Riemann zeta function is quite important: it plays a key role in number theory via the \href{http://en.wikipedia.org/wiki/Riemann_hypothesis}{\defnword{Riemann hypothesis}} and also has applications in physics.  Something that connects the physical world to number theory must be pretty incredible.}
 
 \begin{example}
 Let $p \leq 1$.  Does the series $\ds\sum_{n=1}^\infty \ds\frac{1}{n^p}$ converge?
 \end{example}
 
-When $p=1$, this series is the harmonic series we already proved to diverge
-in Section~\xrefn{section:harmonic-series}.
-
 \begin{solution}
-  The series $\ds\sum_{n=1}^\infty \ds\frac{1}{n^p}$ diverges whenever
-  $p \geq 1$.  We will show this by comparing to a harmonic series.
+  When $p=1$, this series is the harmonic series we already proved to diverge
+  in Section~\xrefn{section:harmonic-series}. 
+
+  But more generally, the series $\ds\sum_{n=1}^\infty \ds\frac{1}{n^p}$ diverges whenever
+  $p \leq 1$.  We will show this by comparing to a harmonic series.
   Since $p \leq 1$, then $n^p \leq n$, and so
 $$
 \frac{1}{n^p} \geq \frac{1}{n}.
@@ -157,5 +272,4 @@ $$
 $$
 which converges.
 \end{solution}
-
 

@@ -8,9 +8,9 @@ that's the case, then why did we bother with sequences?  Because
 to provide the language with which to discuss series.
 
 Suppose $(a_n)$ is a sequence; then the associated series\sidenote{The
-  $\sum$ symbol may look like an E, but it is the Greek letter
+  $\Sigma$ symbol may look like an E, but it is the Greek letter
   \textit{sigma}, and it makes an S sound---just like the first letter
-  of the word ``series.''  If you see ``GR$\Sigma\Sigma$K,'' say ``grsssssk.''}
+  of the word ``series.''  If you see ``GR$\Sigma\Sigma$K,'' say ``grssk.''}
 $$\sum_{k=1}^\infty a_k=a_1+a_2+a_3+a_4+a_5+\cdots$$
 I might be thinking that I feel just fine, but I have woken a terrible
 beast!  What does that innocuous looking ``$\cdots$'' mean?  What does
@@ -26,11 +26,12 @@ I'm getting close to anything in particular.  In other words, I can
 take a limit.
 
 \section{Definition of convergence}
+\label{section:series-definition}
 
 But a limit\ldots of what?  From a sequence, we can consider the
 associated series, and associated to that series is a yet another
 sequence---the \defnword{sequence of partial sums}\index{sequence!of
-  partial sums}.  Here's a formal definition.
+  partial sums}\index{partial sums}.  Here's a formal definition which unwinds this tangled web.
 \begin{definition}
   Suppose $(a_n)$ is a sequence with associated series
   $\ds\sum_{k=1}^\infty a_k$.  The \defnword{sequence of partial sums}
@@ -47,12 +48,12 @@ Working this out, we have
   s_4&=a_1+a_2+a_3+a_4, \\
   s_5&=a_1+a_2+a_3+a_4+a_5, \mbox{ and so on.}\\
 \end{align*}
-Instead of adding up the infinite sequence $a_n$, we will
-look at the sequence of partial sums, and ask whether that sequence of
-partial sums converges---and if it converges, then whatever it
-converges to---we'll call \textit{that} the value of the series.
+Instead of adding up the infinite sequence $a_n$, which we can't do,
+we will instead look at the sequence of partial sums, and ask whether
+that sequence of partial sums converges.  And if it converges to $L$,
+then we'll call $L$ the \defnword{value}\index{series!value of}\index{value of series} of the series.
 
-\marginnote{This might seem overly complicated, but it solves a serious problem: we no longer are confronted with the \href{http://en.wikipedia.org/wiki/Supertask}{supertask} of adding up infintely many numbers but living to tell the tale.  To take the limit of the sequence of partial sums \textit{is} to add up lots---but not all!---of the terms in the original sequence to see if we're staying close to a particular number, the limit.  That particular number is then, by our definition, declared to be the result of adding up all the terms in the original sequence \textit{in order.}}
+\marginnote{This might seem overly complicated, but it solves a serious problem: we no longer are confronted with the \href{http://en.wikipedia.org/wiki/Supertask}{supertask} of adding up infintely many numbers but living to tell the tale.  To take the limit of the sequence of partial sums \textit{is} to add up lots---but not all!---of the terms in the original sequence to see if we're staying close to a particular number---the limit.  That particular limiting value is then, by definition, \textit{declared} to be the result of adding up all the terms in the original sequence \textit{in order.}}
 
 \marginnote{That the order matters will be a major theme in Chapter~\xrefn{chapter:alternating-series}.}
 
@@ -67,6 +68,11 @@ and say, ``the series $\ds\sum_{k=1}^\infty a_k$ converges to $L$.''
 If the sequence of partial sums diverges, we say that the series \defnword{diverges}\index{series!divergent}\index{divergent series}.
 \end{definition}
 
+Remember, infinity is not a number.  So if it happens that $\ds\lim_{n
+  to \infty} \sum_{k=1}^n a_k = \infty$, then we might write
+$\sum_{k=1}^\infty a_k = \infty$ but nevertheless we still say that
+the series diverges.
+
 \marginnote{Sometimes, to emphasize that the series involves adding up
   infinitely many terms, we will say \defnword{``infinite
     series''}\index{infinite series|see{series}} instead of just
@@ -77,7 +83,7 @@ If the sequence of partial sums diverges, we say that the series \defnword{diver
 
 Armed with the official definition of convergence in general, we focus
 in on the specific example: a sequence of the form $a_n= a_0 \, r^n$
-is called an \defnword{geometric progression}, as we learned back in
+is called an \defnword{geometric progression} as we learned back in
 Subsection~\xrefn{subsection:geometric-sequences}.  What happens when
 we add up the terms of a geometric progression?
 
@@ -115,12 +121,12 @@ In our quest to assign a value to the infinite series
 $\ds\sum_{k=0}^\infty a_0 \, r^k$, we instead\sidenote{Replacing the
   actual ``$\infty$'' by a limit (that is, a ``potential'' infinity)
   shouldn't seem all that surprising; we encountered the same trick
-  before in Calculus One.} consider
+  in Calculus One.} consider
 $$
 \lim_{n \to \infty} s_n = \lim_{n \to \infty} \ds\sum_{k=0}^n a_0 \, r^k.
 $$
-But we can perform some algebraic manipulations on the partial sum.
-The trick starts with multiplying $s_n$ by $(1-r)$ to cause some
+We can perform some algebraic manipulations on the partial sum.
+The manipulation begins with our multiplying $s_n$ by $(1-r)$ to cause some
 convenient cancellation, specifically,
 \begin{align*}
   s_n(1-r) &= a_0\, (1+r+r^2+r^3 + \cdots + r^n) \, (1-r) \\
@@ -164,6 +170,7 @@ Thus, when $|r|<1$ the geometric series converges to $a_0/(1-r)$.   This is impo
 \end{theorem}
 
 \begin{example}
+\label{example:sum-of-half-powers}
   When, for example, $a_0=1$ and $r=1/2$, this means
 $$
 \sum_{k=0}^\infty \left( \frac{1}{2} \right)^k = \frac{1}{1 - \frac{1}{2}} = 2,
@@ -247,12 +254,13 @@ $$\sum_{k=1}^\infty {1\over 2^k}.$$
 This does not \textit{quite} fit into the preceding framework, because
 this series starts with $k = 1$ instead of $k = 0$.  
 
-Nevertheless, we can work it out.  The series $\ds\sum_{k=1}^\infty
-{1\over 2^k}$ is just like series $\ds\sum_{k=0}^\infty \frac{1}{2^k}$
-except the former is missing an initial $k = 0$ term, which is $1/2^0
-= 1$.  So each partial sum of the former series is one less than the
-corresponding partial sum for the latter series, so the limit is also
-one less than the value of the geometric series.  In symbols,
+Nevertheless, we can work out what happens.  The series
+$\ds\sum_{k=1}^\infty {1\over 2^k}$ is just like series
+$\ds\sum_{k=0}^\infty \frac{1}{2^k}$ except the former is missing an
+initial $k = 0$ term, which is $1/2^0 = 1$.  So each partial sum of
+the former series is one less than the corresponding partial sum for
+the latter series, so the limit is also one less than the value of the
+geometric series.  In symbols,
 $$
 \sum_{n=1}^\infty {1\over 2^n} = \left( \sum_{n=0}^\infty {1\over 2^n} \right) - 1 = \frac{1}{1 - \frac{1}{2}} - 1 = 1.
 $$
@@ -264,8 +272,10 @@ converges to one.
 
 \section{Properties of series}
 
-It is not hard to see that the following theorem follows from
-Theorem~\xrefn{thm:properties-of-sequences}. 
+Theorem~\xrefn{thm:properties-of-sequences} presented many properties
+of sequences.  Since the value of a series is the limit of the
+sequence of partial sums, properties of limits can be reformulated
+into properties of series.
 
 \subsection{Constant multiple}
 
@@ -419,7 +429,7 @@ $$
 \sum_{k=0}^\infty a_k + \sum_{k=0}^\infty b_k = \sum_{k=0}^\infty \left( a_k + b_k \right).
 $$
 This can be summarized in a theorem.
-\begin{theorem} \relax\label{thm:series-are-linear}x
+\begin{theorem} \relax\label{thm:series-are-linear}
   Suppose $\sum_{k=0}^\infty a_k$ and $\sum_{k=0}^\infty b_k$ are
   convergent series. Then $\ds\sum_{k=0}^\infty (a_k+b_k)$ is
   convergent, and
@@ -448,7 +458,77 @@ converge or might diverge, depending on the situation.
 \end{solution}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Telescoping series}
+\label{section:telescoping-series}
+
+For most of this course, we will be happy if we can show that a series
+converges or that a series diverges; we will not, usually, be too
+concerned with finding the value of a series.  Why not?  Usually it is
+just too hard to determine the value; we would if we could, but since
+it is often too hard, we don't bother.
+
+Nevertheless, there is one family of series for which we can calculate
+the value with relative ease: the \defnword{telescoping series.}  Here
+is a first example which suggests what we mean by ``telescoping.''
+
+\begin{example}
+Compute $\sum_{k=1}^n \frac{1}{k \cdot (k+1)}$.
+\end{example}
+
+\begin{solution}
+  Doing some algebra verifies that
+  $$
+  \frac{1}{k \cdot (k+1)} = \frac{1}{k} - \frac{1}{k+1}
+  $$
+  Consequently,
+\begin{align*}
+\sum_{k=1}^n \frac{1}{k \cdot (k+1)} &=
+\left( \frac{1}{1} - \frac{1}{1+1} \right) + 
+\left( \frac{1}{2} - \frac{1}{2+1} \right) + 
+\left( \frac{1}{3} - \frac{1}{3+1} \right) + \cdots + 
+\left( \frac{1}{n} - \frac{1}{n+1} \right) \\
+&=
+\frac{1}{1} +
+\left( - \frac{1}{1+1} \frac{1}{2} \right) + 
+\left(- \frac{1}{2+1} + \frac{1}{3} \right) + \cdots + 
+\left( - \frac{1}{(n-1)+1} + \frac{1}{n} \right) 
+- \frac{1}{n+1} \\
+&= \frac{1}{1} - \frac{1}{n+1}
+\end{align*}
+since most of these terms end up canceling.
+\end{solution}
+
+In general, we say that a series
+\defnword{telescopes}\index{series!telescoping}\index{telescoping
+  series} if, after some simplification, there is a formula for
+the sequence of partial sums with a fixed number of terms.  The name
+suggests the way the cancellation happens: just as the nesting rings
+in an expandable spyglass fit together, so too do the neighboring
+terms in a telescoping series fit together and collapse.
+
+Armed with a formula for the sequence of partial sums, we can attack the corresponding infinite series.
+
+\begin{example}
+Compute $\sum_{k=1}^\infty \frac{1}{k \cdot (k+1)}$.
+\end{example}
+\begin{solution}
+We just computed that
+$$
+\sum_{k=1}^n \frac{1}{k \cdot (k+1)} = 1 - \frac{1}{n+1}.
+$$
+Rewriting the infinite series as the limit of the sequence of partial sums yields
+\begin{align*}
+\sum_{k=1}^\infty \frac{1}{k \cdot (k+1)} &= \lim_{n \to \infty} \sum_{k=1}^n \frac{1}{k \cdot (k+1)} \\
+&= \lim_{n \to \infty} \left( 1 - \frac{1}{n+1} \right) \\
+&= \lim_{n \to \infty} 1 - \lim_{n \to \infty} \frac{1}{n+1} \\
+&= 1 - 0 = 1.\\
+\end{align*}
+So the value of this series is 1.
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{A test for divergence}
+\label{section:nth-term-test}
 
 Usually, the sequence of partial sums $\ds s_n = a_0 + a_1 + \cdots +
 a_n$ is harder to understand and analyze than the sequence of terms
@@ -546,7 +626,7 @@ The series $\ds\sum_{n=1}^\infty {1\over n}$ has a special name.
 \begin{definition}
   The series $$\ds\sum_{n=1}^\infty {1\over n} = \frac{1}{1} +
   \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \cdots$$ is called the
-  \defnword{harmonic series}\index{series!harmonic}.
+  \defnword{harmonic series}\index{series!harmonic}\index{harmonic series}.
 \end{definition}
 The main question for this section---indeed, the question which should
 always be our first question anytime we see an unknown series---is the
@@ -603,26 +683,23 @@ series converges.  Maybe it converges to\ldots about ten?
 That numeric evidence might have made us think otherwise, but
 \textbf{the harmonic series diverges.}
 
-But in fact the partial sums do go
-to infinity; they just get big very, very slowly. Consider the
-following:
-\msk
-\hbox to \hsize{$\ds 1+{1\over 2}+{1\over 3}+{1\over 4} > 
+But in fact the partial sums do get arbitrarily large; they just get
+big very, very slowly. Consider the following:
+\begin{align*}
+\ds 1+{1\over 2}+{1\over 3}+{1\over 4} &> 
 1+{1\over 2}+{1\over 4}+{1\over
-  4} = 1+{1\over 2}+{1\over 2}$\hfill}
-\msk
-\hbox to \hsize{$\ds 1+{1\over 2}+{1\over 3}+{1\over 4}+
+  4} = 1+{1\over 2}+{1\over 2} \\
+\ds 1+{1\over 2}+{1\over 3}+{1\over 4}+
 {1\over 5}+{1\over 6}+{1\over
-    7}+{1\over 8} > 
+    7}+{1\over 8} &> 
 1+{1\over 2}+{1\over 4}+{1\over 4}+{1\over 8}+{1\over 8}+{1\over
-    8}+{1\over 8} = 1+{1\over 2}+{1\over 2}+{1\over 2}$\hfill}
-\msk
-\hbox to \hsize{$\ds 1+{1\over 2}+{1\over 3}+\cdots+{1\over16}>
+    8}+{1\over 8} = 1+{1\over 2}+{1\over 2}+{1\over 2} \\
+\ds 1+{1\over 2}+{1\over 3}+\cdots+{1\over16} &> 
 1+{1\over 2}+{1\over 4}+{1\over 4}+{1\over 8}+\cdots+{1\over
   8}+{1\over16}+\cdots +{1\over16} =1+{1\over 2}+{1\over 2}+{1\over
-  2}+{1\over 2}$\hfill}
-
-\msk\noindent
+  2}+{1\over 2} 
+\end{align*}
+\noindent
 and so on. By swallowing up more and more terms we can always manage
 to add at least another $1/2$ to the sum, and by adding enough of
 these we can make the partial sums as big as we like. In fact, it's
@@ -630,11 +707,17 @@ not hard to see from this pattern that
 $$1+{1\over 2}+{1\over 3}+\cdots+{1\over 2^n} > 1+{n\over 2},$$
 so to make sure the sum is over 100, for example, we'd add
 up terms until we get to around $\ds 1/2^{198}$, that is,
-about $\ds 4\cdot 10^{59}$ terms. This series, $\sum (1/n)$, is called the
-{\dfont harmonic series\index{series!harmonic}\index{harmonic series}\/}.
+about $\ds 4\cdot 10^{59}$ terms.
+
 
 %\subsection{Building a ``harmonic'' tower}
 %BADBAD
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Comparison test}
+\label{section:comparison-test}
+
+\input comparison-test
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{exercises}
