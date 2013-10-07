@@ -1,4 +1,3 @@
-
 \nobreak We've only just scratched the surface of sequences, and
 already we've arrived in Chapter~\xrefn{chapter:series}.  Series will
 be the main focus of our attention for the rest of the course.  If
@@ -69,7 +68,7 @@ If the sequence of partial sums diverges, we say that the series \defnword{diver
 \end{definition}
 
 Remember, infinity is not a number.  So if it happens that $\ds\lim_{n
-  to \infty} \sum_{k=1}^n a_k = \infty$, then we might write
+  \to \infty} \sum_{k=1}^n a_k = \infty$, then we might write
 $\sum_{k=1}^\infty a_k = \infty$ but nevertheless we still say that
 the series diverges.
 
@@ -131,7 +130,7 @@ convenient cancellation, specifically,
 \begin{align*}
   s_n(1-r) &= a_0\, (1+r+r^2+r^3 + \cdots + r^n) \, (1-r) \\
   &=a_0\, (1+r+r^2+r^3+\cdots+r^n) \, 1 - a_0\, (1+r+r^2+r^3+\cdots+r^{n-1}+r^n)\, r \\
-  &=a_0\, (1+r+r^2+r^3+\cdots+r^n) - a_0\, (r+r^2+r^3+\cdots+r^{n-1}+r^{n+1}) \\
+  &=a_0\, (1+r+r^2+r^3+\cdots+r^n) - a_0\, (r+r^2+r^3+\cdots+r^n+r^{n+1}) \\
   &=a_0 \, (1+r+r^2+r^3+\cdots+r^n-r-r^2-r^3-\cdots-r^n-r^{n+1}) \\
   &=a_0(1-r^{n+1}). \\
 \end{align*}
@@ -578,7 +577,7 @@ other than zero, then the series diverges.
 We'll usually call this theorem the ``$n^{\nth}$ term test.''
 
 \begin{warning}
-  The converse of Theorem~\xrefn{thm-divergence-test} is {\em not\/}
+  The converse of Theorem~\xrefn{thm:divergence-test} is {\em not\/}
   true: even if $\ds\lim_{n\to\infty}a_n=0$, the series could diverge.
   For an example, see Section~\xrefn{section:harmonic-series}.
 \end{warning}

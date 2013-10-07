@@ -1240,7 +1240,7 @@ theorem of Chapter~\xrefn{chapter:sequences}.
 In short, bounded monotonic sequences converge---though we can't
 necessarily describe the number to which they converge.
 
-We will not prove this theorem in the textbook\sidenote{Proving this
+We will not prove this theorem in the textbook.\sidenote{Proving this
   theorem is, honestly, the purview of a course in \textit{analysis},
   the theoretical underpinnings of calculus.  That's not to say it
   couldn't be done in this course, but I intend this to be a ``first
@@ -1268,8 +1268,8 @@ the sequence.
 
 We don't actually need to know that a sequence is monotonic to apply
 this theorem---it is enough to know that the sequence is
-``eventually'' monotonic\sidenote{After all, the limit only depends on
-  what is happened after some large index, so throwing away the
+``eventually'' monotonic,\sidenote{After all, the limit only depends on
+  what is happening after some large index, so throwing away the
   beginning of a sequence won't affect its convergence or its limit.}
 that is, that at some point it becomes increasing or decreasing.  For
 example, the sequence $10$, $9$, $8$, $15$, $3$, $21$, $4$, $3/4$,
@@ -1326,11 +1326,14 @@ Show that the sequence $(a_n)$ given by $a_n = n^{1/n}$ converges.
 Show that the sequence $a_n = \ds\frac{n!}{n^n}$ converges.
 \end{example}
 
-\begin{example}
+\begin{solution}
   Let's get an idea of what is going on by computing the first few terms.
 % print(join(['a_' + str(k) + '=' + latex(f(x=k)) + ' ' + '\\approx ' + str(n(f(x=k),digits=5)) for k in range(1,9)],',\quad '))
 $$
-a_1= 1,\quad a_2= \frac{1}{2},\quad a_3= \frac{2}{9} \approx 0.22222,\quad a_4= \frac{3}{32} \approx 0.093750,\quad a_5= \frac{24}{625} \approx 0.038400,\quad a_6= \frac{5}{324} \approx 0.015432,\quad a_7= \frac{720}{117649} \approx 0.0061199,\quad a_8= \frac{315}{131072} \approx 0.0024033
+a_1= 1,\quad a_2= \frac{1}{2},\quad a_3= \frac{2}{9} \approx 0.22222,\quad a_4= \frac{3}{32} \approx 0.093750,\quad a_5= \frac{24}{625} \approx 0.038400,
+$$
+$$
+a_6= \frac{5}{324} \approx 0.015432,\quad a_7= \frac{720}{117649} \approx 0.0061199,\quad a_8= \frac{315}{131072} \approx 0.0024033.
 $$
   The sequence appears to be decreasing.  To formally show this, we would need to show $\ds a_{n+1}< a_n$, but we will instead show that
 $$
@@ -1350,7 +1353,7 @@ canceling nicely.  In particular,
   Because the sequence is decreasing and bounded below, it converges.
   Indeed, Exercise~\xrefn{exercise:factorial-limit} asks you to
   compute the limit.
-\end{example}
+\end{solution}
 
 These sorts of arguments involving the ratio of subsequent terms will
 come up again in a big way in Section~\xrefn{section:ratio-test}.
@@ -1388,7 +1391,7 @@ converges or diverges. If it converges, compute the limit.
 
 \begin{exercise} Determine whether 
 $\ds\left\{{2^n\over n!}\right\}_{n=0}^\infty$ 
-converges or diverges. 
+converges or diverges. If it converges, compute the limit.
 \begin{answer} $0$
 \end{answer}\end{exercise}
 
