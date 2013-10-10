@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{preview}  
+\begin{document}
+
+<%
+def factorial(x)
+  result = 1
+  for i in 2..x
+    result = result * i
+  end
+  return result
+end
+
+def scientific(x)
+  s = '%.2e' % x
+  a = s.split('e')[0]
+  b = s.split('e')[1].to_i
+  return "#{a} \\cdot 10^{#{b}}"
+end
+%>
+
+\begin{preview}
+<% terms = 20 %>
+\begin{align*}
+<% for i in 1..terms %>
+<%= i %>! = <%= factorial(i) %> \approx <%= scientific(factorial(i)) %> &\approx (<%= i %>/e)^{<%= i %>} \approx <%= scientific( (i/Math::E) ** i ) %> \\
+<% end %>
+\end{align*}
+\end{preview}
+
+\end{document}
