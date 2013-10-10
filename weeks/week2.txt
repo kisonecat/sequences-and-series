@@ -1,0 +1,14 @@
+week2-welcome
+series-definition
+sum-of-half-powers
+geometric-series
+geometric-series-initial-n
+telescoping-series
+nth-term-test
+harmonic-series
+comparison-test-example
+comparison-test
+cauchy-condensation
+basel-problem
+point-nine-repeating
+ten-adic-arithmetic
