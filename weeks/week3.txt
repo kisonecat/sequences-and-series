@@ -1,0 +1,12 @@
+week3-welcome
+ratio-test-example
+ratio-test-statement
+ratio-test-sometimes-useless
+ratio-test-one-over-e
+stirling-approximation
+root-test-useless
+integral-test
+harmonic-series-via-integral
+p-series
+reciprocal-n-log-n
+harmonic-tower
