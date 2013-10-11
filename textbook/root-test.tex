@@ -39,7 +39,7 @@ Let's apply the root test to analyze the convergence of a series.
   L &= \lim_{n\to\infty} \left({5^n\over n^n}\right)^{1/n} \\
   &= \lim_{n\to\infty} {(5^n)^{1/n}\over (n^n)^{1/n}} \\
   &= \lim_{n\to\infty} {5\over n}=0.
-  $$
+\end{align*}
   Since $L = 0<1$, we may conclude that the given series converges.
 \end{solution}
 
@@ -50,6 +50,11 @@ in that case.  Technically, whenever the ratio test is conclusive
 the root test---but not vice versa.  In other words, the root test
 \textit{does} work on some series that the ratio test fails on.
 
+\begin{example}
+Find a series for which the ratio test is inconclusive, but the root test determines that the series converges.
+\end{example}
+
+\begin{solution}
 Here is such a situation.  Try using the ratio test on
 $\sum_{n=1}^\infty a_n$ where $(a_n)$ is a sequence which ``stutters''
 like
@@ -74,6 +79,7 @@ means the sequence converges by the root test.  Admittedly, we didn't
 need the root test: this series is just a geometric series where the
 terms repeat, so it definitely converges.  Still, it proves the point
 that the ratio test can fails while the root test succeeds.
+\end{solution}
 
 \begin{exercises}
 \begin{exercise}

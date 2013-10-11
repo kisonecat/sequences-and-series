@@ -10,58 +10,70 @@ every $n$. Many useful and interesting series do have this property,
 however, and they are among the easiest to understand. Let's look at
 an example.
 
+\subsection{An example}
+
 \begin{example} Show that $\ds\sum_{n=1}^\infty {1\over n^2}$ converges.
-\par\nobreak\ssk\noindent
-The terms $\ds 1/n^2$ are  positive and decreasing, and since 
-$\ds\lim_{x\to\infty} 1/x^2=0$, the terms $\ds 1/n^2$ approach zero. We
-seek an upper bound for all the partial sums, that is, we want to find
-a number $N$ so that $s_n\le N$ for every $n$. The upper bound is
-provided courtesy of integration, and is inherent in
-figure~\xrefn{fig:integral test for one over n squared}.
+\end{example}
 
-% \figure
-% \vbox{\beginpicture
-% \normalgraphs
-% \ninepoint
-% \setcoordinatesystem units <2truecm,2truecm>
-% \setplotarea x from 0 to 5, y from 0 to 2
-% \axis left ticks numbered from 0 to 2 by 1 /
-% \axis bottom  ticks numbered from 0 to 5 by 1 /
-% \setquadratic
-% \plot 0.750 1.778 0.892 1.258 1.033 0.937 1.175 0.724 1.317 0.577 
-% 1.458 0.470 1.600 0.391 1.742 0.330 1.883 0.282 2.025 0.244 
-% 2.167 0.213 2.308 0.188 2.450 0.167 2.592 0.149 2.733 0.134 
-% 2.875 0.121 3.017 0.110 3.158 0.100 3.300 0.092 3.442 0.084 
-% 3.583 0.078 3.725 0.072 3.867 0.067 4.008 0.062 4.150 0.058 
-% 4.292 0.054 4.433 0.051 4.575 0.048 4.717 0.045 4.858 0.042 
-% 5.000 0.040 /
-% \putrule from 1 0 to 1 1 
-% \putrule from 2 0 to 2 0.25
-% \putrule from 3 0 to 3 0.1111
-% \putrule from 0 1 to 1 1 
-% \putrule from 1 0.25 to 2 0.25
-% \putrule from 2 0.1111 to 3 0.1111
-% \sevenpoint
-% \put {$A=1$} at 0.5 0.5
-% \put {$A=1/4$} at 1.5 0.125
-% \endpicture}
-% \figrdef{fig:integral test for one over n squared}
-% \endfigure{Graph of $\ds y=1/x^2$ with rectangles.}
+\begin{marginfigure}[0in]
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=0.5:5.5,
+            ymax=1.05,
+            ymin=-0.05,
+            xmin=0,
+            xmax=5.5,
+            axis lines =middle, xlabel={$x$ and $n$}, ylabel=$y$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west}
+          ]
+          \addplot [penColor, smooth, very thick,domain=(0.75:5.5)] {1/(x*x)};
+          \node [anchor=west,penColor] at (axis cs:1.5,0.5) {$f(x) = 1/x^2$};
 
-The figure shows the graph of $\ds y=1/x^2$ together with some rectangles
-that lie completely below the curve and that all have base length
-one. Because the heights of the rectangles are determined by the
-height of the curve, the areas of the rectangles are $\ds 1/1^2$, $\ds 1/2^2$,
-$\ds 1/3^2$, and so on---in other words, exactly the terms of the
-series. The partial sum $\ds s_n$ is simply the sum of the areas of the
-first $n$ rectangles. Because the rectangles all lie between the curve
-and the $x$-axis, any sum of rectangle areas is less than the
-corresponding area under the curve, and so of course any sum of
-rectangle areas is less than the area under the entire curve, that is,
-all the way to infinity.
-There is a bit of trouble at the
-left end, where there is an asymptote, but we can work around that
-easily. Here it is:
+          \draw[penColor2] (axis cs:0,0) rectangle (axis cs:1,1);
+          \node [anchor=north,penColor2] at (axis cs:0.5,1) {$a_1$};
+          \draw[penColor2] (axis cs:1,0) rectangle (axis cs:2,0.25);
+          \node [anchor=north,penColor2] at (axis cs:1.5,0.25) {$a_2$};
+          \draw[penColor2] (axis cs:2,0) rectangle (axis cs:3,0.11111111);
+          \node [anchor=north,penColor2] at (axis cs:2.5,0.11111111) {$a_3$};
+          \draw[penColor2] (axis cs:3,0) rectangle (axis cs:4,0.0625);
+          \node [anchor=south,penColor2,yshift=2pt] at (axis cs:3.5,0.0625) {$a_4$};
+          \draw[penColor2] (axis cs:4,0) rectangle (axis cs:5,0.04);
+          \node [anchor=south,penColor2,yshift=2pt] at (axis cs:4.5,0.04) {$a_5$};
+          \draw[penColor2] (axis cs:5,0) rectangle (axis cs:6,0.027777777);
+
+        \end{axis}
+\end{tikzpicture}
+\caption{Plot of $f(x) = 1/x^2$ alongside boxes representing $a_n = 1/n^2$.}
+\label{fig:integral-test-for-one-over-n-squared}
+\end{marginfigure}
+
+\begin{solution}
+  We have actually already seen this very series---it appeared in
+  Example~\xrefn{example:basel-problem}, where we attacked this series
+  via condensation.  Here, we consider a different approach, namely
+  integration.
+
+  The terms $\ds 1/n^2$ are positive and decreasing, and since
+  $\ds\lim_{x\to\infty} 1/x^2=0$, the terms $\ds 1/n^2$ approach
+  zero. We seek an upper bound for all the partial sums, that is, we
+  want to find a number $N$ so that $s_n\le N$ for every $n$. The
+  upper bound is provided courtesy of integration.
+
+  Figure~\xrefn{fig:integral-test-for-one-over-n-squared} shows the
+  graph of $\ds y=1/x^2$ together with some rectangles that lie
+  completely below the curve and that all have base length
+  one. Because the heights of the rectangles are determined by the
+  height of the curve, the areas of the rectangles are $\ds 1/1^2$,
+  $\ds 1/2^2$, $\ds 1/3^2$, and so on---in other words, exactly the
+  terms of the series. The partial sum $\ds s_n$ is simply the sum of
+  the areas of the first $n$ rectangles. Because the rectangles all
+  lie between the curve and the $x$-axis, any sum of rectangle areas
+  is less than the corresponding area under the curve, and so of
+  course any sum of rectangle areas is less than the area under the
+  entire curve, that is, all the way to infinity.  There is a bit of
+  trouble at the left end, where there is an asymptote, but we can
+  work around that easily. Here it is:
 $$
   s_n={1\over 1^2}+{1\over 2^2}+{1\over 3^2}+\cdots+{1\over n^2}
   < 1 + \int_1^n {1\over x^2}\,dx < 1+\int_1^\infty {1\over x^2}\,dx 
@@ -70,57 +82,67 @@ $$
 recalling how to compute this improper integral. Since the sequence of partial
 sums $\ds s_n$ is increasing and bounded above by 2, we know that 
 $\ds\lim_{n\to\infty}s_n=L<2$, and so the series converges to some
-number less than 2. In fact, it is possible, though difficult, to show
-that $\ds L=\pi^2/6\approx 1.6$.
-\end{example}
+number less than 2.
+\end{solution}
+
+In fact, it is possible, though difficult, to show that $\ds
+\sum_{n=1}^\infty \frac{1}{n^2} = \pi^2/6$.
+
+\subsection{Harmonic series}
 
 We already know that $\sum 1/n$ diverges. What goes wrong if we try to
-apply this technique to it? Here's the calculation:
+apply this technique to it? We find
 $$
   s_n={1\over 1}+{1\over 2}+{1\over 3}+\cdots+{1\over n}
   < 1 + \int_1^n {1\over x}\,dx < 1+\int_1^\infty {1\over x}\,dx 
-  =1+\infty.
 $$
-The problem is that the improper integral doesn't converge. Note well
-that this does {\em not\/} prove that $\sum 1/n$ diverges, just that
-this particular calculation fails to prove that it converges. A slight
+but this amounts to saying nothing, because the improper integral
+$\int_1^\infty {1\over x}\,dx$ does not converge, and claiming that
+$s_n$ is bounded by something divergent is to make no claim at all:
+every real number is less than infinity!  In other words, this does
+{\em not\/} prove that $\sum 1/n$ diverges; it is just that this
+particular calculation fails to prove that it converges. A slight
 modification, however, allows us to prove in a second way that $\sum
-1/n$ diverges. 
+1/n$ diverges.
 
-\begin{example} Consider a slightly altered version of figure~\xrefn{fig:integral
-test for one over n squared}, shown in figure~\xrefn{fig:integral test
-for one over n}.
-% \figure BADBAD
-% \vbox{\beginpicture
-% \normalgraphs
-% \ninepoint
-% \setcoordinatesystem units <2truecm,2truecm>
-% \setplotarea x from 0 to 5, y from 0 to 2
-% \axis left ticks numbered from 0 to 2 by 1 /
-% \axis bottom  ticks numbered from 0 to 5 by 1 /
-% \setquadratic
-% \plot 0.500 2.000 0.650 1.538 0.800 1.250 0.950 1.053 1.100 0.909 
-% 1.250 0.800 1.400 0.714 1.550 0.645 1.700 0.588 1.850 0.541 
-% 2.000 0.500 2.150 0.465 2.300 0.435 2.450 0.408 2.600 0.385 
-% 2.750 0.364 2.900 0.345 3.050 0.328 3.200 0.312 3.350 0.298 
-% 3.500 0.286 3.650 0.274 3.800 0.263 3.950 0.253 4.100 0.244 
-% 4.250 0.235 4.400 0.227 4.550 0.220 4.700 0.213 4.850 0.206 
-% 5.000 0.200 /
-% \putrule from 1 0 to 1 1 
-% \putrule from 2 0 to 2 1
-% \putrule from 3 0 to 3 0.5
-% \putrule from 4 0 to 4 0.3333
-% \putrule from 1 1 to 2 1
-% \putrule from 2 0.5 to 3 0.5
-% \putrule from 3 0.3333 to 4 0.3333
-% \sevenpoint
-% \put {$A=1$} at 1.5 0.5
-% \put {$A=1/2$} at 2.5 0.25
-% \put {$A=1/3$} at 3.5 0.1666
-% \endpicture}
-% \figrdef{fig:integral test for one over n}
-% \endfigure{Graph of $y=1/x$ with rectangles.}
+\begin{example} Consider a slightly altered version of Figure~\xrefn{fig:integral-test-for-one-over-n-squared}, shown in Figure~\xrefn{fig:integral-test-for-one-over-n}.  Explain how to use the figure to see that the harmonic series diverges.
+\end{example}
 
+\begin{marginfigure}[0in]
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=0.5:6,
+            ymax=1.25,
+            ymin=-0.05,
+            xmin=0.75,
+            xmax=6.25,
+            axis lines =middle, xlabel={$x$ and $n$}, ylabel=$y$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west}
+          ]
+          \addplot [penColor, smooth, very thick,domain=(0.75:6.25)] {1/(x)};
+          \node [anchor=west,penColor] at (axis cs:3,1.1) {$f(x) = 1/x$};
+
+          \draw[penColor2] (axis cs:1,0) rectangle (axis cs:2,1);
+          \node [anchor=south,penColor2] at (axis cs:1.5,1) {$a_1$};
+          \draw[penColor2] (axis cs:2,0) rectangle (axis cs:3,0.5);
+          \node [anchor=south,penColor2] at (axis cs:2.5,0.5) {$a_2$};
+          \draw[penColor2] (axis cs:3,0) rectangle (axis cs:4,0.333333333);
+          \node [anchor=south,penColor2] at (axis cs:3.5,0.333333333) {$a_3$};
+          \draw[penColor2] (axis cs:4,0) rectangle (axis cs:5,0.25);
+          \node [anchor=south,penColor2] at (axis cs:4.5,0.25) {$a_4$};
+          \draw[penColor2] (axis cs:5,0) rectangle (axis cs:6,0.2);
+          \node [anchor=south,penColor2] at (axis cs:5.5,0.2) {$a_5$};
+          \draw[penColor2] (axis cs:6,0) rectangle (axis cs:7,0.16666666);
+
+        \end{axis}
+\end{tikzpicture}
+\caption{Plot of $f(x) = 1/x$ alongside boxes representing $a_n = 1/n$.}
+\label{fig:integral-test-for-one-over-n}
+\end{marginfigure}
+
+
+\begin{solution}
 The rectangles this time are above the curve, that is, each rectangle
 completely contains the corresponding area under the curve. This means
 that 
@@ -129,7 +151,9 @@ $$s_n = {1\over 1}+{1\over 2}+{1\over 3}+\cdots+{1\over n}
 As $n$ gets bigger, $\ln(n+1)$ goes to infinity, so the sequence of
 partial sums $\ds s_n$ must also go to infinity, so the harmonic series
 diverges. 
-\end{example}
+\end{solution}
+
+\subsection{Statement of integral test}
 
 The important fact that clinches this example is that
 $$\lim_{n\to\infty} \int_1^{n+1} {1\over x}\,dx = \infty,$$
@@ -141,66 +165,91 @@ of an improper integral. This is known as the {\dfont integral
   test\index{integral test}\index{series!integral test}\/}, 
 which we state as a theorem.
 
-\begin{theorem} Suppose that $f(x)>0$ and is decreasing on the infinite interval
+\begin{theorem}[Integral test]\label{thm:integral-test}
+ Suppose that $f(x)>0$ and is decreasing on the infinite interval
 $[k,\infty)$ (for some $k\ge1$)
 and that $\ds a_n=f(n)$. Then the series
 $\ds\sum_{n=1}^\infty a_n$ converges if and only if the improper
 integral $\ds\int_{1}^\infty f(x)\,dx$ converges.
 \end{theorem}
 
-The two examples we have seen are called
-$p$-series\index{p@$p$-series}\index{series!$p$-series}; a $p$-series is
-any series of the form $\ds \sum 1/n^p$. If $p\le0$, $\ds\lim_{n\to\infty}
-1/n^p\not=0$, so the series diverges. For positive values of $p$ we
-can determine precisely which series converge.
+\subsection{$p$-series}
 
-\begin{theorem} A $p$-series with $p>0$ converges if and only if $p>1$.
+The two examples we have seen are examples of
+$p$-series\index{p@$p$-series}\index{series!$p$-series}, which we first encountered in Subsection~\xrefn{subsection:p-series}.
+Recall that a $p$-series is
+any series of the form $\ds \sum_{n=1}^\infty 1/n^p$.
+
+\begin{theorem}\label{thm:p-series} A $p$-series if and only if $p>1$.
 \end{theorem}
+
+We already proved this theorem using condensation in Example~\xrefn{example:p-series-p-leq-1} and Example~\xrefn{example:p-series-p-ge-1}.  Nevertheless, we provide a second proof, using the integral test.
+
 \begin{proof}
-We use the integral test; we have already done $p=1$, so assume that
-$p\not=1$.
+We use the integral test; the case $p=1$ is that of the harmonic series, which we know diverges, so without loss of generality, we may assume that
+$p \neq 1$.   If $p\le0$, $\ds\lim_{n\to\infty} 1/n^p\not=0$, so the series diverges by Theorem~\xrefn{thm:nth-term-test}. So we may also assume that $p > 0$.
+
+Then we compute
 $$
-  \int_1^{\infty} {1\over x^p}\,dx=\lim_{D\to\infty} \left.{x^{1-p}\over
-  1-p}\right|_{1}^D=\lim_{D\to\infty} {D^{1-p}\over 1-p}-{1\over 1-p}.
+  \int_1^{\infty} {1\over x^p}\,dx=\lim_{N\to\infty} \left.{x^{1-p}\over
+  1-p}\right|_{1}^N=\lim_{N\to\infty} {N^{1-p}\over 1-p}-{1\over 1-p}.
 $$
-If $p>1$ then $1-p<0$ and $\ds\lim_{D\to\infty}D^{1-p}=0$, so the
+If $p>1$ then $1-p<0$ and $\ds\lim_{N\to\infty}N^{1-p}=0$, so the
   integral converges. If $0<p<1$ then $1-p>0$ and 
-$\ds\lim_{D\to\infty}D^{1-p}=\infty$, so the integral diverges.
+$\ds\lim_{N\to\infty}N^{1-p}=\infty$, so the integral diverges.
 \end{proof}
 
 \begin{example} Show that $\ds\sum_{n=1}^\infty {1\over {n^3}}$ converges. 
-\par\nobreak\ssk\noindent
+\end{example}
+
+\begin{solution}
 We could of course use
 the integral test, but now that we have the theorem we may simply note
-that this is a $p$-series with $p>1$.
-\end{example}
+that this is a $p$-series with $p = 3>1$.
+\end{solution}
 
 \begin{example} Show that $\ds\sum_{n=1}^\infty {5\over n^4}$ converges. 
-\par\nobreak\ssk\noindent
+\end{example}
+\begin{solution}
 We know that if
 $\ds \sum_{n=1}^\infty 1/n^4$ converges then $\ds \sum_{n=1}^\infty 5/n^4$
-also converges, by theorem~\xrefn{thm:series are linear}. Since 
+also converges, by Theorem~\xrefn{thm:series-are-linear}. Since 
 $\ds \sum_{n=1}^\infty 1/n^4$ is a convergent $p$-series, 
  $\ds \sum_{n=1}^\infty 5/n^4$ converges also.
-\end{example}
+\end{solution}
 
 \begin{example} Show that $\ds\sum_{n=1}^\infty {5\over \sqrt{n}}$ diverges.
-\par\nobreak\ssk\noindent This also follows from
-theorem~\xrefn{thm:series are linear}: Since $\ds\sum_{n=1}^\infty
+\end{example}
+\begin{solution}
+This also follows from
+Theorem~\xrefn{thm:series-are-linear}.  Since $\ds\sum_{n=1}^\infty
 {1\over \sqrt{n}}$ is a $p$-series with $p=1/2<1$, it diverges, and so
 does $\ds\sum_{n=1}^\infty {5\over \sqrt{n}}$.  
-\end{example}
+\end{solution}
+
+\subsection{Integrating for approximations}
 
 Since it is typically difficult to compute the value of a series
 exactly, a good approximation is frequently required. In a real sense,
 a good approximation is only as good as we know it is, that is, while
 an approximation may in fact be good, it is only valuable in practice
-if we can guarantee its accuracy to some degree. This guarantee is
+if we can guarantee its accuracy to some degree\sidenote{After all,
+  $\pi \approx 17$ just with very bad error bounds.  It is better to
+  make a statement like $|\pi - 17| < 14$, which is not only saying
+  that $\pi$ is ``close'' to 17, but is quantifying exactly how close
+  (within 14---so perhaps not all that close).}. This guarantee is
 usually easy to come by for series with decreasing positive terms.
 
-\begin{example} Approximate $\ds \sum 1/n^2$ to two decimal places.
+\begin{example} Approximate $\ds \sum_{n=1}^\infty 1/n^2$ to two decimal places.
+\end{example}
 
-Referring to figure~\xrefn{fig:integral test for one over n squared},
+\marginnote{It turns out that $\sum_{n=1}^\infty \frac{1}{n^2} =
+  \frac{\pi^2}{6}$, so your approximation of this series will
+  also---in a roundabout way---yield an approximate value for
+  $\pi$---and one which will be better than 17.}
+
+\begin{solution}
+Referring to Figure~\xrefn{fig:integral-test-for-one-over-n-squared},
 if we approximate the sum by $\ds \sum_{n=1}^N 1/n^2$, the error we make is the
 total area of the remaining rectangles, all of which lie under the
 curve $\ds 1/x^2$ from $x=N$ out to infinity. So we know the true value of
@@ -222,13 +271,22 @@ $N=125$. Now the sum of the first 125 terms is approximately
 $1.636965982$, and that plus $0.008$ is $1.644965982$ and the point
 halfway between them is $1.640965982$. The true value is then
 $1.640965982\pm 0.004$, and all numbers in this range round to $1.64$,
-so $1.64$ is correct to two decimal places. We have mentioned that
-the true value of this series can be shown to be $\ds
-\pi^2/6\approx1.644934068$ which rounds down to $1.64$ (just barely)
-and is indeed below the upper bound of $1.644965982$, again just
-barely. Frequently approximations will be even better than the
-``guaranteed'' accuracy, but not always, as this example demonstrates.
-\end{example}
+so $1.64$ is correct to two decimal places. 
+\end{solution}
+
+Since $\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}$, our estimate yields
+$$
+1.63 < \frac{\pi^2}{6} < 1.65,
+$$
+and so
+$$
+9.78 < \pi^2 < 9.90.
+$$
+which means that
+$$
+3.127 < \pi < 3.147,
+$$
+which is better than $\pi \approx 3$.  And we have explicit bounds on the error.
 
 \begin{exercises}
 
