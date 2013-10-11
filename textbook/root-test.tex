@@ -1,0 +1,90 @@
+There is another convergence test called the \defnword{root test},
+which can be justified with an argument not so
+different\sidenote{Indeed, justifying the root test makes a good
+  exercise for you, the reader, so it is included among the exercises
+  for this section.} from that which justified the ratio test in
+Subsection~\xrefn{subsection:theory-of-ratio-test}.  The ratio test is
+\textit{very occasionally} easier to apply, but usually not as good as
+choosing to use the ratio test.
+
+With those disparaging remarks out of the way, let us now state the
+root test.
+
+\begin{theorem}[The Root Test] \label{thm:root test}
+Consider the series $\ds\sum_{n=0}^\infty a_n$ where each term $a_n$ is positive.
+Suppose that $\ds\lim_{n\to \infty} \left(a_n\right)^{1/n}=L$.  Then,
+\begin{itemize}
+\item if $L<1$ the series $\sum a_n$ converges, 
+\item if $L>1$ the series diverges, and
+\item if $L=1$, then the root test is inconclusive.
+\end{itemize}
+\end{theorem}
+
+Let's apply the root test to analyze the convergence of a series.
+
+\begin{example} Analyze $\ds\sum_{n=0}^\infty {5^n\over n^n}$.
+\end{example}
+
+\begin{solution}
+  Usually, the ratio test is a good choice when the series involves
+  $n^{\mbox{\scriptsize th}}$ powers; in this case, the ratio test
+  turns out to be a bit difficult on this series, since we have to
+  calculate
+  $$
+  \lim_{n \to \infty} \frac{5^{n+1} / (n+1)^{n+1}}{5^n / n^n}
+  $$
+  and that may not be entirely obvious.  So we, bedgrudgingly, apply
+  the root test, which asks us to calculate
+\begin{align*}
+  L &= \lim_{n\to\infty} \left({5^n\over n^n}\right)^{1/n} \\
+  &= \lim_{n\to\infty} {(5^n)^{1/n}\over (n^n)^{1/n}} \\
+  &= \lim_{n\to\infty} {5\over n}=0.
+  $$
+  Since $L = 0<1$, we may conclude that the given series converges.
+\end{solution}
+
+The root test is frequently useful when $n$ appears as an exponent in
+the general term of the series---though the ratio test is also useful
+in that case.  Technically, whenever the ratio test is conclusive
+(i.e., whenever $\lim_{n\to\infty} a_{n+1} / a_n = L \neq 1$), so is
+the root test---but not vice versa.  In other words, the root test
+\textit{does} work on some series that the ratio test fails on.
+
+Here is such a situation.  Try using the ratio test on
+$\sum_{n=1}^\infty a_n$ where $(a_n)$ is a sequence which ``stutters''
+like
+$$
+a_n = \begin{cases}
+1/2^{n/2} & \mbox{if $n$ is even, and} \\
+1/2^{(n+1)/2} & \mbox{if $n$ is odd.} 
+\end{cases}
+$$
+Note that $a_1 = a_2$ and $a_3 = a_4$ and $a_5 = a_6$, so
+$a_{n+1}/a_n$ is often~1, which messes up the ratio test---indeed,
+$\lim_{n \to \infty} a_{n+1}/a_n$ does not exist in this case.
+Nevertheless,
+$$
+\sqrt[n]{a_n} = \begin{cases}
+1/2^{1/2} & \mbox{if $n$ is even, and} \\
+1/2^{(n+1)/(2n)} & \mbox{if $n$ is odd,} 
+\end{cases}
+$$
+and so $\lim_{n \to\infty} \sqrt[n]{a_n} = 1/\sqrt{2} < 1$, which
+means the sequence converges by the root test.  Admittedly, we didn't
+need the root test: this series is just a geometric series where the
+terms repeat, so it definitely converges.  Still, it proves the point
+that the ratio test can fails while the root test succeeds.
+
+\begin{exercises}
+\begin{exercise}
+Prove theorem \xrefn{thm:root test}, the root test.\end{exercise}
+
+\begin{exercise} Compute $\ds\lim_{n\to\infty} |a_n|^{1/n}$ for the series
+$\sum 1/n^2$.
+\end{exercise}
+
+\begin{exercise} Compute $\ds\lim_{n\to\infty} |a_n|^{1/n}$ for the series
+$\sum 1/n$.
+\end{exercise}
+
+\end{exercises}
