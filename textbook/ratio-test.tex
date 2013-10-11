@@ -2,9 +2,21 @@
 converge? It is possible, but a bit unpleasant, to approach this with
 the comparison test.
 
-\begin{solution}
-  The series $\ds\sum_{n=0}^\infty {n^5\over 5^n}$ converges.
+\marginnote{Mathematics is more than just about getting answers; a
+  goal of mathematics is not only to find truth, but to package the
+  resulting ``truth'' in a format that permits another human being to
+  understand the reasons for its being true.  Arguments like
+  this---which are perfectly convincing but seem entirely
+  unmotivated---are, arguably, missing the point.  What has been
+  gained if we find something is true but the reason for its being
+  true remains inscrutable?}
 
+\begin{example}
+  \label{example:n-to-fifth-over-five-to-n}
+  The series $\ds\sum_{n=0}^\infty {n^5\over 5^n}$ converges.
+\end{example}
+
+\begin{solution}
   As long as $n \geq 23$, we have $2^n \geq n^5$.  Therefore, as long as $n \geq 23$, we have
   $$
   \frac{n^5}{5^n} \leq \frac{2^n}{5^n} = \left( \frac{2}{5} \right)^n
@@ -24,10 +36,11 @@ the comparison test.
 That worked---but it invoked an unmotivated fact: how do I know that
 $2^n \geq n^5$ whenever $n \geq 23$?  Invoking that fact seems a bit
 random---yes, yes, a proof, but perhaps not a proof that conveys
-exactly what is going on.  It is a valid argument but missing some
+exactly what is going on.  It is a valid argument, but missing some
 motivation.
 
 \subsection{Theory}
+\label{subsection:theory-of-ratio-test}
 
 Instead, consider what happens as we move from one term to the next term in
 this series, that is, consider two neighboring terms
@@ -65,7 +78,9 @@ $\ds\frac{1}{5}$; let's call that number $\ds\frac{1}{5} + \epsilon$.
   \textit{epsilon}, and, conventionally, denotes a small but positive
  number.}
 
-% BADBAD I suspect the switch from n to N is pretty confusing
+% BADBAD: I suspect the switch from n to N is pretty confusing, so
+% this could be rewritten to be less confusing.
+
 Because
 $$\lim_{n\to\infty} {a_{n+1}\over a_n}={1\over5},$$
 then by choosing $n$ big enough, say $n\ge N$ for some $N$, we can
@@ -115,16 +130,19 @@ $$
 since we've just added the number $\ds a_0+a_1+\cdots+a_{N-1}$ to the convergent series $\sum_{k=0}^\infty a_{N+k}$.
 
 Under what circumstances could we do this? What was crucial was that
-the limit of $\ds a_{n+1}/a_n$, say $L$, was less than 1 so that we could pick a
-value $\epsilon$ so that $L + \epsilon < 1$ and then compare to the convergent series
+the limit of $\ds a_{n+1}/a_n$, say $L$, was less than 1 so that we
+could pick a value $\epsilon$ so that $L + \epsilon < 1$ and then
+compare to the convergent series
 $$
 \sum_{k=0}^\infty (L + \epsilon)^k \cdot a_N.
 $$
 That's really all that is required to make the argument work. We also
 made use of the fact that the terms of the series were positive.
-\marginnote{In general, we can consider instead the absolute values of the terms, and end
-up testing for \textbf{absolute convergence.}  We'll discuss this topic in Section~\xrefn{section:absolute-convergence}.}
-Let's summarize the situation when this works.
+\marginnote{In general, we can consider instead the absolute values of
+  the terms, and end up testing for \textbf{absolute convergence.}
+  We'll discuss this topic in
+  Section~\xrefn{section:absolute-convergence}.}  Let's summarize the
+situation when this works.
 
 \begin{theorem} (The Ratio Test)
 Consider the series $\ds\sum_{n=0}^\infty a_n$ where each term $a_n$ is positive.
@@ -136,26 +154,36 @@ If $L<1$ the series $\sum a_n$ converges.  If $L>1$ the
 series diverges.  If $L=1$ this test is inconclusive.
 \end{theorem}
 
-\begin{proof}%BADBAD
-The example above essentially proves the first part of this, if we
-simply replace $1/5$ by $L$ and $1/2$ by $r$. 
-Suppose that $L>1$, and pick $r$ so that $1<r<L$.
-Then for $n\ge N$, for some $N$,
+\begin{proof}
+  Example~\xrefn{example:n-to-fifth-over-five-to-n} essentially proves
+  the first part of this, if we simply replace $1/5$ by $L$ and $1/2$
+  by $r$.  So when $L< 1$, the series converges.
+
+Let's consider the other situation.  Suppose that $L>1$, and pick $r$
+so that $1<r<L$.  Then for $n\ge N$, for some $N$,
 $${|a_{n+1}|\over |a_n|} > r \hbox{\quad and\quad} |a_{n+1}| > r|a_n|.$$
 This implies that $\ds |a_{N+k}|>r^k|a_N|$, but since $r>1$ this means
-that $\ds\lim_{k\to\infty}|a_{N+k}|\not=0$, which means also that
-$\ds\lim_{n\to\infty}a_n\not=0$. By the divergence test, the series
-diverges. 
+that $\ds\lim_{k\to\infty}|a_{N+k}| \neq 0$, which means also that
+$\ds\lim_{n\to\infty}a_n \neq 0$. By the divergence test, the series
+diverges.
 
-To see that we get no information when $L=1$, we need to exhibit two
-series with $L=1$, one that converges and one that diverges. It is
-easy to see that $\sum 1/n^2$ and $\sum 1/n$ do the job.
+Finally, when $L = 1$, the test truly is inconclusive---not because we
+aren't clever enough, but because there are both convergent and
+divergent series with $L = 1$.  For example, the $p$-series
+$\sum_{n=1}^\infty 1/n^2$ converges, and the harmonic series
+$\sum_{n=1}^\infty 1/n$ diverges---but in both cases, $L = 1$.
 \end{proof}
 
 \subsection{Practice}
 
 The ratio test is particularly useful for series involving
-the factorial function. 
+the factorial function.
+
+\marginnote{``It works in practice---but does it work in theory?''
+  The ratio test is awfully useful in practice, but I think the theory
+  behind it---that we're taking a limit of the ratio between
+  neighboring terms in order to compare with a geometric series---is
+  quite lovely.}
 
 \begin{example} 
 Does the series 
@@ -164,7 +192,8 @@ $$
 $$
 converge or diverge?
 \end{example}
-\marginnote{Remember our convention that $0! = 1$.  We are not dividing by zero here.}
+
+\marginnote{Remember our convention that $0! = 1$.  Despite appearances, we are not dividing by zero.}
 
 \begin{solution}
 Let's name the terms $a_n = 5^n / n!$ so we are considering $\sum_{n=0}^\infty a_n$.  To apply ratio test, we consider
@@ -187,15 +216,7 @@ $\sum 1/n^2$.
 $\sum 1/n$.
 \end{exercise}
 
-\begin{exercise} Compute $\ds\lim_{n\to\infty} |a_n|^{1/n}$ for the series
-$\sum 1/n^2$.
-\end{exercise}
-
-\begin{exercise} Compute $\ds\lim_{n\to\infty} |a_n|^{1/n}$ for the series
-$\sum 1/n$.
-\end{exercise}
-
-Determine whether the series converge.
+Determine whether the series converges or diverges.
 
 \begin{exercise} $\ds\sum_{n=0}^\infty (-1)^{n}{3^n\over 5^n}$
 \begin{answer} converges
@@ -213,43 +234,4 @@ Determine whether the series converge.
 \begin{answer} diverges
 \end{answer}\end{exercise}
 
-\end{exercises}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The mostly useless root test}
-
-A similar argument, which we will not do, justifies a similar test
-that is \textit{very occasionally} easier to apply, but usually not as
-good as choosing to use the ratio test.
-
-%BADBAD
-\begin{theorem} (The Root Test) \label{thm:root test}
-Consider the series $\ds\sum_{n=0}^\infty a_n$ where each term $a_n$ is positive.
-Suppose that $\ds\lim_{n\to \infty} \left(a_n\right)^{1/n}=L$. If $L<1$
-the series $\sum a_n$ converges.
-If $L>1$ the series diverges.  If
-$L=1$ this test gives no information.
-\end{theorem}
-
-The proof of the root test is actually easier than that of the ratio
-test, and is a good exercise.
-
-\begin{example} Analyze $\ds\sum_{n=0}^\infty {5^n\over n^n}$.
-\ssk
-The ratio test turns out to be a bit difficult on this series (try
-it). Using the root test:
-$$
-  \lim_{n\to\infty} \left({5^n\over n^n}\right)^{1/n}=
-  \lim_{n\to\infty} {(5^n)^{1/n}\over (n^n)^{1/n}}=
-  \lim_{n\to\infty} {5\over n}=0.
-$$
-Since $0<1$, the series converges.
-\end{example}
-
-The root test is frequently useful when $n$ appears as an exponent in
-the general term of the series.
-
-\begin{exercises}
-\begin{exercise}
-Prove theorem \xrefn{thm:root test}, the root test.\end{exercise}
 \end{exercises}
