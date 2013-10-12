@@ -56,7 +56,7 @@ This is usually called the \defnword{Comparison Test}; we might summarize it lik
   Being less than a divergent series does not help: the comparison
   test is silent in that case.
 
-  Similarly, because larger than a convergent series does not help.
+  Similarly, being larger than a convergent series does not help.
   The Comparison Test only says something when a series (with non-negative terms!) is less than a
   convergent series, or greater than a divergent series.
 \end{warning}
@@ -71,7 +71,7 @@ show that a series diverges.
 Does the series $\ds\sum_{n=2}^\infty \ds\frac{\log n}{n}$ converge?
 \end{example}
 
-\begin{example}
+\begin{solution}
 Our first inclination might be to apply the $n^{\nth}$ term test, but in this case,
 $$
 \lim_{n \to \infty} \frac{\log n}{n} = 0,
@@ -86,7 +86,7 @@ $$
 but the series $\ds\sum_{n=3}^\infty \frac{1}{n}$ diverges, and so by
 the Comparison Test, the given series (which is even bigger!) must
 likewise diverge.
-\end{example}
+\end{solution}
 
 Recall that the $n^{\nth}$ term test \textit{cannot} be used to prove that a series converges; if the $n^{\nth}$ term test does not answer ``diverges!'' then the test is silent.  In wonderful contrast, the Comparison Test \textit{can} be used to show that a series converges.
 
@@ -94,7 +94,7 @@ Recall that the $n^{\nth}$ term test \textit{cannot} be used to prove that a ser
 Does the series $\ds\sum_{n=1}^\infty \ds\frac{\sin^2 n}{2^n}$ converge?
 \end{example}
 
-\begin{example}
+\begin{solution}
 Yes.  Set
 $$
 a_n = \frac{\sin^2 n}{2^n} \mbox{ and } b_n = \frac{1}{2^n}
@@ -104,7 +104,7 @@ b_n$ converges, since it is a geometric series with common ratio
 $1/2$, as in Example~\xrefn{example:sum-of-half-powers}.  Therefore,
 the series $\ds\sum_{n=1}^\infty a_n$ converges by the comparison
 test.
-\end{example}
+\end{solution}
 
 \subsection{Cauchy Condensation Test}
 
@@ -170,7 +170,7 @@ $\ds\sum_{n=1}^\infty a_n$.
   So the sequence of partial sums for the series $\ds\sum_{n=0}^k \left( 2^n a_{2^n} \right)$ are bounded above by $2 \cdot \sum_{n=1}^\infty a_n$.  Moreover, that sequence of partial sums is increasing, and therefore, by the Monotone Convergence Theorem, the series $\ds\sum_{n=0}^\infty \left( 2^n a_{2^n} \right)$ converges---which is what we wanted to show.  
 \end{proof}
 
-What we shown is a bit stronger than simply that the original series and the condensed series share the same fate---converging or diverging together.  In fact, we have an estimate on the value of the original series, in terms of the value of the condensed series.  We have shown that
+What we've shown is a bit stronger than simply that the original series and the condensed series share the same fate---converging or diverging together.  In fact, we have an estimate on the value of the original series, in terms of the value of the condensed series.  We have shown that
 $$
 \sum_{n=1}^\infty a_n \leq \ds\sum_{n=0}^k \left( 2^n a_{2^n} \right) \leq 2 \cdot \sum_{n=1}^\infty a_n.
 $$
