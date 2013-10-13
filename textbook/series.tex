@@ -474,11 +474,15 @@ is a first example which suggests what we mean by ``telescoping.''
 Compute $\sum_{k=1}^n \frac{1}{k \cdot (k+1)}$.
 \end{example}
 
+\marginnote{You might know about a method called \href{http://en.wikipedia.org/wiki/Partial_fraction_decomposition}{\defnword{partial fractions}} to rewrite $\frac{1}{k \cdot (k+1)}$ as a combination of $\frac{1}{k}$ and $\frac{1}{k+1}$.}
+
 \begin{solution}
-  Doing some algebra verifies that
-  $$
-  \frac{1}{k \cdot (k+1)} = \frac{1}{k} - \frac{1}{k+1}
-  $$
+  Note that
+\begin{align*}
+  \frac{1}{k} - \frac{1}{k+1}
+&= \frac{k+1}{k \cdot (k+1)} - \frac{k}{k \cdot (k+1)} \\
+&= \frac{k+1 - k}{k \cdot (k+1)} = \frac{1}{k \cdot (k+1)}
+\end{align*}
   Consequently,
 \begin{align*}
 \sum_{k=1}^n \frac{1}{k \cdot (k+1)} &=
@@ -496,6 +500,16 @@ Compute $\sum_{k=1}^n \frac{1}{k \cdot (k+1)}$.
 \end{align*}
 since most of these terms end up canceling.
 \end{solution}
+
+%BADBAD
+%Let's see another example of this trick.
+
+%\begin{example}
+%Compute ANOTHER EXAMPLE OF TELESCOPING SERIES
+%\end{example}
+
+% \begin{solution}
+% \end{solution}
 
 In general, we say that a series
 \defnword{telescopes}\index{series!telescoping}\index{telescoping
