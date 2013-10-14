@@ -143,11 +143,11 @@ $\ds\sum_{n=1}^\infty a_n$.
 
   Since the sequence $(a_n)$ is decreasing, we have that
   \begin{align*}
-  a_2 + a_3 &< a_2 + a_2 \\
-  a_4 + a_5 + a_6 + a_7 &< a_4 + a_4 + a_4 + a_4 \\
-  a_8 + \cdots + a_{15} &< 8 \, a_8 \\
+  a_2 + a_3 &\leq a_2 + a_2 \\
+  a_4 + a_5 + a_6 + a_7 &\leq a_4 + a_4 + a_4 + a_4 \\
+  a_8 + \cdots + a_{15} &\leq 8 \, a_8 \\
   &\vdots \\
-  a_{2^n} + \cdots + a_{2^{n+1} - 1} &< 2^n \, a_{2^n}.
+  a_{2^n} + \cdots + a_{2^{n+1} - 1} &\leq 2^n \, a_{2^n}.
   \end{align*}
   Therefore,
   $$
@@ -155,6 +155,7 @@ $\ds\sum_{n=1}^\infty a_n$.
   $$
   As a result, the sequence of partial sums $s_k = \sum_{n=1}^k a_n$ is bounded above by $\sum_{n=0}^\infty 2^n \, a_{2^n}$.  Moreover, the sequence of partial sums $(s_k)$ is increasing.  Therefore, by the Monotone Convergence Theorem, the series $(s_k)$ converges.
 
+  % BADBAD this is not nearly clear enough
   On the other hand, suppose that $\ds\sum_{n=1}^\infty a_n$ converges; let's show that $\ds\sum_{n=0}^\infty \left( 2^n a_{2^n} \right)$
   also converges.  Once we have done so, we will have shown that  $\ds\sum_{n=1}^\infty a_n$ converges if and only if $\ds\sum_{n=0}^\infty \left( 2^n a_{2^n} \right)$ converges.
 
