@@ -2,7 +2,7 @@ require 'fileutils'
 require 'tmpdir'
 require 'tempfile'
 
-SD_CARD="/dev/sdb1"
+SD_CARD="/dev/disk/by-id/usb-APPLE_SD_Card_Reader_000000009833-0:0-part1"
 
 def original_script
   filename = Dir.new(Rake.original_dir).entries.select{ |x| x.match( /\.txt$/ ) }.first
