@@ -104,8 +104,11 @@ Commons license. In addition, the chapter on differential equations
 and the section on numerical integration are largely derived from the
 corresponding portions of Keisler's book.  Albert Schueller, Barry
 Balof, and Mike Wills have contributed additional material.  Thanks to
-Walter Nugent, Nicholas J.~Roux, Donald Wayne Fincher, chas, Clark Archer, Sarah Smith, MithrandirAgain, AlmeCap,
-and hrzhu for proofreading and \href{https://github.com/kisonecat/sequences-and-series/graphs/contributors}{contributing on GitHub}.
+Walter Nugent, Nicholas J.~Roux, Donald Wayne Fincher, Nathalie
+Dalp\'e, chas, Clark Archer, Sarah Smith, MithrandirAgain, AlmeCap,
+and hrzhu for proofreading and
+\href{https://github.com/kisonecat/sequences-and-series/graphs/contributors}{contributing
+  on GitHub}.
 
 \noindent This book is typeset in the Kerkis font, 
 Kerkis \copyright~Department of Mathematics, University of the Aegean.
@@ -192,7 +195,11 @@ have contributed additional material.  The stylesheet, based on \texttt{tufte-la
 This textbook was specifically used for a
 \href{https://www.coursera.org/course/sequence}{Coursera course}
 called ``Calculus Two: Sequences and Series.''  Many thanks go to
-Walter Nugent, Donald Wayne Fincher, Robert Pohl, chas, \href{https://github.com/clark-archer}{Clark Archer}, Sarah Smith, Mavaddat Javid, Grigoriy Mikhalkin, mrBB, Hanna Szabelska, Arthur Dent, Ryan Noble, and \href{https://github.com/hrzhu}{hrzhu} for finding and correcting
+Walter Nugent, Donald Wayne Fincher, Robert Pohl, chas,
+\href{https://github.com/clark-archer}{Clark Archer}, Sarah Smith,
+Mavaddat Javid, Grigoriy Mikhalkin, Eduard Pascual Saez, mrBB, Hanna
+Szabelska, Arthur Dent, Ryan Noble, and
+\href{https://github.com/hrzhu}{hrzhu} for finding and correcting
 errors in early editions of this text.  Thank you!
 
 \vspace{0.5in}
@@ -264,23 +271,78 @@ problem.
 \chapter{Alternating series}
 \label{chapter:alternating-series}
 
-However, this chapter is yet to be revealed!  It will be revealed on
-around 10:00am Eastern on October 18, 2013.  Stay tuned.
-
 %\startcontents[sections]% kind
 %\printcontents[sections]{p}{1}{}% kind, prefix, top, init-code
 %\end{contents}
 
-\section{Alternating series test}
-%\input alternating-series
-
 \section{Absolute convergence}
 \label{section:absolute-convergence}
-%\input absolute-convergence
+\input absolute-convergence
+
+\section{Alternating series test}
+\label{section:alternating-series-test}
+\input alternating-series
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\chapter{Power series}
-%\label{chapter:power-series}
+\chapter{Another comparison test}
+
+We've covered a ton of material thus far in this course; there is one
+more comparison test that comes in quite handy---the Limit Comparison
+Test---which we will meet in Section~\xrefn{section:limit-comparison-test}.
+The purpose of this chapter, however, runs deeper than ``just''
+another comparison test.  
+
+The emphasis on series has been almost entirely on the question of
+their convergence; we have not paid much heed to the value of the
+series, but we've developed a lot of techniques to analyze their
+convergence.  The question is always ``Does it converge?'' and the
+answer is ``yes, it converges!'' or ``no, it does not converge.''
+Considering how qualitative our answer is, we might hope that there
+are equally qualitative methods for analyzing series.  If convergence
+is just a yes-or-no matter, one might hope that the methods for
+analyzing series are equally loose and qualitative.
+
+But that hasn't been our experience.  Convergence is a tricky
+business, requiring precision and careful analysis.  There have been
+hints, though, that things are easier than they seem: the comparison
+test is perhaps the best example of that.  In your past mathematical
+life, you've probably been given ``expressions'' or ``equations'' to
+which you apply various rules in order to derive an answer.  With the
+comparison test, the situation is less about rules, and more about
+creatively ignoring parts of the expression in order to find a useful
+bound.  More than being rule-based, testing convergence via the
+comparison test requires some guesswork, and a willingness to ignore
+the parts of the expression that don't matter, in order to get at the
+part that does.
+
+Let me be more precise.  Suppose we wanted to analyze the convergence of a series such as
+\[
+\sum_{n=52}^\infty \frac{2n^5 + 5n^3 - n^2}{n^4 - 3n + 5}. 
+\]
+This is a complicated series, but the given expression is the ratio
+between a fifth degree polynomial and a fourth degree polynomial, so this series ``is more or less'' the same as the series
+\[
+\sum_{n=52}^\infty \frac{n^5}{n^4} = \sum_{n=52}^\infty \frac{1}{n}
+\]
+which is the harmonic series, and diverges!  This is how we'd like to
+think, but we need to justify the concept of ``is more or less.''
+This is what Section~\xrefn{section:limit-comparison-test} will teach
+us to do.
+
+\section{Convergence depends on the tail}
+\label{section:convergence-for-tails}
+\input convergence-for-tails
+
+\section{Limit comparison test}
+\label{section:limit-comparison-test}
+\input limit-comparison-test
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Power series}
+\label{chapter:power-series}
+
+This chapter is yet to be revealed!  It will be revealed on
+around 10:00am Eastern on October 25, 2013.  Stay tuned.
 
 %\startcontents[sections]% kind
 %\printcontents[sections]{p}{1}{}% kind, prefix, top, init-code
@@ -292,8 +354,11 @@ around 10:00am Eastern on October 18, 2013.  Stay tuned.
 %\input term-by-term
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\chapter{Taylor series}
-%\label{chapter:taylor-series}
+\chapter{Taylor series}
+\label{chapter:taylor-series}
+
+This chapter is yet to be revealed!  It will be revealed on
+around 10:00am Eastern on November 1, 2013.  Stay tuned.
 
 %\startcontents[sections]% kind
 %\printcontents[sections]{p}{1}{}% kind, prefix, top, init-code

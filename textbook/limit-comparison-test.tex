@@ -1,0 +1,63 @@
+This test is usually called the \defnword{limit comparison
+  test}\index{limit comparison test}\index{comparison test!limit},
+\begin{theorem}
+  \label{thm:limit-comparison-test}
+  Suppose $a_n \geq 0$ and $b_n \geq 0$.  Then if
+  $$
+  \lim_{n \to \infty} \frac{a_n}{b_n} = L > 0,
+  $$
+  the series $\sum_{n=1}^\infty a_n$ converges if and only if
+  $\sum_{n=1}^\infty b_n$ converges.
+\end{theorem}
+
+The idea is that this is basically a comparison test, but instead of
+asking for something on the nose, like $0 \leq a_n \leq b_n$, I am
+instead asking only that $a_n$ and $b_n$ be similar in size.
+
+\subsection{Proof of the Limit Comparison Test}
+
+Assuming $\lim_{n \to \infty} \frac{a_n}{b_n} = L > 0$, then we may also conclude that $\lim_{n \to \infty} \frac{b_n}{a_n} = 1/L > 0$.
+
+\begin{theorem}
+  \label{thm:limit-comparison-test}
+  Suppose $a_n \geq 0$ and $b_n \geq 0$.  Then if
+  $$
+  \lim_{n \to \infty} \frac{a_n}{b_n} = L > 0,
+  $$
+  the series $\sum_{n=1}^\infty a_n$ converges if and only if
+  $\sum_{n=1}^\infty b_n$ converges.
+\end{theorem}
+
+\subsection{How to apply the Limit Comparison Test}
+
+\begin{example}
+  Does the series
+  $$
+  \sum_{n=52}^\infty \frac{2n^5 + 5n^3 - n^2}{n^4 - 3n + 5}
+  $$ converges or diverge?
+\end{example}
+
+\begin{solution}
+  We will invoke the Limit Comparison Test, that is,
+  Theorem~\xrefn{thm:limit-comparison-test}.  Set
+  $$
+a_n = \frac{2n^5 + 5n^3 - n^2}{n^4 - 3n + 5} \mbox{ and }
+b_n = \frac{1}{n},
+  $$
+so in this case,
+\begin{align*}
+\lim_{n \to \infty} \frac{a_n}{b_n} &= \lim_{n \to \infty}  \frac{2n^5 + 5n^3 - n^2}{n^4 - 3n + 5} \cdot \frac{n}{1} \\
+&= \lim_{n \to \infty}  \frac{2n^5 + 5n^3 - n^2}{n^5 - 3n^2 + 5n} \\
+&= \lim_{n \to \infty}  \frac{2n^5 + 5n^3 - n^2}{n^5 - 3n^2 + 5n} \cdot \frac{1/n^5}{1/n^5} \\
+&= \lim_{n \to \infty}  \frac{2 + \frac{5}{n^2} - \frac{1}{n^3}}{1 - \frac{3}{n^3} + \frac{5}{n^4}} \\
+&= \frac{\lim_{n \to \infty} \left(2 + \frac{5}{n^2} - \frac{1}{n^3}\right)}{\lim_{n\to\infty} \left(1 - \frac{3}{n^3} + \frac{5}{n^4}\right)} \\
+&= 2 > 0,
+\end{align*}
+and so and $\sum_{n=52}^\infty b_n$ share the same fate.  But $\sum_{n=52}^\infty b_n$ diverges, and so too does $\sum_{n=52}^\infty b_n$.
+\end{solution}
+
+Of course, we could have just used a direct comparison test; the big
+benefit here is that it is relatively painless to compute the limit,
+but it requires significant creativity to set up a direct comparison
+test.  Think back, for instance, to
+Example~\xrefn{example:n-to-fifth-over-five-to-n}.

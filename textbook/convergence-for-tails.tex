@@ -1,0 +1,79 @@
+\nobreak The harmonic series diverges, but so does the series
+\[
+\sum_{n=100}^\infty \frac{1}{n} = \frac{1}{100} + \frac{1}{101} + \frac{1}{102} + \frac{1}{103} + \cdots
+\]
+Convergence doesn't depend on the beginning of the series; whether or not I include the first 99 terms
+\[
+\frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{97} + \frac{1}{98} + \frac{1}{99}
+\]
+does affect whether or the sum of \textit{all} the terms diverges.  In
+short, convergence depends not on how a series begins, but on how a
+series ends ends.  The end of a series is sometimes called the
+\defnword{tail} of the series.
+
+\begin{definition}
+  Let $N > 1$ be an integer, and consider a series $\sum_{n=1}^\infty a_n$.  The series we get by removing the first $N-1$ terms, namely
+\[
+\sum_{n=N}^\infty a_n
+\]
+is called a \defnword{tail} of the given series.
+\end{definition}
+
+Here is the theorem that describes how tails relate to convergence.
+\begin{theorem}\label{thm:convergence-for-tails}
+  Let $N > 1$ be an integer.  The series $\sum_{n=1}^\infty a_n$ converges if and only if $\sum_{n=N}^\infty a_n$ converges.
+\end{theorem}
+This could be shortened to ``The series converges iff a tail of the
+series converges,'' or even just to the slogan that convergence
+depends on the tail.
+\begin{proof}
+  Suppose $\sum_{n=1}^\infty a_n$ converges to $L$, meaning
+\[
+\lim_{M \to \infty} \sum_{n=1}^M a_n = L.
+\]
+In that case, applying limit laws reveals
+\begin{align*}
+\lim_{M \to \infty} \sum_{n=N}^M a_n
+&= \lim_{M \to \infty} \left( \left( \sum_{n=1}^M a_n \right) - \left( \sum_{n=1}^{N-1} a_n \right) \right) \\
+&= \lim_{M \to \infty} \left( \sum_{n=1}^M a_n \right) - \lim_{M \to \infty} \left( \sum_{n=1}^{N-1} a_n \right) \\
+&= \lim_{M \to \infty} \left( \sum_{n=1}^M a_n \right) - \left( \sum_{n=1}^{N-1} a_n \right) \\
+&= L - \left( \sum_{n=1}^{N-1} a_n \right), \\
+\end{align*}
+which means the series $\sum_{n=N}^M a_n$ converges.
+
+The other direction is left to you, the reader.
+\end{proof}
+
+\begin{example}
+Does the series $\displaystyle\sum_{n=153}^\infty \frac{1}{n^2}$ converge?
+\end{example}
+\begin{solution}
+  Yes! This series is a tail of the convergent $p$-series $\displaystyle\sum_{n=1}^\infty \frac{1}{n^2}$; in this case, $p = 2$.
+\end{solution}
+
+You might recall Example~\xrefn{example:n-to-fifth-over-five-to-n}, which we'll redo here.
+\begin{example}
+  Show that $\ds\sum_{n=0}^\infty {n^5\over 5^n}$ converges by using the comparison test and Theorem~\xrefn{thm:convergence-for-tails}.
+\end{example}
+
+\begin{solution}
+  The given series converges iff $\ds\sum_{n=23}^\infty {n^5\over 5^n}$ by Theorem~\xrefn{thm:convergence-for-tails}.  But whenever $n \geq 23$, we have
+  $$
+  \frac{n^5}{5^n} \leq \frac{2^n}{5^n} = \left( \frac{2}{5} \right)^n
+  $$
+  The series $\ds\sum_{n=23}^\infty \left( \frac{2}{5} \right)^n$
+  converges, since it is a geometric series with common ratio $2/5$,
+  so by comparison, the smaller series $\ds\sum_{n=23}^\infty
+  {n^5\over 5^n}$ also converges.
+\end{solution}
+
+In light of Theorem~\xrefn{thm:convergence-for-tails}, many textbooks
+will choose to write
+\[
+\sum_n a_n
+\]
+instead of $\displaystyle\sum_{n=1}^\infty a_n$ when discussing
+convergence.  Whether or not the series converges doesn't depend on
+the initial index, so if we want to state theorems about convergence,
+we can avoid potentially distracting details by simply not speaking
+about where the series begins.

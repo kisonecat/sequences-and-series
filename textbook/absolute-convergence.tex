@@ -1,62 +1,73 @@
 
 \nobreak
 Roughly speaking there are two ways for a series to converge: As in
-the case of $\sum 1/n^2$, the individual terms get small very quickly,
+the case of $\sum_{n=1}^\infty 1/n^2$, the individual terms get small very quickly,
 so that the sum of all of them stays finite, or, as in the case of
-$\ds \sum (-1)^{n-1}/n$, the terms don't get small fast enough ($\sum 1/n$
+$\sum_{n=1}^\infty (-1)^{n+1}/n$, the terms don't get small fast enough ($\sum_{n=1}^\infty 1/n$
 diverges), but a mixture of positive and negative terms provides
 enough cancellation to keep the sum finite. You might guess from what
 we've seen that if the terms get small fast enough to do the job, then
 whether or not some terms are negative and some positive the series
 converges. 
 
-\begin{theorem} If $\ds\sum_{n=0}^\infty |a_n|$ converges, then 
-$\ds\sum_{n=0}^\infty a_n$ converges.
+\begin{theorem}\label{thm:absolute-convergence-implies-convergence}
+If $\ds\sum_{n=1}^\infty |a_n|$ converges, then 
+$\ds\sum_{n=1}^\infty a_n$ converges.
 \end{theorem}
 \begin{proof}
 Note that $\ds 0\le a_n+|a_n|\le 2|a_n|$ so by the comparison test
-$\ds\sum_{n=0}^\infty (a_n+|a_n|)$ converges. Now
-$$
-  \sum_{n=0}^\infty (a_n+|a_n|) -\sum_{n=0}^\infty |a_n|
-  = \sum_{n=0}^\infty a_n+|a_n|-|a_n| = \sum_{n=0}^\infty a_n 
-$$
-converges by theorem~\xrefn{thm:series are linear}.
+$\ds\sum_{n=1}^\infty (a_n+|a_n|)$ converges. Now
+\begin{align*}
+  \sum_{n=1}^\infty (a_n+|a_n|) -\sum_{n=1}^\infty |a_n|
+  &= \sum_{n=1}^\infty \left( a_n+|a_n|-|a_n| \right) \\
+  &= \sum_{n=1}^\infty a_n 
+\end{align*}
+converges by Theorem~\xrefn{thm:series-are-linear}.
 \end{proof}
 
-So given a series $\sum a_n$ with both positive and negative terms,
-you should first ask whether $\sum |a_n|$ converges. This may be an
+So given a series $\sum_{n=1}^\infty a_n$ with both positive and negative terms,
+you should first ask whether $\sum_{n=1}^\infty |a_n|$ converges. This may be an
 easier question to answer, because we have tests that apply
-specifically to terms with non-negative terms. If $\sum |a_n|$
-converges then you know that $\sum a_n$ converges as well. If $\sum
-|a_n|$ diverges then it still may be true that $\sum a_n$
+specifically to terms with non-negative terms. If $\sum_{n=1}^\infty |a_n|$
+converges then you know that $\sum_{n=1}^\infty a_n$ converges as well. If $\sum
+|a_n|$ diverges then it still may be true that $\sum_{n=1}^\infty a_n$
 converges---you will have to do more work to decide the question.
 Another way to think of this result is: it is (potentially) easier for
-$\sum a_n$ to converge than for $\sum |a_n|$ to converge, because the
+$\sum_{n=1}^\infty a_n$ to converge than for $\sum_{n=1}^\infty |a_n|$ to converge, because the
 latter series cannot take advantage of cancellation. 
 
-If $\sum |a_n|$ converges we say that $\sum a_n$ converges {\dfont
-absolutely\index{series!absolute convergence}\/}; to say that $\sum
-a_n$ converges absolutely is to say that any cancellation that happens
-to come along is not really needed, as the terms already get small so
-fast that convergence is guaranteed by that alone. If $\sum a_n$
-converges but $\sum |a_n|$ does not, we say that $\sum a_n$ converges
-{\dfont conditionally\index{series!conditional convergence}}. For
-example $\ds\sum_{n=1}^\infty (-1)^{n-1} {1\over n^2}$ converges
-absolutely, while $\ds\sum_{n=1}^\infty (-1)^{n-1} {1\over n}$
-converges conditionally.
+\marginnote{With this terminology,
+  Theorem~\xrefn{thm:absolute-convergence-implies-convergence} is
+  saying that an absolutely convergent series is also a plain old
+  convergent series.}
 
-\begin{example} Does $\ds\sum_{n=2}^\infty {\sin n\over n^2}$ converge?
+If $\sum_{n=1}^\infty |a_n|$ converges we say that $\sum_{n=1}^\infty a_n$ is
+\defnword{absolutely convergent}\index{series!absolute
+  convergence}; to say that $\sum_{n=1}^\infty a_n$ converges absolutely is to
+say that any cancellation that happens to come along is not really
+needed, as the terms already get small so fast that convergence is
+guaranteed by that alone. If $\sum_{n=1}^\infty a_n$ converges but $\sum_{n=1}^\infty |a_n|$
+does not, we say that $\sum_{n=1}^\infty a_n$ converges {\dfont
+  conditionally\index{series!conditional convergence}}. For example,
+$\ds\sum_{n=1}^\infty (-1)^{n-1} {1\over n^2}$ converges absolutely,
+while $\ds\sum_{n=1}^\infty (-1)^{n-1} {1\over n}$ converges
+conditionally.
 
-\ssk\noindent
-In example~\xrefn{example:absolute sine over n squared} we saw that 
-$\ds\sum_{n=2}^\infty {|\sin n|\over n^2}$ converges, so the given
-series converges absolutely.
+
+\begin{example}
+  Does $\ds\sum_{n=2}^\infty {\sin n\over n^2}$ converge?
 \end{example}
+\begin{solution}
+  In Example~\xrefn{example:absolute-sine-over-n-squared}, we saw that
+  $\ds\sum_{n=2}^\infty {|\sin n|\over n^2}$ converges, so the given
+  series converges absolutely.
+\end{solution}
 
-\begin{example} Does $\ds\sum_{n=0}^\infty (-1)^{n}{3n+4\over 2n^2+3n+5}$ converge?
-
-\ssk\noindent
-Taking the absolute value, $\ds\sum_{n=0}^\infty {3n+4\over 2n^2+3n+5}$
+\begin{example}
+Does $\ds\sum_{n=1}^\infty (-1)^{n}{3n+4\over 2n^2+3n+5}$ converge?
+\end{example}
+\begin{solution}
+Taking the absolute value, $\ds\sum_{n=1}^\infty {3n+4\over 2n^2+3n+5}$
 diverges by comparison to $\ds\sum_{n=1}^\infty {3\over 10n}$, so if
 the series converges it does so conditionally. It is true that
 $\ds\lim_{n\to\infty}(3n+4)/(2n^2+3n+5)=0$, so to apply the
@@ -66,7 +77,7 @@ If we let $\ds f(x)=(3x+4)/(2x^2+3x+5)$ then
 $\ds f'(x)=-(6x^2+16x-3)/(2x^2+3x+5)^2$, and it is not hard to see that
 this is negative for $x\ge1$, so the series is decreasing and by the
 alternating series test it converges.
-\end{example}
+\end{solution}
 
 \begin{exercises}
 

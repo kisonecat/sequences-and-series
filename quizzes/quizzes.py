@@ -53,6 +53,7 @@ class Quiz:
         return header + join(['<question_group select="1">' + question_class.coursera_xml() + '</question_group>' for question_class in cls.question_classes],"\n") + footer
 
 ################################################################
+# Quiz 1
 import evaluateGeometricSeriesFraction
 import computeSequenceRecursively
 import identifyGeometricProgression
@@ -65,6 +66,8 @@ import findSequenceLimit
 import determineSequenceBounded
 import applyMonotoneConvergence
 
+################################################################
+# Quiz 2
 import defineValueOfSeries
 import evaluateGeometricSeriesFraction
 import evaluateTelescopingSeries
@@ -72,6 +75,52 @@ import analyzeGeometricSeries
 import applyNthTermTest
 import applyComparisonTest
 import analyzeHarmonicSeries
+
+################################################################
+# Quiz 3
+import applyRatioTest
+import applyRatioTestWithFactorials
+import applyRatioTestWithFactorialsAndPowers
+import comparePSeries
+import identifyPSeries
+import applyRootTest
+import boundSeriesByIntegrating
+
+################################################################
+# Quiz 4
+import relateAbsoluteConvergenceToConvergence
+import applyLimitComparisonTest
+import applyAlternatingSeriesTest
+import identifyAlternatingPSeries
+import approximateAlternatingSeries
+import approximateLogarithm
+import considerNonmonotoneAlternatingSeries
+
+class FourthQuiz(Quiz):
+    title = 'Homework 4'
+    preamble = 'This homework, like all the homeworks in this course, is an example of &ldquo;formative assessment.&rdquo;  As such, this homework is not so much about you showing me how much you have learned; the final exam (in just a few weeks now!) will handle that.  Rather, this homework is part of the process of learning.  Use the hints when you get stuck.  Discuss freely on the forums.  Take the quiz again and again.  Feel free to use the provided resources in whatever way helps you to understand the material.  You are making progress on the homework, and with just a few more weeks of work, I know you will do a great job on the final exam.  ~jim'
+    question_classes = [ 
+        relateAbsoluteConvergenceToConvergence.Question,
+        applyLimitComparisonTest.Question,
+        identifyAlternatingPSeries.Question,
+        applyAlternatingSeriesTest.Question,
+        approximateAlternatingSeries.Question,
+        approximateLogarithm.Question,
+        considerNonmonotoneAlternatingSeries.Question
+    ]
+
+class ThirdQuiz(Quiz):
+    title = 'Homework 3'
+    preamble = 'This homework, like all the homeworks in this course, is an example of &ldquo;formative assessment.&rdquo;  As such, this homework is not so much about you showing me how much you have learned; the final exam (in just a few weeks now!) will handle that.  Rather, this homework is part of the process of learning.  Use the hints when you get stuck.  Discuss freely on the forums.  Take the quiz again and again.  Feel free to use the provided resources in whatever way helps you to understand the material.  You are making progress on the homework, and with just a few more weeks of work, I know you will do a great job on the final exam.  ~jim'
+    question_classes = [ 
+        applyRatioTest.Question,
+        applyRatioTestWithFactorials.Question,
+        applyRatioTestWithFactorialsAndPowers.Question,
+        identifyPSeries.Question,
+        comparePSeries.Question,
+        applyRootTest.Question,
+        boundSeriesByIntegrating.Question,
+    ]
 
 class SecondQuiz(Quiz):
     title = 'Homework 2'
@@ -101,11 +150,9 @@ class FirstQuiz(Quiz):
         identifyGeometricProgression.Question,
         identifyMonotonicSequence.Question,
         applyMonotoneConvergence.Question,
-#                         something about monotone convergence theorem?
-#                       ,
-                       ]
+    ]
 
-f = open('quiz2.xml','w')
-f.write(SecondQuiz.coursera_xml())
+f = open('quiz4.xml','w')
+f.write(FourthQuiz.coursera_xml())
 f.close()
-SecondQuiz.forum_list()
+FourthQuiz.forum_list()
