@@ -33,7 +33,7 @@ Assuming $\lim_{n \to \infty} \frac{a_n}{b_n} = L > 0$, then we may also conclud
 \begin{example}
   Does the series
   $$
-  \sum_{n=52}^\infty \frac{2n^5 + 5n^3 - n^2}{n^4 - 3n + 5}
+  \sum_{n=52}^\infty \frac{n^4 - 3n + 5}{2n^5 + 5n^3 - n^2}
   $$ converges or diverge?
 \end{example}
 
@@ -41,19 +41,19 @@ Assuming $\lim_{n \to \infty} \frac{a_n}{b_n} = L > 0$, then we may also conclud
   We will invoke the Limit Comparison Test, that is,
   Theorem~\xrefn{thm:limit-comparison-test}.  Set
   $$
-a_n = \frac{2n^5 + 5n^3 - n^2}{n^4 - 3n + 5} \mbox{ and }
+a_n = \frac{n^4 - 3n + 5}{2n^5 + 5n^3 - n^2} \mbox{ and }
 b_n = \frac{1}{n},
   $$
 so in this case,
 \begin{align*}
-\lim_{n \to \infty} \frac{a_n}{b_n} &= \lim_{n \to \infty}  \frac{2n^5 + 5n^3 - n^2}{n^4 - 3n + 5} \cdot \frac{n}{1} \\
-&= \lim_{n \to \infty}  \frac{2n^5 + 5n^3 - n^2}{n^5 - 3n^2 + 5n} \\
-&= \lim_{n \to \infty}  \frac{2n^5 + 5n^3 - n^2}{n^5 - 3n^2 + 5n} \cdot \frac{1/n^5}{1/n^5} \\
-&= \lim_{n \to \infty}  \frac{2 + \frac{5}{n^2} - \frac{1}{n^3}}{1 - \frac{3}{n^3} + \frac{5}{n^4}} \\
-&= \frac{\lim_{n \to \infty} \left(2 + \frac{5}{n^2} - \frac{1}{n^3}\right)}{\lim_{n\to\infty} \left(1 - \frac{3}{n^3} + \frac{5}{n^4}\right)} \\
-&= 2 > 0,
+\lim_{n \to \infty} \frac{a_n}{b_n} &= \lim_{n \to \infty}  \frac{n^4 - 3n + 5}{2n^5 + 5n^3 - n^2} \cdot \frac{n}{1} \\
+&= \lim_{n \to \infty}  \frac{n^5 - 3n^2 + 5n}{2n^5 + 5n^3 - n^2} \\
+&= \lim_{n \to \infty}  \frac{n^5 - 3n^2 + 5n}{2n^5 + 5n^3 - n^2} \cdot \frac{1/n^5}{1/n^5} \\
+&= \lim_{n \to \infty}  \frac{1 - \frac{3}{n^3} + \frac{5}{n^4}}{2 + \frac{5}{n^2} - \frac{1}{n^3}} \\
+&= \frac{\lim_{n\to\infty} \left(1 - \frac{3}{n^3} + \frac{5}{n^4}\right)}{\lim_{n \to \infty} \left(2 + \frac{5}{n^2} - \frac{1}{n^3}\right)} \\
+&= \frac{1}{2} > 0,
 \end{align*}
-and so and $\sum_{n=52}^\infty b_n$ share the same fate.  But $\sum_{n=52}^\infty b_n$ diverges, and so too does $\sum_{n=52}^\infty b_n$.
+and so $\sum_{n=52}^\infty a_n$ and $\sum_{n=52}^\infty b_n$ share the same fate.  But $\sum_{n=52}^\infty b_n$ diverges, and so too does $\sum_{n=52}^\infty a_n$.
 \end{solution}
 
 Of course, we could have just used a direct comparison test; the big
