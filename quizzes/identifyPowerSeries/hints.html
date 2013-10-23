@@ -1,0 +1,12 @@
+<p>Remember the form of a power series is \(\sum_{n=0}^\infty a_n x^n\).</p>
+<p>So if we separate out the \(x^n\) but find that the remaining \(a_n\) has an \(x\) in it, we are in trouble!</p>
+<p>Is \(\sum_{n=0}^\infty #{latex(bad_functions[0][0])}\) a power series?</p>
+<p>No.  #{bad_functions[0][1]}</p>
+<p>Is \(\sum_{n=0}^\infty #{latex(bad_functions[1][0])}\) a power series?</p>
+<p>No.  #{bad_functions[1][1]}</p>
+<p>Is \(\sum_{n=0}^\infty #{latex(bad_functions[2][0])}\) a power series?</p>
+<p>No.  #{bad_functions[2][1]}</p>
+<p>How about \(\sum_{n=0}^\infty #{latex(bad_functions[3][0])}\).  Is it a power series?</p>
+<p>Again, no.  #{bad_functions[3][1]}</p>
+<p>What about \(\sum_{n=0}^\infty #{latex(good_function)}\)?</p>
+<p>Yes, that has the correct form.  In this case \(a_n = #{latex(simplify(good_function/(var('x')**var('n'))))}\).</p>
