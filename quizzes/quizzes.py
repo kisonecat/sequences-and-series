@@ -96,6 +96,27 @@ import approximateAlternatingSeries
 import approximateLogarithm
 import considerNonmonotoneAlternatingSeries
 
+################################################################
+# Quiz 5
+
+import findIntervalOfConvergence
+import findRadiusOfConvergence
+import identifyPowerSeries
+import transformGeometricSeries
+import multiplyPowerSeries
+
+class FifthQuiz(Quiz):
+    title = 'Homework 5'
+    preamble = 'This homework, like all the homeworks in this course, is an example of &ldquo;formative assessment.&rdquo;  That does not mean it is not worth points, but the points are there to encourage you to complete it, not to judge you.  Please, use the hints when you get stuck.  Discuss freely on the forums.  If you get the right answer but do not understand why, please ask.  Take the quiz again and again&mdash;the questions will change each time.  Feel free to use the provided resources in whatever way helps you to understand the material.  I know that you can do it.  ~jim'
+    question_classes = [ 
+#        identifyPowerSeries.Question,
+#        findIntervalOfConvergence.Question,
+#        findRadiusOfConvergence.Question,
+#        transformGeometricSeries.Question,
+#        multiplyPowerSeries.Question,
+    ]
+
+
 class FourthQuiz(Quiz):
     title = 'Homework 4'
     preamble = 'This homework, like all the homeworks in this course, is an example of &ldquo;formative assessment.&rdquo;  As such, this homework is not so much about you showing me how much you have learned; the final exam (in just a few weeks now!) will handle that.  Rather, this homework is part of the process of learning.  Use the hints when you get stuck.  Discuss freely on the forums.  Take the quiz again and again.  Feel free to use the provided resources in whatever way helps you to understand the material.  You are making progress on the homework, and with just a few more weeks of work, I know you will do a great job on the final exam.  ~jim'
@@ -152,7 +173,7 @@ class FirstQuiz(Quiz):
         applyMonotoneConvergence.Question,
     ]
 
-f = open('quiz4.xml','w')
-f.write(FourthQuiz.coursera_xml())
+f = open('quiz5.xml','w')
+f.write(FifthQuiz.coursera_xml())
 f.close()
-FourthQuiz.forum_list()
+FifthQuiz.forum_list()
