@@ -1,0 +1,29 @@
+<p>We first find the radius of convergence.</p>
+<p>Let \(a_{#{variable}} = #{latex(term_coeff)}\), so the given series is \(\sum_{#{variable}=#{initial}}^\infty a_{#{variable}} x^{#{variable}}\).</p>
+<p>For the ratio test, consider \(\lim_{#{variable} \to \infty} \frac{|a_{#{variable}+1}|}{|a_{#{variable}}|}\).</p>
+<p>We want this limit to be less than one to get absolute convergence.</p>
+<p>In this case, \(\lim_{#{variable} \to \infty} \frac{|a_{#{variable}+1}|}{|a_{#{variable}}|} = \lim_{#{variable} \to \infty} \left| \frac{#{latex(term_coeff_x(x=variable+1))}}{#{latex(term_coeff_x(x=variable))}} \right| x\).</p>
+<p>Simplifying, \(\lim_{#{variable} \to \infty} \frac{|a_{#{variable}+1}|}{|a_{#{variable}}|} = \lim_{#{variable} \to \infty} \left| #{latex( simplify((term_coeff_x(x=variable+1)) / (term_coeff_x(x=variable))) )} \right| x\).</p>
+<p>So the limit is less than one exactly when \(|x| &lt; #{latex(abs(QQ(1)/common_ratio))}\).</p>
+<p>So the series converges absolutely when \(x\) is in the interval \(\left(#{latex(-abs(QQ(1)/common_ratio))},#{latex(abs(QQ(1)/common_ratio))}\right)\).</p>
+<p>The series may converge conditionally, however, at the endpoints of its interval of convergence.</p>
+<p>In this case, that means the series may yet converge or diverge when \(x = #{latex(-abs(QQ(1)/common_ratio))}\) or when \(x = #{latex(abs(QQ(1)/common_ratio))}\).</p>
+
+<p>Let's check \(x = #{latex(QQ(1)/common_ratio)}\).</p>
+
+<p>Then \(\sum_{#{variable}=#{initial}}^\infty a_{#{variable}} x^{#{variable}} = \sum_{#{variable}=#{initial}}^\infty \left( #{latex(term_coeff)} \right) \left( #{latex(QQ(1)/common_ratio)} 
+\right)^{#{variable}}\).</p>
+<p>But then \(\sum_{#{variable}=#{initial}}^\infty a_{#{variable}} x^{#{variable}} = \sum_{#{variable}=#{initial}}^\infty #{latex(term(x=(QQ(1)/common_ratio)))} = #{latex(constant_factor)} \sum_{#{variable}=#{initial}}^\infty #{latex(simplify(term(x=(QQ(1)/common_ratio))/constant_factor))}\).</p>
+<p>That diverges, so \(x = #{latex(QQ(1)/common_ratio)}\) is not a point where the series converges.</p>
+
+
+<p>Let's check \(x = #{latex(-QQ(1)/common_ratio)}\).</p>
+
+
+<p>Then \(\sum_{#{variable}=#{initial}}^\infty a_{#{variable}} x^{#{variable}} = \sum_{#{variable}=#{initial}}^\infty \left( #{latex(term_coeff)} \right) \left( #{latex(-QQ(1)/common_ratio)} 
+\right)^{#{variable}}\).</p>
+<p>But then \(\sum_{#{variable}=#{initial}}^\infty a_{#{variable}} x^{#{variable}} = \sum_{#{variable}=#{initial}}^\infty #{latex(term(x=(-QQ(1)/common_ratio)))} = #{latex(constant_factor)} \sum_{#{variable}=#{initial}}^\infty #{latex(simplify(term(x=(-QQ(1)/common_ratio))/constant_factor))}\).</p>
+<p>That is an alternating harmoni series, so it converges conditionally.</p>
+<p>And so \(x = #{latex(-QQ(1)/common_ratio)}\) is a point where the series converges.</p>
+
+<p>Let's summarize: the series converges #{answer_interval}.</p>
