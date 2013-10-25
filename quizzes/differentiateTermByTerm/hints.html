@@ -1,0 +1,17 @@
+<p>Let's suppose that \(R\) is the radius of convergence of \(\sum_{#{variable}=0}^\infty \left( #{latex(term)} \right)\).</p>
+<p>The theorem tells us that we can differentiate \(f(x)\) by differentiating \(\sum_{#{variable}=0}^\infty \left( #{latex(term)} \right)\) term-by-term.</p>
+<p>This means that \(f'(x)\) is equal to \(\sum_{#{variable}=0}^\infty \frac{d}{dx} \left( #{latex(term)} \right)\) at least for \(x \in (-R,R)\).</p>
+<p>Differentiating, we find \(\sum_{#{variable}=0}^\infty \frac{d}{dx} \left( #{latex(term)} \right) = 
+\sum_{#{variable}=1}^\infty \left( #{latex(term_coeff)} \frac{d}{dx} x^{#{variable}} \right)\).</p>
+<p>Note that \(#{variable}=0\) has been replaced by \(#{variable}=1\).  The derivative of the constant term is zero, so we need not include it.</p>
+<p>But \(\frac{d}{dx} x^{#{variable}} = #{variable} \cdot x^{#{variable}-1}\).</p>
+<p>That is only true if \(#{variable} \geq 1\); thank goodness we eliminated the \(#{variable}=0\) term a moment ago!</p>
+<p>Therefore \(f'(x) = \sum_{#{variable}=1}^\infty \left( #{latex(term_coeff)} \right) \cdot #{variable} \cdot x^{#{variable}-1} \).</p>
+<p>Most of the possible answers, though, are written with \(x^{#{variable}}\) instead of \(x^{#{variable}-1}\).  How is that possible?</p>
+<p>The trick is to re-index the series; replace \(#{variable}\) with \(#{variable}+1\).</p>
+<p>To keep track of what is going on, set \(a_{#{variable}} = #{latex(term_coeff)}\).</p>
+<p>Then \(f'(x) = \sum_{#{variable}=1}^\infty a_{#{variable}} \cdot #{variable} \cdot x^{#{variable}-1} =  \sum_{#{variable}=0}^\infty a_{#{variable}+1} \cdot \left(#{variable}+1\right) \cdot x^{#{variable}}\).</p>
+<p>In this case, \(a_{#{variable}+1} = #{latex((term_coeff_x)(x=variable+1))}\).</p>
+<p>So \(f'(x) = \sum_{#{variable}=0}^\infty a_{#{variable}+1} \cdot \left(#{variable}+1\right) \cdot x^{#{variable}} = \sum_{#{variable}=0}^\infty \left( #{latex((term_coeff_x)(x=variable+1))} \right) \cdot \left(#{variable}+1\right) \cdot x^{#{variable}}\).</p>
+<p>This can be written in a slightly different form.</p>
+<p>I conclude that \(f'(x) = \sum_{#{variable}=0}^\infty \left( #{latex(d_term)} \right) \).</p>
