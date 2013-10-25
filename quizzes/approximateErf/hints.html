@@ -1,0 +1,20 @@
+<p>We would like to find a series for \(f(t) = \int_0^t e^{-x^2} \, dx\).</p>
+<p>One helpful thing is that \(e^x = \sum_{n=0}^\infty \frac{x^n}{n!}\).</p>
+<p>This is a tricky step: you might then believe that \(e^{-x^2} = \sum_{n=0}^\infty \frac{\left(-x^2\right)^n}{n!}\).</p>
+<p>So we can simplify this to get \(e^{-x^2} = \sum_{n=0}^\infty \frac{(-1)^n \, x^{2n}}{n!}\).</p>
+<p>That looks a bit like an alternating series!  That is a good sign (!).</p>
+<p>Another thing we can do is integrate a power series term-by-term.</p>
+<p>That means that \(\int_{x=0}^t e^{-x^2} \, dx = \int_{x=0}^t \sum_{n=0}^\infty \frac{(-1)^n \, x^{2n}}{n!} dx = \sum_{n=0}^\infty \int_{x=0}^t \frac{(-1)^n x^{2n}}{n!} dx\).</p>
+<p>But \(\int_{x=0}^t x^{2n} \, dx = \frac{x^{2n+1}}{2n+1}\).</p>
+<p>So \(f(t) = \int_{x=0}^t e^{-x^2} \, dx = \sum_{n=0}^\infty \frac{(-1)^n x^{2n+1}}{n! \cdot (2n+1)}\).</p>
+<p>We want to approximate \(f\left(#{latex(desired_point)}\right) = \sum_{n=0}^\infty \frac{(-1)^n \left(#{latex(desired_point)}\right)^{2n+1}}{n! \cdot (2n+1)}\).</p>
+<p>This is an alternating series, so we know how to approximate the error in a partial sum.</p>
+<p>We look for a term in the series with absolute value no larger than \(#{latex(goal_accuracy)}\).</p>
+<p>So we can talk about this more easily, set \(a_{#{variable}} = #{latex(term)}\).</p>
+<p>Plugging in a few values, we find that when \(#{variable} = #{latex(need_terms+1)}\), then \(|a_{#{need_terms+1}}| = #{latex(abs(term_x(x=need_terms+1)))}\) which is less than \(#{latex(goal_accuracy)}\).</p>
+<p>So the true value of the series is between \(\sum_{#{variable} = #{initial}}^{#{latex(need_terms)}} #{latex(term)}\) and \(\sum_{#{variable} = #{initial}}^{#{latex(need_terms+1)}} #{latex(term)}\).</p>
+<p>Doing some arithmetic, \(\sum_{#{variable} = #{initial}}^{#{latex(need_terms)}} #{latex(term)} = #{latex(sum(term_x,var('x'),initial,need_terms))}\).</p>
+<p>Doing some more arithmetic, \(\sum_{#{variable} = #{initial}}^{#{latex(need_terms+1)}} #{latex(term)} = #{latex(sum(term_x,var('x'),initial,need_terms+1))}\).</p>
+<p>Looking over the possible choices, \(#{latex(rational_answer)}\) is between \(#{latex(sum(term_x,var('x'),initial,need_terms))}\) and \(#{latex(sum(term_x,var('x'),initial,need_terms+1))}\).</p>
+<p>So we conclude that \(\left| L - #{latex(rational_answer)} \right| < #{latex(goal_accuracy)}\).</p>
+<p>In other words, \(L\) is approximately \(#{latex(rational_answer)}\) with an error of no more than \(#{latex(goal_accuracy)}\).</p>
