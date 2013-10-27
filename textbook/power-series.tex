@@ -1,79 +1,244 @@
-
+\section{Definitions}
 \nobreak
-Recall that we were able to analyze all geometric series ``simultaneously''
-to discover that
-$$\sum_{n=0}^\infty kx^n = {k\over 1-x},$$
-if $|x|<1$, and that the series diverges when $|x|\ge 1$. At the time,
+At first, we studied the geometric series
+$$
+  \sum_{n=0}^\infty \left(\frac{1}{2}\right)^n,
+$$
+but then we replaced $\frac{1}{2}$ with a variable, so we were able to
+analyze all geometric series simultaneously.  In the end, we
+discovered that
+$$
+  \sum_{n=0}^\infty kx^n = {k\over 1-x} \mbox{ if $|x| < 1$,}
+$$
+\marginnote{You may recall that we used $r$ instead of $x$; I think $r$ was a good choice back then, since $r$ evokes ``ratio'' and stood for the common ratio between the terms in a geometric series.  Now we use $x$, which I think is a good choice now.  Why the change?  To me, $x$ suggests ``independent variable of a function'' much more generally than just a parameter in a geometric series, and we will be thinking very broadly about how quite general functions can be represented as a power series.  One may regard power series as a natural generalization of polynomials, and you may already be comfortable thinking of $x$ as the variable in a polynomial.}
+and that the series diverges when $|x|\ge 1$. At the time,
 we thought of $x$ as an unspecified constant, but we could just as
-well think of it as a variable, in which case the series
-$$\sum_{n=0}^\infty kx^n$$
-is a function, namely, the function $k/(1-x)$, as long as
-$|x|<1$. While $k/(1-x)$ is a reasonably easy function to deal with,
-the more complicated $\sum kx^n$ does have its
-attractions: it appears to be an infinite version of one of the
-simplest function types---a polynomial. This leads naturally to the
-questions: Do other functions have representations as series? Is there
-an advantage to viewing them in this way?
+well think of it as a variable.  A number which depends on another
+number is just a function, so we may write
+$$
+  f(x) = \sum_{n=0}^\infty kx^n
+$$
+and then observe that it is also the case that $f(x) = k/(1-x)$, as
+long as $|x|<1$. While $k/(1-x)$ is a reasonably easy function to deal
+with, the more complicated $\sum kx^n$ does have its attractions: it
+appears to be an infinite version of one of the simplest sorts of
+functions---a polynomial. Do other functions have representations as
+series? Is there an advantage to viewing them in this way?
 
-The geometric series has a special feature that makes it unlike a
-typical polynomial---the coefficients of the powers of $x$ are the
-same, namely $k$. We will need to allow more general coefficients if
-we are to get anything other than the geometric series. 
+Usually the coefficients aren't all the same in a polynomial; the
+geometric series is somewhat unusual in that all the coefficients of
+the powers of $x$ are the same, namely $k$.  We will need to allow more
+general coefficients if we are to get anything other than the
+geometric series.
 
-\begin{definition} A power series has the form 
-$$\ds\sum_{n=0}^\infty a_nx^n,$$ 
-with the understanding that $\ds a_n$ may depend on $n$ but not on
-$x$.
+\begin{definition}
+  \label{defn:power-series}
+  Let $(a_n)$ be a sequence of real numbers starting with $a_0$.  Then
+  the \defnword{power series}\index{power series} associated to $(a_n)$ is
+  $$
+  \sum_{n=0}^\infty a_n \, x^n.
+  $$ 
 \end{definition}
 
-\begin{example} $\ds\sum_{n=1}^\infty {x^n\over n}$ is a power series. We can
-investigate convergence using the ratio test:
+Sometimes people are confused when considering, say,
 $$
-  \lim_{n\to\infty} {|x|^{n+1}\over n+1}{n\over |x|^n}
-  =\lim_{n\to\infty} |x|{n\over n+1} =|x|.
+\sum_{n=0}^\infty (\sin x) \cdot x^n.
 $$
-Thus when $|x|<1$ the series converges and when $|x|>1$ it diverges,
-leaving only two values in doubt. When $x=1$ the series is the
-harmonic series and diverges; when $x=-1$ it is the alternating
-harmonic series (actually the negative of the usual alternating
-harmonic series) and converges. Thus, we may think of 
-$\ds\sum_{n=1}^\infty {x^n\over n}$ as a function from the interval
-$[-1,1)$ to the real numbers.
+Despite appearances, we will not be regarding such series as ``power
+series.''  Since $(a_n)$ is a sequence of real numbers, the
+coefficients $a_n$ cannot depend on $x$.
+
+\section{Convergence of power series}
+\label{section:convergence-of-power-series}
+
+\marginnote{In Example~\xrefn{example:power-series-xn-over-n}, note
+  that we are no longer considering convergence of a single series;
+  instead, by regarding $x$ as a parameter, we are considering
+  convergence for a whole family of series---namely all those of the
+  form $\sum_{n=1}^\infty {x^n/n}$.  It often happens in mathematics
+  that it is wiser to study a family of objects simultaneously than to
+  study a single object in isolation.}
+
+\begin{example}
+\label{example:power-series-xn-over-n}
+Consider the power series
+$$f(x) = \sum_{n=1}^\infty {x^n\over n}.$$
+For which $x$ does this converge?
 \end{example}
 
-A bit of thought reveals that the ratio test applied to a power series
-will always have the same nice form. In general, we will compute
-$$
-  \lim_{n\to\infty} {|a_{n+1}||x|^{n+1}\over |a_n||x|^n}
-  =\lim_{n\to\infty} |x|{|a_{n+1}|\over |a_n|} =
-  |x|\lim_{n\to\infty} {|a_{n+1}|\over |a_n|} =L|x|,
-$$
-assuming that $\ds \lim |a_{n+1}|/|a_n|$ exists. Then the series
-converges if $L|x|<1$, that is, if $|x|<1/L$, and diverges if
-$|x|>1/L$. Only the two values $x=\pm1/L$ require further
-investigation. Thus the series will definitely define a function on
-the interval $(-1/L,1/L)$, and perhaps will extend to one or both
-endpoints as well. Two special cases deserve mention: if $L=0$ the
-limit is $0$ no matter what value $x$ takes, so the series converges
-for all $x$ and the function is defined for all real numbers. If
-$L=\infty$, then no matter what value $x$ takes the limit is infinite
-and the series converges only when $x=0$. The value $1/L$ is called
-the {\dfont radius of convergence\index{radius of convergence}%
-\index{series!radius of convergence}\/} of the series, and the
-interval on which the series converges is the {\dfont interval of
-convergence\index{interval of convergence}\index{series!interval
-of convergence}}.
+Another way to think of this question is this: we are being asked to
+determine the domain of $f$.
 
-Consider again the geometric series,
-$$\sum_{n=0}^\infty x^n={1\over 1-x}.$$
+\begin{solution}
+  We can investigate the convergence of this series using the ratio
+  test.  The difficulty now is that, instead of a single limit, we
+  must now compute a limit than involves a variable $x$ which is
+  \textit{not} the variable with respect to which we are taking a
+  limit.  
+
+  Another issue is that $x$ may be negative, so we will actually check
+  absolute convergence; in other words, we are actually considering
+  $$
+  f(x) = \sum_{n=1}^\infty \left| \frac{x^n}{n} \right|.
+  $$
+  Bravely,
+  \begin{align*}
+    L &= \lim_{n\to\infty} \frac{\frac{|x|^{n+1}}{n+1}}{\frac{|x|^{n}}{n}} \\
+      &= \lim_{n\to\infty} \frac{|x|^{n+1}}{n+1} \cdot \frac{1}{\frac{|x|^{n}}{n}} \\
+      &= \lim_{n\to\infty} \frac{|x|^{n+1}}{n+1} \cdot \frac{n}{|x|^{n}} \\
+      &= \lim_{n\to\infty} \frac{|x|^{n+1} \cdot n}{(n+1) \cdot |x|^{n}} \\
+      &= \lim_{n\to\infty} |x| \frac{n}{n+1} = |x| \cdot \lim_{n\to\infty} \frac{n}{n+1} = |x|.
+  \end{align*}
+  So when $L = |x| < 1$, the ratio test says that the series converges
+  absolutely.  When $|x| > 1$, the series does not converge
+  absolutely---in fact, when $|x| > 1$, we have that
+  $$
+  \lim_{n=1}^\infty \frac{x^n}{n} \neq 0
+  $$
+  and so the series diverges.
+
+  So when $|x|<1$ the series converges and when $|x|>1$ it diverges,
+  which leaves only two values in doubt. When $x=1$, the series is the
+  harmonic series and diverges; when $x=-1$, it is the alternating
+  harmonic series (rather, the negative of the ``usual'' alternating
+  harmonic series) and converges. 
+
+  In other words, we may regard $f$ as a function with domain $[-1,1)$.
+\end{solution}
+
+We analyzed this power series by invoking the ratio test, but that was no
+accident.  We will see that the ratio test applied to a power series
+will always have the same nice form.  Feeling confident from our
+display of bravery before the preceding example, let's attack the
+general case of a power series
+$$
+f(x) = \sum_{n=0}^\infty a_n\, x^n.
+$$
+When does this series converge absolutely?  Applying the ratio test again, we find
+\begin{align*}
+  L &= \lim_{n\to\infty} \frac{|a_{n+1}| \cdot |x|^{n+1}}{|a_n| \cdot |x|^{n}} \\
+  &= \lim_{n\to\infty} |x| \cdot \frac{|a_{n+1}|}{|a_n|} \\
+  &= |x| \cdot \lim_{n\to\infty} \frac{|a_{n+1}|}{|a_n|}.
+\end{align*}
+So the series converges absolutely whenever $L < 1$, but in this case, $L$ depends in a rather uncomplicated way on $|x|$.  The whole story is controlled by a limit that \textit{does not} depend on $x$, namely
+$$
+  1/R = \lim_{n\to\infty} \frac{|a_{n+1}|}{|a_n|},
+$$
+which you see I have presciently related to a hitherto unmentioned
+variable, $R$.  So the series converges absolutely whenever $|x| / R <
+1$, meaning the series converges absolutely whenever $|x| < R$.  When
+$|x| > R$, the series diverges\sidenote{This is a consequent of the
+  ratio test, but perhaps we haven't emphasized it enough; if $L > 1$
+  in the ratio test, then the limit of the terms is not zero, so not
+  only does the series not converge absolutely---the original series
+  diverges, too, by the limit test.}.
+
+Once again, only the two values $x=\pm R$ require further
+investigation.  In any case, if we begin with a sequence $(a_n)$ for which
+$$
+  1/R = \lim_{n\to\infty} \frac{|a_{n+1}|}{|a_n|},
+$$
+the associated power series $\sum_{n=0}^\infty a_n x^n$ will converge
+for values of $x$ in the interval $(-R,R)$, and it may even converge
+(or not, depending on the specific situation) at $x = R$ or at $x =
+-R$, so sometimes the interval on which the series makes sense will be
+$[-R,R)$ or $(-R,R]$ or even $[-R,R]$.
+
+\begin{definition}
+  The set of values of $x$ for which the series $\sum_{n=0}^\infty a_n \, x^n$ converges is the
+  \defnword{interval of convergence}\index{interval of
+    convergence}\index{series!interval of convergence}.
+\end{definition}
+
+As a consequence of the above discussion, the interval of convergence
+of a power series always have a nice form.
+
+\begin{theorem}
+  \label{thm:convergence-set-is-interval}
+  For a power series, the interval of convergence is, in fact, an
+  interval.  It has the form $(R,-R)$ or $[-R,R)$ or $(-R,R]$ or
+  $[-R,R]$.  In short, it is centered around $0$.
+\end{theorem}
+
+Because the interval of convergence is, indeed, centered around $0$,
+and because we often don't care about what happens at the endpoint, it
+is often convenient to just describe $R$.
+
+\begin{definition}
+  In the interval of convergence of a power series, the value $R$ is called
+  the \defnword{radius of convergence}\index{radius of convergence}\index{series!radius of convergence} of the series.
+\end{definition}
+
+Two special cases deserve mention.  If
+$$
+\lim_{n\to\infty} \frac{|a_{n+1}|}{|a_n|} = 0,
+$$
+then we might say ``$R = \infty$'' since no matter what $x$ is, the product
+$$
+|x| \lim_{n\to\infty} \frac{|a_{n+1}|}{|a_n|} = 0,
+$$
+and therefore for all values of $x$, the power series
+$\sum_{n=0}^\infty a_n \, x^n$ converges.  So the radius of
+convergence, $R$, is infinite.
+
+The opposite may happen as well.  It may happen that
+$$
+\lim_{n\to\infty} \frac{|a_{n+1}|}{|a_n|} = \infty,
+$$
+in which case the only way that 
+$$
+|x| \lim_{n\to\infty} \frac{|a_{n+1}|}{|a_n|} < 1
+$$
+is when $|x| = 0$.  The interval of convergence is just the single
+point $\{0\}$.  And in this case, we say $R = 0$.
+
+\begin{warning}
+  People often confuse ``radius of convergence'' with ``interval of
+  convergence.''  For starters, the radius of convergence is a single
+  number, while the interval of convergence is, well, an interval
+  (though it was defined as just a set---the fact that the set where
+  the series converges \textit{is} an interval was a theorem and was
+  certainly not obvious---perhaps the first of many lovely surprises
+  with power series).
+
+  There is another difference between the radius of convergence and
+  the interval of convergence; it is not simply that they are the same
+  information in different packages.  The radius of convergence cannot
+  distinguish between, say, $(-R,R)$ versus $[-R,R]$.  The interval of
+  convergence contains the extra information about what is happening
+  at the endpoints.  So a homework question which asks you to find the
+  radius $R$ is much easier than a homework question asking you to
+  find the interval.
+\end{warning}
+
+\section{Power series centered elsewhere}
+\label{section:power-series-centered-around-a}
+
+If we are speaking of the ``radius'' of convergence, you might wonder
+about the ``center'' of convergence.  Thus far, our intervals of
+convergence have been centered around the origin, but by changing the
+series, we can move the interval of convergence.  Let's see how.
+
+Consider once again the geometric series,
+$$
+f(x) = \sum_{n=0}^\infty x^n={1\over 1-x} \mbox{ for $x \in (-1,1)$.}
+$$
 Whatever benefits there might be in using the series form of this
 function are only available to us when $x$ is between $-1$ and
-$1$. Frequently we can address this shortcoming by modifying the power
-series slightly. Consider this series:
+$1$.  We can address this shortcoming by modifying the power
+series slightly.
+
+\begin{example}
+\label{example:one-over-one-minus-x-on-different-interval}
+Find a series representation for $\frac{1}{1-x}$ valid on the interval $(-5,1)$.
+\end{example}
+
+\begin{solution}
+Consider this series
 $$
   \sum_{n=0}^\infty {(x+2)^n\over 3^n}=
   \sum_{n=0}^\infty \left({x+2\over 3}\right)^n={1\over 1-{x+2\over 3}}=
-  {3\over 1-x},
+  {3\over 1-x}.
 $$
 because this is just a geometric series with $x$ replaced by
 $(x+2)/3$. Multiplying both sides by $1/3$ 
@@ -91,24 +256,46 @@ when
 So we have a series representation for $1/(1-x)$ that works on a
 larger interval than before, at the expense of a somewhat more
 complicated series. The endpoints of the interval of convergence now
-are $-5$ and $1$, but note that they can be more compactly described
-as $-2\pm3$. We say that $3$ is the radius of convergence, and
-we now say that the series is centered at $-2$.
+are $-5$ and $1$, but note that those two endpoints can be described
+as $-2\pm3$. We say that $3$ is the radius of convergence, and we now
+say that the series is centered at $-2$.
+\end{solution}
 
-\begin{definition} A power series centered at $a$ has the form
-$$\ds\sum_{n=0}^\infty a_n(x-a)^n,$$ 
-with the understanding that $\ds a_n$ may depend on $n$ but not on
-$x$.
+Let's capture this in a definition.
+
+\marginnote{It is worth contrasting
+  Definition~\xrefn{defn:power-series-centered-at-c} with
+  Definition~\xrefn{defn:power-series}, our original description of
+  power series.  In particular, $\sum_{n=0}^\infty a_n \, x^n$ is a
+  power series centered at zero.}
+
+\begin{definition} 
+  \label{defn:power-series-centered-at-c}
+  Let $(a_n)$ be a sequence of real numbers starting with $a_0$.  Then
+  the \defnword{power series} centered at $c$ and associated to $(a_n)$ is the series
+  $$
+  \sum_{n=0}^\infty a_n \, (x-c)^n.
+  $$ 
 \end{definition}
+
+In Example~\xrefn{example:one-over-one-minus-x-on-different-interval},
+we formed a series that involved $(x+2)^n$, meaning that in that case
+$c = -2$.
+
+You are now in a position to try your hand at finding the radius of
+convergence and sometimes even the interval of convergence for some
+power series.  I encourage you to cook up your own power series, and
+then see what you can say about the radius and interval of
+convergence.
+
+% BADBAD: should discuss taylor(1/(1-e^(I*x)),x,0,10)
 
 \begin{exercises}
 
 Find the radius and interval of convergence for each series.  In
-exercises~\xrefn{exer:no endpoints one} and~\xrefn{exer:no endpoints two},
+exercises~\xrefn{exer:no-endpoints-one} and~\xrefn{exer:no-endpoints-two},
 do not attempt to determine whether the endpoints are in the
 interval of convergence.
-
-\twocol
 
 \begin{exercise} $\ds\sum_{n=0}^\infty n x^n$
 \begin{answer} $R=1$, $I=(-1,1)$
@@ -119,18 +306,20 @@ interval of convergence.
 \end{answer}\end{exercise}
 
 \begin{exercise} 
-\relax\label{exer:no endpoints one}
+\relax\label{exer:no-endpoints-one}
 $\ds\sum_{n=1}^\infty {n!\over n^n}x^n$
 \begin{answer} $R=e$, $I=(-e,e)$
 \end{answer}\end{exercise}
 
 \begin{exercise} 
-\relax\label{exer:no endpoints two}
+\relax\label{exer:no-endpoints-two}
 $\ds\sum_{n=1}^\infty {n!\over n^n}(x-2)^n$
 \begin{answer} $R=e$, $I=(2-e,2+e)$
 \end{answer}\end{exercise}
 
-\begin{exercise} $\ds\sum_{n=1}^\infty {(n!)^2\over n^n}(x-2)^n$
+\begin{exercise}
+\relax\label{exer:radius-of-convergence-infinity}
+ $\ds\sum_{n=1}^\infty {(n!)^2\over n^n}(x-2)^n$
 \begin{answer} $R=0$, converges only when $x=2$
 \end{answer}\end{exercise}
 
@@ -138,7 +327,9 @@ $\ds\sum_{n=1}^\infty {n!\over n^n}(x-2)^n$
 \begin{answer} $R=1$, $I=[-6,-4]$
 \end{answer}\end{exercise}
 
-\endtwocol
+\begin{exercise} Find a power series with radius of convergence $0$.
+\begin{answer} There are many choices---for instance, see Exercise~\xrefn{exer:radius-of-convergence-infinity}---but $\sum_{n=0}^\infty n! \cdot x^n$ works.
+\end{answer}\end{exercise}
 
 \end{exercises}
 
