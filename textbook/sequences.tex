@@ -901,7 +901,7 @@ $k$ is some constant. Then
 
 Likewise, there is an analogue of the squeeze theorem for functions.
 
-\begin{theorem}\relax\label{thm:squeeze theorem for sequences}
+\begin{theorem}\relax\label{thm:squeeze theorem for sequences}\label{thm:squeeze-theorem-for-sequences}
 Suppose there is some $N$ so that for all $n > N$, it is the case that $\ds a_n \le b_n \le c_n$. If $$\ds\lim_{n\to\infty}a_n=\ds\lim_{n\to\infty}c_n=L$$, 
 then $\ds\lim_{n\to\infty}b_n=L$.
 \end{theorem}
@@ -1285,6 +1285,11 @@ sequence into a divergent one.
 \label{example:nth-root-of-n}
 Show that the sequence $(a_n)$ given by $a_n = n^{1/n}$ converges.
 \end{example}
+
+\marginnote{You may be worried about my saying that $\log 3 > 1$.  If
+  $\log$ were the common (base~10) logarithm, this would be wrong, but
+  as far as I'm concerned, there is only one log, the natural log.
+  Since $3 > e$, we may conclude that $\log 3 > 1$.}
 
 \begin{solution}
   We might first show that this sequence is decreasing, that is, we show

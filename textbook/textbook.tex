@@ -197,7 +197,7 @@ This textbook was specifically used for a
 called ``Calculus Two: Sequences and Series.''  Many thanks go to
 Walter Nugent, Donald Wayne Fincher, Robert Pohl, chas,
 \href{https://github.com/clark-archer}{Clark Archer}, Sarah Smith,
-Mavaddat Javid, Grigoriy Mikhalkin, Donald Eugene Parker, Francisco Alonso Sarr\'ia, Eduard Pascual Saez, Lam Tin-Long, mrBB, Hanna
+Mavaddat Javid, Grigoriy Mikhalkin, Susan Stewart, Donald Eugene Parker, Francisco Alonso Sarr\'ia, Eduard Pascual Saez, Lam Tin-Long, mrBB, Hanna
 Szabelska, Arthur Dent, Ryan Noble, and
 \href{https://github.com/hrzhu}{hrzhu} for finding and correcting
 errors in early editions of this text.  Thank you!
@@ -366,22 +366,57 @@ us to do.
 \chapter{Taylor series}
 \label{chapter:taylor-series}
 
-This chapter is yet to be revealed!  It will be revealed on
-around 10:00am Eastern on November 1, 2013.  Stay tuned.
+We have seen that some functions can be represented as
+series.  But thus far, our only examples have been those that result
+from manipulation of our one fundamental example, the geometric
+series.  We might start with
+$$
+\frac{1}{1-x} = \sum_{n=0}^\infty x^n \mbox{ when $|x| < 1$,}
+$$
+and then, say, integrate term-by-term to get a formula for a
+logarithm, as we did in
+Example~\xrefn{example:formula-for-log-three-halves}.  Instead of
+starting with a series representing a function, and then messing
+around with the series to find more functions represented by series,
+we should \textit{start} with a function, and then try to find a
+series that represents it---if that is possible!
 
-%\startcontents[sections]% kind
-%\printcontents[sections]{p}{1}{}% kind, prefix, top, init-code
-%\end{contents}
+\section{Finding Taylor series}
+\label{section:finding-taylor-series}
+\input taylor-series
 
-%\section{Finding Taylor series}
-%\input taylor-series
-
-%\section{Taylor's Theorem}
-%\input remainders
+\section{Taylor's Theorem}
+\input remainders
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\chapter*{Review}
-%\input review
+\chapter*{Review}
+\input review
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Epilogue (or\ldots what happens to Harry?)}
+
+The worst part about reading a great novel is that last page.  The
+book gets thinner and thinner, and then, poof!  Not just the
+characters, but the whole world that the author has crafted for them
+is gone!  And how frequently I want to stay in that world just a bit
+longer.
+
+Humanity has found an antidote to novel-endings; this antidote is the
+\textit{sequel.}  With a name like ``Calculus Two'' you might be
+getting the idea that there is a Calculus Three, and who knows\ldots
+maybe!  But maybe not.
+
+A-hundred-and-some-odd-pages ago, I pointed out that reading
+mathematics is \textbf{not} the same as reading a novel.  This book is
+done, but you are not.  There is more mathematics yet to learn about,
+and more mathematics yet to create.  And I don't mean to say that you
+should write go and write fan fiction.  I'm no author, and you are no
+mere reader.  You have worked through the exercises, you have thought
+about this material in your own way---so you are an author, and you
+must keep writing.
+
+\vspace{0.5in}
+\hfill---the so-called ``author''
 
 %\bibliography{sample-handout}
 %\bibliographystyle{plainnat}

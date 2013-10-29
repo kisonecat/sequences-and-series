@@ -5,7 +5,8 @@ computation of derivatives and antiderivatives, is easy for
 polynomials, the obvious question is whether the same is true
 for infinite series. The answer is yes!
 
-\begin{theorem} Suppose the power series $f(x)=\ds\sum_{n=0}^\infty a_n(x-a)^n$ has
+\begin{theorem}\label{thm:term-by-term-calculus}
+Suppose the power series $f(x)=\ds\sum_{n=0}^\infty a_n(x-a)^n$ has
 radius of convergence $R$. Then 
 \begin{align*}
   f'(x)&=\sum_{n=1}^\infty na_n(x-a)^{n-1}, \\
@@ -18,6 +19,7 @@ have radius of convergence $R$, just like the original series.
 % BADBAD this whole file hasn't been reworked
 
 \begin{example}
+  \label{example:formula-for-log-three-halves}
   Find an alternating series for $\log \left(\frac{3}{2}\right)$.
   Approximate this value to two decimal places.
 \end{example}

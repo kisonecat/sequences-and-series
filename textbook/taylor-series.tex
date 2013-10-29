@@ -1,14 +1,17 @@
-\nobreak
-We have seen that some functions can be represented as series, which
-may give valuable information about the function. So far, we have seen
-only those examples that result from manipulation of our one
-fundamental example, the geometric series. We would like to start with
-a given function and produce a series to represent it, if possible.
-
+The easiest case is when the function $f$ is given to us as a power
+series already!\marginnote{It might seem that considering this case is
+  pointless: who cares about representing a function by a power series
+  if the function is \textit{given} to us as a power series?  The
+  point is not to come up with a new power representation: the point
+  is to relate the derivatives of the function to the coefficients of
+  the power series, which is the sort of thing that generalizes.  By
+  studying a case we already understand completely, we are seeking
+  insights which will apply even in cases we don't fully understand.}
 Suppose that $\ds f(x)=\sum_{n=0}^\infty a_nx^n$ on some interval of
-convergence. Then we know that we can compute derivatives of $f$ by
-taking derivatives of the terms of the series. Let's look at the first
-few in general:
+convergence, say, when $|x| < R$.  Then we know, by
+Theorem~\xrefn{thm:term-by-term-calculus}, that we can compute
+derivatives of $f$ by differentiating the series term-by-term.  Let's
+look at the first few derivatives.
 \begin{align*}
   f'(x)&=\sum_{n=1}^\infty n a_n x^{n-1}=a_1 + 2a_2x+3a_3x^2+4a_4x^3+\cdots \\
   f''(x)&=\sum_{n=2}^\infty n(n-1) a_n x^{n-2}=2a_2+3\cdot2a_3x
@@ -16,174 +19,263 @@ few in general:
   f'''(x)&=\sum_{n=3}^\infty n(n-1)(n-2) a_n x^{n-3}=3\cdot2a_3
     +4\cdot3\cdot2a_4x+\cdots \\
 \end{align*}
-By examining these it's not hard to discern the general pattern. The
-$k$th derivative must be
+By examining these derivatives, we can discern the
+general pattern. The $k^{\nth}$ derivative\marginnote{Recall that, for a function $f$, we write its $k^{\nth}$ derivative by writing $f^{(k)}$.  So the $k^{\nth}$ derivative evaluated at $x$ is written $f^{(k)}(x)$.} must be
 \begin{align*}
   f^{(k)}(x)&=\sum_{n=k}^\infty n(n-1)(n-2)\cdots(n-k+1)a_nx^{n-k} \\
   &=k(k-1)(k-2)\cdots(2)(1)a_k+(k+1)(k)\cdots(2)a_{k+1}x+{} \\
-  &\qquad {}+(k+2)(k+1)\cdots(3)a_{k+2}x^2+\cdots \\
+  &\qquad {}+(k+2)(k+1)\cdots(3)a_{k+2}x^2+\cdots, \\
 \end{align*}
-We can shrink this quite a bit by using factorial notation:
+but we can write this more easily by using factorials, namely
 $$
   f^{(k)}(x)=\sum_{n=k}^\infty {n!\over (n-k)!}a_nx^{n-k}=
-  k!a_k+(k+1)!a_{k+1}x+{(k+2)!\over 2!}a_{k+2}x^2+\cdots
+  k!a_k+(k+1)!a_{k+1}x+{(k+2)!\over 2!}a_{k+2}x^2+\cdots.
 $$
-Now substitute $x=0$:
+Now, substituting $x=0$ yields
 $$f^{(k)}(0)=k!a_k+\sum_{n=k+1}^\infty {n!\over (n-k)!}a_n0^{n-k}=k!a_k,$$
-and solve for $\ds a_k$:
+and solving for $\ds a_k$ gives
 $$a_k={f^{(k)}(0)\over k!}.$$
-Note the special case, obtained from the series for $f$ itself, that
-gives $\ds f(0)=a_0$.
-
 So if a function $f$ can be represented by a series, we know just what
-series it is. Given a function $f$, the series
-$$\sum_{n=0}^\infty {f^{(n)}(0)\over n!}x^n$$
-is called the {\dfont Maclaurin 
-series\index{Maclaurin series}\index{series!Maclaurin}\/} for $f$.
+series it is!  We know the series because we know the derivatives of
+$f$.\marginnote{Note that $a_k=f^{(k)}(0)/k!$ makes sense even when
+$k = 0$, since in that special case, we have $a_0 = f^{(0)}(0)/0! =
+f(0)$ because the zeroth derivative of $f$ is $f$ itself, and $0! =
+1$.}
 
-\begin{example} Find the Maclaurin series for $f(x)=1/(1-x)$. We need to
-compute the derivatives of $f$ (and hope to spot a pattern).
-\begin{align*}
-  f(x)&=(1-x)^{-1} \\
-  f'(x)&=(1-x)^{-2} \\
-  f''(x)&=2(1-x)^{-3} \\
-  f'''(x)&=6(1-x)^{-4} \\
-  f^{(4)}&=4!(1-x)^{-5} \\
-  &\vdots \\
-  f^{(n)}&=n!(1-x)^{-n-1} \\
-\end{align*}
-So
-$${f^{(n)}(0)\over n!}={n!(1-0)^{-n-1}\over n!}=1$$
-and the Maclaurin series is
-$$\sum_{n=0}^\infty 1\cdot x^n=\sum_{n=0}^\infty x^n,$$
-the geometric series.
+\begin{definition}\label{defn:maclaurin-series}
+Given a function $f$, the series
+$$\sum_{n=0}^\infty {f^{(n)}(0)\over n!}x^n$$
+is called the \defnword{Maclaurin series}\index{Maclaurin
+  series}\index{series!Maclaurin} for $f$, or often just the
+\defnword{Taylor series} for $f$ centered around zero, since it is a
+power series centered around zero in the sense of
+Section~\xrefn{section:power-series-centered-around-a}.
+\end{definition}
+Let me warn you that, in order to write down this power series, you
+had better be able to take first, second, third---indeed,
+$n^{\nth}$---derivatives at zero, because the given formula involves
+$f^{(n)}(0)$.  And there is a worse warning.
+\begin{warning}
+  Even if $f$ is infinitely differentiable at zero (meaning $f^{(n)}(0)$ makes sense), even if I then write down
+  $$
+  \sum_{n=0}^\infty {f^{(n)}(0)\over n!}x^n,
+  $$
+  does not mean that I have a power series for $f$ valid on any open
+  interval!  All I have done is written down the power series that
+  must represent $f$ \textit{assuming it has a power series
+    representation at all!}  Nobody is promising you that some
+  function you find---even if it is infinitely
+  differentiable---actually has a power series representation.  In
+  other words, I am \textbf{not} claiming that there is an $R \neq 0$
+  so that
+  $$
+  f(x) = \sum_{n=0}^\infty {f^{(n)}(0)\over n!}x^n \mbox{ for $x \in (-R,R)$}.
+  $$
+  All I am claiming is that if $f$ has such a power series, then I can
+  find it by taking derivatives.
+\end{warning}
+
+Let's see this worked out in an example we already understand, namely,
+for the function $f(x) = 1/(1-x)$.
+
+\begin{example} Find a Taylor series for $f(x)=1/(1-x)$ centered
+  around zero.
 \end{example}
 
-A warning is in order here. Given a function $f$ we may be able to
-compute the Maclaurin series, but that does not mean we have found a
-series representation for $f$. We still need to know where the series
-converges, and if, where it converges, it converges to $f(x)$. While
-for most commonly encountered functions the Maclaurin series does
-indeed converge to $f$ on some interval, this is not true of all
-functions, so care is required.
+\begin{solution}
+ We need to compute the derivatives of $f$, and then hope to
+  spot a pattern.  Here we go:
+\begin{align*}
+  f(x)&=(1-x)^{-1}, \\
+  f'(x)&=(1-x)^{-2}, \\
+  f''(x)&=2(1-x)^{-3}, \\
+  f'''(x)&=6(1-x)^{-4}, \\
+  f^{(4)}&=4!(1-x)^{-5}, \\
+  &\vdots \\
+  f^{(n)}&=n!(1-x)^{-n-1}. \\
+\end{align*}
+I see the pattern!
+$${f^{(n)}(0)\over n!}={n!(1-0)^{-n-1}\over n!}=1,$$
+and the Taylor series centered around zero is
+$$\sum_{n=0}^\infty 1\cdot x^n=\sum_{n=0}^\infty x^n,$$
+which we already knew---it is just the geometric series.
+\end{solution}
+
+So given a function $f$, we may be able to differentiate it around
+zero, spot a pattern, and thereby compute the Taylor series, but that
+does not mean we have found a series representation for $f$.  Worse,
+we don't even know if the series we wrote down converges anywhere, let
+alone converges to the function $f$!  The miracle is that for many
+popular functions\sidenote{Arguably, this is not so surprising: maybe
+  these are popular functions precisely because they have nice
+  properties.  That the sky is sky-colored is not so surprising as the
+  fact that it is blue.} the Taylor series does converge to $f$ on
+some interval.  But this is certainly not true of all functions---or
+even true of most\sidenote{Most functions are probably not even
+  continuous, let alone infinitely differentiable, let alone having
+  the property of having a power series representation!  The latter
+  mouthful is usually termed \defnword{real analytic}.}  functions!
 
 As a practical matter, if we are interested in using a series to
-approximate a function, we will need some finite number of terms of
-the series. Even for functions with messy derivatives we can compute
-these using computer software like Sage. If we want to
-know the whole series, that is, a typical term in the series, we need
-a function whose derivatives fall into a pattern that we can
-discern. A few of the most important functions are fortunately very
-easy.
+approximate a value of a function at some point, we will need some
+finite number of terms of the series.  Even for functions with
+terrible looking derivatives, we can compute the initial terms using
+computer software like \href{http://sagemath.org/}{Sage}. If we want
+to know the whole series---that is, the $n^{\nth}$ term in the series
+for an arbitrary $n$---then we need a function whose derivatives fall
+into a pattern that we can discern.  A few of the most popular
+functions have nice patterns.  Let's see some now!
 
-\begin{example} Find the Maclaurin series for $\sin x$.
+\begin{example} Find a Taylor series for $\sin x$.
+\end{example}
 
-The derivatives are quite easy: $f'(x)=\cos x$, $f''(x)=-\sin x$,
-$f'''(x)=-\cos x$, $\ds f^{(4)}(x)=\sin x$, and then the pattern
-repeats. We want to know the derivatives at zero:
-1, 0, $-1$, 0, 1, 0, $-1$, 0,\dots, and so the Maclaurin series is
+\begin{solution}
+The derivatives are quite easy, namely
+\begin{align*}
+  f'(x)&=\cos x,\\
+  f''(x)&=-\sin x,\\
+  f'''(x)&=-\cos x,\\
+  f^{(4)}(x)&=\sin x,
+\end{align*}
+and then the pattern repeats. We want to know the derivatives at zero, so those are
+\begin{align*}
+  f'( 0)&=\cos  0 = 1\\
+  f''( 0)&=-\sin  0 = 0 \\
+  f'''( 0)&=-\cos  0 = -1,\\
+  f^{(4)}( 0)&=\sin 0 = 0,
+\end{align*}
+and then the pattern repeats, namely it goes---starting from the zeroth derivative---like this:
+$$
+0,\quad  1,\quad  0,\quad  -1,\quad  0,\quad  1,\quad  0,\quad  -1,\quad  0,\quad \ldots.
+$$
+And so, the Taylor series is
 $$
   x-{x^3\over 3!}+{x^5\over 5!}-\cdots=
   \sum_{n=0}^\infty (-1)^n{x^{2n+1}\over (2n+1)!}.
 $$
-We should always determine the radius of convergence:
-$$
-  \lim_{n\to\infty} {|x|^{2n+3}\over (2n+3)!}{(2n+1)!\over |x|^{2n+1}}
-  =\lim_{n\to\infty} {|x|^2\over (2n+3)(2n+2)}=0,
-$$
-so the series converges for every $x$. Since it turns out that this
-series does indeed converge to $\sin x$ everywhere, we have a series
-representation for $\sin x$ for every $x$. 
+Sometimes people are confused by the fact that the exponent in this
+power series is $2n+1$ instead of just $n$.  It turns out that setting
+it up this way, with $x^{2n+1}$, nicely manages to kill all the terms
+$x^{\mbox{\scriptsize even number}}$ which have a zero coefficient,
+since differentiating $f$ an even number of times results in $\pm \sin
+x$, which is zero when $x = 0$.
+
+But there is more to be anxious about.  Before worrying whether this
+series converges to $\sin x$, we should ask the prior question: does
+this series converge anywhere?  Let's determine the radius of
+convergence by using the ratio test, which asks us to consider
+\begin{align*}
+  L &= \lim_{n\to\infty} {|x|^{2n+3}\over (2n+3)!}{(2n+1)!\over |x|^{2n+1}} \\
+    &=\lim_{n\to\infty} {|x|^2\over (2n+3)(2n+2)}=0,
+\end{align*}
+and so the series converges regardless of what $x$ is.  It will turn
+out later, by applying Theorem~\xrefn{thm:taylors-remainder}, that
+this series does converge to $\sin x$.
+\end{solution}
+
 %\expandafter\url\expandafter{\liveurl jsxgraph/taylor_series.html}% BADBAD
 %Here is an interactive plot\endurl\ of the sine and some of its 
 %series approximations.
+
+Sometimes the formula for the $n^{\nth}$ derivative of a function $f$
+is difficult to discover, but a combination of a known Taylor series
+and some algebraic manipulation leads easily to the Taylor series for
+$f$.
+
+\begin{example} Find the Taylor series for $f(x) = x\sin(-x)$ centered at zero.
 \end{example}
-
-Sometimes the formula for the $n$th derivative of a function $f$ is
-difficult to discover, but a combination of a known Maclaurin series
-and some algebraic manipulation leads easily to the Maclaurin series
-for $f$.
-
-\begin{example} Find the Maclaurin series for $x\sin(-x)$.
-
+\begin{solution}
 To get from $\sin x$ to $x\sin(-x)$ we substitute $-x$ for $x$ and
-then multiply by $x$. We can do the same thing to the series for $\sin
-x$:
-$$
-  x\sum_{n=0}^\infty (-1)^n{(-x)^{2n+1}\over (2n+1)!}
-  =x\sum_{n=0}^\infty (-1)^{n}(-1)^{2n+1}{x^{2n+1}\over (2n+1)!}
-  =\sum_{n=0}^\infty (-1)^{n+1}{x^{2n+2}\over (2n+1)!}.
-$$
+then multiply by $x$.  Let's do the same thing to the series for $\sin
+x$, namely
+\begin{align*}
+  x\sum_{n=0}^\infty (-1)^n{(-x)^{2n+1}\over (2n+1)!} =x\sum_{n=0}^\infty (-1)^{n}(-1)^{2n+1}{x^{2n+1}\over (2n+1)!} \\
+  &=\sum_{n=0}^\infty (-1)^{n+1}{x^{2n+2}\over (2n+1)!}.
+\end{align*}
+Of course, we \textit{could} have differentiated $f(x)$, which would have yielded
+\begin{align*}
+f'(x) &= -x \cos\left(-x\right) + \sin\left(-x\right) = 0, \\
+f''(x) &= -x \sin\left(-x\right) - 2 \, \cos\left(-x\right) = -2, \\
+f'''(x) &= x \cos\left(-x\right) - 3 \, \sin\left(-x\right) = 0, \\
+f^{(4)}(x) &= x \sin\left(-x\right) + 4 \, \cos\left(-x\right) = 4, \\
+\end{align*}
+but maybe it would have been harder to pick up on the pattern that way.
+\end{solution}
+
+As we have seen in
+Section~\xrefn{section:power-series-centered-around-a}, a general
+power series can be centered at a point other than zero, and the
+method that produces the Taylor series can also produce such series.
+\begin{definition}\label{defn:taylor-series}
+Given a function $f$, the series
+$$\sum_{n=0}^\infty {f^{(n)}(a)\over n!}(x-a)^n$$
+is called the \defnword{Taylor series}\index{Taylor
+  series}\index{series!Taylor} for $f$ centered around $a$.
+\end{definition}
+
+Let's see an example, reminiscent of
+Example~\xrefn{example:one-over-one-minus-x-on-different-interval} but
+attacked with a different method.
+\begin{example} Find a Taylor series centered at $-2$ for $1/(1-x)$.
 \end{example}
 
-As we have seen, a general power series can be centered at a point
-other than zero, and the method that produces the Maclaurin series can
-also produce such series.
-
-\begin{example} Find a series centered at $-2$ for $1/(1-x)$.
-
+\begin{solution}
 If the series is $\ds\sum_{n=0}^\infty a_n(x+2)^n$ then looking at the
 $k$th derivative:
 $$k!(1-x)^{-k-1}=\sum_{n=k}^\infty {n!\over (n-k)!}a_n(x+2)^{n-k}$$
 and substituting $x=-2$ we get
 $\ds k!3^{-k-1}=k!a_k$ and $\ds a_k=3^{-k-1}=1/3^{k+1}$, so the series is
 $$\sum_{n=0}^\infty {(x+2)^n\over 3^{n+1}}.$$
-We've already seen this, on page~\xrefn{page:alt series for 1 over 1-x}.
-\end{example}
-
-Such a series is called the 
-{\dfont Taylor series\index{Taylor series}\index{series!Taylor}\/} 
-for the function,
-and the general term has the form
-$${f^{(n)}(a)\over n!}(x-a)^n.$$
-A Maclaurin series is simply a Taylor series with $a=0$.
+\end{solution}
 
 \begin{exercises}
 
-For each function, find the Maclaurin series or Taylor series centered
-at $a$, and the radius of convergence.
+  For each function, find the Taylor series centered at $a$, and the
+  radius of convergence.  Do not worry about whether or not the series
+  converges to the given function---that will be our concern in 
+  Section~\xrefn{section:remainders}.
 
-\begin{exercise} $\cos x$
+\begin{exercise} $\cos x$ around $a = 0$,
 \begin{answer} $\ds\sum_{n=0}^\infty (-1)^n x^{2n}/(2n)!$, $R=\infty$
 \end{answer}\end{exercise}
 
-\begin{exercise} $\ds e^x$
+\begin{exercise} $\ds e^x$ around $a = 0$,
 \begin{answer} $\ds\sum_{n=0}^\infty x^n/n!$, $R=\infty$
 \end{answer}\end{exercise}
 
-\begin{exercise} $1/x$, $a=5$
+\begin{exercise} $1/x$ around $a=5$
 \begin{answer} $\ds\sum_{n=0}^\infty (-1)^n{(x-5)^n\over 5^{n+1}}$, $R=5$
 \end{answer}\end{exercise}
 
-\begin{exercise} $\ln x$, $a=1$
+\begin{exercise} $\log x$ around $a=1$
 \begin{answer} $\ds\sum_{n=1}^\infty (-1)^{n-1}{(x-1)^n\over n}$, $R=1$
 \end{answer}\end{exercise}
 
-\begin{exercise} $\ln x$, $a=2$
-\begin{answer} $\ds\ln(2)+\sum_{n=1}^\infty (-1)^{n-1}{(x-2)^n\over n 2^n}$, $R=2$
+\begin{exercise} $\log x$ around $a=2$
+\begin{answer} $\ds\log(2)+\sum_{n=1}^\infty (-1)^{n-1}{(x-2)^n\over n 2^n}$, $R=2$
 \end{answer}\end{exercise}
 
-\begin{exercise} $\ds 1/x^2$, $a=1$
+\begin{exercise} $\ds 1/x^2$ around $a=1$
 \begin{answer} $\ds\sum_{n=0}^\infty (-1)^n(n+1)(x-1)^n$, $R=1$
 \end{answer}\end{exercise}
 
-\begin{exercise} $\ds 1/\sqrt{1-x}$
+\begin{exercise} $\ds 1/\sqrt{1-x}$ around $a = 0$
 \begin{answer} $\ds1+\sum_{n=1}^\infty {1\cdot3\cdot5\cdots(2n-1)\over
 n!2^n} x^n=1+\sum_{n=1}^\infty {(2n-1)!\over 2^{2n-1}(n-1)!\,n!}x^n$, $R=1$
 \end{answer}\end{exercise}
 
-\begin{exercise} Find the first four terms of the Maclaurin series for $\tan
-x$ (up to and including the $\ds x^3$ term).
+\begin{exercise} Find the first four terms of the Taylor series for $\tan
+x$ centered at zero.  By ``first four terms'' I mean up to and including the $\ds x^3$ term.
 \begin{answer} $\ds x+x^3/3$
 \end{answer}\end{exercise}
 
-\begin{exercise} Use a combination of Maclaurin series and algebraic
+\begin{exercise} Use a combination of Taylor series and algebraic
 manipulation to find a series centered at zero for
 $\ds x\cos (x^2)$.
 \begin{answer} $\ds\sum_{n=0}^\infty (-1)^n x^{4n+1}/(2n)!$
 \end{answer}\end{exercise}
 
-\begin{exercise} Use a combination of Maclaurin series and algebraic
+\begin{exercise} Use a combination of Taylor series and algebraic
 manipulation to find a series centered at zero for
 $\ds xe^{-x}$.
 \begin{answer} $\ds\sum_{n=0}^\infty (-1)^n x^{n+1}/n!$

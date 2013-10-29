@@ -96,7 +96,24 @@ $$
   \sum_{n=1}^{N+1} (-1)^{n+1} a_n.
 $$
 Depending on whether $N$ is odd or even, the second will be larger or
-smaller than the first.
+smaller than the first.  This is important enough that it deserves to
+be highlighted as a theorem.
+
+\begin{theorem}
+\label{thm:alternating-series-error-bounds}
+  Suppose that $\ds\{a_n\}_{n=1}^\infty$ is a decreasing sequence of
+  positive numbers and $\ds\lim_{n\to\infty}a_n=0$. By
+  Theorem~\xrefn{thm:alternating-series-test}, we then know that
+  $\ds\sum_{n=1}^\infty (-1)^{n+1} a_n$ converges to some value, say
+  $L$.  Moreover, $L$ is between
+  $$
+  \sum_{n=1}^N (-1)^{n+1} a_n \hbox{\quad and\quad}
+  \sum_{n=1}^{N+1} (-1)^{n+1} a_n.
+  $$
+\end{theorem}
+
+
+
 
 \begin{example}
 Approximate the alternating harmonic series to one decimal place.

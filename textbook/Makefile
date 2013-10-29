@@ -24,11 +24,16 @@ textbook-print.pdf: $(FILES)
 #	mv -f textbook-print.pdf textbook-print-undistilled.pdf
 #	gs -q -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sOutputFile=textbook-print.pdf textbook-print-undistilled.pdf
 
-install: textbook.pdf textbook-print.pdf
-	mv -f textbook-print.pdf mooculus-print.pdf
-	mv -f textbook.pdf mooculus.pdf
-	git add mooculus.pdf
-	git add mooculus-print.pdf
+textbook.png: textbook.pdf
+	mudraw -r 144 -o textbook.png textbook.pdf 1
+
+install: textbook.pdf textbook-print.pdf textbook.png
+	mv -f textbook-print.pdf sequences-and-series-print.pdf
+	mv -f textbook.pdf sequences-and-series.pdf
+	mv -f textbook.png sequences-and-series.png
+	./upload.sh sequences-and-series.pdf
+	./upload.sh sequences-and-series.png
+	./upload.sh sequences-and-series-print.pdf
 
 clean:
 	rm -f *.swp
