@@ -1,10 +1,11 @@
 <p>Let's call \(F(x) = #{latex(the_function)}\).</p>
 <p>Note that \(F(x) = \frac{d}{dx} \left( #{latex(the_first_function)} \right)\).</p>
 <p>Let's call \(f(x) = #{latex(the_first_function)}\) so that \(F(x) = f'(x)\).</p>
-<p>Note that \(f(x) = \frac{1}{1 - \left(#{latex((the_coefficient*var('x'))**the_power)}\right)} = \sum_{n=0}^\infty \left( #{latex((the_coefficient*var('x'))**the_power)} \right)^n \).</p>
-<p>Therefore \(F(x) = f'(x) = \frac{d}{dx} \sum_{n=0}^\infty \left( #{latex((the_coefficient*var('x'))**the_power)} \right)^n \).</p>
-<p>We could write this as \(F(x) = \frac{d}{dx} \sum_{n=0}^\infty \left( #{latex(the_coefficient**var('n') * var('x')**(var('n')*the_power))} \right) \).</p>
+<p>Note that \(\frac{1}{1 - \left(#{latex((the_coefficient*var('x'))**the_power)}\right)} = \sum_{n=0}^\infty \left( #{latex((the_coefficient*var('x'))**the_power)} \right)^n \).</p>
+<p>Consequently \(f(x) = \frac{1}{#{latex(c)} \left( 1 - \left(#{latex((the_coefficient*var('x'))**the_power)}\right)\right)} = \sum_{n=0}^\infty \frac{\left( #{latex((the_coefficient*var('x'))**the_power)} \right)^n}{#{latex(c)}} \).</p>
+<p>Therefore \(F(x) = f'(x) = \frac{d}{dx} \sum_{n=0}^\infty \frac{\left( #{latex((the_coefficient*var('x'))**the_power)} \right)^n}{#{latex(c)}} \).</p>
+<p>We could write this as \(F(x) = \frac{d}{dx} \sum_{n=0}^\infty \frac{\left( #{latex(the_coefficient**(the_power*var('n')) * var('x')**(var('n')*the_power))} \right)}{#{latex(c)}} \).</p>
 <p>But power series can be differentiated term-by-term.</p>
-<p>Therefore, \(F(x) = \sum_{n=0}^\infty \frac{d}{dx} \left( #{latex(the_coefficient**var('n') * var('x')**(var('n')*the_power))} \right) \).</p>
-<p>And so \(F(x) = \sum_{n=0}^\infty \left( #{latex(var('n')*the_power * the_coefficient**var('n') * var('x')**(var('n')*the_power-1))} \right) \).</p>
-<p>We conclude that \(b_n = #{latex(var('n')*the_power * the_coefficient**var('n') * var('x')**(var('n')*the_power-1))} \).</p>
+<p>Therefore, \(F(x) = \sum_{n=1}^\infty \frac{d}{dx} \frac{\left( #{latex(the_coefficient**(var('n')*the_power) * var('x')**(var('n')*the_power))} \right)}{#{latex(c)}} \).</p>
+<p>And so \(F(x) = \sum_{n=1}^\infty \left( #{latex(var('n')*the_power * the_coefficient**(var('n')*the_power) * var('x')**(var('n')*the_power-1)/c)} \right) \).</p>
+<p>We conclude that \(b_n = #{latex(var('n')*the_power * the_coefficient**(var('n')*the_power) * var('x')**(var('n')*the_power-1)/c)} \).</p>

@@ -3,10 +3,11 @@ from questions import *
 class Question(RandomizedQuestion):
     module = __file__
     video = 'differentiate-power-series'
-    forum = 0
+    forum = 10158
     title = 'differentiate a power series term-by-term'
 
     def good_enough(self):
+        self.verify()
         return True
 
     def perturb(self):
@@ -34,8 +35,9 @@ class Question(RandomizedQuestion):
         return r'\(f' + "'" + r'(x) = \sum_{' + str(self.variable) + r'=0}^\infty \left( ' + latex(f) + r'\right)\)'
 
     def verify(self):
-        df = derivative(sum( self.term, self.variable, 0, oo),x)
-        claimed_df = sum( self.d_term, self.variable, 0, oo )
+        print self.term
+        df = derivative(sum( self.term, self.variable, 0, 10),x)
+        claimed_df = sum( self.d_term, self.variable, 0, 9 )
         assert( df == claimed_df )
         return df == claimed_df
 

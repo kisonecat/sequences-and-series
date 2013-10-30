@@ -2,8 +2,8 @@ from questions import *
 
 class Question(RandomizedQuestion):
     module = __file__
-#    video = ''
-    forum = 0
+    video = 'week5-welcome'
+    forum = 10155
     title = 'identify a power series'
 
     def good_enough(self):

@@ -1,0 +1,11 @@
+<p>To make this easy on ourselves, we will use &ldquo;big oh&rdquo; notation.</p>
+<p>Note that \(#{latex(the_trig_function)} = #{latex(trig_x)}\).</p>
+<p>I want to find a power series for \(p(#{latex(the_trig_function)}) = p\left(#{latex(trig_x)}\right)\).</p>
+<p>To get started, we can compute the first few terms of the power series for \(\left(#{latex(the_trig_function)}\right)^{#{the_polynomial.degree(var('x'))}}\).</p>
+<p>In this case, \(\left(#{latex(the_trig_function)}\right)^{#{the_polynomial.degree(var('x'))}} = \left(#{latex(trig_x)}\right)^{#{the_polynomial.degree(var('x'))}} = #{latex(trig_x ** the_polynomial.degree(var('x')))}\).</p>
+<p condition="the_polynomial.leading_coefficient(var('x')) != 1">And therefore \(#{latex(the_polynomial.leading_coefficient(var('x')))} \left(#{latex(the_trig_function)}\right)^{#{the_polynomial.degree(var('x'))}} = #{latex(the_polynomial.leading_coefficient(var('x')))} #{latex(trig_x ** the_polynomial.degree(var('x')))} = #{latex(QQ(the_polynomial.leading_coefficient(var('x'))) * (trig_x ** the_polynomial.degree(var('x'))))}\).</p>
+<p>Doing similar calculations for the other terms, we find \(p(#{latex(the_trig_function)}) = p\left(#{latex(trig_x)}\right) = #{latex(the_ring(the_polynomial)(x=trig_x))}\).</p>
+<p>Looking over the possible answers, we choose #{the_answer}.</p>
+<p>Of course, there are other methods by which this calculation might be done.</p>
+<p>In this case, we could have used the fact that  \(p(#{latex(the_trig_function)}) = #{latex(the_polynomial(x=the_trig_function).reduce_trig())}\).</p>
+<p>We can then substitute \(#{latex(the_degree)}x\) into the power series, and conclude that #{the_answer} is the beginning of the power series for \(p(#{latex(the_trig_function)})\).</p>

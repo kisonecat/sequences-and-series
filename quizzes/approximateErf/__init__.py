@@ -3,7 +3,7 @@ from questions import *
 class Question(RandomizedQuestion):
     module = __file__
     video = 'evidence-for-exp'
-    forum = 0
+    forum = 10161
     title = 'approximate the Gauss error function'
 
     def good_enough(self):
@@ -27,6 +27,8 @@ class Question(RandomizedQuestion):
 
         if self.rational_answer == 0:
             return False
+
+        self.verify()
 
         return True
 

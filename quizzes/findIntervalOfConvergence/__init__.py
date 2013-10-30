@@ -2,8 +2,8 @@ from questions import *
 
 class Question(RandomizedQuestion):
     module = __file__
-#    video = ''
-    forum = 0
+    video = 'interval-of-convergence'
+    forum = 10156
     title = 'find the interval of convergence of a power series'
 
     def good_enough(self):

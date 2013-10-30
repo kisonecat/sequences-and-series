@@ -1,9 +1,9 @@
 <p>We first find the radius of convergence.</p>
 <p>Let \(a_{#{variable}} = #{latex(term_coeff)}\), so the given series is \(\sum_{#{variable}=#{initial}}^\infty a_{#{variable}} x^{#{variable}}\).</p>
-<p>For the ratio test, consider \(\lim_{#{variable} \to \infty} \frac{|a_{#{variable}+1}|}{|a_{#{variable}}|}\).</p>
+<p>For the ratio test, consider \(\lim_{#{variable} \to \infty} \frac{|a_{#{variable}+1} x^{#{variable}+1}|}{|a_{#{variable}} x^{#{variable}}|}\).</p>
 <p>We want this limit to be less than one to get absolute convergence.</p>
-<p>In this case, \(\lim_{#{variable} \to \infty} \frac{|a_{#{variable}+1}|}{|a_{#{variable}}|} = \lim_{#{variable} \to \infty} \left| \frac{#{latex(term_coeff_x(x=variable+1))}}{#{latex(term_coeff_x(x=variable))}} \right| x\).</p>
-<p>Simplifying, \(\lim_{#{variable} \to \infty} \frac{|a_{#{variable}+1}|}{|a_{#{variable}}|} = \lim_{#{variable} \to \infty} \left| #{latex( simplify((term_coeff_x(x=variable+1)) / (term_coeff_x(x=variable))) )} \right| x\).</p>
+<p>In this case, \(\lim_{#{variable} \to \infty} \frac{|a_{#{variable}+1} x^{#{variable}+1}|}{|a_{#{variable}} x^{#{variable}}|} = \lim_{#{variable} \to \infty} \left| \frac{#{latex(term_coeff_x(x=variable+1))}}{#{latex(term_coeff_x(x=variable))}} \right| \cdot \left| x \right|\).</p>
+<p>Simplifying, \(\lim_{#{variable} \to \infty} \frac{|a_{#{variable}+1} x^{#{variable}+1}|}{|a_{#{variable}} x^{#{variable}}|} = \lim_{#{variable} \to \infty} \left| #{latex( simplify((term_coeff_x(x=variable+1)) / (term_coeff_x(x=variable))) )} \right| \cdot \left| x \right|\).</p>
 <p>So the limit is less than one exactly when \(|x| &lt; #{latex(abs(QQ(1)/common_ratio))}\).</p>
 <p>So the series converges absolutely when \(x\) is in the interval \(\left(#{latex(-abs(QQ(1)/common_ratio))},#{latex(abs(QQ(1)/common_ratio))}\right)\).</p>
 <p>The series may converge conditionally, however, at the endpoints of its interval of convergence.</p>

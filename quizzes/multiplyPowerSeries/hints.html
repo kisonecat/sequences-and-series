@@ -4,9 +4,9 @@
 <p>Let's now find the \(x\) term.</p>
 <p>I will use the notation \(O(x^2)\) to denote terms that involve at least \(x^2\).</p>
 <p>Since \(f(x) = #{latex(term_a(n=0))} + #{latex(term_a(n=1))} + O(x^2)\) and \(g(x) = #{latex(term_b(n=0))} + #{latex(term_b(n=1))} + O(x^2)\), I can multiply the two polynomials \( #{latex(term_a(n=0))} + #{latex(term_a(n=1))}\) and \(#{latex(term_b(n=0))} + #{latex(term_b(n=1))}\) to find an expression for the first two terms of \(f(x) \cdot g(x)\).</p>
-<p>In the case, the term involving just \(x\) in the product \(f(x) \cdot g(x)\) is \( #{latex(term_a(n=0))} \cdot #{latex(term_b(n=1))} + #{latex(term_a(n=1))} \cdot #{latex(term_b(n=0))} \).</p>
-<p>Altogether \( \left( #{latex(term_a(n=0))} + #{latex(term_a(n=1))} + O(x^2) \right) \cdot \left( #{latex(term_b(n=0))} + #{latex(term_b(n=1))} + O(x^2) \right)\) is \(#{join((latex(the_answer.truncate(2)).split('+'))[::-1],'+')}\).</p>
+<p>In this case, the term involving just \(x\) in the product \(f(x) \cdot g(x)\) is \( #{latex(term_a(n=0))} \cdot #{latex(term_b(n=1))} + #{latex(term_a(n=1))} \cdot #{latex(term_b(n=0))} \).</p>
+<p>Altogether \( \left( #{latex(term_a(n=0))} + #{latex(term_a(n=1))} + O(x^2) \right) \cdot \left( #{latex(term_b(n=0))} + #{latex(term_b(n=1))} + O(x^2) \right)\) is \(#{join((latex(the_answer.truncate(2)).split('+'))[::-1],'+')} + O(x^2)\).</p>
 <p>To compute the coefficient on the \(x^2\) term in the product \(f(x) \cdot g(x)\), we could begin by noting that \(f(x) = #{latex(term_a(n=0))} + #{latex(term_a(n=1))} + #{latex(term_a(n=2))} + O(x^3)\) and \(g(x) = #{latex(term_b(n=0))} + #{latex(term_b(n=1))} + #{latex(term_b(n=2))} + O(x^3)\).</p>
 <p>Then we can multiply to get that the coefficient on \(x^2\) is \( #{latex(term_a(n=0))} \cdot #{latex(term_b(n=2))} + #{latex(term_a(n=1))} \cdot #{latex(term_b(n=1))} + #{latex(term_a(n=2))} \cdot #{latex(term_b(n=0))} \), which is \(#{the_answer.coeffs()[2]} x^2\).</p>
-<p>So far, we may conclude that \(f(x) \cdot g(x) = \(#{join((latex(the_answer.truncate(3)).split('+'))[::-1],'+')} + \cdots\).</p>
-<p>But that is actually enough information to select the correct answer from the given possibilities, namely that \(f(x) \cdot g(x) = \(#{join((latex(the_answer).split('+'))[::-1],'+')} + \cdots\)</p>
+<p>So far, we may conclude that \(f(x) \cdot g(x) = #{join((latex(the_answer.truncate(3)).split('+'))[::-1],'+')} + \cdots\).</p>
+<p>But that is actually enough information to select the correct answer from the given possibilities, namely that \(f(x) \cdot g(x) = #{join((latex(the_answer).split('+'))[::-1],'+')} + \cdots\)</p>
