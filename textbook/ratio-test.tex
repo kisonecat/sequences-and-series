@@ -129,7 +129,7 @@ also converges, because each term of that series is smaller than the correspondi
 $$
 \sum_{k=0}^\infty a_{k} = a_0 + a_{1} + a_{2} + \cdots
 $$
-since we've just added the number $\ds a_0+a_1+\cdots+a_{N-1}$ to the convergent series $\sum_{k=0}^\infty a_{N+k}$.
+converges since we've just added the number $\ds a_0+a_1+\cdots+a_{N-1}$ to the convergent series $\sum_{k=0}^\infty a_{N+k}$.
 
 Under what circumstances could we do this? What was crucial was that
 the limit of $\ds a_{n+1}/a_n$, say $L$, was less than 1 so that we
@@ -152,7 +152,7 @@ Suppose that
 $$
 \lim_{n\to \infty} \frac{a_{n+1}}{a_n}=L.
 $$
-If $L<1$ the series $\sum a_n$ converges.  If $L>1$ the
+If $L<1$ the series $\ds\sum_{n=0}^\infty a_n$ converges.  If $L>1$ the
 series diverges.  If $L=1$ this test is inconclusive.
 \end{theorem}
 
@@ -198,7 +198,7 @@ converge or diverge?
 \marginnote{Remember our convention that $0! = 1$.  Despite appearances, we are not dividing by zero.}
 
 \begin{solution}
-Let's name the terms $a_n = 5^n / n!$ so we are considering $\sum_{n=0}^\infty a_n$.  To apply ratio test, we consider
+Let's name the terms $a_n = 5^n / n!$ so we are considering $\sum_{n=0}^\infty a_n$.  To apply the ratio test, we consider
 \begin{align*}
   \lim_{n\to\infty} \frac{a_{n+1}}{a_n}
   &= \lim_{n\to\infty} {5^{n+1}\over (n+1)!}{n!\over 5^n} \\
@@ -211,14 +211,16 @@ Since $0<1$, the series converges by the ratio test.
 \begin{exercises}
 
 \begin{exercise} Compute $\ds\lim_{n\to\infty} |a_{n+1}/a_n|$ for the series
-$\sum 1/n^2$.
-\end{exercise}
+$\ds\sum_{n=1}^\infty {1\over n^2}$.
+\begin{answer} 1
+\end{answer}\end{exercise}
 
 \begin{exercise} Compute $\ds\lim_{n\to\infty} |a_{n+1}/a_n|$ for the series
-$\sum 1/n$.
-\end{exercise}
+$\ds\sum_{n=1}^\infty {1\over n}$.
+\begin{answer} 1
+\end{answer}\end{exercise}
 
-Determine whether the series converges or diverges.
+Determine whether each of the following series converges or diverges.
 
 \begin{exercise} $\ds\sum_{n=0}^\infty (-1)^{n}{3^n\over 5^n}$
 \begin{answer} converges
