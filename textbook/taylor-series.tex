@@ -208,9 +208,9 @@ power series can be centered at a point other than zero, and the
 method that produces the Taylor series can also produce such series.
 \begin{definition}\label{defn:taylor-series}
 Given a function $f$, the series
-$$\sum_{n=0}^\infty {f^{(n)}(a)\over n!}(x-a)^n$$
+$$\sum_{n=0}^\infty {f^{(n)}(a)\over n!}(x-c)^n$$
 is called the \defnword{Taylor series}\index{Taylor
-  series}\index{series!Taylor} for $f$ centered around $a$.
+  series}\index{series!Taylor} for $f$ centered around $c$.
 \end{definition}
 
 Let's see an example, reminiscent of
@@ -230,36 +230,36 @@ $$\sum_{n=0}^\infty {(x+2)^n\over 3^{n+1}}.$$
 
 \begin{exercises}
 
-  For each function, find the Taylor series centered at $a$, and the
+  For each function, find the Taylor series centered at $c$, and the
   radius of convergence.  Do not worry about whether or not the series
   converges to the given function---that will be our concern in 
   Section~\xrefn{section:remainders}.
 
-\begin{exercise} $\cos x$ around $a = 0$,
+\begin{exercise} $\cos x$ around $c = 0$,
 \begin{answer} $\ds\sum_{n=0}^\infty (-1)^n x^{2n}/(2n)!$, $R=\infty$
 \end{answer}\end{exercise}
 
-\begin{exercise} $\ds e^x$ around $a = 0$,
+\begin{exercise} $\ds e^x$ around $c = 0$,
 \begin{answer} $\ds\sum_{n=0}^\infty x^n/n!$, $R=\infty$
 \end{answer}\end{exercise}
 
-\begin{exercise} $1/x$ around $a=5$
+\begin{exercise} $1/x$ around $c=5$
 \begin{answer} $\ds\sum_{n=0}^\infty (-1)^n{(x-5)^n\over 5^{n+1}}$, $R=5$
 \end{answer}\end{exercise}
 
-\begin{exercise} $\log x$ around $a=1$
+\begin{exercise} $\log x$ around $c=1$
 \begin{answer} $\ds\sum_{n=1}^\infty (-1)^{n-1}{(x-1)^n\over n}$, $R=1$
 \end{answer}\end{exercise}
 
-\begin{exercise} $\log x$ around $a=2$
+\begin{exercise} $\log x$ around $c=2$
 \begin{answer} $\ds\log(2)+\sum_{n=1}^\infty (-1)^{n-1}{(x-2)^n\over n 2^n}$, $R=2$
 \end{answer}\end{exercise}
 
-\begin{exercise} $\ds 1/x^2$ around $a=1$
+\begin{exercise} $\ds 1/x^2$ around $c=1$
 \begin{answer} $\ds\sum_{n=0}^\infty (-1)^n(n+1)(x-1)^n$, $R=1$
 \end{answer}\end{exercise}
 
-\begin{exercise} $\ds 1/\sqrt{1-x}$ around $a = 0$
+\begin{exercise} $\ds 1/\sqrt{1-x}$ around $c = 0$
 \begin{answer} $\ds1+\sum_{n=1}^\infty {1\cdot3\cdot5\cdots(2n-1)\over
 n!2^n} x^n=1+\sum_{n=1}^\infty {(2n-1)!\over 2^{2n-1}(n-1)!\,n!}x^n$, $R=1$
 \end{answer}\end{exercise}
