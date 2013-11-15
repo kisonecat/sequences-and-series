@@ -1,0 +1,47 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shadows}
+\usetikzlibrary{shapes}
+\usetikzlibrary{decorations}
+\RequirePackage{pgfplots}%\pgfplotsset{compat=1.7}
+\colorlet{penColor}{green!50!black} % Color of a curve in a plot
+\colorlet{penColor2}{blue!50!black} % Color of a curve in a plot
+\begin{document}
+
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=-6.6:6.6,
+            ymax=5.5,
+            ymin=-5.5,
+            xmin=-8.5,
+            xmax=8.5,
+            axis lines =middle, % xlabel={$x$}, ylabel=$y$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.above origin),anchor=east}
+          ]
+          %\addplot [black, smooth, very thick,domain=(-8.5:8.5),samples=500] {abs(x-1)-1};
+          \addplot [black, smooth, very thick,domain=(-8.5:8.5),samples=500] {-x};
+          %\node [anchor=south west,penColor] at (axis cs:1.25,1.0) {$f(x) = \sin x$};
+
+          %\addplot [penColor2, smooth, dotted, domain=(-4:4)] {x};
+
+          %\addplot [penColor2, smooth, dashed, domain=(-6:6)] {x - x*x*x/6};
+
+          %\addplot [penColor2, samples=100, smooth, domain=(-4:4)] {x - x*x*x/6 + x*x*x*x*x/120};
+
+          %\draw[penColor2] (axis cs:0,0) rectangle (axis cs:1,1);
+          %\node [anchor=north,penColor2] at (axis cs:0.5,1) {$a_1$};
+          %\draw[penColor2] (axis cs:1,0) rectangle (axis cs:2,0.25);
+          %\node [anchor=north,penColor2] at (axis cs:1.5,0.25) {$a_2$};
+          %\draw[penColor2] (axis cs:2,0) rectangle (axis cs:3,0.11111111);
+          %\node [anchor=north,penColor2] at (axis cs:2.5,0.11111111) {$a_3$};
+          %\draw[penColor2] (axis cs:3,0) rectangle (axis cs:4,0.0625);
+          %\node [anchor=south,penColor2,yshift=2pt] at (axis cs:3.5,0.0625) {$a_4$};
+          %\draw[penColor2] (axis cs:4,0) rectangle (axis cs:5,0.04);
+          %\node [anchor=south,penColor2,yshift=2pt] at (axis cs:4.5,0.04) {$a_5$};
+          %\draw[penColor2] (axis cs:5,0) rectangle (axis cs:6,0.027777777);
+
+        \end{axis}
+\end{tikzpicture}
+
+\end{document}
