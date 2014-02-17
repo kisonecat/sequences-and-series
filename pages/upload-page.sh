@@ -9,7 +9,7 @@
 COOKIE_JAR=~/.mozilla/firefox/8b22l8b2.default/cookies.sqlite
 
 # the course that I am uploading to
-COURSERA_COURSE=sequence-001
+COURSERA_COURSE=sequence-002
 
 # load the cookies from the jar
 COOKIES=$(sqlite3 $COOKIE_JAR 'select name, value from moz_cookies where baseDomain="coursera.org" and path="/'$COURSERA_COURSE'";' | tr '|' '=' | tr '\n' ';' | sed 's/;/; /g')
@@ -19,8 +19,9 @@ CSRF_TOKEN=$(sqlite3 $COOKIE_JAR 'select value from moz_cookies where baseDomain
 
 PAGE=$1
 
-EDIT_REVISION=$(curl -L -e https://class.coursera.org/$COURSERA_COURSE/wiki/all --cookie "$COOKIES $MORE_COOKIES" https://class.coursera.org/$COURSERA_COURSE/wiki/edit?page=$PAGE | grep edit_revision | tr -dc 0-9)
+PAGE_CODE=$(curl -L -e https://class.coursera.org/$COURSERA_COURSE/wiki/all --cookie "$COOKIES $MORE_COOKIES" https://class.coursera.org/sequence-002/wiki/$PAGE | grep /admin/coursepages/ | sed 's/.*\/admin\/coursepages\///;s/".*//')
 
-PAGE_TITLE=$(curl -L -e https://class.coursera.org/$COURSERA_COURSE/wiki/all --cookie "$COOKIES $MORE_COOKIES" https://class.coursera.org/$COURSERA_COURSE/wiki/edit?page=$PAGE | grep page_title | grep value | sed 's/.*value="//g;s/".*//g')
+CSRF2_COOKIE=$(echo $COOKIES $MORE_COOKIES | tr ';' '\n' | grep -m1 csrf2 | sed 's/^ //g' | cut -f 1 -d '=')
+CSRF2_TOKEN=$(echo $COOKIES $MORE_COOKIES | tr ';' '\n' | grep -m1 csrf2 | sed 's/^ //g' | cut -f 2 -d '=')
 
-curl -L -e https://class.coursera.org/$COURSERA_COURSE/wiki/edit?page=$PAGE --cookie "$COOKIES $MORE_COOKIES" -F page_title="$PAGE_TITLE" -F canonical_page_name=$PAGE -F visible=1 -F content=\<$PAGE.html -F wysihtml5_mode=1 -F __csrf-token=$CSRF_TOKEN -F edit_revision=$EDIT_REVISION -F submit=Save https://class.coursera.org/$COURSERA_COURSE/wiki/edit?page=$PAGE\&history=$EDIT_REVISION\&html=1
+cat $PAGE.html | python -c "import json,sys; print('{\"content\":' + json.dumps(sys.stdin.read())+\"}\")" | curl --cookie "$COOKIES $MORE_COOKIES" -H "Host: class.coursera.org" -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:26.0) Gecko/20100101 Firefox/26.0" -H "Content-Type: application/json; charset=utf-8" -H "If-Match: 44" -H "X-HTTP-Method-Override: PATCH" -H "X-CSRF-Token:$CSRF_TOKEN" -H "X-CSRF2-Cookie: $CSRF2_COOKIE" -H "X-CSRF2-Token: $CSRF2_TOKEN" -H "X-Requested-With: XMLHttpRequest" -H "Referer: https://class.coursera.org/sequence-002/admin/coursepages/$PAGE_CODE"  --data @- "https://class.coursera.org/$COURSERA_COURSE/admin/api/pages/$PAGE_CODE?fields=content"
