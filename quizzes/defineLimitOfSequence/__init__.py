@@ -5,6 +5,7 @@ class Question(StaticQuestion):
     title = 'define limit of a sequence'
     video = 'sequence-limit'
     forum = 10053
+    textbook = 'definition:limit-of-a-sequence'
     question = r'To say that the sequence \(a_n\) converges to \(L\) means what?  In other words, what is the definition of the statement \(\displaystyle\lim_{n \to \infty} a_n = L\)?'
     correct = r'For every positive real number \(\epsilon > 0\) there exists an \(N \in \mathbb{N}\) so that whenever \(n \geq N\), we have \( |a_n - L| < \epsilon \).'
     incorrect = []

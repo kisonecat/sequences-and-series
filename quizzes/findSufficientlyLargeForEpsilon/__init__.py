@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     title = r'find a sufficiently large index to guarantee a sequence is within epsilon of L'
     video = 'n-for-epsilon'
     forum = 10055
+    textbook = 'example:find-n-for-epsilon'
     def __init__(self):
         denominator = randint(2,10)
         numerator = randint(1,denominator - 1)

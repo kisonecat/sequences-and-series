@@ -3,7 +3,7 @@ from questions import *
 class Question(RandomizedQuestion):
     module = __file__
     video = 'taylor-series'
-    forum = 0
+    forum = 10181
     title = 'find the first few terms of a Taylor series'
 
     def good_enough(self):

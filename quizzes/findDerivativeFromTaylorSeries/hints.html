@@ -1,0 +1,11 @@
+<p>Recall that the Taylor series for cosine is \(\sum_{n=0}^\infty (-1)^n \frac{x^{2n}}{(2n)!}\).</p>
+<p>Consequently, the Taylor series for \(f(x) = \cos (x^{#{the_power}})\) can be computed by replacing \(x\) with \(x^{#{the_power}}\).</p>
+<p>So the Taylor series for \(f(x)\) is \(\sum_{n=0}^\infty (-1)^n \frac{x^{#{latex(2*the_power)}n}}{(2n)!}\).</p>
+<p>To compute, \(f^{(#{the_derivative})}(0)\) we want to compute the coefficient on \(x^{#{the_derivative}}\).</p>
+<p>In this case, that coefficient appears in the \(n = #{latex(the_derivative / the_power / 2)}\) term.</p>
+<p>So the coefficient on \(x^{#{the_derivative}}\) is \((-1)^{#{latex(the_derivative / the_power / 2)}} \cdot \frac{1}{\left(2 \cdot \left( #{latex(the_derivative / the_power / 2)} \right)\right)!}\).</p>
+<p>This simplifies to  \(#{latex((-1)**(the_derivative / the_power / 2))} \cdot \frac{1}{#{latex(2 * the_derivative / the_power / 2)}!}\).</p>
+<p>Now the coefficient on \(x^{#{the_derivative}}\) is also \(\frac{f^{(#{the_derivative})}(0)}{#{the_derivative}!}\).</p>
+<p>So this means that \(\frac{f^{(#{the_derivative})}(0)}{#{the_derivative}!} = #{latex((-1)**(the_derivative / the_power / 2))} \cdot \frac{1}{#{latex(2 * the_derivative / the_power / 2)}!}\).</p>
+<p>Solving, we may conclude that \(f^{(#{the_derivative})}(0) = #{latex((-1)**(the_derivative / the_power / 2))} \cdot \frac{#{the_derivative}!}{#{latex(2 * the_derivative / the_power / 2)}!}\).</p>
+

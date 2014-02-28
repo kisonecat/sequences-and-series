@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     module = __file__
     title = 'apply the monotone convergence theorem'
     video = 'monotone-convergence'
+    textbook = 'example:nth-root-of-n'
     forum = 10061
 
     def __init__(self):

@@ -8,6 +8,7 @@ class Question(RandomizedQuestion):
     module = __file__
     title = 'identify a monotonic sequence'
     video = 'sequence-monotone'
+    textbook = 'subsection:monotonicity'
     forum = 10060
     def __init__(self):
         self.direction = (-1)**randint(0,1)

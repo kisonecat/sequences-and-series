@@ -2,8 +2,69 @@
 
 <%= week_title( 4, "Alternating series" ) %>
 
-<p id="week-summary">In this fourth week, we study alternating series.</p>
+<p id="week-summary">In this fourth week, we consider absolute and conditional convergence, alternating series and the alternating series test, as well as the limit comparison test.</p>
 
-<p>Material for week four will be posted around 10:00am Eastern on <%= WEEK_STARTS[3].strftime('%B %e, %Y').strip %>.</p>
+<p>Last week, in <a href="/sequence-001/wiki/view?page=week3">Week&nbsp;3</a>, we considered convergence tests; <%= linkto_video('week4-welcome','this week, we consider convergence for series with some negative and some positive terms') %>.  Up until now, we had been considering series with nonnegative terms; <%= linkto_video('positive-terms-easy','it is much easier to determine convergence when the terms are nonnegative') %> so this week, when we consider series with both negative and positive terms, there will definitely be some new complications.</p>
+
+<p>In a certain sense, this week is the end of &ldquo;Does it converge?&rdquo;  Next week, we consider power series and then, in Week&nbsp;6, we consider Taylor series.  Those last two topics will move us away from questions of mere convergence, so if you have been eager for new material, stay tuned.</p>
+
+<p>And if you have any questions or concerns about anything at all, I hope you will <a href="/sequence-001/forum/index"><i class="icon-comments"></i>&nbsp;write in the forum</a>.  I am looking forward to hearing from you.  Your feedback teaches me a ton about what works and what doesn't in this course.  I appreciate it.</p>
+
+<hr/>
+
+<h4>What is absolute convergence?</h4>
+
+<p>Our goal is to consider the convergence of \(\sum_{n=1}^\infty a_n\) when some of the terms in the sequence \((a_n)\) are positive, and some are negative.  One way to simplify this is to first consider \(\sum_{n=1}^\infty |a_n|\) which is a series in which all the terms are nonnegative&mdash;exactly the sort of series we have had a ton of experience with.  If \(\sum_{n=1}^\infty |a_n|\) converges, we say that the original series \(\sum_{n=1}^\infty a_n\) <%= linkto_video('absolute-convergence','converges absolutely') %>.  This concept is introduced in <%= linkto_textbook('section:absolute-convergence') %>.</p>
+ 
+<p>As <%= linkto_textbook('thm:absolute-convergence-implies-convergence') %> explains, <%= linkto_video('absolute-convergence-useful','absolute convergence implies convergence') %>, meaning if \(\sum_{n=1}^\infty |a_n|\) converges, then we can conclude that the more difficult to study series \(\sum_{n=1}^\infty a_n\) converges as well.  The converse is not true, though: just because \(\sum_{n=1}^\infty |a_n|\) diverges does not mean \(\sum_{n=1}^\infty a_n\) necessarily diverges; this situation is referred to as <%= linkto_video('conditional-convergence','conditional convergence') %>.</p>
+
+<p><strong>tl;dr</strong> You should <%= linkto_video('checking-convergence','check for conditional convergence') %> by first checking absolute convergence, and then if you find the series is not absolutely convergent, you can consider convergence of the original series.</p>
+
+<p>A key point to emphasize is just how terrible conditional convergence really is.  <%= wikipedia('Riemann_series_theorem', 'If you rearrange the terms in a conditionally convergence theorem, you can get any value you desire.') %>  The alternating harmonic series \(\sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}\) is a context within which to <%= linkto_video('rearrangement-theorem','consider this rearrangement theorem') %>.  The upshot is that a series <strong>must be added up in order</strong> since the answer&mdash;in the case of conditional convergence&mdash;depends very much on the order in which the addition is performed.  Be afraid!</p>
+
+<hr/>
+
+<h4>What is an alternating series?</h4>
+
+<p>In general, it can be quite difficult to decide whether a series converges or not when some of the terms are positive, and some are negative.  There is one situation, though, where it is much easier; this is the case of an <%= linkto_video('alternating-series','alternating series') %> where the signs of the terms are flip-flopping back and forth, e.g.,
+\[
+\sum_{n=1}^\infty \frac{(-1)^{n+1}}{n} = \frac{1}{1} + \frac{-1}{2} + \frac{1}{3} + \frac{-1}{4} + \frac{1}{5} + \frac{-1}{6} + \cdots
+\]
+where the terms with odd index are positive, and the terms with even index are negative.  There is a special convergence test, the <%= linkto_video('alternating-series-test','alternating series test') %>, which makes it quick to show that such a series converges in many cases.  Specifically, consider an alternating series \(\sum_{n=1}^\infty (-1)^{n+1} a_n\) where \((a_n)\) is a decreasing sequence of positive numbers.  If \(\lim_{n\to\infty}a_n=0\), then \(\sum_{n=1}^\infty (-1)^{n+1} a_n\) converges.  You can read more about this in <%= linkto_textbook('section:alternating-series-test') %>.</p>
+
+<p>A big reason to care about alternating series is that it is relatively easy to <%= linkto_video('alternating-series-important','approximate the value of an alternating series') %>.  This doesn't just have computational applications: thinking about the error in such an approximation lets us prove that <%= linkto_video('e-is-irrational','\\(e\\) is an irrational number') %>.</p>
+
+<p>Note that the alternating series test <%= linkto_video('monotone-important-for-ast','requires that the sequence \\((a_n)\\) is monotone') %>; when the sequence \((a_n)\) is not monotone, then the alternating may converge or may diverge, but the &ldquo;alternating series test&rdquo; does not help us.</p>
+
+<hr/>
+
+<h4>How is convergence affected by the choice of initial index?</h4>
+
+<p>Not at all!  For example, \(\sum_{n=1}^\infty a_n\) converges precisely when \(\sum_{n=17}^\infty a_n\) converges&mdash;whether the starting index is \(n=1\) or \(n = 17\) or \(n = 1000\), it doesn't matter. <%= linkto_video('convergence-for-tails','Convergence only depends on the tail.') %>  There is a longer discussion of this in <%= linkto_textbook('section:convergence-for-tails') %>.</p>
+
+<hr/>
+
+<h4>What is the limit comparison test?</h4>
+
+<p>Sometimes the comparison test can be sort of tricky to apply; it may be intuitively obvious that &ldquo;eventually&rdquo; a series will resemble a convergent \(p\)-series, but actually setting up an inequality between two series may be arithmetically challenging.  The <%= linkto_video('limit-comparison-test', 'limit comparison test') %> is a way around this.  Specifically, if two sequences \((a_n)\) and \((b_n)\) of positive numbers have the property that \(\lim_{n\to\infty} a_n/b_n = L &gt; 0\) for some real number \(L\), then the series \(sum_{n=1}^\infty a_n\) and \(\sum_{n=1}^\infty b_n\) either both converge or both diverge.  It is often easy to check that \(\lim_{n\to\infty} a_n/b_n = L &gt; 0\) so this turns out to be a useful test.  You can find a proof in <%= linkto_textbook('section:limit-comparison-test') %>.</p>
+
+<p>One fun thing about the limit comparison test is that it <%= linkto_video('coarse-mathematics','justifies our thinking coarsely about convergence,') %> which is not just practically useful, but provides us deeper intuition about just what convergence really means.</p>
+
+<hr/>
+
+<h4>By the end of the week&hellip;</h4>
+
+<p>As always, I have some learning outcomes for you to strive for.  At the end of this week, I hope you will be able to</p>
+<ul>
+<li>relate <%= linkto_video('absolute-convergence','absolute convergence to convergence') %>,</li>
+<li>apply the <%= linkto_video('limit-comparison-test','limit comparison test') %> to analyze convergence,</li>
+<li>determine whether an <%= linkto_video('alternating-series','alternating \\(p\\)-series converges') %>,</li>
+<li>apply the <%= linkto_video('alternating-series-test','alternating series test') %> when appropriate,</li>
+<li>find an <%= linkto_video('alternating-series-important','approximate value')%> for an alternating series,</li>
+<li>approximate the value of a <%= linkto_video('e-is-irrational','natural logarithm') %>, and finally</li>
+<li>consider the alternating series test in a <%= linkto_video('monotone-important-for-ast','nonmonotone situation') %>.</li>
+</ul>
+<p>As soon as you have time, you can get started <a href="/sequence-001/quiz/attempt?quiz_id=151"><i class="icon-pencil"></i>&nbsp;thinking about the homework</a>.  The homework is &ldquo;formative assessment&rdquo; meaning I intend the homework as a teaching tool&mdash;and not to determine your success as a mathematician.  <em>Greatness consists not in being great, but in becoming greater,</em> so I hope you'll use the resources in this course to help you learn more than you knew about series before.  Use the hints.  Discuss with others on the forum.  With your hard work, you can master these concepts.</p>
+
 
 <%= week_pager(4) %>

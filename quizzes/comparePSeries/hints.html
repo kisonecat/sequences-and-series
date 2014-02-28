@@ -1,0 +1,12 @@
+<p>Set \(a_#{variable} = #{latex(term)}\).</p>
+<p condition="goal_power > 1">Note that \(a_#{variable} &lt; \displaystyle\frac{#{latex(variable ** numerator_power)}}{#{latex(denominator_term(x=variable))}}\).</p>
+<p condition="goal_power <= 1">Note that \(a_#{variable} &gt; \displaystyle\frac{#{latex(variable ** numerator_power)}}{#{latex(denominator_term(x=variable))}}\).</p>
+<p condition="goal_power > 1">Furthermore, \(a_#{variable} &lt; \displaystyle\frac{#{latex(variable ** numerator_power)}}{#{latex(variable ** denominator_power)}}\) because removing the term from the denominator makes the fraction bigger.</p>
+<p condition="goal_power <= 1">Furthermore, \(a_#{variable} &gt; \displaystyle\frac{#{latex(variable ** numerator_power)}}{#{latex(variable ** denominator_power)}}\) because removing the term from the denominator makes the fraction smaller.</p>
+<p>But now \(\displaystyle\frac{#{latex(variable ** numerator_power)}}{#{latex(variable ** denominator_power)}} = \displaystyle\frac{1}{#{latex(variable ** goal_power)}}\).</p>
+<p condition="goal_power > 1">So \(a_#{variable} &lt; \displaystyle\frac{1}{#{latex(variable ** goal_power)}}\).</p>
+<p condition="goal_power <= 1">So \(a_#{variable} &gt; \displaystyle\frac{1}{#{latex(variable ** goal_power)}}\).</p>
+<p condition="goal_power <= 1">But \(\sum_{#{variable} = #{initial}}^\infty \displaystyle\frac{1}{#{latex(variable ** goal_power)}}\) diverges.</p>
+<p condition="goal_power > 1">But \(\sum_{#{variable} = #{initial}}^\infty \displaystyle\frac{1}{#{latex(variable ** goal_power)}}\) converges.</p>
+<p condition="goal_power > 1">And so the original series converges.</p>
+<p condition="goal_power <= 1">And so the original series diverges.</p>

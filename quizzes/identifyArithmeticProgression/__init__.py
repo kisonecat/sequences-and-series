@@ -8,6 +8,7 @@ class Question(RandomizedQuestion):
     module = __file__
     title = 'identify an arithmetic progression'
     video = 'arithmetic-progression'
+    textbook = 'subsection:arithmetic-sequences'
     forum = 10058
     def __init__(self):
         initial_value = randint(1,5)

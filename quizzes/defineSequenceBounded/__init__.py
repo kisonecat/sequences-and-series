@@ -4,6 +4,7 @@ class BoundedAboveQuestion(StaticQuestion):
     module = __file__
     video = 'sequence-bounded'
     forum = 10056
+    textbook = 'subsection:boundedness'
     hint_filename = 'bounded-above-hints.html'
     title = 'define what it means for a sequence to be bounded above'
     question = 'To say that the sequence \(a_n\) is "bounded above" is to say what?'
@@ -30,6 +31,7 @@ class BoundedBelowQuestion(StaticQuestion):
     hint_filename = 'bounded-below-hints.html'
     video = 'sequence-bounded'
     forum = 10056
+    textbook = 'subsection:boundedness'
     title = 'define what it means for a sequence to be bounded below'
     question = 'To say that the sequence \(a_n\) is "bounded below" is to say what?'
     correct = 'There exists an \(M \in \mathbb{R}\), so that for all \(n \in \mathbb{N}\), we have \(a_n \geq M\).'

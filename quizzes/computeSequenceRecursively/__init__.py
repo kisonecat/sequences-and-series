@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     module = __file__
     title = 'compute terms of a sequence presented as a recursive formula'
     video = 'recursive-sequence'
+    textbook = 'subsection:recursive-definition'
     forum = 10052
     def __init__(self):
         variables = ['n','n','n','n','n','n','n','m','m','m','k','k']

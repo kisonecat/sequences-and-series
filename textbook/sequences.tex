@@ -160,6 +160,7 @@ indexes---regardless of whether the given ``rules'' or procedures for
 computing those sequences resemble each other in any way.
 
 \subsection{Defining sequences using previous terms}
+\label{subsection:recursive-definition}
 
 \marginnote{You might be familiar with \textit{recursion} from a
   computer science course.}
@@ -244,6 +245,7 @@ What is the next term $a_5$?  Can you identify the sequence?
 Now let's consider two popular ``families'' of sequences.
 
 \subsection{Arithmetic sequences}
+\label{subsection:arithmetic-sequences}
 
 The first family\sidenote{Mathematically, the word \defnword{family}
   does not have an entirely precise definition; a family of things is
@@ -587,6 +589,7 @@ significant difference is required in the definition of limit, except
 that we specify, perhaps implicitly, that the variable is an integer.
 
 \begin{definition} \relax\index{limit of a sequence}
+\label{definition:limit-of-a-sequence}
 Suppose that $\left(a_n\right)$ is a sequence.
 To say that $\ds \lim_{n\to \infty}a_n=L$ is to say that \\
 \null\quad for every $\epsilon>0$, \\
@@ -614,16 +617,25 @@ that $\ds \lim_{n\to\infty}a_n = L$, then we say that the limit
 One way to compute the limit of a sequence is to compute the limit of
 a function.
 \begin{theorem}
+  \label{theorem:compute-limit-of-sequence-via-function}
   Let $f(x)$ be a real-valued function.  If $a_n = f(n)$ defines a
   sequence $(a_n)$ and if $\ds \lim_{x\to\infty}f(x)=L$ in the sense of Calculus
   One, then $\ds \lim_{n\to\infty} a_n=L$ as well.
 \end{theorem}
 
 \begin{example}
+\label{example:find-n-for-epsilon}
 Since $\ds \lim_{x\to\infty}(1/x)=0$, it is
 clear that also $\ds \lim_{n\to\infty}(1/n)=0$; in other words, the sequence of numbers
 $${1\over1},\quad {1\over2},\quad {1\over3},\quad {1\over4},\quad {1\over5},\quad {1\over6},\quad \ldots$$
 get closer and closer to 0, or more precisely, as close as you want to get to zero, after a while, all the terms in the sequence are that close.
+
+More precisely, no matter what $\epsilon > 0$ we pick, we can find an
+$N$ big enough so that, whenever $n > N$, we have that $1/n$ is within
+$\epsilon$ of the claimed limit, zero.  This can be made concrete:
+let's suppose we set $\epsilon = 0.17$.  What is a suitable choice for
+$N$ in response?  If we choose $N = 5$, then whenever $n > 5$ we have
+$0 < 1/n < 0.17$.
 \end{example}
 
 
@@ -1216,6 +1228,7 @@ we can at least say that the sequence doesn't get too big or too
 small.
 
 \begin{definition}
+  \label{definition:sequence-bounded}
   A sequence $(a_n)$ is \defnword{bounded
     above}\index{sequence!bounded above} if there is some number
 $M$ so that for all $n$, we have $\ds a_n\le M$.  Likewise, a sequence
@@ -1258,12 +1271,13 @@ smallest number that is above\sidenote{This concept of the ``smallest
 $\ds a_n$.  Let's try an example!
 
 \begin{example}
-All of the terms $\ds (2^i-1)/2^i$ are less than 2, and the sequence is
-increasing. As we have seen, the limit of the sequence is 1---1 is the
-smallest number that is bigger than all the terms in the sequence.
-Similarly, all of the terms $(n+1)/n$ are bigger than $1/2$, and the
-limit is 1---1 is the largest number that is smaller than the terms of
-the sequence.
+  \label{example:sequence-bounded}
+  All of the terms $\ds (2^i-1)/2^i$ are less than 2, and the sequence
+  is increasing.  As we have seen, the limit of the sequence is 1---1
+  is the smallest number that is bigger than all the terms in the
+  sequence.  Similarly, all of the terms $(n+1)/n$ are bigger than
+  $1/2$, and the limit is 1---1 is the largest number that is smaller
+  than the terms of the sequence.
 \end{example}
 
 We don't actually need to know that a sequence is monotonic to apply

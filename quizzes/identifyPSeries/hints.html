@@ -1,0 +1,6 @@
+<p condition="initial > 1">Note that \(\displaystyle\sum_{#{variable}=#{initial}}^\infty \left( #{latex(term)} \right)\) converges iff \(\sum_{#{variable}=#{initial}} \frac{1}{#{variable}^{#{latex(p)}}}\) converges.</p>
+<p condition="initial == 1">Note that \(\sum_{#{variable}=#{initial}} \frac{1}{#{variable}^{#{latex(p)}}}\) is a \(p\)-series.</p>
+<p condition="initial > 1">But \(\sum_{#{variable}=#{initial}} \frac{1}{#{variable}^{#{latex(p)}}}\) is the tail of a \(p\)-series.</p>
+<p>In this case, \(p = #{latex(p)}\).</p>
+<p condition="p <= 1">Since \(p = #{latex(p)} \leq 1\), we may conclude that the given series diverges.</p>
+<p condition="p > 1">Since \(p = #{latex(p)} &gt; 1\), we may conclude that the given series converges.</p>

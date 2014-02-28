@@ -1,0 +1,11 @@
+<p>This series is built out of polynomials and powers and factorials, so the ratio test might be helpful, since we can expect a ton of things to cancel.</p>
+<p>Let's set \(a_#{variable} = #{latex(term)}\).</p>
+<p>Then \(a_{#{variable}+1} = #{latex(term_x(x=x+1)(x=variable))}\).</p>
+<p>So \(\displaystyle\frac{a_{#{variable}+1}}{a_#{variable}} = #{latex( (term_x(x=x+1)/term_x)(x=variable) )}\).</p>
+<p>The key to simplifying here is to note that \(#{latex(factorial(variable+1))} = #{latex(factorial(variable))} \cdot (#{latex(variable)} + 1)\).</p>
+<p>Simplifying a bit yields \(\displaystyle\frac{a_{#{variable}+1}}{a_#{variable}} = #{latex( (term_x(x=x+1)/term_x)(x=variable).full_simplify() )}\).</p>
+<p>In the ratio test, we compute \(L = \displaystyle\lim_{#{variable} \to \infty} \displaystyle\frac{a_{#{variable}+1}}{a_#{variable}}\).</p>
+<p>In this case, \(L = \displaystyle\lim_{#{variable} \to \infty} \left( #{latex( (term_x(x=x+1)/term_x)(x=variable).full_simplify() )} \right) = #{latex(ell)}\).</p>
+<p condition="ell < 1">Since \(L &lt; 1\), we may conclude by the ratio test that the given series coverges.</p>
+<p condition="ell > 1">Since \(L &gt; 1\), we may conclude by the ratio test that the given series diverges.</p>
+<p condition="ell.is_infinity()">Since \(L &gt; 1\), we may conclude by the ratio test that the given series diverges.</p>

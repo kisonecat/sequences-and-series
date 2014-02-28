@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     module = __file__
     title = 'compute limit of a sequence presented as a formula'
     video = 'sequence-limit'
+    textbook = 'theorem:compute-limit-of-sequence-via-function'
     forum = 10054
     def __init__(self):
         variables = ['n','n','n','n','n','n','n','m','m','m','k','k']

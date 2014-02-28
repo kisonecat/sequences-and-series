@@ -6,6 +6,7 @@ class GenericBoundednessQuestion(RandomizedQuestion):
     module = __file__
     title = 'determine whether a sequence is bounded'
     video = 'sequence-bounded'
+    textbook = 'example:sequence-bounded'
     forum = 10057
     def __init__(self):
         variables = ['n','n','n','n','n','n','n','m','m','m','k','k']

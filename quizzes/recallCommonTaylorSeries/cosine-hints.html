@@ -1,0 +1,11 @@
+<p>What happens when we differentiate \(f\) a bunch of times?</p>
+<p>I care because the Taylor series around zero is \(\sum_{n=0}^\infty \frac{f^{(n)}(0)}{n!} x^n\).</p>
+<p>Note that \(\frac{d}{dx}\cos x = -\sin x\), so \(f'(0) = 0\).</p>
+<p>Then \(\frac{d^2}{dx^2}\cos x = -\cos x\), so \(f^{(2)}(0) = -1\).</p>
+<p>And then \(\frac{d^3}{dx^3}\cos x = \sin x\), so \(f^{(3)}(0) = 0\).</p>
+<p>Finally, \(\frac{d^4}{dx^4}\cos x = \cos x\), so \(f^{(4)}(0) = 1\).</p>
+<p>And I say &ldquo;finally&rdquo; because now, the pattern repeats, since the fourth derivative is the same as the original function.</p>
+<p>So the derivatives of \(f\) at zero, starting from the zeroth derivative (which is just the function itself), follow the pattern: \(1,\quad 0,\quad -1,\quad 0,\quad 1,\quad 0,\quad -1,\quad 0,\quad 1,\quad 0\) and so on.</p>
+<p>Since all the odd derivatives vanish at zero, there will be no odd terms in the Taylor series for \(f\).</p>
+<p>So I could write the Taylor series as \(\sum_{n=0}^\infty \frac{f^{(2n)}(0)}{(2n)!} x^{2n}\).</p>
+<p>Since the even derivatives alternative between \(-1\) and \(1\), I can write the Taylor series as \(\sum_{n=0}^\infty \frac{(-1)^n}{(2n)!} x^{2n}\).</p>

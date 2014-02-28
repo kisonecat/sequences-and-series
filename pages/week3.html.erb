@@ -2,8 +2,68 @@
 
 <%= week_title( 3, "Convergence tests" ) %>
 
-<p id="week-summary">In this third week, we study various convergence tests to determine whether or not a series converges.</p>
+<p id="week-summary">In this third week, we study various convergence tests to determine whether or not a series converges: in particular, we will consider the ratio test, the root test, and the integral test.</p>
 
-<p>Material for week three will be posted around 10:00am Eastern on <%= WEEK_STARTS[2].strftime('%B %e, %Y').strip %>.</p>
+<p>Last week, in <a href="/sequence-001/wiki/view?page=week2">Week 2</a>, we studied series; <%= linkto_video('week3-welcome','this week, we consider convergence tests') %>, in particular, the ratio test, the root test, and the integral test.  <strong>I know not everybody has seen integration yet</strong> so I have tried to use <%= linkto_video('cauchy-condensation','Cauchy condensation') %> in addition to the integral test.  Next week, in <a href="/sequence-001/wiki/view?page=week4">Week 4</a>, we will finish off the &ldquo;standard&rdquo; story about series.  Then we'll spend the last two weeks of the course working on power series and Taylor series&mdash;and the latter is ripe with applications.</p>
+
+<p>If you have any questions or concerns about anything at all, I hope you will <a href="/sequence-001/forum/index"><i class="icon-comments"></i>&nbsp;post your comments and concerns in the forum</a>.  I'm still working on <a href="http://www.youtube.com/watch?v=z1U-pjvjDeM"><i class="icon-film"></i>&nbsp;Office Hours</a>.  Please send questions to me via <a href="mailto:fowler@math.osu.edu"><i class="icon-envelope-alt"></i>&nbsp;email</a>, or via <a href="https://www.youtube.com/my_webcam"><i class="icon-facetime-video"></i>&nbsp;a YouTube recording of yourself</a>, or via <a href="https://class.coursera.org/sequence-001/forum/list?forum_id=10081"><i class="icon-comments"></i>&nbsp;the Office Hours forum</a>.</p>
+
+<hr/>
+
+<h4>What is the ratio test?</h4>
+
+<p>The geometric series \(\displaystyle\sum_{n=1}^\infty \displaystyle\frac{1}{4^n}\) converges because the common ratio between its terms is \(\displaystyle\frac{1}{4} &lt; 1\); <%= linkto_video('ratio-test-example','determining whether \(\displaystyle\sum_{n=1}^\infty \displaystyle\frac{n^5}{4^n}\) converges requires something more delicate') %>, which is discussed in <%= linkto_textbook('example:n-to-fifth-over-five-to-n') %>.  The technique is <%= linkto_video('ratio-test-statement','the ratio test') %>, which admittedly
+<%= linkto_video('ratio-test-sometimes-useless','does not always work') %>, but it is not too hard to apply, so it is often worth trying.</p>
+
+<h5>How do I apply the ratio test?</h5>
+
+<p>Here is how to apply the ratio test.  Suppose \(a_n > 0\) and you want to determine whether the series \(\sum_{n=1}^\infty a_n\) converges or diverges.  All you need to do is compute \(L = \displaystyle\lim_{n\to\infty} a_{n+1}/a_n\), and if \(L &lt; 1\), the series converges, while if \(L &gt; 1\), the series diverges.  If \(L = 1\), then the test is inconclusive, and you'll have to try something else.  You can read more about the ratio test in <%= linkto_textbook('section:ratio-test') %>.</p>
+
+<h5>What is the ratio test good for?</h5>
+
+<p>The ratio test is powerful enough to address <%= linkto_video('ratio-test-one-over-e','the convergence of \(\displaystyle\sum_{n=1}^\infty \frac{n!}{n^n}\)') %> relatively easily.  Incidentally, that is a fun example, since it leads us to think about <%= linkto_video('stirling-approximation','how \(n!\) compares to \((n/e)^n\)') %>, which is known as approximation') %>.
+
+<hr/>
+
+<h4>What is the root test?</h4>
+
+<p>The root test is somewhat similar to the ratio test.  Again, suppose \(a_n > 0\) and you want to determine whether the series \(\sum_{n=1}^\infty a_n\) converges or diverges.  Compute \(L = \displaystyle\lim_{n\to\infty} \sqrt[n]{a_{n}}\), and if \(L &lt; 1\), the series converges, while if \(L &gt; 1\), the series diverges.  If \(L = 1\), then the test is inconclusive.   You can read more about the root test in <%= linkto_textbook('section:root-test') %>.  It is no secret that <%= linkto_video('root-test-useless','I do not think too highly of the ratio test') %>.  Nevertheless, as <%= linkto_textbook('example:root-test-beats-ratio-test') %> shows, there are situations where the root test proves the convergence of a series for which the ratio test is silent.</p>
+
+<hr/>
+
+<h4>What is the integral test?</h4>
+
+<p>Considering that integrals were defined as sums, it is not so surprising that <%= linkto_video('integral-test','series and integrals can be related to each other') %>.  This is the basis of the integral test which is addressed in <%= linkto_textbook('section:integral-test') %>.</p>
+
+<p>We can use the integral test to <%= linkto_video('harmonic-series-via-integral','show that the harmonic series diverges') %>, as we do in <%= linkto_textbook('subsection:harmonic-series-by-integrating') %>.  There are some <%= linkto_video('reciprocal-n-log-n','trickier series') %> that can be analzyed using integration (or Cauchy condensation, as your preference may be).</p>
+
+<h4>What are \(p\)-series?</h4>
+
+<p>A very important example of a series is a \(p\)-series, which just means a series of the form \[\sum_{n=1}^\infty \frac{1}{n^p}\] for some fixed \(p\).  We can show that <%= linkto_video('p-series','a \(p\)-series converges when \(p > 1\) and diverges otherwise') %>.  
+This is <%= linkto_textbook('thm:p-series') %>, but you can also find a discussion using condensation in <%= linkto_textbook('subsection:p-series') %>.</p>
+
+<img style="float: right; margin-left: 12pt;" class="img-thumbnail" src="https://d396qusza40orc.cloudfront.net/sequence%2Fimages%2Flogo.png">
+
+<h4>How large can the overhang in a stack of blocks be?</h4>
+
+<p>One of the more unusual &ldquo;applications&rdquo; of the harmonic series is <%= linkto_video('harmonic-tower','using it to build towers of blocks') %>; this is the same object that appears in our course logo.  I also made a <a href="http://www.youtube.com/watch?v=I3ilNAcjNng"><i class="icon-facetime-video"></i>&nbsp;video of the block tower on YouTube</a> if you want to see it from a different angle.</p>
+
+<div style="clear: both;"></div>
+
+<hr/>
+
+<h4>By the end of the week&hellip;</h4>
+
+<p>I have some learning objectives for you.  At the end of this week, I hope you will be able to</p>
+<ul>
+<li>apply the ratio test on a <%= linkto_video('ratio-test-example','series involving powers' )%>,</li>
+<li>apply the ratio test on a <%= linkto_video('ratio-test-statement','series involving factorials')%>,</li>
+<li>apply the ratio test on a <%= linkto_video('ratio-test-one-over-e','series involving both factorials and powers') %>,</li>
+<li>identify a <%= linkto_video('p-series','\(p\)-series') %>,</li>
+<li>compare a <%= linkto_video('reciprocal-n-log-n','series to a \(p\)-series') %>,</li>
+<li>apply the <%= linkto_video('root-test-useless','root test') %> to analyze convergence, and</li>
+<li>bound the value of a series by using the <%= linkto_video('integral-test','integral test') %>.</li>
+</ul>
+<p>When you feel ready, you can <a href="/sequence-001/quiz/attempt?quiz_id=77"><i class="icon-pencil"></i>&nbsp;work on the homework</a>.  The homework is &ldquo;formative assessment&rdquo; meaning I intend the homework as a teaching tool, not to determine your &ldquo;score&rdquo; in the course.  So please, use the hints when you get stuck.  Discuss freely on the forums.  Do the homework again and again&mdash;the problems are randomly generated.  Feel free to use the provided resources in whatever way helps you to understand the material.  You can master this material!</p>
 
 <%= week_pager(3) %>

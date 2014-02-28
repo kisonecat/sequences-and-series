@@ -1,0 +1,15 @@
+<p>Set \(a_{#{variable}} = #{latex(term)}\).</p>
+<p condition="p <= 0">Note that \(\lim_{n \to \infty} a_n \neq 0\).</p>
+<p condition="p > 0">Note that \(\lim_{n \to \infty} a_n = 0\).</p>
+<p condition="p > 0">So the limit test is inconclusive in this case.</p>
+<p condition="p <= 0">Therefore, the series diverges.</p>
+<p condition="p > 0">Let's check absolute convergence.</p>
+<p condition="p > 0">We then consider \(\sum_{#{variable} = #{initial}} \left| (-1)^#{variable}/#{variable}^{#{latex(p)}} \right|\) which is the \(p\)-series \(\sum_{#{variable} = #{initial}} 1/#{variable}^{#{latex(p)}}\).</p>
+<p condition="p > 1">Since \(p = #{latex(p)} &gt; 1\), we may conclude that the series conveges absolutely.</p>
+<p condition="p > 0 and p <= 1">Since \(p = #{latex(p)} &lt; 1\), we may conclude that the series does not convege absolutely.</p>
+<p condition="p > 0 and p <= 1">We should check for conditional convergence.</p>
+<p condition="p > 0 and p <= 1">Note that \(\sum_{#{variable} = #{initial}} (-1)^#{variable}/#{variable}^{#{latex(p)}} \) is an alternating series.</p>
+<p condition="p > 0 and p <= 1">Since \(|a_{#{variable}+1}| &lt; |a_{#{variable}}|\), the sequence of absolute values is decreasing.</p>
+<p condition="p > 0 and p <= 1">Note that \(\lim_{n\to\infty} a_n = 0\).</p>
+<p condition="p > 0 and p <= 1">Therefore, by the alternating series test, the series \(\sum_{#{variable} = #{initial}} (-1)^#{variable}/#{variable}^{#{latex(p)}} \) converges.</p>
+<p condition="p > 0 and p <= 1">Since the series converges but not absolutely, we say that the series converges conditionally.</p>

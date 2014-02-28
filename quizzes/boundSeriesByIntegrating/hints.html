@@ -1,0 +1,8 @@
+<p>Let's set \(a_#{variable} = #{latex(term)}\).</p>
+<p>The integral test does more than just tell us whether a series converges or diverges; it also provides a bound on the value of the series.</p>
+<p>Let's set \(f(x) = #{latex(term_x)}\) so \(a_#{variable} = f(#{variable})\).</p>
+<p>Then the integral test provides the bounds \(\int_{#{initial}}^\infty f(x) \, dx \leq \sum_{#{variable}=#{initial}}^\infty \left( #{latex(term)} \right) \leq a_{#{initial}} + \int_{#{initial}}^\infty f(x) \, dx\).</p>
+<p>In this case, \(\int_{#{initial}}^\infty #{latex(term_x)} \, dx = #{latex(integral_value)}\).</p>
+<p>So we have that \(#{latex(integral_value)} \leq \sum_{#{variable}=#{initial}}^\infty a_{#{variable}} \leq a_{#{initial}} + #{latex(integral_value)}\).</p>
+<p>Since \(a_{#{initial}} = #{latex(initial_value)}\), we further have that \(#{latex(integral_value)} \leq \sum_{#{variable}=#{initial}}^\infty a_{#{variable}} \leq #{latex(initial_value)} + #{latex(integral_value)} = #{latex(initial_value + integral_value)}\).</p>
+<p>In other words, the value of the series is in the interval \(\left[#{latex(integral_value)}, #{latex(integral_value+initial_value)}\right]\).</p>

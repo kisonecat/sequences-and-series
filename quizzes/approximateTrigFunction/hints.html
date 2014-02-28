@@ -1,0 +1,13 @@
+<p>Let \(f(x) = \sin x\).</p>
+<p>Recall that \(f(x) = \sum_{n=0}^\infty \frac{(-1)^n x^{2n+1}}{(2n+1)!}\) for all \(x\).</p>
+<p>Then \(f(x) = \left(\sum_{n=0}^{N} \frac{(-1)^n x^{2n+1}}{(2n+1)!}\right) + R_{2N+2}(x)\) for some remainder \(R_{2N+2}(x)\).</p>
+<p>You might be wondering why the remainder term is \(R_{2N+2}(x)\) and not \(R_{2N+1}(x)\).</p>
+<p>This is a little trick: since the coefficient on \(x^{2n+2}\) ends up being zero, we might as well calculate the remainder as if we had summed through the \(0 \cdot x^{2n+2}\) term, since that improves our estimate a bit.</p>
+<p>In any case, by Taylor's theorem (or perhaps more accurately, Lagrange's remainder formula) the remainder can be related to a high derivative of the function elsewhere.</p>
+<p>In particular, \(R_{2N+2}(x) = \frac{f^{(2N+3)}(z)}{(2N+3)!} x^{2N+3}\) for some \(z \in (0,x)\).</p>
+<p>But all the derivatives of sine are \(\pm \cos x\) or \(\pm \sin x\), so regardless of \(N\) and \(z\), we know that \(|f^{(2N+3)}(z)| \leq 1\).</p>
+<p>Consequently, \(|R_{2N+2}(x)| \leq \frac{x^{2N+3}}{(2N+3)!}\).</p>
+<p>In this case, \(x = #{latex(the_point)}\) and we are desiring an answer within \(#{latex(goal_accuracy)}\).</p>
+<p>So we need to choose \(N\) large enough that \(\frac{\left(#{latex(the_point)}\right)^{2N+3}}{(2N+3)!} \leq #{latex(goal_accuracy)}\).</p>
+<p>Some trial and error reveals that \(N = 1\) is big enough.</p>
+<p>With an error of no more than \(#{latex(goal_accuracy)}\), we can approximate \(\sin \left(#{latex(the_point)}\right)\) by \(#{latex(the_point)} - \frac{1}{6} \left(#{latex(the_point)}\right)^3 = #{latex(rational_answer)}\).</p>

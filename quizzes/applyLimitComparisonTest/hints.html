@@ -1,0 +1,14 @@
+<p>Consider how the largest power in the numerator compares to the largest power in the denominator.</p>
+<p>The largest power in the numerator is #{latex(numerator_power)}.</p>
+<p>The largest power in the denominator is #{latex(denominator_power)}.</p>
+<p>We will apply the limit comparison test.</p>
+<p>Set \(a_{#{variable}} = #{latex(term)}\).</p>
+<p>Set \(b_{#{variable}} = #{latex(1/variable**(total_power))}\).</p>
+<p>Consider \(\lim_{n\to \infty} a_n/b_n\).</p>
+<p>In this case, \(\lim_{n\to \infty} a_n/b_n = #{latex(term)} \cdot \frac{#{latex(variable**(total_power))}}{1}\).</p>
+<p>And so, \(\lim_{n\to \infty} a_n/b_n = L = #{latex(limit(numerator_term * var('x')**total_power/denominator_term,x=oo))}\).</p>
+<p>Because \(L = #{latex(limit(numerator_term * x**total_power/denominator_term,x=oo))} > 0\), we may conclude that \(\sum_{#{variable}=#{initial}}^\infty a_{#{variable}}\) and \(\sum_{#{variable}=#{initial}}^\infty b_{#{variable}}\) either both converge or both diverge.</p>
+<p condition="total_power <= 1">The series \(\sum_{#{variable}=#{initial}}^\infty b_{#{variable}}\) diverges by \(p\)-series test.</p>
+<p condition="total_power <= 1">So the series \(\sum_{#{variable}=#{initial}}^\infty a_{#{variable}}\) diverges, too, by the Limit Comparison Test.</p>
+<p condition="total_power > 1">The series \(\sum_{#{variable}=#{initial}}^\infty b_{#{variable}}\) converges by \(p\)-series test.</p>
+<p condition="total_power > 1">So the series \(\sum_{#{variable}=#{initial}}^\infty a_{#{variable}}\) converges, too, by the Limit Comparison Test.</p>

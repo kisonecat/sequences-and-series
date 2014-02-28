@@ -1,0 +1,11 @@
+<p>Let \(a_{#{variable}} = #{latex(term_coeff)}\), so the given series is \(\sum_{#{variable}=#{initial}}^\infty a_{#{variable}} x^{#{variable}}\).</p>
+<p>For the ratio test, consider \(\lim_{#{variable} \to \infty} \frac{|a_{#{variable}+1}|}{|a_{#{variable}}|}\).</p>
+<p>We want this limit to be less than one to get absolute convergence.</p>
+<p>In this case, \(\lim_{#{variable} \to \infty} \frac{|a_{#{variable}+1} x^{#{variable}+1}|}{|a_{#{variable}} x^{#{variable}}|} = \lim_{#{variable} \to \infty} \left| \frac{#{latex(term_coeff_x(x=variable+1))}}{#{latex(term_coeff_x(x=variable))}} \right| \cdot \left| x \right|\).</p>
+<p>Simplifying, \(\lim_{#{variable} \to \infty} \frac{|a_{#{variable}+1} x^{#{variable}+1}|}{|a_{#{variable}} x^{#{variable}}|} = \lim_{#{variable} \to \infty} \left| #{latex( simplify((term_coeff_x(x=variable+1)) / (term_coeff_x(x=variable))) )} \right| \cdot \left| x \right|\).</p>
+<p>Multiply the numerator and denominator by \(1/#{the_power}^#{variable}\).</p>
+<p>Then \(\lim_{#{variable} \to \infty} \frac{|a_{#{variable}+1} x^{#{variable}+1}|}{|a_{#{variable}} x^{#{variable}}|} = \lim_{#{variable} \to \infty} \left| 
+\frac{#{latex(simplify(expand(simplify((term_coeff_x(x=variable+1)) / (term_coeff_x(x=variable))).numerator() * the_power**(-variable))))}}{#{latex(simplify(expand(simplify((term_coeff_x(x=variable+1)) / (term_coeff_x(x=variable))).denominator() * the_power**(-variable))))}} \right| \cdot \left| x \right|\).</p>
+<p>So \(\lim_{#{variable} \to \infty} \frac{|a_{#{variable}+1} x^{#{variable}+1}|}{|a_{#{variable}} x^{#{variable}}|} = #{latex( abs(limit(simplify((term_coeff_x(x=var('x')+1)) / (term_coeff_x(x=var('x')))),x=oo) ))} \cdot \left| x \right|\).</p>
+<p>Therefore the limit is less than one when \(\left| x \right| &lt; #{latex( QQ(1) / abs(limit(simplify((term_coeff_x(x=var('x')+1)) / (term_coeff_x(x=var('x')))),x=oo) ))}\).</p>
+<p>So the radius of convergence is \(#{latex(radius_of_convergence)}\).</p>

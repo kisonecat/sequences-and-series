@@ -4,6 +4,64 @@
 
 <p id="week-summary">In this fifth week, we study power series.</p>
 
-<p>Material for week five will be posted around 10:00am Eastern on <%= WEEK_STARTS[4].strftime('%B %e, %Y').strip %>.  This will be a particularly exciting week, since we will be able to think about both functions and series.</p>
+<p>Last week, in <a href="/sequence-001/wiki/view?page=week4">Week&nbsp;4</a>, we considered alternating series and the limit comparison test; this week, we will consider <%= linkto_video('week5-welcome','power series') %>.  Up until now, we had been considering series one at a time; with power series, we are considering a whole family of series, namely \[\sum_{n=0}^\infty a_n x^n\] which depend on a parameter \(x\).  They are like polynomials, so they are easy to work with.  And yet, lots of functions we care about&mdash;like \(e^x\)&mdash;can be represented as power series, so power series bring the relaxed atmosphere of polynomials to the harder realm of functions like \(e^x\).</p>
+
+<p>We are almost done!  In Week&nbsp;6, we wrap up the course with Taylor series, which are really a special case of power series.  So if you fall in love with power series, there is more to come.  And if you don't like power series, well, there isn't much left!  Either way, hang in there.  If you have any questions or concerns about anything at all, I hope you will <a href="/sequence-001/forum/index"><i class="icon-comments"></i>&nbsp;write in the forum</a>.  I really enjoy being able to chat with you; I know posting in the forum takes time, so I appreciate your taking the time to write.</p>
+
+<hr/>
+
+<h4>Where does a power series converge?</h4>
+
+<p>An introduction to power series can be found in <%= linkto_textbook('chapter:power-series') %>.</p>
+
+<p>We have long been interested in the question of whether a single series converges.  A power series puts a different spin on the question &ldquo;does it converge?&rdquo;  Since a power series has the form \(\sum_{n=0}^\infty a_n x^n\), we should ask not just whether it converges, but <em>where</em> it converges, meaning for which values of \(x\) does the power series converge?  The collection of all the real numbers \(x\) for which the given power series converges is called the <%= linkto_video('interval-of-convergence','interval of convergence') %> for that power series.</p>
+
+<p>Power series have remarkably nice convergence properties.  For example, <%= linkto_video('power-series-converge-absolutely','when power series converge, they usually converge absolutely') %>.  Bad things can happen <%= linkto_video('half-open-interval-of-convergence','at the endpoints') %>, meaning that although absolute convergence is possible at the endpoints, it is also possible that the power series might diverge or conditionally converge at an endpoint.</p>
+
+<hr/>
+
+<h4>What is the radius of convergence?</h4>
+
+<p>For a power series of the form \(\sum_{n=0}^\infty a_n x^n\), the interval of convergence necessarily looks like \((-R,R)\) or \([-R,R]\) or maybe a half-open interval like \((-R,R]\) or \([-R,R)\).  That number, \(R\), is called the <%= linkto_video('radius-of-convergence','radius of convergence') %>.  It is possible to say that \(R = \infty\), meaning that the power series <%= linkto_video('infinite-radius','converges everywhere') %>.  On the other hand, it is also possible to find a situation where \(R = 0\), meaning that the power series <%= linkto_video('radius-zero','converges only at the origin') %>.</p>
+
+<p>You can find more on convergence of power series in <%= linkto_textbook('section:convergence-of-power-series') %>.</p>
+
+<hr/>
+
+<h4>What if I'd like a power series in terms of \((x-c)\)?</h4>
+
+<p>So far, we have been considering power series of the form \(\sum_{n=0}^\infty a_n x^n\), but it can be helpful to consider the case \(\sum_{n=0}^\infty a_n (x-c)^n\), which we think of as a <%= linkto_video('centered-around-a','power series centered around a different point') %>.  This is further discussed in <%= linkto_textbook('section:power-series-centered-around-a') %>.</p>
+
+<hr/>
+
+<h4>Can I do calculus with power series?</h4>
+
+<p>When thinking about power series, lots of intuitive facts can be guessed by thinking about polynomials.  Just like polynomials, it is possible to <%= linkto_video('differentiate-power-series','differentiate a power series term-by-term') %> and also to <%= linkto_video('integrate-power-series','integrate a power series term-by-term') %>.  You can find more on this in <%= linkto_textbook('section:calculus-with-power-series') %>.</p>
+
+<p>Calculus interacts very nicely with power series.  Think about the function \(f(x) = \sum_{n=0}^\infty \frac{x^n}{n!}\).  It turns out that power series converges for all \(x\), and because we can differentiate term-by-term, we can show that \(f'(x) = f(x)\), meaning it is its own derivative.  This is <%= linkto_video('evidence-for-exp','the beginning of the argument') %> that \(f(x)\) is actually \(e^x\), another function which is its own derivative.  It would have been hard to show that \(\sum_{n=0}^\infty \frac{1}{n!} = e\), but by fitting that isolated fact into the family of facts \(\sum_{n=0}^\infty \frac{x^n}{n!} = e^x\), it is much easier to understand what is going on.  You can keep playing this game, too: since \(e^x \cdot e^x = e^{2x}\), consider what happens if you try to expand \(\left(\sum_{n=0}^\infty \frac{x^n}{n!}\right) \cdot \left(\sum_{n=0}^\infty \frac{x^n}{n!}\right)\).  Can you <%= linkto_video('multiply-power-series','multiply power series') %>?</p>
+
+<p>And this technique is useful for more than just \(e^x\).  Starting from a series that we know, like \(\frac{1}{1-x} = \sum_{n=0}^\infty x^n\) for \(|x| &lt; 1\), we can integrate and differentiate to <%= linkto_video('transform-geometric-series','build power series for other functions') %>.</p>
+
+<hr/>
+
+<h4>What is a formula for the Fibonacci numbers?</h4>
+
+<p>Thinking about power series brings us naturally into the topic of <%= wikipedia('Generating_function', 'generating functions') %>.  Let \((a_n)\) be the sequence of <%= wikipedia('Fibonacci_number','Fibonacci numbers')%>, and consider \(f(x) = \sum_{n=0}^\infty a_n x^n\), the power series with coefficients equal to the Fibonacci numbers.  By <%= linkto_video('fibonacci-formula','messing around with this power series')%>, we will be able to write down a formula for \(a_n\) in terms of \(n\) and, surprisingly, \(\sqrt{5}\).  The <%= wikipedia('Golden_ratio','golden ratio')%> makes a cameo, too.</p>
+
+<hr/>
+
+<h4>By the end of the week&hellip;</h4>
+
+<p>As always, I have some learning outcomes for you to achieve.  By the end of the fifth week, I am hoping that you'll have the ability to</p>
+<ul>
+<li>identify a <%= linkto_video('week5-welcome','power series') %>,</li>
+<li>find the <%= linkto_video('interval-of-convergence','interval of convergence')%> of a power series,</li>
+<li>find the <%= linkto_video('radius-of-convergence','radius of convergence')%> of a power series,</li>
+<li>differentiate and integrate a power series <%= linkto_video('differentiate-power-series','term-by-term')%>,</li>
+<li>transform a <%= linkto_video('transform-geometric-series','geometric series')%> to find a power series representation,</li>
+<li>build a new power series by <%= linkto_video('multiply-power-series','multiplying two power series')%>, and</li>
+<li>approximate the <%= wikipedia('Error_function', 'Gauss error function')%> by <%= linkto_video('integrate-power-series','integrating a power series') %>.</li>
+</ul>
+<p>As soon as you have some free time, you should start <a href="/sequence-001/quiz/attempt?quiz_id=81"><i class="icon-pencil"></i>&nbsp;working on the homework questions</a>.  The homework is &ldquo;formative assessment&rdquo; meaning I intend the homework as a teaching tool&mdash;and not to determine your current or future success as a mathematician.  It is, nevertheless, worth points, which I hope will both incentivize and reward you for working on the homework exercises.  As always, use the hints.  Discuss with others on the forum.  With work, you will make it!</p>
 
 <%= week_pager(5) %>

@@ -2,9 +2,57 @@
 
 <%= week_title( 6, "Taylor series" ) %>
 
-<p id="week-summary">In this last week, we study Taylor series.</p>
+<p id="week-summary">In this last week, we introduce Taylor series.</p>
 
-<p>Taylor series are remarkably powerful, and are certainly a worthy goal of our time together.  Material for this last week will be posted around 10:00am Eastern on <%= WEEK_STARTS[5].strftime('%B %e, %Y').strip %>.  Then on <%= WEEK_ENDS[5].strftime('%B %e, %Y').strip %> we will have our final exam.</p>
+<p>Last week, in <a href="/sequence-001/wiki/view?page=week5">Week&nbsp;5</a>, we met power series.  The big change for us was that, instead of considering a single series, last week we started considering series like \(\sum_{n=0}^\infty a_n x^n\) that included a parameter \(x\).  We learned how to recognize some power series as well-known functions for certain values of \(x\), like \(\sum_{n=0}^\infty x^n = \frac{1}{1-x}\) when \(|x| &lt; 1\).  You are perhaps wondering <%= linkto_video('week6-welcome','what we will be studying this week.') %>.  It's time for Taylor series.  Instead of starting with a power series and finding a nice description of the function it represents, we will start with a function, and try to find a power series for it.  There is no guarantee of success!  But incredibly, many of our favorite functions will have power series representations.  Sometimes dreams come true.</p>
+
+<P>In many ways, there are many things that will be left unsaid.  I hope this brief introduction to Taylor series will whet your appetite to learn more calculus.  If you have any questions or concerns about the content or the course, I also hope you will <a href="/sequence-001/forum/index"><i class="icon-comments"></i>&nbsp;post your questions and concerns in the forum</a>.  I like being able to chat about mathematics with you.  And I know posting in the forum takes time, so I am very appreciative of your taking the time to post.</p>
+
+<p>Finally, this is the last week of the course.  Let me tell you that it has been my honor and my pleasure to be one of your guides through mathematics.  I really enjoyed putting this course together, and I very much look forward to more.  I hope we will meet again.</p>
+
+<hr/>
+
+<h4>What are Taylor series?</h4>
+
+<p>You can read about Taylor series in <%= linkto_textbook('chapter:taylor-series') %>, but there are really many perspectives from which one may approach Taylor series.  One approach goes by trying to produce &ldquo;higher order&rdquo; versions of some of the ideas and theorems from Calculus One.  For instance, in Calculus One, we had the idea of a <%= wikipedia('Linear_approximation','linear approximation') %>, which we can improve to <%= linkto_video('quadratic-approximation', 'higher order polynomial approximations') %>.  You could work out these approximations <%= linkto_video('taylor-series', 'around the origin' ) %> or <%= linkto_video('taylor-series-center-a', 'around some other point' ) %>.</p>
+
+<p>In <%= linkto_textbook('section:finding-taylor-series') %>, you can learn how to find the Taylor series for a function by differentiating repeatedly.  Many familiar functions have nice Taylor series expansions, including <%= linkto_video('series-for-sine', 'trigonometric functions like sine' ) %>.</p>
+
+<hr/>
+<h4>What is Taylor's theorem?</h4>
+
+<p>Once we have written down these higher order approximations (that is, a Taylor series) we ought to address whether or not our supposed approximation is any good!  In <%= linkto_textbook('section:taylors-theorem') %>, you will find a statement of (one form of) Taylor's theorem and its proof.  The big deal is that <%= linkto_video('taylors-theorem', 'this theorem lets us conclude that the power series approximation actually converges to the function we are studying' ) %>.  You can think of it as a <%= linkto_video('taylor-as-mvt', 'much fancier version of the mean value theorem from Calculus One') %>.</p>
+
+<p>There are still some subtle issues with the <%= linkto_video('real-analytic', 'radius of convergence' ) %>.</p>
+
+<hr/>
+<h4>What can I do with this, in practice?</h4>
+
+<p>There are many great things that you can achieve by thinking about Taylor series.  One of these is to <%= linkto_video('approximate-cosine', 'approximate transcendental functions like cosine' ) %> on an entire interval.  Another useful trick&mdash;which really boils down to thinking about <%= wikipedia('Big_O_notation', 'big O notation') %>&mdash;is to <%= linkto_video('taylor-for-limits', 'calculate some tricky limits') %> by making use of Taylor series.</p>
+
+<hr/>
+<h4>What can I do with this, in theory?</h4>
+
+<p>The theory of Taylor series sheds some light on <%= linkto_video('real-analytic', 'just how nice some functions really are' ) %>.  In particular, I like to say that <%= wikipedia('Analytic_function','analytic functions') %> sort of <%= linkto_video('analytic-like-holograms', 'resemble holograms' ) %>.</p>
+
+<hr/>
+
+<h4>By the end of the week&hellip;</h4>
+
+<p>Related to Taylor series, I have some learning outcomes for you.  By the end of the sixth week, I would like you to be able to</p>
+<ul>
+<li>find the first few terms of a <%= linkto_video('taylor-series', 'Taylor series') %>,</li>
+<li>compute the Taylor series for a polynomial <%= linkto_video('taylor-series-center-a', 'around some other point') %>,</li>
+<li>recall the <%= linkto_video('series-for-sine', 'Taylor series for common functions') %>,</li>
+<li>evaluate a <%= linkto_video('taylor-for-limits', 'limit') %> by considering the Taylor series,</li>
+<li>bound the value of a function using <%= linkto_video('taylor-as-mvt', "Taylor's theorem" )%>,</li>
+<li>approximate the <%= linkto_video('approximate-cosine', 'value of sine')%>,</li>
+<li>substitute a <%= linkto_video('taylor-for-limits', 'Taylor series for a trigonometric function') %> into a polynomial,</li>
+</ul>
+<p>As soon as you have some free time, you should start <a href="/sequence-001/quiz/attempt?quiz_id=83"><i class="icon-pencil"></i>&nbsp;working on this last set of homework questions</a>.  The homework is &ldquo;formative assessment&rdquo; meaning I intend the homework as a teaching tool&mdash;and not to determine your current or future success as a mathematician.  It is, nevertheless, worth 20&nbsp;points, which I hope will both incentivize and reward you for working on the homework exercises.  As always, use the hints.  Discuss with others on the forum.  There are often new ideas covered through the homework problems.  With work, you will make it!</p>
+
+<h4>The final exam</h4>
+
+<p>On <%= WEEK_ENDS[5].strftime('%B %e, %Y').strip %>, I will post our final exam.  You will have until <%= (WEEK_ENDS[5] + 7).strftime('%B %e, %Y').strip %> to finish the exam.  I will have your certificates awarded before the end of November.  It should be a nice way to finish off our six week journey.</p>
 
 <%= week_pager(6) %>
-

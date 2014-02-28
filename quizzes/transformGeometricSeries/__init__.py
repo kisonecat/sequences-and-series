@@ -2,11 +2,12 @@ from questions import *
 
 class Question(RandomizedQuestion):
     module = __file__
-#    video = ''
-    forum = 0
+    video = 'transform-geometric-series'
+    forum = 10159
     title = 'transform a geometric series to find a power series representation'
 
     def good_enough(self):
+        self.verify()
         return True
 
     def perturb(self):
@@ -21,7 +22,14 @@ class Question(RandomizedQuestion):
 
         nn = var('n')
         self.nn = nn
-        self.the_term = nn*self.the_power * self.the_coefficient**nn * x**(nn*self.the_power-1)
+        self.the_term = nn*self.the_power * self.the_coefficient**(nn*self.the_power) * x**(nn*self.the_power-1)
+
+        c = prod([e for e in (self.the_term).operands() if e.is_numeric()])
+        self.c = c
+
+        self.the_first_function = self.the_first_function / c
+        self.the_function = self.the_function / c
+        self.the_term = self.the_term / c
 
     def __init__(self):
         variables = ['n','n','n','n','n','n','n','n','m','m','m','m','m','k','k','k','k']
@@ -30,7 +38,7 @@ class Question(RandomizedQuestion):
         super(Question, self).__init__()
 
     def verify(self):
-        assert( sum(self.answer(),self.nn,0,oo) == self.the_function )
+        assert( sum(self.answer(),self.nn,1,oo) == self.the_function )
         return True
 
     def answer(self):

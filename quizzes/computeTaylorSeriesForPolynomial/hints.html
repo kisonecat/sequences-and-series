@@ -1,0 +1,16 @@
+<p>If I differentiate a polynomial enough times, I get zero.</p>
+<p>So if I compute the Taylor series for a polynomial, I just get another polynomial.</p>
+<p>That may seem pointless, but imagine writing down the Taylor series centered not at \(0\), but instead centered at \(x = #{latex(the_center)}\).</p>
+<p>Then we will have written down the same polynomial, but in terms of \((#{latex(var('x') - the_center)})\).</p>
+<p>Recall that the Taylor series for \(p(x)\) centered at \(#{latex(the_center)}\) is given by \[\sum_{n=0}^\infty \frac{p^{(n)}(#{latex(the_center)})}{n!} \left(#{latex(var('x') - the_center)}\right)^n.\]</p>
+<p>Now the zeroth derivative is just the original function, so we compute \(p^{(0)}(#{latex(the_center)}) = #{latex(the_polynomial(x=var('z',latex_name="\\left(" + latex(the_center) + "\\right)")))} = #{latex(the_polynomial(x=the_center))}\).</p>
+<p>We differentiate to find \(p'(x) = #{latex(derivative(the_polynomial,x))}\).</p>
+<p>Therefore \(p'(#{latex(the_center)}) = #{latex(derivative(the_polynomial,x)(x=var('z',latex_name="\\left(" + latex(the_center) + "\\right)")))} = #{latex(derivative(the_polynomial,x)(x=the_center))}\).</p>
+<p>Differentiate again to find \(p^{(2)}(x) = #{latex(derivative(derivative(the_polynomial,x),x))}\).</p>
+<p>Therefore \(p^{(2)}(#{latex(the_center)}) = #{latex(derivative(derivative(the_polynomial,x),x)(x=var('z',latex_name="\\left(" + latex(the_center) + "\\right)")))} = #{latex(derivative(derivative(the_polynomial,x),x)(x=the_center))}\).</p>
+<p>Differentiate one more time to find \(p^{(3)}(x) = #{latex(derivative(derivative(derivative(the_polynomial,x),x),x))}\).</p>
+<p>That is easy!  So \(p^{(3)}(#{latex(the_center)}) = #{latex(derivative(derivative(derivative(the_polynomial,x),x),x)(x=the_center))}\).</p>
+<p>Now we can put these facts into the formula for the Taylor series centered at \(#{latex(the_center)}\).</p>
+<p>We have \(p(x) = \frac{p^{(3)}(#{latex(the_center)})}{6} \left(#{latex(var('x') - the_center)}\right)^3 + \frac{p^{(2)}(#{latex(the_center)})}{2} \left(#{latex(var('x') - the_center)}\right)^2 + p^{(1)}(#{latex(the_center)}) \left(#{latex(var('x') - the_center)}\right) + p(#{latex(the_center)})\).</p>
+<p>Substituting what we found, we get \(p(x) = \frac{#{latex(derivative(derivative(derivative(the_polynomial,x),x),x)(x=the_center))}}{6} \left(#{latex(var('x') - the_center)}\right)^3 + \frac{#{latex(derivative(derivative(the_polynomial,x),x)(x=the_center))}}{2} \left(#{latex(var('x') - the_center)}\right)^2 + #{latex(derivative(the_polynomial,x)(x=the_center))} \left(#{latex(var('x') - the_center)}\right) + #{latex(the_polynomial(x=the_center))}\).</p>
+<p>And therefore, \(p(x) = #{latex(taylor(the_polynomial,x,the_center,the_degree + 1)(x=x+the_center)(x=var("y",latex_name="\\left(" + latex(x-the_center) + "\\right)")))}\).</p>

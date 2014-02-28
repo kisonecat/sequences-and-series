@@ -10,7 +10,7 @@ class Question(RandomizedQuestion):
         numerator = randint(1,denominator - 1)
         sign = 2*randint(0,1) - 1
         self.ratio = Rational((sign * numerator, denominator))
-        self.initial = randint(0,5)
+        self.initial = randint(2,5)
 
     def __init__(self):
         self.perturb()

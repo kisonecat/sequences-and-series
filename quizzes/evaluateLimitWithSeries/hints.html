@@ -1,0 +1,12 @@
+<p>Let's work out the first few terms of the Taylor series for the pieces we see.</p>
+<p>First of all, \(#{latex(some_functions[0])} = #{latex(the_ring(taylor(some_functions[0],x,0,5)) + O(xx**5))}\).</p>
+<p>You don't really have to compute as many terms as I just did.</p>
+<p>And \(#{latex(some_functions[1])} = #{latex(the_ring(taylor(some_functions[1],x,0,5)) + O(xx**5))}\).</p>
+<p>Consequently, \(#{latex(some_functions[0] + some_functions[1])} = #{latex(the_ring(taylor(some_functions[0] + some_functions[1],x,0,3)) + O(xx**3))}\).</p>
+<p>Therefore \(\left(#{latex(some_functions[0] + some_functions[1])}\right)^2 = #{latex(the_ring(taylor((some_functions[0] + some_functions[1])**2,x,0,3)) + O(xx**3))}\).</p>
+<p>We also know \(#{latex(some_functions[2])} = #{latex(the_ring(taylor(some_functions[2],x,0,5)) + O(xx**5))}\).</p>
+<p>And \(#{latex(some_functions[3])} = #{latex(the_ring(taylor(some_functions[3],x,0,5)) + O(xx**5))}\).</p>
+<p>Consequently, \(#{latex(some_functions[2] * some_functions[3])} = #{latex(the_ring(taylor(some_functions[2] + some_functions[3],x,0,3)) + O(xx**3))}\).</p>
+<p>But that means we are considering \[\lim_{x \to 0} \frac{#{latex(the_ring(taylor(the_numerator,x,0,3)) + O(xx**3))}}{#{latex(the_ring(taylor(the_denominator,x,0,3)) + O(xx**3))}}\].</p>
+<p>Multiplying the numerator and denominator by \(1/x^2\), we are considering \[\lim_{x \to 0} \frac{#{latex(the_ring(taylor(the_numerator/(x**2),x,0,3)) + O(xx))}}{#{latex(the_ring(taylor(the_denominator/(x**2),x,0,3)) + O(xx))}}\].</p>
+<p>Consequently, this limit equals \(#{latex(the_answer)}\).</p>

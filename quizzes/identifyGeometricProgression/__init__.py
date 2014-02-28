@@ -9,6 +9,7 @@ class Question(RandomizedQuestion):
     title = 'identify a geometric progression'
     video = 'geometric-progression'
     forum = 10059
+    textbook = 'subsection:geometric-sequences'
     def __init__(self):
         initial_value = randint(1,5)
         common_ratio = randint(2,5) * ((-1)**randint(0,1))

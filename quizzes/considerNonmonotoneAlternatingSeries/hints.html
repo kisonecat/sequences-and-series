@@ -1,0 +1,22 @@
+<p>We might begin by applying the limit test.</p>
+<p>Note that \(\lim_{#{variable} \to \infty} a_{#{variable}} = 0\).</p>
+<p>So the limit test is inconclusive; we cannot immediately conclude that the series diverges, but with more work, we may yet find the series converges or diverges.</p>
+<p>The next easiest thing to consider is absolute convergence.</p>
+<p>Let us consider whether the series \(\sum_{#{variable}=#{initial}}^\infty \left| a_{#{variable}} \right| \) converges or diverges.</p>
+<p condition="q > 1">If we consider the even terms, \(\sum_{#{variable}} \left| a_{2#{variable}} \right|  = \sum_{#{variable}} #{latex(b_term_x(x=variable) * sign(b_term_x.numerator()))} \) which is a \(p\)-series with \(p = #{latex(q)}\) so it converges.</p>
+<p condition="p > 1">If we consider the odd terms, \(\sum_{#{variable}} \left| a_{2#{variable}-1} \right|  = \sum_{#{variable}} #{latex(a_term_x(x=variable) * sign(a_term_x.numerator()))} \) which is a \(p\)-series with \(p = #{latex(p)}\) so it converges.</p>
+<p condition="q <= 1">But if we consider the even terms, \(\sum_{#{variable}} \left| a_{2#{variable}} \right|  = \sum_{#{variable}} #{latex(b_term_x(x=variable) * sign(b_term_x.numerator()))} \) which is a \(p\)-series with \(p = #{latex(q)}\) so it diverges.</p>
+<p condition="p <= 1">But if we consider the odd terms, \(\sum_{#{variable}} \left| a_{2#{variable}-1} \right|  = \sum_{#{variable}} #{latex(a_term_x(x=variable) * sign(a_term_x.numerator()))} \) which is a \(p\)-series with \(p = #{latex(p)}\) so it diverges.</p>
+<p condition="p > 1 and q > 1">So the series \(\sum_{#{variable}=#{initial}}^\infty \left| a_{#{variable}} \right| \) converges.</p>
+<p condition="p > 1 and q > 1">This means the original series \(\sum_{#{variable}=#{initial}}^\infty a_{#{variable}} \) converges absolutely, and so it, too, converges.</p>
+<p condition="not (p > 1 and q > 1)">So the series \(\sum_{#{variable}=#{initial}}^\infty \left| a_{#{variable}} \right| \) diverges.</p>
+<p condition="not (p > 1 and q > 1)">This means the series \(\sum_{#{variable}=#{initial}}^\infty a_{#{variable}} \) does not converge absolutely, but it may end up that it converges conditionally.  Let's see!</p>
+<p condition="not (p > 1 and q > 1)">You might be tempted at this point to apply the alternating series test.</p>
+<p condition="not (p > 1 and q > 1)">But to apply the alternating series test requires that \(|a_{#{variable}}|\) be decreasing.</p>
+<p condition="not (p > 1 and q > 1)">This is not the case, so we cannot use the alternating series test.</p>
+<p condition="not (p > 1 and q > 1)">The only technique that remains is to consider the sequence of partial sums to show divergence (or convergence) by hand.</p>
+<p condition="p > 1 and q <= 1">In this case, the sum of the odd terms is bounded (since the odd terms form a convergent \(p\)-series with \(p = #{latex(p)}\)), but the sum of the even terms is unbounded (since the even terms form a divergent \(p\)-series with \(p = #{latex(q)}\)).</p>
+<p condition="p <= 1 and q > 1">In this case, the sum of the even terms is bounded (since the even terms form a convergent \(p\)-series with \(p = #{latex(q)}\)), but the sum of the odd terms is unbounded (since the odd terms form a divergent \(p\)-series with \(p = #{latex(q)}\)).</p>
+<p condition="not (p > 1 and q > 1)">So the sequence of partial sums is not bounded.</p>
+<p condition="not (p > 1 and q > 1)">So the sequence of partial sums does not converge.</p>
+<p condition="not (p > 1 and q > 1)">So the original series  \(\sum_{#{variable}=#{initial}}^\infty a_{#{variable}} \) diverges.</p>

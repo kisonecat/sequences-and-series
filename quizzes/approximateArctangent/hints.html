@@ -1,0 +1,12 @@
+<p>Let \(f(x) = \arctan x\).</p>
+<p>We will make use of the fact that \(\frac{d}{dx} \arctan x = \frac{1}{1+x^2}\).</p>
+<p>We know \(\frac{1}{1-x} = \sum_{n=0}^\infty x^n\) for \(|x| &lt; 1\).</p>
+<p>Therefore \(\frac{1}{1-(-x)} = \sum_{n=0}^\infty (-1)^n x^n\) for \(|x| &lt; 1\).</p>
+<p>And so \(\frac{1}{1+x^2} = \sum_{n=0}^\infty (-1)^n x^{2n}\) for \(|x| &lt; 1\).</p>
+<p>Integrating, we find \(\arctan x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n+1}}{2n+1}\) for \(|x| &lt; 1\).</p>
+<p>Plugging in \(x = #{latex(the_point)}\), we find \(\arctan #{latex(the_point)} = \sum_{n=0}^\infty (-1)^n \frac{\left( #{latex(the_point)} \right)^{2n+1}}{2n+1}\).</p>
+<p>Our goal is to estimate this alternating series to within \(#{latex(goal_accuracy)}\).</p>
+<p>Note that the \(n = 2\) term is \( (-1)^2 \frac{\left( #{latex(the_point)} \right)^{2 \cdot 2+1}}{2 \cdot 2 +1} = #{latex( (the_point**5)/5 )}\).</p>
+<p>Moreover, \(#{latex( (the_point**5)/5 )}\) is less than \(#{latex(goal_accuracy)}\).</p>
+<p>Consequently, just the \(n = 0\) and the \(n=1\) will be enough to get an answer accurate to within \(#{latex(goal_accuracy)}\).</p>
+<p>In this case, that means that \(\arctan #{latex(the_point)} \approx #{latex(the_point)} - \frac{\left( #{latex(the_point)} \right)^3}{3} = #{latex(the_point - (the_point**3)/3)}\) with an error of at most  \(#{latex(goal_accuracy)}\).</p>

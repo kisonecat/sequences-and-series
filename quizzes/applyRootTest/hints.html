@@ -1,0 +1,9 @@
+<p>Let's set \(a_#{variable} = #{latex(term)}\).</p>
+<p>This series involves powers of \(#{variable}\), so the ratio test might be helpful.</p>
+<p>So \(\displaystyle\frac{a_{#{variable}+1}}{a_#{variable}} = #{latex((term_x(x=x+1)/term_x)(x=variable))}\).</p>
+<p>That does not look like a particularly fruitful path to go down; perhaps we could try the root test?</p>
+<p>Note that \(\sqrt[#{variable}]{a_{#{variable}}} = \frac{#{latex(numerator_n)}}{#{latex(denominator_n)}}\).</p>
+<p>We calculate \(\lim_{#{variable} \to \infty} \frac{#{latex(numerator_n)}}{#{latex(denominator_n)}} = #{latex(ell)}\).</p>
+<p>So \(L = #{latex(ell)}\).</p>
+<p condition="ell < 1">Since \(L &lt; 1\), we may conclude by the root test that the given series coverges.</p>
+<p condition="ell > 1">Since \(L &gt; 1\), we may conclude by the root test that the given series diverges.</p>
