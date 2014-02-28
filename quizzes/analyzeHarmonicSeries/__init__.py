@@ -5,6 +5,8 @@ class Question(RandomizedQuestion):
     video = 'harmonic-series'
     forum = 10087
     title = 'analyze series similar to the harmonic series'
+    textbook = 'section:harmonic-series'
+
     def good_enough(self):
         return True
 

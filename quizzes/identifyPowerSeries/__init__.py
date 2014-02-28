@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'week5-welcome'
     forum = 10155
     title = 'identify a power series'
+    textbook = 'defn:power-series'
 
     def good_enough(self):
         return True

@@ -5,6 +5,8 @@ class Question(RandomizedQuestion):
     video = 'geometric-series'
     forum = 10083
     title = 'evaluate a geometric series with rational ratio'
+    textbook = 'thm:geometric-series'
+
     def perturb(self):
         denominator = randint(2,10)
         numerator = randint(1,denominator - 1)

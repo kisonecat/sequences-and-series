@@ -5,6 +5,7 @@ class Question(StaticQuestion):
     module = __file__
     title = 'define the value of a series'
     video = 'series-definition'
+    textbook = 'definition:value-of-series'
     question = r'To say that \(\displaystyle\sum_{k=4}^\infty a_k = L\) means what?  In order words, what does it mean to say that the &ldquo;value&rdquo; of a series is \(L\)?'
     correct = r'The sequence of partial sums \(s_n = \displaystyle\sum_{k=4}^n a_k \) converges to \(L\).'
     incorrect = []

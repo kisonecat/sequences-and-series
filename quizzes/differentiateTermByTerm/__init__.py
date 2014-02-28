@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'differentiate-power-series'
     forum = 10158
     title = 'differentiate a power series term-by-term'
+    textbook = 'thm:term-by-term-calculus'
 
     def good_enough(self):
         self.verify()

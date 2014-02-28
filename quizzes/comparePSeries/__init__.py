@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'reciprocal-n-log-n'
     forum = 10119
     title = 'compare a series to a p-series'
+    textbook = 'example:reciprocal-n-squared-log-n'
 
     def good_enough(self):
         for i in range(self.initial,self.initial + 100):

@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'p-series'
     forum = 10118
     title = 'identify a p-series'
+    textbook = 'subsection:p-series'
 
     def good_enough(self):
         # do not want to test on harmonic series

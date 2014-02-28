@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'interval-of-convergence'
     forum = 10156
     title = 'find the interval of convergence of a power series'
+    textbook = 'definition:interval-of-convergence'
 
     def good_enough(self):
         return True

@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'alternating-series-important'
 #    forum = 10187
     title = 'approximate a value of arctangent'
+    textbook = 'example:approximate-alternating-harmonic-series'
 
     def good_enough(self):
         # don't want just a single term to be good enough

@@ -4,6 +4,7 @@ class Question(StaticQuestion):
     module = __file__
     title = 'relate absolute convergence to convergence'
     video = 'absolute-convergence'
+    textbook = 'thm:absolute-convergence-implies-convergence'
     forum = 10143
     question = r'Suppose \((a_n)\) is a sequence involving both positive and negative numbers, and suppose that the series \(\sum_{n=1}^\infty |a_n|\) converges.  What can be known for certain about the series \(\sum_{n=1}^\infty a_n\)?'
     correct = r'The series \(\sum_{n=1}^\infty a_n\) converges.'

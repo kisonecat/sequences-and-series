@@ -5,6 +5,8 @@ class Question(RandomizedQuestion):
     video = 'telescoping-series'
     forum = 10085
     title = 'evaluate a telescoping series'
+    textbook = 'section:telescoping-series'
+
     def perturb(self):
         self.telescope = randint(1,5)/(randint(1,5) * var('x') + randint(1,5))
         self.term = (self.telescope - self.telescope(x=x+1)).simplify_rational()(x=self.variable)

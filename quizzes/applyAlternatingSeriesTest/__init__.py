@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'alternating-series-test'
     forum = 10146
     title = 'apply the alternating series test when appropriate'
+    textbook = 'thm:alternating-series-test'
 
     def good_enough(self):
         return True

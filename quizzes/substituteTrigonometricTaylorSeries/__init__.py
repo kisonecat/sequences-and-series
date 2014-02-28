@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
 #    video = ''
     forum = 0
     title = 'substitute a Taylor series for a trigonometric function into a polynomial'
+    textbook = 'example:substitute-in-polynomial-to-taylor-series'
 
     def good_enough(self):
         return True

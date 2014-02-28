@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'limit-comparison-test'
     forum = 10144
     title = 'apply the limit comparison test to analyze convergence'
+    textbook = 'section:limit-comparison-test'
 
     def perturb(self):
         x = var('x')

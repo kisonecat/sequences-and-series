@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'monotone-important-for-ast'
     forum = 10149
     title = 'consider the alternating series test in a nonmonotone situation'
+    textbook = 'thm:alternating-series-test'
 
     def good_enough(self):
         if self.p > 1 and self.q <= 1:

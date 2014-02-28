@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'ratio-test-one-over-e'
     forum = 10117
     title = 'apply the ratio test on a series involving factorials and powers'
+    textbook = 'example:ratio-test-factorials'
 
     def good_enough(self):
         return self.ell != 1

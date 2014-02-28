@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'taylor-as-mvt'
     forum = 10185
     title = 'bound the value of a function using Taylor\'s theorem'
+    textbook = 'thm:taylors-remainder'
 
     def good_enough(self):
         if self.maximum_possible >= 40:

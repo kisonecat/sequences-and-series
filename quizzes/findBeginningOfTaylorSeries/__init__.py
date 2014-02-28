@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'taylor-series'
     forum = 10181
     title = 'find the first few terms of a Taylor series'
+    textbook = 'example:taylor-series-for-rational-function'
 
     def good_enough(self):
         print self.the_function

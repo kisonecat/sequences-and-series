@@ -5,6 +5,8 @@ class Question(RandomizedQuestion):
     video = 'comparison-test'
     forum = 10088
     title = 'apply the comparison test to analyze convergence'
+    textbook = 'section:comparison-test'
+
     def good_enough(self):
         for i in range(self.cutoff,30):
             if self.numerator(x=i) >= 2**i:

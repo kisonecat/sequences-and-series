@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'taylor-for-limits'
     forum = 10187
     title = 'approximate the value of sine'
+    textbook = 'example:approximate-sin'
 
     def good_enough(self):
         # don't want just a single term to be good enough

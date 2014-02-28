@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'transform-geometric-series'
     forum = 10159
     title = 'transform a geometric series to find a power series representation'
+    textbook = 'example:formula-for-log-three-halves'
 
     def good_enough(self):
         self.verify()

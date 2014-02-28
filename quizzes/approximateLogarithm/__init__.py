@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'e-is-irrational'
     forum = 10148
     title = 'approximate the value of a natural logarithm'
+    textbook = 'example:approximate-alternating-harmonic-series'
 
     def good_enough(self):
         wrong_error = abs(self.actual_value - sum([self.term_x(x=i) for i in range(self.initial,self.need_terms)]))

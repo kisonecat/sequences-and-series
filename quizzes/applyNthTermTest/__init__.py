@@ -5,6 +5,8 @@ class Question(RandomizedQuestion):
     video = 'nth-term-test'
     forum = 10086
     title = 'apply the limit test for divergence'
+    textbook = 'example:sum-n-over-n-plus-one-diverges'
+
     def good_enough(self):
         bad_points = [QQ(e.rhs()) for e in solve(self.denominator==0,x)]
         if any([p.is_integral() for p in bad_points]):

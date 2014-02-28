@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'root-test-useless'
     forum = 10120
     title = 'apply the root test to analyze convergence'
+    textbook = 'example:root-test-five-to-n-over-n-to-n'
 
     def good_enough(self):
         return self.ell != 1

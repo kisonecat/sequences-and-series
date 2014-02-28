@@ -5,6 +5,7 @@ class CosineQuestion(StaticQuestion):
     video = 'series-for-sine'
     forum = 10183
     hint_filename = 'cosine-hints.html'
+    textbook = 'example:taylor-series-for-sine'
     title = 'recall the Taylor series for cosine'
     question = 'Consider the function \(f(x) = \cos x\).  Which of the following is the Taylor series for \(f\) around zero?'
     correct = r'\(\sum_{n=0}^\infty \frac{(-1)^n}{(2n)!} x^{2n}\)'

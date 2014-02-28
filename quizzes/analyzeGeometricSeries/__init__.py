@@ -5,6 +5,8 @@ class Question(RandomizedQuestion):
     video = 'geometric-series'
     forum = 10084
     title = 'analyze the convergence of a geometric series'
+    textbook = 'section:geometric-series'
+
     def good_enough(self):
         return self.ratio != 1
 

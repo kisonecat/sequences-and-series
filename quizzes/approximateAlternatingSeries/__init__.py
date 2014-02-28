@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'alternating-series-important'
     forum = 10147
     title = 'approximate the value of an alternating series'
+    textbook = 'thm:alternating-series-error-bounds'
 
     def good_enough(self):
         wrong_error = abs(self.actual_value - sum([self.term_x(x=i) for i in range(self.initial,self.need_terms)]))

@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'radius-of-convergence'
     forum = 10157
     title = 'find the radius of convergence of a power series'
+    textbook = 'definition:radius-of-convergence'
 
     def good_enough(self):
         if self.term_coeff_x(x=1) == 0:

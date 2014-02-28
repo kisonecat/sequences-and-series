@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'taylor-series-center-a'
     forum = 10182
     title = 'compute the Taylor series for a polynomial around some other point'
+    textbook = 'example:taylor-series-centered-at-minus-two'
 
     def good_enough(self):
         return True

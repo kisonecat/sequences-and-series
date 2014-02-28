@@ -5,6 +5,7 @@ class Question(RandomizedQuestion):
     video = 'integral-test'
     forum = 10121
     title = 'bound the value of a series by using the integral test'
+    textbook = 'example:approximate-sum-one-over-n-squared'
 
     def good_enough(self):
         return (self.integral_value != self.initial_value) and (len(self.distractors(0)) >= 2)
