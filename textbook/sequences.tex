@@ -1348,12 +1348,11 @@ Show that the sequence $a_n = \ds\frac{n!}{n^n}$ converges.
 \begin{solution}
   Let's get an idea of what is going on by computing the first few terms.
 % print(join(['a_' + str(k) + '=' + latex(f(x=k)) + ' ' + '\\approx ' + str(n(f(x=k),digits=5)) for k in range(1,9)],',\quad '))
-$$
-a_1= 1,\quad a_2= \frac{1}{2},\quad a_3= \frac{2}{9} \approx 0.22222,\quad a_4= \frac{3}{32} \approx 0.093750,\quad a_5= \frac{24}{625} \approx 0.038400,
-$$
-$$
-a_6= \frac{5}{324} \approx 0.015432,\quad a_7= \frac{720}{117649} \approx 0.0061199,\quad a_8= \frac{315}{131072} \approx 0.0024033.
-$$
+\begin{align*}
+a_1&= 1,\quad a_2= \frac{1}{2},\quad a_3= \frac{2}{9} \approx 0.22222,\quad a_4= \frac{3}{32} \approx 0.093750, \\
+a_5&= \frac{24}{625} \approx 0.038400, \quad a_6= \frac{5}{324} \approx 0.015432, \\
+a_7&= \frac{720}{117649} \approx 0.0061199,\quad a_8= \frac{315}{131072} \approx 0.0024033.
+\end{align*}
   The sequence appears to be decreasing.  To formally show this, we would need to show $\ds a_{n+1}< a_n$, but we will instead show that
 $$
 \frac{a_{n+1}}{a_n} < 1,
