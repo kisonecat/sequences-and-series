@@ -30,7 +30,7 @@ with a <a href="/<%= COURSERA_COURSE %>/quiz/index?quiz_type=exam">final exam</a
 <h4>Formative assessment&nbsp;<small style="color: #777;">meaning the homework</small></h4>
 
 <p>Each week ends with a homework set; you can attempt these homework
-sets one hundred times if you like, and there are complete hints and
+sets <%= MAX_ATTEMPTS_PER_HOMEWORK %> times if you like, and there are complete hints and
 solutions available on the homework set if you get stuck.  Keep doing
 the homework until you master it.</p>
 
@@ -46,7 +46,7 @@ hints.</p>
 is worth <%= EXAM_POINTS %> points</strong> and will be a reprisal of the concepts
 and skills you have mastered on the homework.  Unlike the homework,
 the final exam will not provide hints, and you will only be able to
-attempt the final exam twice.</p>
+attempt the final exam <%= EXAM_MAX_ATTEMPTS %>.</p>
 
 <h4>Late days</h4>
 
