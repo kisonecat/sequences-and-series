@@ -2,9 +2,9 @@ require 'rubygems'
 require 'json'
 require 'date'
 
-COURSE_NAME="sequence-001"
+COURSE_NAME="sequence-002"
 WEEK_COUNT = 6
-COURSE_START = Date.civil(2013, 9, 27)
+COURSE_START = Date.civil(2014, 3, 1)
 
 POINTS_PER_HOMEWORK = 20
 EXAM_POINTS = 180
@@ -15,7 +15,15 @@ TOTAL_POINTS = POINTS_PER_HOMEWORK * WEEK_COUNT + EXAM_POINTS
 WEEK_STARTS = (0...WEEK_COUNT).collect{ |i| COURSE_START + 7*i }
 WEEK_ENDS = (0...WEEK_COUNT).collect{ |i| COURSE_START + 7 + 7*i }
 
-COURSERA_COURSE='sequence-001'
+COURSERA_COURSE='sequence-002'
+
+def wikipedia(article,title)
+  html =<<EOF
+<a href="http://en.wikipedia.org/wiki/#{article}"><i class="icon-external-link"></i>&nbsp;#{title}</a>
+EOF
+
+  return html.strip
+end
 
 def linkto_week(week)
   return '#' if week <= 0 or week > WEEK_COUNT
@@ -25,7 +33,7 @@ end
 
 $videos = JSON.parse(File.open("../identifiers/videos.json").read)
 def linkto_video(video,title)
-  raise "Missing video" unless $videos.keys.include?(video)
+  raise "Missing video #{video}" unless $videos.keys.include?(video)
 
   html = <<EOF
 <a href="/#{COURSE_NAME}/lecture/#{$videos[video]}"><i class="icon-film"></i>&nbsp;#{title}</a>
@@ -54,6 +62,7 @@ def linkto_textbook(label)
   kinds['chapter'] = 'Chapter'
   kinds['subsection'] = 'Subsection'
   kinds['thm'] = 'Theorem'
+  kinds['example'] = 'Example'
 
   kind_code = label.split(":")[0]
   kind = kinds[kind_code]
