@@ -29,15 +29,64 @@ sequence of partial sums $\ds s_1,s_2,s_3,\ldots$ converges as well.
 
 \begin{fullwidth}
 \begin{figure}[!h]
-\begin{tikzpicture}
+\begin{tikzpicture}[line width=0.4pt]
 \draw [->] (0,0) -- (\textwidth,0);
 \draw (0.1\textwidth,-0.1) -- (0.1\textwidth,0.1);
 \draw (0.9\textwidth,-0.1) -- (0.9\textwidth,0.1);
-\node (zero) at (0.1\textwidth,-0.1) {$0$};
-\node (one) at (0.9\textwidth,-0.1) {$1$};
+\node[anchor=north] (zero) at (0.1\textwidth,-0.1) {$0$};
+\node[anchor=north] (one) at (0.9\textwidth,-0.1) {$1$};
+\draw (0.5\textwidth,-0.1) -- (0.5\textwidth,0.1);
+\node[anchor=north] (half) at (0.5\textwidth,-0.1) {$\frac{1}{2}$};
+\draw (0.766666666666667\textwidth,-0.1) -- (0.766666666666667\textwidth,0.1);
+\node[anchor=north] (a3) at (0.766666666666667\textwidth,-0.1) {$\frac{5}{6}$};
+\draw (0.566666666666667\textwidth,-0.1) -- (0.566666666666667\textwidth,0.1);
+\node[anchor=north] (a4) at (0.566666666666667\textwidth,-0.1) {$\frac{7}{12}$};
+\draw (0.726666666666667\textwidth,-0.1) -- (0.726666666666667\textwidth,0.1);
+\node[anchor=north] (a5) at (0.726666666666667\textwidth,-0.1) {$\frac{47}{60}$};
+\draw (0.593333333333333\textwidth,-0.1) -- (0.593333333333333\textwidth,0.1);
+\draw (0.707619047619048\textwidth,-0.1) -- (0.707619047619048\textwidth,0.1);
+\draw (0.607619047619048\textwidth,-0.1) -- (0.607619047619048\textwidth,0.1);
+\draw (0.696507936507937\textwidth,-0.1) -- (0.696507936507937\textwidth,0.1);
+\draw (0.616507936507937\textwidth,-0.1) -- (0.616507936507937\textwidth,0.1);
+\draw (0.689235209235209\textwidth,-0.1) -- (0.689235209235209\textwidth,0.1);
+\draw (0.622568542568543\textwidth,-0.1) -- (0.622568542568543\textwidth,0.1);
+\draw (0.684107004107004\textwidth,-0.1) -- (0.684107004107004\textwidth,0.1);
+\draw (0.626964146964147\textwidth,-0.1) -- (0.626964146964147\textwidth,0.1);
+\draw (0.680297480297480\textwidth,-0.1) -- (0.680297480297480\textwidth,0.1);
+\draw (0.630297480297480\textwidth,-0.1) -- (0.630297480297480\textwidth,0.1);
+\draw (0.677356303826892\textwidth,-0.1) -- (0.677356303826892\textwidth,0.1);
+\draw (0.632911859382448\textwidth,-0.1) -- (0.632911859382448\textwidth,0.1);
+\draw (0.675017122540342\textwidth,-0.1) -- (0.675017122540342\textwidth,0.1);
+\draw (0.635017122540342\textwidth,-0.1) -- (0.635017122540342\textwidth,0.1);
+\draw (0.673112360635580\textwidth,-0.1) -- (0.673112360635580\textwidth,0.1);
+\draw (0.636748724271944\textwidth,-0.1) -- (0.636748724271944\textwidth,0.1);
+\draw (0.671531332967596\textwidth,-0.1) -- (0.671531332967596\textwidth,0.1);
+\draw (0.638197999634263\textwidth,-0.1) -- (0.638197999634263\textwidth,0.1);
+\draw (0.670197999634263\textwidth,-0.1) -- (0.670197999634263\textwidth,0.1);
+\draw (0.639428768865032\textwidth,-0.1) -- (0.639428768865032\textwidth,0.1);
+\draw (0.669058398494662\textwidth,-0.1) -- (0.669058398494662\textwidth,0.1);
+\draw (0.640486969923233\textwidth,-0.1) -- (0.640486969923233\textwidth,0.1);
+\draw (0.668073176819785\textwidth,-0.1) -- (0.668073176819785\textwidth,0.1);
+\draw (0.641406510153118\textwidth,-0.1) -- (0.641406510153118\textwidth,0.1);
+\draw (0.667212961766022\textwidth,-0.1) -- (0.667212961766022\textwidth,0.1);
+\draw (0.642212961766021\textwidth,-0.1) -- (0.642212961766021\textwidth,0.1);
+\draw (0.666455386008446\textwidth,-0.1) -- (0.666455386008446\textwidth,0.1);
+\draw (0.642925974243740\textwidth,-0.1) -- (0.642925974243740\textwidth,0.1);
+\draw (0.665783117100883\textwidth,-0.1) -- (0.665783117100883\textwidth,0.1);
+\draw (0.643560894878661\textwidth,-0.1) -- (0.643560894878661\textwidth,0.1);
+\draw (0.665182516500282\textwidth,-0.1) -- (0.665182516500282\textwidth,0.1);
+\draw (0.644129884921335\textwidth,-0.1) -- (0.644129884921335\textwidth,0.1);
+\draw (0.664642705434155\textwidth,-0.1) -- (0.664642705434155\textwidth,0.1);
+\draw (0.644642705434155\textwidth,-0.1) -- (0.644642705434155\textwidth,0.1);
+\draw (0.664154900556106\textwidth,-0.1) -- (0.664154900556106\textwidth,0.1);
+\draw (0.645107281508487\textwidth,-0.1) -- (0.645107281508487\textwidth,0.1);
+\draw (0.663711932671278\textwidth,-0.1) -- (0.663711932671278\textwidth,0.1);
+\draw (0.645530114489460\textwidth,-0.1) -- (0.645530114489460\textwidth,0.1);
+\draw (0.663307892267238\textwidth,-0.1) -- (0.663307892267238\textwidth,0.1);
+\draw (0.645916587919412\textwidth,-0.1) -- (0.645916587919412\textwidth,0.1);
+\draw[fill=black, line width=0.1pt] (0.662937864515156\textwidth,-0.1) rectangle (0.646271197848490\textwidth,0.1);
 \end{tikzpicture}
 \vspace{12pt}
-%BADBAD
 
 \label{fig:alternating-harmonic-series}
 \caption{Partial sums of the alternating harmonic series}
