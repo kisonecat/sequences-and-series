@@ -1,9 +1,10 @@
 from sage.all import *
 import re
+import subprocess
 
 from chameleon import PageTemplate
 
-COURSE_NAME="sequence-001"
+COURSE_NAME="sequence-002"
 
 def random_choice( list ):
     return list[randint(0,len(list)-1)]
@@ -73,7 +74,33 @@ def filter_coursera(thing):
     thing = re.sub( r'&lt;p&gt;', r'<p>', thing )
     thing = re.sub( r'&lt;/p&gt;', r'</p>', thing )
 
-    print thing
+    return thing
+
+################################################################
+def filter_latex(thing):
+    if (isinstance( thing, SageObject )):
+        thing = '$' + str(latex(thing)) + '$'
+
+    thing = str(thing)
+
+    pieces = thing.split('$$')
+    pieces = flatten( zip( pieces, ['\[','\]']*len(pieces) ) )
+    thing = re.sub( r'\[$', '', join( pieces, '' ) )
+
+    pieces = thing.split('$')
+    pieces = flatten( zip( pieces, ['\(','\)']*len(pieces) ) )
+    thing = join( pieces, '' )
+    thing = re.sub( r'\\\\\($', '', join( pieces, '' ) )
+
+    pieces = thing.split('"')
+    pieces = flatten( zip( pieces, ["""``""","""''"""]*len(pieces) ) )
+    thing = join( pieces, '' )
+    thing = re.sub( r'``$', '', join( pieces, '' ) )
+
+    thing = re.sub( r'\\frac', r'\\displaystyle\\frac', thing )
+    thing = re.sub( r'\\sum', r'\\displaystyle\\sum', thing )
+    thing = re.sub( r'\\int', r'\\displaystyle\\int', thing )
+
     return thing
 
 ################################################################
@@ -104,6 +131,19 @@ class BaseQuestion(object):
             xml = xml + question.question_xml()
         return xml
 
+    @classmethod
+    def ximera(cls):
+        xml = ""
+        questions = []
+        while len(questions) < 1:
+            potential_question = cls()
+            if potential_question.good_enough():
+                questions.append( potential_question)
+
+        for question in questions:
+            xml = xml + question.question_ximera()
+        return xml
+
     def text(self):
         filename = self.module.replace( '__init__.pyc', 'text.html' ).replace( '__init__.py', 'text.html' )
         f = open(filename)
@@ -111,6 +151,10 @@ class BaseQuestion(object):
         dictionary = dict(self.__dict__, **globals())
         dictionary['answer'] = self.answer()
         return template.render(**dictionary)
+
+    def text_tex(self):
+        result = self.text()
+        return join([x.replace('<p>','').replace('</p>','') for x in re.sub("\n+","\n",result).split( "</p>\n<p>" )],"\n\n")
 
     def response(self):
         return encouragement()
@@ -159,20 +203,26 @@ class BaseQuestion(object):
             forum_button = """<a class="btn btn-inverse" target="_blank" href="https://class.coursera.org/{course}/forum/list?forum_id={forum}"><i class="icon-comment"></i>&nbsp;Discuss</a>""".format(course=COURSE_NAME, forum=self.__class__.forum)
 
         video_button = """<button class="btn btn-inverse btn-disabled" disabled><i class="icon-film"></i>&nbsp;Watch video</a>"""
-        if self.__class__.video != "":
+        if hasattr(self.__class__,'video') and self.__class__.video != "":
             video_button = """<a class="btn btn-inverse" target="_blank" href="https://class.coursera.org/{course}/lecture/{lecture}"><i class="icon-film"></i>&nbsp;Watch video</a>""".format(course=COURSE_NAME, lecture=video_identifiers[self.__class__.video])
 
-        #textbook_button = """<button class="btn btn-inverse btn-disabled" disabled><i class="icon-book"></i>&nbsp;Read Textbook</a>"""
-        #if self.__class__.textbook != "":
-        #    textbook_button = """<a class="btn btn-inverse" target="_blank" href="https://class.coursera.org/{course}/lecture/{lecture}"><i class="icon-film"></i>&nbsp;Watch video</a>""".format(course=COURSE_NAME, lecture=video_identifiers[self.__class__.video])
+        textbook_button = ""
+        if hasattr(self.__class__,'textbook') and self.__class__.textbook != "":
+            textbook_button = '<div class="btn-group">' + subprocess.check_output("ruby textbook-link.rb " + self.__class__.textbook, shell=True) + '</div>'
 
         hint_button = """<button class="btn btn-warning" onclick="$(this).parents('.course-quiz-question-text').children('div.hints').children('div.hint').first().removeClass('hint').hide().css('visibility','visible').css('position','').css('width','').css('height','').css('overflow','').slideDown('slow'); var steps = $(this).parents('.course-quiz-question-text').children('div.hints').children('div.hint').length; if (steps != 1) $(this).children('.hint-count').text( ' (' + steps + ' steps remain)' ); if (steps == 1) $(this).children('.hint-count').text( ' (1 step remains)' ); if (steps == 0) $(this).prop( 'disabled', true ); return false;"><i class=\"icon-question-sign\"></i>&nbsp;Get hint<span class="hint-count"></span></button>""".format(button="""""")
+
+        ## FOR THE FINAL
+        hint_button = ''
 
         hint_text = """<div class="hints">"""
         for hint in self.hints():
             # The bizarre style is needed because display: none will confuse mathjax's metric computations
             hint_text = hint_text + """<div class="hint" style="visibility:hidden; position:absolute; width:0; height:0; overflow:hidden;">{hint}</div>""".format( hint = filter_coursera(hint) )
         hint_text = hint_text + """</div>"""
+
+        ## FOR THE FINAL
+        hint_text = ''
 
         new_title = self.__class__.title
         javascript = re.sub( 'NEW_TITLE', new_title,
@@ -188,12 +238,13 @@ class BaseQuestion(object):
         <div class="btn-group">{hint}</div>
         <div class="btn-group">{forum}</div>
         <div class="btn-group">{video}</div>
-        </div>""".format( hint=hint_button, forum=forum_button, video=video_button )
+        {textbook}
+        </div>""".format( hint=hint_button, forum=forum_button, video=video_button, textbook=textbook_button )
 
         header = """<question id="{id}" type="GS_Choice_Answer_Question">
           <metadata>
             <parameters>
-              <rescale_score>1</rescale_score>
+              <rescale_score>9</rescale_score>
               <choice_type>radio</choice_type>
             </parameters>
           </metadata>
@@ -227,6 +278,53 @@ class BaseQuestion(object):
                 </option>""".format(id=question_id, index=index, text=filter_coursera(text), response=filter_coursera(response))
             index = index + 1
         incorrect_group = incorrect_group + """</option_group>"""
+
+        xml = header + """<option_groups randomize="true">""" + correct_group + incorrect_group + """</option_groups>""" + footer
+
+        return xml
+
+    def question_ximera(self):
+        video_button = ""
+        if hasattr(self.__class__,'video') and self.__class__.video != "":
+            video_button = "% Relevant video: " + self.__class__.video
+
+        new_title = self.__class__.title
+
+        indent = "                "
+        hint_text = """"""
+        for hint in self.hints():
+            # The bizarre style is needed because display: none will confuse mathjax's metric computations
+            hint_text = hint_text + """{indent}\\begin{{hint}}\n{indent}  {hint}\n{indent}\\end{{hint}}\n""".format( hint = filter_latex(hint), indent=indent )
+        hint_text = hint_text + """\n"""
+
+        some_distractors = self.distractors(6)
+        incorrects = ""
+        for distractor in some_distractors[0:4]:
+            text = distractor
+            response = gentle_discouragement()
+            if isinstance(distractor, tuple):
+                text = distractor[0]
+                response = distractor[1]
+
+            incorrects = incorrects + """{indent}\\choice{{{text}}}\n""".format(text=filter_latex(text), indent=indent)
+
+        tex = video_button + """
+            \\begin{{question}}
+              {text}
+              \\begin{{solution}}
+{hint}
+              \\begin{{multiple-choice}}
+                \\choice[correct]{{{correct}}}
+{incorrects}
+              \\end{{multiple-choice}}
+
+              \\end{{solution}}
+            \\end{{question}}
+            """.format(text=filter_latex(self.text_tex()), hint=hint_text, explanation=filter_latex(self.explanation()), correct=filter_latex(self.answer()), incorrects=incorrects)
+
+        return tex
+
+
 
         xml = header + """<option_groups randomize="true">""" + correct_group + incorrect_group + """</option_groups>""" + footer
 
