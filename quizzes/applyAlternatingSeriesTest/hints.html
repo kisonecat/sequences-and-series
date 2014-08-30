@@ -5,7 +5,6 @@
 <p>We then consider \(\sum_{#{variable} = #{initial}}^\infty \left| #{latex(term)} \right| = \sum_{#{variable} = #{initial}}^\infty #{latex(term_abs)} \).</p>
 <p condition="p > 1">Note that \(#{latex(term_abs)} &lt; \frac{#{latex(term_x.numerator())}}{#{latex(variable**p)}}\).</p>
 <p condition="p > 1">The series  \(\sum_{#{variable} = #{initial}}^\infty \frac{#{latex(term_x.numerator())}}{#{latex(variable**p)}}\) converges by the \(p\) series test; here \(p = #{latex(p)} &gt; 1\).</p>
-<p condition="p > 1">The series  \(\sum_{#{variable} = #{initial}}^\infty \frac{#{latex(term_x.numerator())}}{#{latex(variable**p)}}\) converges by the \(p\) series test; here \(p = #{latex(p)} &gt; 1\).</p>
 <p condition="p > 1">We may conclude that the original series \(\sum_{#{variable} = #{initial}}^\infty #{latex(term)}\) converges absolutely.</p>
 <p condition="p > 0 and p <= 1">By, say, the limit comparison test with \(b_{#{variable}} = \frac{1}{#{latex(variable**p)}}\), we find that the series \(\sum_{#{variable} = #{initial}}^\infty #{latex(term_abs)} \) diverges.</p>
 <p condition="p > 0 and p <= 1">We may conclude that the original series \(\sum_{#{variable} = #{initial}}^\infty #{latex(term)}\) does not converge absolutely.</p>
